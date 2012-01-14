@@ -106,41 +106,41 @@ namespace MerchantTribe.Commerce
         }
 
         
-        public static RequestContext GetCurrentRequestContext()
-        {
-            RequestContext alternateContext = new RequestContext();
-            alternateContext.CurrentStore.Id = -1;
+        //public static RequestContext GetCurrentRequestContext()
+        //{
+        //    RequestContext alternateContext = new RequestContext();
+        //    alternateContext.CurrentStore.Id = -1;
 
-            try
-            {
-                // Try to pull from HttpContext.Items first in case
-                // we already created this in an MVC controller
-                if (System.Web.HttpContext.Current.Items != null)
-                {
-                    object maybe = System.Web.HttpContext.Current.Items["mtapp"];
-                    if (maybe != null)
-                    {
-                        return ((MerchantTribeApplication)maybe).CurrentRequestContext;
-                    }
-                }
-                if (System.Web.HttpContext.Current != null)
-                {
-                    if (System.Web.HttpContext.Current.Handler != null)
-                    {
-                        if (System.Web.HttpContext.Current.Handler is IMultiStorePage)
-                        {
-                            return ((IMultiStorePage)System.Web.HttpContext.Current.Handler).MTApp.CurrentRequestContext;
-                        }
-                    }
-                }                
-            }
-            catch
-            {
+        //    try
+        //    {
+        //        // Try to pull from HttpContext.Items first in case
+        //        // we already created this in an MVC controller
+        //        if (System.Web.HttpContext.Current.Items != null)
+        //        {
+        //            object maybe = System.Web.HttpContext.Current.Items["mtapp"];
+        //            if (maybe != null)
+        //            {
+        //                return ((MerchantTribeApplication)maybe).CurrentRequestContext;
+        //            }
+        //        }
+        //        if (System.Web.HttpContext.Current != null)
+        //        {
+        //            if (System.Web.HttpContext.Current.Handler != null)
+        //            {
+        //                if (System.Web.HttpContext.Current.Handler is IMultiStorePage)
+        //                {
+        //                    return ((IMultiStorePage)System.Web.HttpContext.Current.Handler).MTApp.CurrentRequestContext;
+        //                }
+        //            }
+        //        }                
+        //    }
+        //    catch
+        //    {
 
-            }
+        //    }
             
-            return alternateContext;
-        }
+        //    return alternateContext;
+        //}
 
         public static bool ForceCurrentRequestContext(RequestContext contextToSet)
         {

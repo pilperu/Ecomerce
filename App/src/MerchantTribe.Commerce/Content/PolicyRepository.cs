@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Content
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_PolicyBlock>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

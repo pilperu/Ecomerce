@@ -21,8 +21,8 @@ namespace MerchantTribe.Commerce.Content
             CustomUrlRepository result = null;
             result = new CustomUrlRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_CustomUrl>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }

@@ -554,7 +554,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
                 ShippingRateDisplay r = FindSelectedRate(this.ShippingRatesList.SelectedValue, o);
                 if (r != null)
                 {
-                    MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(r.UniqueKey, o);
+                    MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(r.UniqueKey, o, MTApp.CurrentStore);
                 }
                 
                 if (savePaymentData)
@@ -774,7 +774,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
                 MerchantTribe.Commerce.Utilities.SortableCollection<ShippingRateDisplay> rates = SessionManager.LastShippingRates;
                 if ((rates == null) | (rates.Count < 1))
                 {
-                    rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+                    rates = MTApp.OrderServices.FindAvailableShippingRates(o, MTApp.CurrentStore);
                 }
 
                 foreach (ShippingRateDisplay r in rates)
@@ -810,7 +810,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
             else
             {
                 MerchantTribe.Commerce.Utilities.SortableCollection<ShippingRateDisplay> Rates;
-                Rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+                Rates = MTApp.OrderServices.FindAvailableShippingRates(o, MTApp.CurrentStore);
                 SessionManager.LastShippingRates = Rates;
                 this.ShippingRatesList.DataTextField = "RateAndNameForDisplay";
                 this.ShippingRatesList.DataValueField = "UniqueKey";

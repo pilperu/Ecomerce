@@ -22,8 +22,8 @@ namespace MerchantTribe.Commerce.Membership
             UserQuestionRepository result = null;
             result = new UserQuestionRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_UserQuestions>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }

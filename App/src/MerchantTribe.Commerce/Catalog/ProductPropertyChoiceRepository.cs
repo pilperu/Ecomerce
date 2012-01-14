@@ -15,14 +15,14 @@ namespace MerchantTribe.Commerce.Catalog
         public static ProductPropertyChoiceRepository InstantiateForMemory(RequestContext c)
         {
             ProductPropertyChoiceRepository result = null;            
-            ILogger logger = new MerchantTribe.Commerce.EventLog();
+            ILogger logger = new TextLogger();
             result = new ProductPropertyChoiceRepository(c, new MemoryStrategy<Data.EF.bvc_ProductPropertyChoice>(PrimaryKeyType.Integer), logger);
             return result;
         }
         public static ProductPropertyChoiceRepository InstantiateForDatabase(RequestContext c)
         {            
             ProductPropertyChoiceRepository result = null;
-            ILogger logger = new MerchantTribe.Commerce.EventLog();
+            ILogger logger = new SupressLogger();
             result = new ProductPropertyChoiceRepository(c, new EntityFrameworkRepository<Data.EF.bvc_ProductPropertyChoice>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

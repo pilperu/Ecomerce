@@ -24,7 +24,7 @@ namespace MerchantTribe.Commerce.Catalog
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.PageVersion>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

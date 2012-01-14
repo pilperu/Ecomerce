@@ -8,6 +8,13 @@ namespace MerchantTribe.Commerce.Payment
 {
     public class RewardPointsSettings : MerchantTribe.Payment.MethodSettings
     {
+        public RewardPointsSettings(long currentStoreId)
+        {
+            this.CurrentStoreId = currentStoreId;
+        }
+
+        public long CurrentStoreId { get; private set; }
+
         public int PointsIssuedPerDollarSpent
         {
             get { return GetIntSetting("PointsIssuedPerDollarSpent"); }

@@ -366,7 +366,7 @@ namespace MerchantTribeStore
                             m = t.ConvertToMailMessage(toEmail);
                             if (m != null)
                             {
-                                    if (MerchantTribe.Commerce.Utilities.MailServices.SendMail(m))
+                                    if (MerchantTribe.Commerce.Utilities.MailServices.SendMail(m, MTApp.CurrentStore))
                                     {
                                         this.MessageBox1.ShowOk("Email Sent!");
                                     }

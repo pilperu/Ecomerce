@@ -75,11 +75,11 @@ namespace MerchantTribe.Commerce.Shipping
             StoreId = 0;
 		}
 
-		public Collection<ShippingRateDisplay> GetRates(Orders.Order o)
+		public Collection<ShippingRateDisplay> GetRates(Orders.Order o, Accounts.Store currentStore)
 		{
             Collection<ShippingRateDisplay> result = new Collection<ShippingRateDisplay>();
             List<ShippingGroup> groups = o.GetShippingGroups();
-            return GetRates(groups);        
+            return GetRates(groups, currentStore);        
 		}
 
         private MerchantTribe.Shipping.IShipment ConvertGroupsToShipments(List<ShippingGroup> groups)
@@ -94,10 +94,8 @@ namespace MerchantTribe.Commerce.Shipping
             return result;
         }
 
-		public Collection<ShippingRateDisplay> GetRates(List<ShippingGroup> groups)
-		{
-            Accounts.Store currentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
-
+		public Collection<ShippingRateDisplay> GetRates(List<ShippingGroup> groups, Accounts.Store currentStore)
+		{            
             Collection<ShippingRateDisplay> result = new Collection<ShippingRateDisplay>();
 
             MerchantTribe.Shipping.IShippingService p = Shipping.AvailableServices.FindById(this.ShippingProviderId, currentStore);

@@ -234,7 +234,7 @@ namespace MerchantTribe.Commerce.Orders
             o.TotalShippingBeforeDiscounts = 0;
             if (o.ShippingMethodId != string.Empty)
             {
-                Shipping.ShippingRateDisplay r = _app.OrderServices.OrdersFindShippingRateByUniqueKey(o.ShippingMethodUniqueKey, o);
+                Shipping.ShippingRateDisplay r = _app.OrderServices.OrdersFindShippingRateByUniqueKey(o.ShippingMethodUniqueKey, o, _app.CurrentStore);
                 if (r != null)
                 {
                     o.ShippingMethodDisplayName = r.DisplayName;

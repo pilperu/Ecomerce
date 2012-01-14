@@ -35,7 +35,7 @@ namespace MerchantTribe.Commerce.Accounts
         {
             return new StoreSettingsRepository(c, new EntityFrameworkRepository<Data.EF.ecommrc_StoreSettings>(
                 new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
         }        
 
         public StoreSettingsRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_StoreSettings> strategy, ILogger log)

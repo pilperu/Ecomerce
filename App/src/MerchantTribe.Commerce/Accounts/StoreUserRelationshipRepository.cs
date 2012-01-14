@@ -19,7 +19,7 @@ namespace MerchantTribe.Commerce.Accounts
         {
             return new StoreUserRelationshipRepository(c, new EntityFrameworkRepository<Data.EF.ecommrc_StoresXUsers>(
                 new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
         }        
         public StoreUserRelationshipRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_StoresXUsers> r, ILogger log)
         {

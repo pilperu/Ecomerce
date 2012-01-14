@@ -384,7 +384,7 @@ namespace MerchantTribe.Shipping.Ups
                 xw.Formatting = Formatting.Indented;
                 xw.Indentation = 3;
 
-                xw.WriteStartDocument();
+                //xw.WriteStartDocument();
 
                 //--------------------------------------------            
                 // Agreement Request

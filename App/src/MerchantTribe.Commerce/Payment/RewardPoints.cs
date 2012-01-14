@@ -7,9 +7,8 @@ using MerchantTribe.Payment;
 namespace MerchantTribe.Commerce.Payment
 {
     public class RewardPoints : MerchantTribe.Payment.Method
-    {
-
-        private RewardPointsSettings _Settings = new RewardPointsSettings();
+    {        
+        private RewardPointsSettings _Settings = new RewardPointsSettings(0);
 
         public RewardPointsSettings Settings
         {
@@ -31,8 +30,8 @@ namespace MerchantTribe.Commerce.Payment
         {
             Membership.CustomerPointsManager manager =
                 Membership.CustomerPointsManager.InstantiateForDatabase(Settings.PointsIssuedPerDollarSpent,
-                                                    Settings.PointsNeededForDollarCredit,
-                                                    RequestContext.GetCurrentRequestContext().CurrentStore.Id);
+                                                    Settings.PointsNeededForDollarCredit,                                                    
+                                                    Settings.CurrentStoreId);
             switch (t.Action)
             {
                 case ActionType.RewardPointsBalanceInquiry:

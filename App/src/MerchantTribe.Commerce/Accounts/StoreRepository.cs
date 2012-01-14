@@ -27,7 +27,7 @@ namespace MerchantTribe.Commerce.Accounts
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.ecommrc_StoreSettings>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

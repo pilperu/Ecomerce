@@ -23,7 +23,7 @@ namespace MerchantTribe.Commerce.Scheduling
             result = new QueuedTaskRepository(c,
                 new EntityFrameworkRepository<Data.EF.QueuedTask>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

@@ -21,8 +21,8 @@ namespace MerchantTribe.Commerce.Metrics
             SearchQueryRepository result = null;
             result = new SearchQueryRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_SearchQuery>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }

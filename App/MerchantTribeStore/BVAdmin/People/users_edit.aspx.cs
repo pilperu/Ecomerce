@@ -325,7 +325,7 @@ namespace MerchantTribeStore
                     {
                         if (MTApp.MembershipServices.UpdateCustomerEmail(u, newEmailAddress))
                         {
-                            Integration.Current().CustomerAccountEmailChanged(oldEmailAddress, u.Email);
+                            MTApp.CurrentRequestContext.IntegrationEvents.CustomerAccountEmailChanged(oldEmailAddress, u.Email);
                         }
                     }
                 }

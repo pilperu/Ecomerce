@@ -33,9 +33,7 @@ namespace MerchantTribe.Commerce.Content
 		private string _BlockId = string.Empty;
 
 		public event EventHandler<BVModuleEventArgs> EditingComplete;
-
-        public Accounts.Store CurrentStore = RequestContext.GetCurrentRequestContext().CurrentStore;
-
+        
 		public string BlockId {
 			get { return _BlockId; }
 			set {

@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Metrics
             this.StoreId = 0;
 		}
 
-		public EventLogEntry(Exception ex): this()
+		public EventLogEntry(Exception ex, long storeId): this()
 		{
 			EventTimeUtc = DateTime.UtcNow;
 			Severity = EventLogSeverity.Error;
@@ -47,7 +47,7 @@ namespace MerchantTribe.Commerce.Metrics
             
             try
             {
-                this.StoreId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
+                this.StoreId = storeId;
             }
             catch
             {
@@ -56,7 +56,7 @@ namespace MerchantTribe.Commerce.Metrics
 
 		}
 
-		public EventLogEntry(string src, string msg, EventLogSeverity sv): this()
+		public EventLogEntry(string src, string msg, EventLogSeverity sv, long storeId): this()
 		{
 			EventTimeUtc = DateTime.UtcNow;
             LastUpdatedUtc = DateTime.UtcNow;
@@ -66,7 +66,7 @@ namespace MerchantTribe.Commerce.Metrics
 
             try
             {
-                this.StoreId = RequestContext.GetCurrentRequestContext().CurrentStore.Id;
+                this.StoreId = storeId;
             }
             catch
             {

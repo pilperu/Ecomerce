@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new ProductReviewRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductReview>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog());
+                    new SupressLogger());
             return result;
         }
         public ProductReviewRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ProductReview> r, ILogger log)

@@ -53,7 +53,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 
                     m = t.ConvertToMailMessage(n.Email);
                     
-                    if (MailServices.SendMail(m) == false)
+                    if (MailServices.SendMail(m, context.MTApp.CurrentStore) == false)
                     {
                         EventLog.LogEvent("Create Account During Checkout", "Failed to send email to new customer " + n.Email, EventLogSeverity.Warning);
                     }

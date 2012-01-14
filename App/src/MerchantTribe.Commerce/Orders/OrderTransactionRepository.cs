@@ -24,7 +24,7 @@ namespace MerchantTribe.Commerce.Orders
             OrderTransactionRepository result = null;
             result = new OrderTransactionRepository(c,
                      new EntityFrameworkRepository<Data.EF.ecommrc_OrderTransactions>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                     new EventLog());            
+                     new SupressLogger());            
             return result;
         }
         public OrderTransactionRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_OrderTransactions> r, ILogger log)

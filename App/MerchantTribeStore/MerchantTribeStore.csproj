@@ -4405,6 +4405,7 @@
     <Content Include="Areas\AdminCatalog\Views\CategoriesCustom\Edit.cshtml" />
     <Content Include="Areas\AdminContent\Views\Web.config" />
     <Content Include="Areas\AdminContent\Views\FileManager\Index.cshtml" />
+    <Content Include="Areas\account\Views\OrderHistory\DownloadFileError.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />

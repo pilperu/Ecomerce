@@ -19,7 +19,7 @@ namespace MerchantTribe.Commerce.Accounts
         {
             return new ApiKeyRepository(c, new EntityFrameworkRepository<Data.EF.ApiKey>(
                 new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
         }
         public ApiKeyRepository(RequestContext c, IRepositoryStrategy<Data.EF.ApiKey> r, ILogger log)
         {

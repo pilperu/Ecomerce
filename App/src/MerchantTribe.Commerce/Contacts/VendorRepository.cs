@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Contacts
             result = new VendorRepository(c, 
                 new EntityFrameworkRepository<Data.EF.bvc_Vendor>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_UserXContact>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
             return result;
         }        
         public VendorRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Vendor> r,

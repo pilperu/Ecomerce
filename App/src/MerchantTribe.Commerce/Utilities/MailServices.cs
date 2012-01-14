@@ -10,18 +10,24 @@ namespace MerchantTribe.Commerce.Utilities
 
 	public class MailServices
 	{
+        private Accounts.Store _store = new Accounts.Store();
 
-		private MailServices()
-		{
+        public MailServices(Accounts.Store currentStore)
+        {
+            _store = currentStore;
+        }
 
-		}
-
-		public static bool SendMail(System.Net.Mail.MailMessage m)
+        public static bool SendMail(System.Net.Mail.MailMessage m, Accounts.Store fromStore)
+        {
+            MailServices sender = new MailServices(fromStore);
+            return sender.SendMail(m);
+        }
+		public bool SendMail(System.Net.Mail.MailMessage m)
 		{
 			return SendMail(m, false);
 		}
 
-		public static bool SendMail(System.Net.Mail.MailMessage m, bool async)
+		public bool SendMail(System.Net.Mail.MailMessage m, bool async)
 		{
 			bool result = false;
 
@@ -33,21 +39,18 @@ namespace MerchantTribe.Commerce.Utilities
                 bool _useAuth = true;
                 string _port = WebAppSettings.ApplicationMailServerPort;
                 bool _useSSL = WebAppSettings.ApplicationMailServerSSL;
-
-
-                RequestContext context = RequestContext.GetCurrentRequestContext();
-                if (context != null)
-                {
-                    if (context.CurrentStore.Settings.MailServer.UseCustomMailServer)
+                
+                
+                    if (_store.Settings.MailServer.UseCustomMailServer)
                     {
-                        _server = context.CurrentStore.Settings.MailServer.HostAddress;
-                        _user = context.CurrentStore.Settings.MailServer.Username;
-                        _password = context.CurrentStore.Settings.MailServer.Password;
-                        _useAuth = context.CurrentStore.Settings.MailServer.UseAuthentication;
-                        _port = context.CurrentStore.Settings.MailServer.Port;
-                        _useSSL = context.CurrentStore.Settings.MailServer.UseSsl;
+                        _server = _store.Settings.MailServer.HostAddress;
+                        _user = _store.Settings.MailServer.Username;
+                        _password = _store.Settings.MailServer.Password;
+                        _useAuth = _store.Settings.MailServer.UseAuthentication;
+                        _port = _store.Settings.MailServer.Port;
+                        _useSSL = _store.Settings.MailServer.UseSsl;
                     }
-                }
+                
 
                 SmtpClient server = new SmtpClient();
                 server.Host = _server;
@@ -74,7 +77,7 @@ namespace MerchantTribe.Commerce.Utilities
                 // Body Replacement
                 if (m.IsBodyHtml)
                 {
-                    m.Body = m.Body.Replace("</body>", "<div style=\"margin:0.25em;border-style:solid;border-width:1px 0 1px 3px;padding:0.5em 1em;font-face:arial;font-size:11px;color:#333;background-color: #fffffd;border-color: #B3B300;\">Get a <a href=\"http://www.MerchantTribe.com\">Free Shopping Cart by joining MerhantTribe</a> today!</div>");
+                    m.Body = m.Body.Replace("</body>", "<div style=\"margin:0.25em;border-style:solid;border-width:1px 0 1px 3px;padding:0.5em 1em;font-face:arial;font-size:11px;color:#333;background-color: #fffffd;border-color: #B3B300;\">Get a <a href=\"http://www.MerchantTribe.com\">Free Shopping Cart by joining MerchantTribe</a> today!</div>");
                 }
                 else
                 {
@@ -116,7 +119,6 @@ namespace MerchantTribe.Commerce.Utilities
 			result += "\">" + displayText + "</a>";
 			return result;
 		}
-
 
         public static string RenderEmailHtmlStyles()
         {
@@ -308,8 +310,11 @@ namespace MerchantTribe.Commerce.Utilities
             return "<tr><td align=\"right\">" + System.Web.HttpUtility.HtmlEncode(label) +
                 "</td><td><strong><a href=\"" + linkValue + "\">" + System.Web.HttpUtility.HtmlEncode(value) + "</a></strong></td></tr>";
         }
+
         public static void SendAccountInformation(Accounts.UserAccount u, Accounts.Store s)
         {
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
 
             if (u == null || s == null) return;
 
@@ -345,11 +350,12 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
-
+            sender.SendMail(m);
         }
         public static void SendAdminUserResetLink(Accounts.UserAccount u, Accounts.Store s)
         {
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
 
             if (u == null || s == null) return;
 
@@ -376,12 +382,14 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
-
+            sender.SendMail(m);
         }
 
         public static void SendCustomDomainRequest(string name, string email, string phone, string domain, string ownsDomain, string hasSsl)
-        {            
+        {
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
+
             MailMessage m = new MailMessage(email, WebAppSettings.SuperAdminEmail);
             m.Subject = "BV Hosted Custom Domain Request | Contact Form";
 
@@ -407,11 +415,13 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
+            sender.SendMail(m);
         }
 
         public static void SendLeadAlert(Accounts.UserAccount u, Accounts.Store s)
         {
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
 
             if (u == null || s == null) return;
 
@@ -454,12 +464,14 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
+            sender.SendMail(m);
 
         }
 
         public static void SendPlanUpgradeAlert(Accounts.UserAccount u, Accounts.Store s)
         {
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
 
             if (u == null || s == null) return;
 
@@ -498,13 +510,11 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
-
+            sender.SendMail(m);
         }
 
         public static void SendPlanDowngradeAlert(Accounts.UserAccount u, Accounts.Store s)
         {
-
             if (u == null || s == null) return;
 
 
@@ -542,7 +552,9 @@ namespace MerchantTribe.Commerce.Utilities
             m.IsBodyHtml = true;
             m.Body = sb.ToString();
 
-            Utilities.MailServices.SendMail(m);
+            Accounts.Store tempStore = new Accounts.Store();
+            MailServices sender = new MailServices(tempStore);
+            sender.SendMail(m);
 
         }
 	}

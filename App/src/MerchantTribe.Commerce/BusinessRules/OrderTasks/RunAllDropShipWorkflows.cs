@@ -160,7 +160,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 					m = t.ConvertToMailMessage(toEmail);
 				}
 				if (m != null) {
-					return Utilities.MailServices.SendMail(m);
+					return Utilities.MailServices.SendMail(m, app.CurrentStore);
 				}
 			}
 			return false;

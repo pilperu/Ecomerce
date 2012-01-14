@@ -47,7 +47,7 @@ namespace MerchantTribeStore
 
         private void LoadServiceCodes()
         {
-            MerchantTribe.Shipping.IShippingService ups = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            MerchantTribe.Shipping.IShippingService ups = AvailableServices.FindById(ShippingMethod.ShippingProviderId, MyPage.MTApp.CurrentStore);
             this.ShippingTypesCheckBoxList.DataSource= ups.ListAllServiceCodes();
             this.ShippingTypesCheckBoxList.DataTextField = "DisplayName";
             this.ShippingTypesCheckBoxList.DataValueField = "Code";

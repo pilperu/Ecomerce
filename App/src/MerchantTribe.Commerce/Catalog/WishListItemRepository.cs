@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new WishListItemRepository(c,
                 new EntityFrameworkRepository<Data.EF.WishListItem>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog());
+                    new SupressLogger());
             return result;
         }
         public WishListItemRepository(RequestContext c, IRepositoryStrategy<Data.EF.WishListItem> r, ILogger log)

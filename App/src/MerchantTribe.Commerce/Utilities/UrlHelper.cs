@@ -12,6 +12,7 @@ namespace MerchantTribe.Commerce.Utilities
         {
             Accounts.Store store = app.AccountServices.Stores.FindById(storeId);
             if (store == null) return;
+            app.CurrentStore = store;
 
             string host = requestedUrl.Authority;
             string relativeRoot = "http://" + host;
@@ -41,12 +42,12 @@ namespace MerchantTribe.Commerce.Utilities
             if (result < 1)
             {
                 // Check other custom domains
-                Accounts.StoreDomainRepository repo = new Accounts.StoreDomainRepository(RequestContext.GetCurrentRequestContext());
+                Accounts.StoreDomainRepository repo = new Accounts.StoreDomainRepository(app.CurrentRequestContext);
                 Accounts.StoreDomain possible = repo.FindForAnyStoreByDomain(host);
                 if (possible != null)
                 {
                     if (possible.StoreId > 0)
-                    {
+                    {                        
                         RedirectToMainStoreUrl(possible.StoreId, url, app);
                     }
                 }
@@ -132,7 +133,6 @@ namespace MerchantTribe.Commerce.Utilities
             return result;                           
         }
 
-
         // Primary Method to Detect Store from Uri
         public static Accounts.Store ParseStoreFromUrl(System.Uri url, MerchantTribeApplication app)
         {
@@ -152,8 +152,6 @@ namespace MerchantTribe.Commerce.Utilities
             }
             return result;
         }
-
         
-
     }
 }

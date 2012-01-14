@@ -170,7 +170,7 @@ namespace MerchantTribeStore.Controllers
         private void LoadShippingMethodsForOrder(Order o)
         {
 
-            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o, MTApp.CurrentStore);
 
             string rateKey = o.ShippingMethodUniqueKey;
             bool rateIsAvailable = false;
@@ -250,7 +250,7 @@ namespace MerchantTribeStore.Controllers
                     {
                         MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                         Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(model.CurrentOrder.bvin);
-                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
+                        MTApp.CurrentRequestContext.IntegrationEvents.OrderReceived(tempOrder, MTApp);
                         Response.Redirect("~/checkout/receipt?id=" + model.CurrentOrder.bvin);
                     }
                 }            
@@ -358,7 +358,7 @@ namespace MerchantTribeStore.Controllers
         {
             //Shipping
             string shippingRateKey = Request.Form["shippingrate"];
-            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder, MTApp.CurrentStore);
 
 
             // Save Values so far in case of later errors

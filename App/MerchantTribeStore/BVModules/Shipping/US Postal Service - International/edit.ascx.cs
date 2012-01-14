@@ -50,7 +50,7 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
 
         private void LoadServiceCodes()
         {
-            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            MerchantTribe.Shipping.IShippingService uspostal = AvailableServices.FindById(ShippingMethod.ShippingProviderId, MyPage.MTApp.CurrentStore);
             this.ShippingTypesCheckBoxList.DataSource = uspostal.ListAllServiceCodes();
             this.ShippingTypesCheckBoxList.DataTextField = "DisplayName";
             this.ShippingTypesCheckBoxList.DataValueField = "Code";

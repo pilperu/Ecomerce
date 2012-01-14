@@ -1040,7 +1040,7 @@ namespace MerchantTribe.Commerce.Orders
 
 
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)
@@ -1080,7 +1080,7 @@ namespace MerchantTribe.Commerce.Orders
             }
             
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)
@@ -1181,7 +1181,7 @@ namespace MerchantTribe.Commerce.Orders
             }
 
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)
@@ -1219,7 +1219,7 @@ namespace MerchantTribe.Commerce.Orders
             }
 
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)
@@ -1259,7 +1259,7 @@ namespace MerchantTribe.Commerce.Orders
             }
 
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)
@@ -1277,7 +1277,7 @@ namespace MerchantTribe.Commerce.Orders
             bool result = true;
 
             Payment.RewardPoints processor = new RewardPoints();
-            processor.Settings = new RewardPointsSettings()
+            processor.Settings = new RewardPointsSettings(this.MTApp.CurrentStore.Id)
             {
                 PointsIssuedPerDollarSpent = pointsManager.PointsToIssueForSpend(1),
                 PointsNeededForDollarCredit = pointsManager.PointsNeededForPurchaseAmount(1)

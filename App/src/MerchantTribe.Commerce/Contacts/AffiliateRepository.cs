@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Contacts
             result = new AffiliateRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Affiliate>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_UserXContact>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
             return result;
         }
         public AffiliateRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Affiliate> r,

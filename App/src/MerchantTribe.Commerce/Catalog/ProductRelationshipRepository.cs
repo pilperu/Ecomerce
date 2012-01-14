@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             return new ProductRelationshipRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductRelationship>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
         }        
         public ProductRelationshipRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ProductRelationship> r, ILogger log)

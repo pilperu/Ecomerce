@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Accounts
 {
@@ -14,14 +15,14 @@ namespace MerchantTribe.Commerce.Accounts
         {
             context = c;
             repository = new EntityFrameworkRepository<Data.EF.ecommrc_StoreDomains>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework));
-            this.logger = new EventLog();
+            this.logger = new SupressLogger();
             repository.Logger = this.logger;
         }
         public StoreDomainRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_StoreDomains> r)
         {
             context = c;
             repository = r;
-            this.logger = new EventLog();
+            this.logger = new SupressLogger();
             repository.Logger = this.logger;
         }
 

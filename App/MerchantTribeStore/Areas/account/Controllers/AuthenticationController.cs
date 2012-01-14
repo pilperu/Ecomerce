@@ -291,7 +291,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
 
                             m = t.ConvertToMailMessage(thisUser.Email);
 
-                            if (MailServices.SendMail(m) == false)
+                            if (MailServices.SendMail(m, MTApp.CurrentStore) == false)
                             {
                                 FlashFailure("Error while sending mail!");
                             }

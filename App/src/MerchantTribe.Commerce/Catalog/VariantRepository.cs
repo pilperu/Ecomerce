@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new VariantRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Variants>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog());
+                    new SupressLogger());
             return result;
         }
         public VariantRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Variants> r, ILogger log)

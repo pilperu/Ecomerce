@@ -22,7 +22,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new ProductPropertyValueRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductPropertyValue>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

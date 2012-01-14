@@ -20,7 +20,7 @@ namespace MerchantTribe.Commerce.Contacts
             return new PriceGroupRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_PriceGroup>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
         }
         public PriceGroupRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_PriceGroup> r, ILogger log)

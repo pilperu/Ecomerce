@@ -56,7 +56,7 @@ namespace MerchantTribeStore
 
         private void PopulateLists()
         {
-            IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(ShippingMethod.ShippingProviderId, CurrentStore);
+            IShippingService provider = MerchantTribe.Commerce.Shipping.AvailableServices.FindById(ShippingMethod.ShippingProviderId, MyPage.MTApp.CurrentStore);
             if (provider != null)
             {
                 List<IServiceCode> codes = provider.ListAllServiceCodes();

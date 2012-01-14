@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Contacts
             return new AddressRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Address>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
         }
         public AddressRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Address> r, ILogger log)

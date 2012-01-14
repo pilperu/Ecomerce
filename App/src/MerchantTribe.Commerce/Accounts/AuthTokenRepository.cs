@@ -19,7 +19,7 @@ namespace MerchantTribe.Commerce.Accounts
         {
             return new AuthTokenRepository(c, new EntityFrameworkRepository<Data.EF.ecommrc_AuthTokens>(
                 new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
         }
         public AuthTokenRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_AuthTokens> r, ILogger log)
         {

@@ -53,7 +53,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
 
             // Integrations
-            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp);
         }
 
         public bool IsCurrentUserAdmin(MerchantTribeApplication app, HttpContextBase httpContext)

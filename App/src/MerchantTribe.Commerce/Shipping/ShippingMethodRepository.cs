@@ -23,7 +23,7 @@ namespace MerchantTribe.Commerce.Shipping
             ShippingMethodRepository result = null;
             result = new ShippingMethodRepository(c,
                      new EntityFrameworkRepository<Data.EF.bvc_ShippingMethod>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                     new EventLog());            
+                     new SupressLogger());            
             return result;
         }
         public ShippingMethodRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ShippingMethod> r, ILogger log)

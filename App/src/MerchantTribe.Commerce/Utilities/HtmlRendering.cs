@@ -403,37 +403,37 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string AddressToForm(Contacts.Address a, string prefix, int tabIndexStart)
-        {
-            StringBuilder sb = new StringBuilder();
+        //public static string AddressToForm(Contacts.Address a, string prefix, int tabIndexStart)
+        //{
+        //    StringBuilder sb = new StringBuilder();
 
-            sb.Append("<table>");
+        //    sb.Append("<table>");
 
-            // Country
-            sb.Append("<tr><td class=\"formfield\">Country:</td><td class=\"forminput\">");
-            sb.Append("<select id=\"" + prefix + "countryname\" name=\"" + prefix + "countryname\"");
-            sb.Append(" tabindex=\"" + (tabIndexStart + 1).ToString() + "\" >");
-            foreach (MerchantTribe.Web.Geography.Country c in RequestContext.GetCurrentRequestContext().CurrentStore.Settings.FindActiveCountries())
-            {
-                sb.Append("<option value=\"" + c.Bvin + "\"");
-                if (c.Bvin == a.CountyBvin)
-                {
-                    sb.Append(" selected ");
-                }
-                sb.Append(">" + c.DisplayName + "</option>");
-            }
-            sb.Append("</select>");
-            sb.Append("</td></tr>");
+        //    // Country
+        //    sb.Append("<tr><td class=\"formfield\">Country:</td><td class=\"forminput\">");
+        //    sb.Append("<select id=\"" + prefix + "countryname\" name=\"" + prefix + "countryname\"");
+        //    sb.Append(" tabindex=\"" + (tabIndexStart + 1).ToString() + "\" >");
+        //    foreach (MerchantTribe.Web.Geography.Country c in RequestContext.GetCurrentRequestContext().CurrentStore.Settings.FindActiveCountries())
+        //    {
+        //        sb.Append("<option value=\"" + c.Bvin + "\"");
+        //        if (c.Bvin == a.CountyBvin)
+        //        {
+        //            sb.Append(" selected ");
+        //        }
+        //        sb.Append(">" + c.DisplayName + "</option>");
+        //    }
+        //    sb.Append("</select>");
+        //    sb.Append("</td></tr>");
 
-            // First Name
-            sb.Append("<tr><td class=\"formfield\">First Name:</td><td class=\"forminput\">");
-            sb.Append("<input type=\"text\" id=\"" + prefix + "firstname\" name=\"" + prefix + "firstname\"");
-            sb.Append(" value=\"" + a.FirstName + "\" tabindex=\"" + (tabIndexStart + 2).ToString() + "\" />");            
-            sb.Append("</td></tr>");
+        //    // First Name
+        //    sb.Append("<tr><td class=\"formfield\">First Name:</td><td class=\"forminput\">");
+        //    sb.Append("<input type=\"text\" id=\"" + prefix + "firstname\" name=\"" + prefix + "firstname\"");
+        //    sb.Append(" value=\"" + a.FirstName + "\" tabindex=\"" + (tabIndexStart + 2).ToString() + "\" />");            
+        //    sb.Append("</td></tr>");
 
-            sb.Append("</table>");
-            return sb.ToString();
-        }
+        //    sb.Append("</table>");
+        //    return sb.ToString();
+        //}
 
         public static string ShippingRatesToRadioButtons(SortableCollection<Shipping.ShippingRateDisplay> rates, int tabIndex, string selectedMethodUniqueKey)
         {

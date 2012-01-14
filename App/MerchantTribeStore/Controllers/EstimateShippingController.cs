@@ -127,7 +127,7 @@ namespace MerchantTribeStore.Controllers
                     MTApp.OrderServices.Orders.Update(Basket);
 
                     SortableCollection<ShippingRateDisplay> Rates;
-                    Rates = MTApp.OrderServices.FindAvailableShippingRates(Basket);
+                    Rates = MTApp.OrderServices.FindAvailableShippingRates(Basket, MTApp.CurrentStore);
 
                     if (Rates.Count < 1)
                     {
@@ -179,7 +179,7 @@ namespace MerchantTribeStore.Controllers
                 }
             }
 
-            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+            SortableCollection<ShippingRateDisplay> rates = MTApp.OrderServices.FindAvailableShippingRates(o, MTApp.CurrentStore);
 
             string rateKey = o.ShippingMethodUniqueKey;
             bool rateIsAvailable = false;

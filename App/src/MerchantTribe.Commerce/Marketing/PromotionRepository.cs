@@ -20,7 +20,7 @@ namespace MerchantTribe.Commerce.Marketing
             return new PromotionRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Promotions>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
         }
         public PromotionRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Promotions> r, ILogger log)

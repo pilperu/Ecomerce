@@ -25,8 +25,8 @@ namespace MerchantTribe.Commerce.Catalog
                 new EntityFrameworkRepository<Data.EF.bvc_ProductProperty>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_ProductPropertyChoice>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }

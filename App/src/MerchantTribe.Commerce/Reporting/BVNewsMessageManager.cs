@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
 using MerchantTribe.Web;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Reporting
 {
@@ -29,7 +30,7 @@ namespace MerchantTribe.Commerce.Reporting
         {
             context = c;
             repository = r;
-            this.logger = new EventLog();
+            this.logger = new SupressLogger();
             repository.Logger = this.logger;
         }
 

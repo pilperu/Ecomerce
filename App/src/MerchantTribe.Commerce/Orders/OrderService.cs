@@ -194,7 +194,7 @@ namespace MerchantTribe.Commerce.Orders
             return result;
         }
         
-        public Utilities.SortableCollection<Shipping.ShippingRateDisplay> FindAvailableShippingRates(Order o)
+        public Utilities.SortableCollection<Shipping.ShippingRateDisplay> FindAvailableShippingRates(Order o, Accounts.Store currentStore)
         {
             Utilities.SortableCollection<Shipping.ShippingRateDisplay> result = new Utilities.SortableCollection<Shipping.ShippingRateDisplay>();
 
@@ -207,7 +207,7 @@ namespace MerchantTribe.Commerce.Orders
             foreach (Shipping.ShippingMethod m in methods)
             {
 
-                Collection<Shipping.ShippingRateDisplay> tempRates = m.GetRates(o);
+                Collection<Shipping.ShippingRateDisplay> tempRates = m.GetRates(o, currentStore);
                 if (tempRates != null)
                 {
                     for (int i = 0; i <= tempRates.Count - 1; i++)
@@ -272,9 +272,9 @@ namespace MerchantTribe.Commerce.Orders
 
             return result;
         }
-        public Shipping.ShippingRateDisplay OrdersFindShippingRateByUniqueKey(string key, Order o)
+        public Shipping.ShippingRateDisplay OrdersFindShippingRateByUniqueKey(string key, Order o, Accounts.Store currentStore)
         {
-            Utilities.SortableCollection<Shipping.ShippingRateDisplay> rates = FindAvailableShippingRates(o);
+            Utilities.SortableCollection<Shipping.ShippingRateDisplay> rates = FindAvailableShippingRates(o, currentStore);
 
             if (rates == null) return null;
             if (rates.Count < 1) return null;
@@ -434,11 +434,11 @@ namespace MerchantTribe.Commerce.Orders
 			}
 			return result;
 		}     
-        public bool OrdersRequestShippingMethodByUniqueKey(string rateUniqueKey, Order o)
+        public bool OrdersRequestShippingMethodByUniqueKey(string rateUniqueKey, Order o, Accounts.Store currentStore)
         {
             bool result = false;
 
-            Utilities.SortableCollection<Shipping.ShippingRateDisplay> rates = FindAvailableShippingRates(o);
+            Utilities.SortableCollection<Shipping.ShippingRateDisplay> rates = FindAvailableShippingRates(o, currentStore);
             foreach (Shipping.ShippingRateDisplay r in rates)
             {
                 if (r.UniqueKey == rateUniqueKey)

@@ -279,7 +279,7 @@ namespace MerchantTribeStore.Controllers
 
             //Shipping
             string shippingRateKey = Request.Form["shippingrate"];
-            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, model.CurrentOrder, MTApp.CurrentStore);
 
             // Save Values so far in case of later errors
             MTApp.CalculateOrder(model.CurrentOrder);
@@ -601,7 +601,7 @@ namespace MerchantTribeStore.Controllers
                     {
                         MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                         Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(model.CurrentOrder.bvin);
-                        MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
+                        MTApp.CurrentRequestContext.IntegrationEvents.OrderReceived(tempOrder, MTApp);                        
                         Response.Redirect("~/checkout/receipt?id=" + model.CurrentOrder.bvin);
                     }
                     else
@@ -760,7 +760,7 @@ namespace MerchantTribeStore.Controllers
 
 
             Order o = MTApp.OrderServices.Orders.FindForCurrentStore(orderid);
-            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(rateKey, o);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(rateKey, o, MTApp.CurrentStore);
             MTApp.CalculateOrderAndSave(o);
             SessionManager.SaveOrderCookies(o, MTApp.CurrentStore);
 
@@ -922,7 +922,7 @@ namespace MerchantTribeStore.Controllers
                 // Process Post Payment Stuff                    
                 MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrderAfterPayments);
                 Order tempOrder = MTApp.OrderServices.Orders.FindForCurrentStore(model.CurrentOrder.bvin);
-                MerchantTribe.Commerce.Integration.Current().OrderReceived(tempOrder, MTApp);
+                MTApp.CurrentRequestContext.IntegrationEvents.OrderReceived(tempOrder, MTApp);
                 Response.Redirect("~/checkout/receipt?id=" + model.CurrentOrder.bvin);
             }
         }

@@ -24,8 +24,8 @@ namespace MerchantTribe.Commerce.Content
             result = new ContentColumnRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ContentColumn>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EntityFrameworkRepository<Data.EF.bvc_ContentBlock>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new EntityFrameworkRepository<Data.EF.bvc_ContentBlock>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }

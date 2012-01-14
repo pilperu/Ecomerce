@@ -24,7 +24,7 @@ namespace MerchantTribe.Commerce.Taxes
             TaxScheduleRepository result = null;
             result = new TaxScheduleRepository(c, 
                      new EntityFrameworkRepository<Data.EF.ecommrc_TaxSchedules>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                     new EventLog());            
+                     new SupressLogger());            
             return result;
         }
         public TaxScheduleRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_TaxSchedules> r, ILogger log)

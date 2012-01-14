@@ -44,7 +44,7 @@ namespace MerchantTribe.Commerce.BusinessRules.OrderTasks
 					System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();
 					m = t.ConvertToMailMessage(toEmail);
 					if (m != null) {
-						Utilities.MailServices.SendMail(m);
+						Utilities.MailServices.SendMail(m, context.MTApp.CurrentStore);
 					}
 				}
 			}

@@ -33,7 +33,7 @@ namespace MerchantTribeStore.Controllers
             {
                 Response.Redirect("~/storenotavailable");
             }
-            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp.CurrentStore);
+            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp);
         }
         private void CheckFor301(string slug)
         {

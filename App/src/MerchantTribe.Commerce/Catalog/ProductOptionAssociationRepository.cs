@@ -22,7 +22,7 @@ namespace MerchantTribe.Commerce.Catalog
             return new ProductOptionAssociationRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductXOption>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
         }
         public ProductOptionAssociationRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ProductXOption> r, ILogger log)

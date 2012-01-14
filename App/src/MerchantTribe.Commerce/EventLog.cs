@@ -23,6 +23,7 @@ namespace MerchantTribe.Commerce
         /// <returns>True if the event was recorded, otherwise false</returns>
         public static bool LogEvent(string source, string message, EventLogSeverity severity)
         {
+           
             ILog Log = LogManager.GetLogger(source);
 
             switch (severity)
@@ -54,7 +55,7 @@ namespace MerchantTribe.Commerce
         public static bool StoreLogEvent(long storeId, string source, string message, EventLogSeverity severity)
         {
             bool ret = false;
-            Metrics.EventLogEntry e = new Metrics.EventLogEntry(source, message, severity);
+            Metrics.EventLogEntry e = new Metrics.EventLogEntry(source, message, severity, storeId);
             e.StoreId = storeId;
             try
             {

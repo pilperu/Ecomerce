@@ -156,7 +156,7 @@ namespace MerchantTribe.Commerce.Membership
             bool result = UpdateCustomer(user);
             if (result)
             {
-                Integration.Current().CustomerAccountEmailChanged(oldEmail, newEmail);
+                context.IntegrationEvents.CustomerAccountEmailChanged(oldEmail, newEmail);
             }
             return result;
         }

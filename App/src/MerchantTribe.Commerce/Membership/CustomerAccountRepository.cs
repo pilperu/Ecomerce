@@ -21,8 +21,8 @@ namespace MerchantTribe.Commerce.Membership
             CustomerAccountRepository result = null;
             result = new CustomerAccountRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_User>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),                
-                    new EventLog()
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
+                    new SupressLogger()
                     );
             return result;
         }
@@ -111,8 +111,8 @@ namespace MerchantTribe.Commerce.Membership
             }
             item.StoreId = context.CurrentStore.Id;
             item.LastUpdatedUtc = DateTime.UtcNow;
- 	        bool result = base.Create(item);
-            if (result) Integration.Current().CustomerAccountCreated(item);
+ 	        bool result = base.Create(item);            
+            if (result) context.IntegrationEvents.CustomerAccountCreated(item);
             return result;
         }
         public bool Update(CustomerAccount c)
@@ -123,7 +123,7 @@ namespace MerchantTribe.Commerce.Membership
             }
             c.LastUpdatedUtc = DateTime.UtcNow;
             bool result = this.Update(c, new PrimaryKey(c.Bvin));
-            if (result) Integration.Current().CustomerAccountUpdated(c);
+            if (result) context.IntegrationEvents.CustomerAccountUpdated(c);
             return result;
         }
         public bool Delete(string bvin)
@@ -132,7 +132,7 @@ namespace MerchantTribe.Commerce.Membership
             CustomerAccount item = Find(bvin);
             if (item == null) return false;            
            bool result = Delete(new PrimaryKey(bvin));
-           if (result) Integration.Current().CustomerAccountDeleted(item);
+           if (result) context.IntegrationEvents.CustomerAccountDeleted(item);
            return result;
         }
         public List<CustomerAccount> FindAll()

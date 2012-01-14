@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Contacts
             result = new ManufacturerRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Manufacturer>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_UserXContact>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
             return result;
         }
         public ManufacturerRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Manufacturer> r,

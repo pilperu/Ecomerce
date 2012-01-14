@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data.Objects;
 using MerchantTribe.Web.Data;
+using MerchantTribe.Web.Logging;
 
 namespace MerchantTribe.Commerce.Catalog
 {
@@ -33,7 +34,7 @@ namespace MerchantTribe.Commerce.Catalog
         {
             context = c;
             repository = r;
-            this.logger = new EventLog();
+            this.logger = new SupressLogger();
             repository.Logger = this.logger;
             this.productValueRepository = new ProductPropertyValueRepository(c, valueRepo, this.logger);
         }

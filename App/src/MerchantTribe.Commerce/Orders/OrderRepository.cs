@@ -36,7 +36,7 @@ namespace MerchantTribe.Commerce.Orders
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_OrderPackage>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog()
+                new SupressLogger()
                     );
             return result;
         }

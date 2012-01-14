@@ -322,7 +322,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
 
             // Save Shipping Selection
             string shippingRateKey = Request.Form["shippingrate"];
-            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, o);
+            MTApp.OrderServices.OrdersRequestShippingMethodByUniqueKey(shippingRateKey, o, MTApp.CurrentStore);
 
             // Shipping Override
             if (this.ShippingOverride.Text.Trim().Length < 1)
@@ -422,7 +422,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
             {
                 // Shipping Methods
 
-                Rates = MTApp.OrderServices.FindAvailableShippingRates(o);
+                Rates = MTApp.OrderServices.FindAvailableShippingRates(o, MTApp.CurrentStore);
 
                 if ((Rates.Count < 1))
                 {

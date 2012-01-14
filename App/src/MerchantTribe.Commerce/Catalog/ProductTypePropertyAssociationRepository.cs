@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new ProductTypePropertyAssociationRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductTypeXProductProperty>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog());
+                    new SupressLogger());
             return result;
         }
         public ProductTypePropertyAssociationRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ProductTypeXProductProperty> r, ILogger log)

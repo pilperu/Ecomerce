@@ -22,7 +22,7 @@ namespace MerchantTribe.Commerce.Contacts
             AffiliateReferralRepository result = null;
             result = new AffiliateReferralRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_AffiliateReferral>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                new EventLog());
+                new SupressLogger());
             return result;
         }
         public AffiliateReferralRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_AffiliateReferral> r, ILogger log)

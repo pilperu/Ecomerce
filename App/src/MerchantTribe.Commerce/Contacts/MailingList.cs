@@ -40,7 +40,7 @@ namespace MerchantTribe.Commerce.Contacts
 							System.Net.Mail.MailMessage msg = new System.Net.Mail.MailMessage();
 							msg = copy.ConvertToMailMessage(m.EmailAddress);
 							if (msg != null) {
-								Utilities.MailServices.SendMail(msg, sendAsync);
+								Utilities.MailServices.SendMail(msg, app.CurrentStore);
 							}
 						}
 						catch (Exception ex) {

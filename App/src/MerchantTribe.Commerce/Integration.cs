@@ -8,11 +8,6 @@ namespace MerchantTribe.Commerce
     public class Integration
     {
 
-        public static Integration Current()
-        {
-            return RequestContext.GetCurrentRequestContext().IntegrationEvents;
-        }
-
         public delegate void CustomerAccountEventHandler(object sender, Membership.CustomerAccount account);
         public event CustomerAccountEventHandler OnCustomerAccountUpdated;
         public event CustomerAccountEventHandler OnCustomerAccountCreated;

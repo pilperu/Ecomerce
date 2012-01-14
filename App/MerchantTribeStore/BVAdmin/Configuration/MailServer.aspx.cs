@@ -123,7 +123,7 @@ namespace MerchantTribeStore
             m.Body = "Your mail server appears to be correctly configured!";
             m.IsBodyHtml = false;
 
-            if (MerchantTribe.Commerce.Utilities.MailServices.SendMail(m) == true)
+            if (MerchantTribe.Commerce.Utilities.MailServices.SendMail(m, MTApp.CurrentStore) == true)
             {
                 msg.ShowOk("Test Message Sent");
             }

@@ -104,7 +104,7 @@ namespace MerchantTribe.Commerce.Catalog
                 }
                 m.Body = sb.ToString();
 
-                result = Utilities.MailServices.SendMail(m);
+                result = Utilities.MailServices.SendMail(m, app.CurrentStore);
             }
 
             catch (Exception ex)

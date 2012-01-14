@@ -23,7 +23,7 @@ namespace MerchantTribe.Commerce.Taxes
             TaxRepository result = null;
             result = new TaxRepository(c, 
                      new EntityFrameworkRepository<Data.EF.ecommrc_Taxes>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                     new EventLog());            
+                     new SupressLogger());            
             return result;
         }       
         public TaxRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_Taxes> r, ILogger log)

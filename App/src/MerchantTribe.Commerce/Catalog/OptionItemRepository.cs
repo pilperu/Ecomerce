@@ -15,14 +15,14 @@ namespace MerchantTribe.Commerce.Catalog
         public static OptionItemRepository InstantiateForMemory(RequestContext c)
         {
             OptionItemRepository result = null;            
-            ILogger logger = new MerchantTribe.Commerce.EventLog();
+            ILogger logger = new TextLogger();
             result = new OptionItemRepository(c, new MemoryStrategy<Data.EF.bvc_ProductOptionsItems>(PrimaryKeyType.Bvin), logger);
             return result;
         }
         public static OptionItemRepository InstantiateForDatabase(RequestContext c)
         {            
             OptionItemRepository result = null;
-            ILogger logger = new MerchantTribe.Commerce.EventLog();
+            ILogger logger = new SupressLogger();
             result = new OptionItemRepository(c, new EntityFrameworkRepository<Data.EF.bvc_ProductOptionsItems>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
             return result;

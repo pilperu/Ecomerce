@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Catalog
             result = new ProductImageRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_ProductImage>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog());
+                    new SupressLogger());
             return result;
         }
         public ProductImageRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_ProductImage> r, ILogger log)

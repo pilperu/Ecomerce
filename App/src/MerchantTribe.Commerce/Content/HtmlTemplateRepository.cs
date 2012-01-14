@@ -22,7 +22,7 @@ namespace MerchantTribe.Commerce.Content
             result = new HtmlTemplateRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_HtmlTemplates>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                    new EventLog()
+                    new SupressLogger()
                     );
             return result;
         }

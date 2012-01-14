@@ -23,7 +23,7 @@ namespace MerchantTribe.Commerce.Shipping
             ZoneRepository result = null;
             result = new ZoneRepository(c,
                      new EntityFrameworkRepository<Data.EF.ecommrc_ShippingZones>(new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
-                     new EventLog());            
+                     new SupressLogger());            
             return result;
         }
         public ZoneRepository(RequestContext c, IRepositoryStrategy<Data.EF.ecommrc_ShippingZones> r,ILogger log)
