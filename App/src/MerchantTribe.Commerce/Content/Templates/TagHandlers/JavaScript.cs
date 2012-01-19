@@ -58,10 +58,14 @@ namespace MerchantTribe.Commerce.Content.Templates.TagHandlers
             }
             else
             {
-                ThemeManager tm = app.ThemeManager();
+                string src = tag.GetSafeAttribute("src");
                 string fileName = tag.GetSafeAttribute("file");
-                string url = tm.ThemeFileUrl(fileName, app);
-                sb.Append("<script src=\"" + url + "\" type=\"text/javascript\"></script>");
+                if (fileName.Trim().Length > 0)
+                {                    
+                    ThemeManager tm = app.ThemeManager();
+                    src = tm.ThemeFileUrl(fileName, app);                    
+                }                
+                sb.Append("<script src=\"" + src + "\" type=\"text/javascript\"></script>");                
             }
 
             return sb.ToString();

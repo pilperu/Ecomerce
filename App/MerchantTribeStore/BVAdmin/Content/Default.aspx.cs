@@ -37,7 +37,7 @@ namespace MerchantTribeStore
         private void PopulatePages()
         {
             this.lstPages.Items.Clear();
-            List<CategorySnapshot> pages = MTApp.CatalogServices.Categories.FindAllFlexPages();
+            List<CategorySnapshot> pages = MTApp.CatalogServices.Categories.FindAllCustomPages();
             foreach (var snap in pages)
             {
                 this.lstPages.Items.Add(new System.Web.UI.WebControls.ListItem(

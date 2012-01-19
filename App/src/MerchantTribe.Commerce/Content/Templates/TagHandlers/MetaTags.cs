@@ -50,9 +50,11 @@ namespace MerchantTribe.Commerce.Content.Templates.TagHandlers
             {
                 sb.Append("<meta name=\"description\" content=\"" + description.Replace('"', ' ') + "\" />");
             }
-            if (app.CurrentRequestContext.MetaAdditionalText.Trim().Length > 0)
+
+            string moreMetaTags = app.CurrentRequestContext.CurrentStore.Settings.Analytics.AdditionalMetaTags ?? string.Empty;                
+            if (moreMetaTags.Trim().Length > 0)
             {
-                sb.Append(app.CurrentRequestContext.MetaAdditionalText);
+                sb.Append(moreMetaTags);
             }
 
             return sb.ToString();

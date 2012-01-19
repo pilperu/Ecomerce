@@ -98,7 +98,12 @@
                 <td class="formfield">
                   <input type="text" id="metakeywords" name="metakeywords" value="@Model.MetaKeywords" maxlength="255" tabindex="2004" style="width:700px;" />
                 </td>
-            </tr>                        
+            </tr>      
+            <tr>
+                <td class="formlabel">&nbsp;</td>
+                <td class="formfield">
+                    <input type="checkbox" id="chkhidden" name="hidden" @if (Model.Hidden == true){ <text>checked="checked"</text> } value="true" tabindex="2005" /> Hide Category (unless home page)</td>
+            </tr>                  
             <tr>
                 <td class="formlabel">HTML:</td>
                 <td class="formfield">

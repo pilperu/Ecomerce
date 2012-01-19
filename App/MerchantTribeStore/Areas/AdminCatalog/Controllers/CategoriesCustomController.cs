@@ -119,6 +119,10 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
                 current.ShowInTopMenu = false; // This could be changed to support show in top menu functionality
                 current.SourceType = CategorySourceType.CustomPage;
 
+                // hidden checkbox
+                string isChecked = form["hidden"] ?? string.Empty;
+                current.Hidden = (isChecked == "true");                
+
                 string oldUrl = current.RewriteUrl;
 
                 // no entry, generate one

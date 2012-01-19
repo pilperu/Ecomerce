@@ -87,6 +87,12 @@
                   <asp:TextBox ID="MetaKeywordsField" runat="server" MaxLength="255" TabIndex="2004" Width="750px"></asp:TextBox>
                 </td>
             </tr>
+            <tr>
+                <td class="formlabel" style="height: 26px">
+                    &nbsp;</td>
+                <td class="formfield">
+                    <asp:CheckBox ID="chkHidden" runat="server" Text="Hide Category (unless home page)" TabIndex="2500" /></td>
+            </tr>
         </table>
         </div>
         <div class="editorcontrols">

@@ -40,6 +40,12 @@ namespace MerchantTribe.Commerce.Content.Templates.TagHandlers
                 }
             }
 
+            string moreTags = app.CurrentStore.Settings.Analytics.BottomAnalytics ?? string.Empty;
+            if (moreTags.Trim().Length > 0)
+            {
+                result += moreTags;
+            }
+
             return result;
         }
     }

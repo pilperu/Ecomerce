@@ -43,7 +43,7 @@ namespace MerchantTribeStore.Controllers.Shared
             }
 
             // Additional Meta Tags
-            ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags;
+            ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags ?? string.Empty;
             
             // Bottom Analytics Tags
             this.ViewData["analyticsbottom"] = MTApp.CurrentStore.Settings.Analytics.BottomAnalytics ?? string.Empty;
