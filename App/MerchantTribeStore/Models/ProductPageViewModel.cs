@@ -26,6 +26,7 @@ namespace MerchantTribeStore.Models
         public string MainImageAltText { get; set; }
         public string PreRenderedPrices { get; set; }
         public string PreRenderedImages { get; set; }
+        public string PreRenderedTypeValues { get; set; }
         public List<SingleProductViewModel> RelatedItems { get; set; }
         public string ValidationMessage { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
@@ -47,6 +48,7 @@ namespace MerchantTribeStore.Models
             this.MainImageUrl = string.Empty;
             this.PreRenderedPrices = string.Empty;
             this.PreRenderedImages = string.Empty;
+            this.PreRenderedTypeValues = string.Empty;
             this.RelatedItems = new List<SingleProductViewModel>();
             this.ValidationMessage = string.Empty;
             this.LineItemId = string.Empty;

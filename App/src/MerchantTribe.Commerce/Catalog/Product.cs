@@ -846,54 +846,40 @@ namespace MerchantTribe.Commerce.Catalog
             return string.Empty;
         }        
         public string GetTypeProperties(bool forDropShipper, MerchantTribeApplication app)
-        {
-            string productTypeId = this.Bvin;
-            string productId = this.ProductTypeId;
-
+        {            
+            string productId = this.Bvin;
+            string productTypeId = this.ProductTypeId;
 
             List<ProductPropertyValue> propertyValues = app.CatalogServices.ProductPropertyValues.FindByProductId(this.Bvin);            
             System.Collections.Generic.List<Catalog.ProductProperty> props = app.CatalogServices.ProductPropertiesFindForType(productTypeId);
 
+            List<ProductProperty> displayable = props.Where(y => (y.DisplayToDropShipper == true && forDropShipper == true)
+                                                                || y.DisplayOnSite == true).ToList();
+
+            if (displayable.Count < 1) return string.Empty;
+
             StringBuilder sb = new StringBuilder();
             sb.Append("<ul class=\"typedisplay\">");
-
-            for (int i = 0; i <= (props.Count - 1); i++)
+            foreach (var prop in displayable)
             {
-                bool render = false;
-                if (props[i].DisplayOnSite | forDropShipper)
-                {
-                    render = true;
-                }
-
-                if (render)
-                {
-                    string currentValue = app.CatalogServices.FormatProductPropertyChoiceValue(props[i], GetPropertyValueFromList(propertyValues, props[i].Id));
+                    string currentValue = app.CatalogServices.FormatProductPropertyChoiceValue(prop, 
+                                                                    GetPropertyValueFromList(propertyValues, prop.Id));
                     // If text property is empty, do not display
-                    if ((props[i].TypeCode == Catalog.ProductPropertyType.TextField) && (currentValue == string.Empty))
+                    if ((prop.TypeCode == Catalog.ProductPropertyType.TextField) && (currentValue == string.Empty))
                     {
                         continue;
                     }
-
-                    if (i % 2 == 0)
-                    {
-                        sb.Append("<li>");
-                    }
-                    else
-                    {
-                        sb.Append("<li class=\"alt\">");
-                    }
-
+                    sb.Append("<li>");
                     sb.Append("<span class=\"productpropertylabel\">");
-                    sb.Append(props[i].DisplayName);
+                    sb.Append(prop.DisplayName);
                     sb.Append("</span>");
                     sb.Append("<span class=\"productpropertyvalue\">");
                     sb.Append(currentValue);
                     sb.Append("</span>");
-                    sb.Append("</li>");
-                }
+                    sb.Append("</li>");                
             }
-
             sb.Append("</ul>");
+            
             return sb.ToString();
         }
 

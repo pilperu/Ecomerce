@@ -42,7 +42,7 @@ namespace MerchantTribe.Commerce.Content.Templates
             AddHandler(this.Handlers, new TagHandlers.Link());
             AddHandler(this.Handlers, new TagHandlers.SearchForm());
             AddHandler(this.Handlers, new TagHandlers.MainMenu());
-
+            AddHandler(this.Handlers, new TagHandlers.PageMenu());
         }
         private void AddHandler(Dictionary<string, ITagHandler> handlers, ITagHandler handler)
         {

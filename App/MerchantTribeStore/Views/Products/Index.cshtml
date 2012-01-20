@@ -105,8 +105,8 @@
             </div>
             <div name="productdescription" itemprop="description">
             @Html.Raw(Model.LocalProduct.LongDescription)
-            </div>
-            <!--PRODUCT TYPE DISPLAY HERE-->
+            </div>     
+            @Html.Raw(Model.PreRenderedTypeValues)                  
         </div>
         <div class="clear">
             &nbsp;</div>

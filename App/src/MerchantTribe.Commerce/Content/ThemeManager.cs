@@ -414,6 +414,10 @@ namespace MerchantTribe.Commerce.Content
         {
             List<string> result = Storage.DiskStorage.ListAllAvailableTemplates(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
             if (result.Count < 1) result.Add("default.html");
+            if (result.Contains("default-no-menu.html") == false)
+            {
+                result.Add("default-no-menu.html");
+            }
             return result;
         }
         

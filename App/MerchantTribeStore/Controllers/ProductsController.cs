@@ -96,7 +96,7 @@ namespace MerchantTribeStore.Controllers
 
             // Load Selections from form here
             // Do checks and add
-            model.PreRenderedOptions = HtmlRendering.ProductOptions(model.LocalProduct.Options, model.Selections);
+            model.PreRenderedOptions = HtmlRendering.ProductOptions(model.LocalProduct.Options, model.Selections);            
 
             return View(model);
         }
@@ -142,7 +142,8 @@ namespace MerchantTribeStore.Controllers
 
             model.MainImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, model.LocalProduct.Bvin, model.LocalProduct.ImageFileSmall, Request.IsSecureConnection);
             model.MainImageAltText = model.LocalProduct.ImageFileSmallAlternateText;
-            
+            model.PreRenderedTypeValues = model.LocalProduct.GetTypeProperties(this.MTApp);
+
             // Prices                        
             RenderPrices(model);
 

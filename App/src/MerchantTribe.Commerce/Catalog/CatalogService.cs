@@ -1111,5 +1111,6 @@ namespace MerchantTribe.Commerce.Catalog
                     return value;
             }
         }
+                
     }
 }

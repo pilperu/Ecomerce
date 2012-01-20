@@ -357,6 +357,7 @@
     <Compile Include="Content\Templates\TagHandlers\AnalyticsBottom.cs" />
     <Compile Include="Content\Templates\TagHandlers\AnalyticsTop.cs" />
     <Compile Include="Content\Templates\TagHandlers\Area.cs" />
+    <Compile Include="Content\Templates\TagHandlers\PageMenu.cs" />
     <Compile Include="Content\Templates\TagHandlers\Copyright.cs" />
     <Compile Include="Content\Templates\TagHandlers\Css.cs" />
     <Compile Include="Content\Templates\TagHandlers\Include.cs" />

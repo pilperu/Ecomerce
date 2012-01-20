@@ -50,9 +50,8 @@ namespace MerchantTribeStore
         }
 
         private void LoadUsers()
-        {           
-            int startIndex = (currentPage - 1) * pageSize;            
-            List<CustomerAccount> accounts = MTApp.MembershipServices.Customers.FindByFilter(this.keyword, startIndex, pageSize,ref rowCount);
+        {                       
+            List<CustomerAccount> accounts = MTApp.MembershipServices.Customers.FindByFilter(this.keyword, currentPage, pageSize,ref rowCount);
 
             this.lblResults.Text = rowCount.ToString() + " found";
             this.litPager1.Text = MerchantTribe.Web.Paging.RenderPagerWithLimits("Default.aspx?page={0}&keyword=" + System.Web.HttpUtility.UrlEncode(keyword), currentPage, rowCount, pageSize, 20);
