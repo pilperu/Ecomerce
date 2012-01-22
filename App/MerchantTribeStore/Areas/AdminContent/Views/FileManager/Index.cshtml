@@ -59,7 +59,7 @@
     <div class="controlarea1">
     <form action="@Url.Content("~/bvadmin/content/filemanager/upload")" method="post" enctype="multipart/form-data">
         <h3>Upload Files</h3>
-        <input type="file" size="10" name="postedfile" /><br />        
+        <input type="file" size="10" name="postedfile" multiple="multiple" /><br />        
         <input type="image" src="../images/buttons/upload.png" alt="Upload File" />
         <input type="hidden" name="path" value="@Model.Path" />
     </form>

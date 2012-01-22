@@ -110,9 +110,9 @@ namespace MerchantTribeStore.Areas.AdminContent.Controllers
 
             try
             {
-                foreach (string inputTagName in Request.Files)
+                for (int i = 0; i < Request.Files.Count; i++)
                 {
-                    HttpPostedFileBase file = Request.Files[inputTagName];
+                    HttpPostedFileBase file = Request.Files[i];
                     if (file.ContentLength > 0)
                     {
                         string completeFileName = file.FileName;
