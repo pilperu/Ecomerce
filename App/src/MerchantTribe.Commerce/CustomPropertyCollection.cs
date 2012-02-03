@@ -154,7 +154,7 @@ namespace MerchantTribe.Commerce
                 {
                     if (this[i].Key.Trim().ToLower() == key.Trim().ToLower())
                     {
-                        result = this[i].ValueAsInt;
+                        result = this[i].GetValueAsInt();
                         break;
                     }
                 }

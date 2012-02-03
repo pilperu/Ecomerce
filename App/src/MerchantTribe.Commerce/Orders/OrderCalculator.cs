@@ -244,6 +244,11 @@ namespace MerchantTribe.Commerce.Orders
                     //this.AddPackages(r.SuggestedPackages);
                 }
             }
+
+            if (o.TotalShippingBeforeDiscountsOverride >= 0)
+            {
+                o.TotalShippingBeforeDiscounts = o.TotalShippingBeforeDiscountsOverride;
+            }
         }
 
         private void ApplyTaxes(ITaxSchedule schedule, ITaxable item, IAddress address)

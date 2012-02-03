@@ -6,7 +6,7 @@ namespace MerchantTribe.Commerce
 
         const string SUPERADMINEMAIL = "noreply@merchanttribe.com";
         const string APPLICATION_NAME = "MerchantTribe";
-const string APPLICATION_VERSION = "1.3.1.236";
+const string APPLICATION_VERSION = "1.3.2.237";
 
         public static string SuperAdminEmail
         {
