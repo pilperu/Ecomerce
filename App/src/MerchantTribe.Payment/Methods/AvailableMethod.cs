@@ -31,6 +31,7 @@ namespace MerchantTribe.Payment.Methods
 
             result.Add(new AvailableMethod(new TestGateway()));
             result.Add(new AvailableMethod(new AuthorizeNet()));
+            result.Add(new AvailableMethod(new CybersourceSOAP()));
             result.Add(new AvailableMethod(new PayLeap()));
             result.Add(new AvailableMethod(new PayFlowPro()));
             result.Add(new AvailableMethod(new PayPalPaymentsPro()));            
@@ -69,6 +70,8 @@ namespace MerchantTribe.Payment.Methods
                     return new PayFlowPro();
                 case "0B81046B-7A24-4512-8A6B-6C4C59D4C503":
                     return new PayPalPaymentsPro();
+                case "C36CDBAB-28B0-4F47-B61C-87CED8EE7222":
+                    return new CybersourceSOAP();
             }
             return null;
         }

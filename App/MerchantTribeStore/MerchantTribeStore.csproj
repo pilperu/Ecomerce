@@ -167,7 +167,6 @@
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
-    
     <Content Include="BVAdmin\Configuration\EventLog.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Images\FileIcons\aac_32.png" />
@@ -727,6 +726,7 @@
     <Content Include="BVModules\Controls\MessageBox.ascx" />
     <Content Include="BVModules\CreditCardGateways\Authorize.Net\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx" />
+    <Content Include="BVModules\CreditCardGateways\Cybersource %28SOAP%29\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\PayPal Payments Pro\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Test Gateway\edit.ascx" />
@@ -4075,6 +4075,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\BV Secure Gateway\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\CreditCardGateways\Cybersource %28SOAP%29\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\CreditCardGateways\Cybersource %28SOAP%29\Edit.ascx.designer.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx.cs">

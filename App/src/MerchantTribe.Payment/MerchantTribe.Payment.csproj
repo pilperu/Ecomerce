@@ -133,6 +133,7 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -167,6 +168,9 @@
     <Compile Include="MethodSettings.cs" />
     <Compile Include="Methods\AuthorizeNet.cs" />
     <Compile Include="Methods\AvailableMethod.cs" />
+    <Compile Include="Methods\CybersourceSOAP.cs" />
+    <Compile Include="Methods\CybersourceSOAPSettings.cs" />
+    <Compile Include="Methods\CyberSourceTransactionWS.cs" />
     <Compile Include="Methods\PayFlowPro.cs" />
     <Compile Include="Methods\PayFlowProSettings.cs" />
     <Compile Include="Methods\PayLeap.cs" />
