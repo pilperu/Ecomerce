@@ -12,4 +12,7 @@ For licensing information please see the included LICENSE.txt file.
 
 http://MerchantTribe.com
 
+How to Contribute Code:
+------------------------
+https://help.merchanttribestores.com/developer/contribute-code
 
