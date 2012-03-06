@@ -183,6 +183,14 @@ namespace MerchantTribe.Commerce.Orders
             
             return FindForCurrentStore((string)finder);            
         }
+        public Order FindByOrderNumber(string orderNumber)
+        {
+            var finder = repository.Find().Where(y => y.StoreId == context.CurrentStore.Id)
+                                            .Where(y => y.OrderNumber == orderNumber)
+                                            .Select(y => y.bvin).SingleOrDefault();
+            if (finder == null) return null;
+            return FindForCurrentStore((string)finder);                                                        
+        }
 
         public List<Order> FindMany(List<string> bvins)
         {

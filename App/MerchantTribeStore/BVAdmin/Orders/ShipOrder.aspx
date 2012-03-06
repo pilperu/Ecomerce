@@ -144,6 +144,10 @@
                                 </td>
                             </tr>
                             <tr>
+                                <td class="formlabel">Description:</td>
+                                <td class="formfield"><asp:Label ID="pakdescription" runat="Server"></asp:Label></td>
+                            </tr>
+                            <tr>
                                 <td class="formlabel">Items:</td>
                                 <td class="formfield"><asp:Label ID="items" runat="Server"></asp:Label></td>
                             </tr>

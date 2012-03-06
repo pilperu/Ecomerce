@@ -102,7 +102,7 @@ namespace MerchantTribe.Commerce.Orders
                 this.CheckNumber = t.CheckNumber;
                 this.PurchaseOrderNumber = t.PurchaseOrderNumber;
                 this.GiftCardNumber = t.GiftCardNumber;
-                this.CompanyAccountNumber = t.CompanyAccountNumber;
+                this.CompanyAccountNumber = t.CompanyAccountNumber;                
             }
         }
        

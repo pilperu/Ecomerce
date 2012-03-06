@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="https://web1004.bvsoftware.com:8172/MsDeploy.axd" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="CommerceHosted" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="To Production" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="mmcconnell" savePWD="False" userPWD="" SelectedForPublish="True" />
+  <publishProfile publishUrl="https://web1004.bvsoftware.com:8172/MsDeploy.axd" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="CommerceHostedBeta" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="True" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="To Staging" publishMethod="MSDeploy" replaceMatchingFiles="True" userName="mmcconnell" savePWD="False" userPWD="" SelectedForPublish="False" />
+</publishData>

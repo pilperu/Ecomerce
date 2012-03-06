@@ -140,6 +140,11 @@ namespace MerchantTribe.Commerce.Membership
             int totalCount = 0;
             return FindAllPaged(1, int.MaxValue, ref totalCount);
         }
+        public override List<CustomerAccount> FindAllPaged(int pageNumber, int pageSize)
+        {
+            int allCount = 0;
+            return FindAllPaged(pageNumber, pageSize, ref allCount);
+        }
         public List<CustomerAccount> FindAllPaged(int pageNumber, int pageSize, ref int totalCount)
         {
             List<CustomerAccount> result = new List<CustomerAccount>();

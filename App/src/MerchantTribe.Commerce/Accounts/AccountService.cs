@@ -50,6 +50,42 @@ namespace MerchantTribe.Commerce.Accounts
         }
 
         // Admin Users
+        public bool AuthenticateAdminUser(string email, string password, ref string errorMessage)
+        {
+            bool result = false;
+
+            try
+            {
+                UserAccount u = AdminUsers.FindByEmail(email);
+                if (u == null)
+                {
+                    errorMessage = "Please check your email address and password and try again.";
+                    return false;
+                }
+
+                if (!u.DoesPasswordMatch(password))
+                {
+                    errorMessage = "Please check your email address and password and try again.";
+                    return false;
+                }
+
+                if (u.Status == UserAccountStatus.Disabled)
+                {
+                    errorMessage = "Your account is not currently active. Please contact an administrator for details.";
+                    return false;
+                }
+
+                return true;                
+            }
+            catch (Exception ex)
+            {
+                result = false;
+                EventLog.LogEvent(ex);
+                errorMessage = "Unknown login error. Contact administrator for assistance.";
+            }
+            return result;
+        }
+
         public bool LoginAdminUser(string email, string password, ref string errorMessage, System.Web.HttpContextBase httpContext, MerchantTribeApplication app)
         {
             bool result = false;

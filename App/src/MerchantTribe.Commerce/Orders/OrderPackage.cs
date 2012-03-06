@@ -35,6 +35,18 @@ namespace MerchantTribe.Commerce.Orders
         public string ShippingMethodId {get;set;}
         public CustomPropertyCollection CustomProperties { get; set; }
 
+        public string ThirdPartyId
+        {
+            get
+            {
+                return this.CustomProperties.GetProperty("MerchantTribe", "3rdPartyId");
+            }
+            set
+            {
+                this.CustomProperties.SetProperty("MerchantTribe", "3rdPartyId", value);
+            }
+        }
+
         public OrderPackage()
         {
             this.Id = 0;

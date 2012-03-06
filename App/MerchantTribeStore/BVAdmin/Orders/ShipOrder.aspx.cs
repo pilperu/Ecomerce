@@ -315,6 +315,12 @@ namespace MerchantTribeStore
                     TrackingTextBox.Text = p.TrackingNumber;
                 }
 
+                Label pakdescription = (Label)e.Row.FindControl("pakdescription");
+                if (pakdescription != null)
+                {
+                    pakdescription.Text = p.Description;
+                }
+
                 Label items = (Label)e.Row.FindControl("items");
                 if (items != null)
                 {

@@ -151,6 +151,10 @@
     <Compile Include="VersionHelperTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MerchantTribeStore\MerchantTribeStore.csproj">
+      <Project>{6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7}</Project>
+      <Name>MerchantTribeStore</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
       <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
       <Name>MerchantTribe.Billing</Name>

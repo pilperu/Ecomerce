@@ -159,7 +159,8 @@ namespace MerchantTribeStore
             
             // Api
             routes.MapRoute("apirest", "api/rest/v{version}/{modelname}/{*parameters}", new { controller = "ApiRest", action = "Index", version=1 });
-            
+            routes.MapRoute("stoneedge", "api/stoneedge", new { controller = "StoneEdge", action = "Index" });
+
             // Multi-Store Super Routes          
             routes.MapRoute("superstores", "super/stores/{action}/{*params}", new { controller = "SuperStores", Action = "Index" });
             routes.MapRoute("superhome", "super/{action}/{*params}", new { controller = "Super", Action = "Index" });

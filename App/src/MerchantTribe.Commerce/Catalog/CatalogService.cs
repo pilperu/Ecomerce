@@ -533,7 +533,7 @@ namespace MerchantTribe.Commerce.Catalog
             ProductInventory inv = ProductInventories.FindByProductIdAndVariantId(productId, variantId);
             if (inv != null)
             {
-                inv.QuantityOnHand += quantity;
+                inv.QuantityOnHand = quantity;
                 result = ProductInventories.Update(inv);
                 UpdateProductVisibleStatusAndSave(inv.ProductBvin);
             }

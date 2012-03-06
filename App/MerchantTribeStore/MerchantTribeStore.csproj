@@ -4287,6 +4287,8 @@
     <Compile Include="code\RouteEvaluator.cs" />
     <Compile Include="code\StringUtils.cs" />
     <Compile Include="code\ViewUtilities.cs" />
+    <Compile Include="code\XDocumentExtensions.cs" />
+    <Compile Include="code\XElementExtensions.cs" />
     <Compile Include="Controllers\ApiRestController.cs" />
     <Compile Include="Controllers\BreadCrumbController.cs" />
     <Compile Include="Controllers\CartController.cs" />
@@ -4314,6 +4316,7 @@
     <Compile Include="Controllers\Shared\BaseStoreController.cs" />
     <Compile Include="Controllers\Shared\BaseSuperController.cs" />
     <Compile Include="Controllers\SiteMapController.cs" />
+    <Compile Include="Controllers\StoneEdgeController.cs" />
     <Compile Include="Controllers\StoreController.cs" />
     <Compile Include="Controllers\StyleSheetsController.cs" />
     <Compile Include="Controllers\SuperController.cs" />
@@ -4351,6 +4354,7 @@
     </Compile>
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
+    <Compile Include="Models\StoneEdgeIntegrationModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
     <Compile Include="Models\TwitterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4414,6 +4418,7 @@
     <Content Include="Areas\AdminContent\Views\Web.config" />
     <Content Include="Areas\AdminContent\Views\FileManager\Index.cshtml" />
     <Content Include="Areas\account\Views\OrderHistory\DownloadFileError.cshtml" />
+    <Content Include="Areas\ContentBlocks\Views\Html\Index.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />
@@ -4517,6 +4522,7 @@
     <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
     <Content Include="Views\Shared\_RegisteredScripts.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutWithNav.cshtml" />
+    <Content Include="Views\StoneEdge\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
