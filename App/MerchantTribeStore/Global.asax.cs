@@ -9,6 +9,7 @@ using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
 using log4net;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore
 {
@@ -143,7 +144,7 @@ namespace MerchantTribeStore
             routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
                                     
             // Home page
-            //routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
+            routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
 
             // Other Routes
             routes.MapRoute("fileuploadhandler", "fileuploadhandler/{typecode}/{*details}", new { controller = "FileUpload", action = "Index" });
@@ -216,9 +217,25 @@ namespace MerchantTribeStore
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
-            CleanUpDomains();
-            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
+            if (Request.IsLocal)
+            {
+                MvcMiniProfiler.MiniProfiler profiler = MvcMiniProfiler.MiniProfiler.Start();
+            }
+            var pro = MvcMiniProfiler.MiniProfiler.Current;
+            using (pro.Step("Clean Up Domains"))
+            {
+                CleanUpDomains();
+            }
+            using (pro.Step("Culture"))
+            {
+                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
+            }
+        }
+
+        void Application_EndRequest()
+        {
+            MvcMiniProfiler.MiniProfiler.Stop();
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)

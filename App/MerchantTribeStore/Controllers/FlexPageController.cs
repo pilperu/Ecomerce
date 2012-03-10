@@ -9,23 +9,13 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
 using System.Text;
 using MerchantTribe.Commerce.Content.Parts;
+using MerchantTribeStore.Models;
+using MerchantTribeStore.code.TemplateEngine;
 
 namespace MerchantTribeStore.Controllers
 {
     public class FlexPageController : Shared.BaseStoreController
     {
-        private bool IsHomePage(string bvin)
-        {
-            bool enabled = MTApp.CurrentStore.Settings.HomePageIsFlex;
-            if (!enabled) return false;
-            string homeBvin = MTApp.CurrentStore.Settings.HomePageIsFlexBvin ?? string.Empty;
-            if (homeBvin.Trim().ToLowerInvariant() == bvin.Trim().ToLowerInvariant())
-            {
-                return true;
-            }
-            return false;
-        }
-
         private void CheckFor301(string slug)
         {
             MerchantTribe.Commerce.Content.CustomUrl url = MTApp.ContentServices.CustomUrls.FindByRequestedUrl(slug);
@@ -43,10 +33,7 @@ namespace MerchantTribeStore.Controllers
                     }
                 }
             }
-        }
-
-        //
-        // GET: /FlexPage/
+        }        
 
         [HandleError]
         public ActionResult Index(string slug)
@@ -62,11 +49,14 @@ namespace MerchantTribeStore.Controllers
 
             if (cat.Hidden)
             {
-                if (!IsHomePage(cat.Bvin))
-                {
-                    return Redirect("~/Error?type=category");
-                }
+                return Redirect("~/Error?type=category");
             }
+
+            FlexPageEditorViewModel editorModel = new FlexPageEditorViewModel();
+            editorModel.CategoryId = cat.Bvin;
+            editorModel.IsPreview = false;
+            editorModel.CurrentPageUrl = Request.AppRelativeCurrentExecutionFilePath;
+            editorModel.IsEditMode = false;
 
             ViewBag.Title = cat.MetaTitle;            
             ViewBag.MetaKeywords = cat.MetaKeywords;
@@ -78,13 +68,13 @@ namespace MerchantTribeStore.Controllers
             
             if (MTApp.IsEditMode)
             {
-                ViewData["EditCss"] = "<link href=\"" + Url.Content("~/content/flexedit.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
+                editorModel.IsEditMode = true;
+                string editCSS = "<link href=\"" + Url.Content("~/content/flexedit.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
                 string editJS = "<script type=\"text/javascript\" src=\"" + Url.Content("~/content/FlexEdit.js") + "\"></script>";                
-                editJS += "<script type=\"text/javascript\" src=\"" + Url.Content("~/scripts/Silverlight.js") + "\"></script>";
-              
-                ViewData["EditJs"] = editJS;
-                ViewData["EditorPanel"] = GetEditorPanel(cat.Bvin);
-                ViewData["EditPopup"] = GetEditPopup();
+                editJS += "<script type=\"text/javascript\" src=\"" + Url.Content("~/scripts/Silverlight.js") + "\"></script>";                              
+
+                // Inject CSS and JS into head section of page
+                ViewData["AdditionalMetaTags"] += "\n" + editCSS + "\n" + editJS;
             }
 
             // Pre-Populate Empty Page
@@ -103,15 +93,18 @@ namespace MerchantTribeStore.Controllers
                     if (Request["preview"] == "1")
                     {
                         ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp, cat);
+                        editorModel.IsPreview = true;
                     }
                     else
                     {
                         ViewData["ContentParts"] = cat.Versions[0].Root.RenderForEdit(MTApp, cat);
+                        editorModel.IsPreview = false;
                     }
                 }
                 else
                 {
                     ViewData["ContentParts"] = cat.Versions[0].Root.RenderForDisplay(MTApp, cat);
+                    editorModel.IsPreview = false;
                 }
             }
             catch (Exception ex)
@@ -119,50 +112,19 @@ namespace MerchantTribeStore.Controllers
                 ViewData["ContentParts"] = ex.Message + ex.StackTrace;
             }
 
-            return View();
-        }
+            // Save Editor Model to View Data
+            ViewData["FlexEditorModel"] = editorModel;
 
-        private string GetEditorPanel(string bvin)
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<div id=\"flexedit\">");
+            // Stuff the flex page content into the area field on the category
+            // it will be rendered in main area tag 
+            cat.Versions[0].Areas.SetAreaContent("Main", (string)ViewData["ContentParts"]);
+            MTApp.CurrentRequestContext.CurrentCategory = cat;            
 
-            sb.Append("<div class=\"flexbuttonright\"><a href=\"" + Url.Content("~/bvadmin/catalog/Categories_FinishedEditing.aspx?id=" + bvin) + "\"><img src=\"" + Url.Content("~/images/system/flexedit/btnClose.png") + "\" alt=\"Close Editor\" /></a></div>");
-
-            if (Request["preview"] == "1")
-            {
-                sb.Append("<div class=\"flexbuttonright\"><a href=\"" + Url.Content(Request.AppRelativeCurrentExecutionFilePath) + "\"><img src=\"" + Url.Content("~/images/system/flexedit/btnPreviewOn.png") + "\" alt=\"Preview Is On\" /></a></div>");
-            }
-            else
-            {
-                sb.Append("<div class=\"flexbuttonright\"><a href=\"" + Url.Content(Request.AppRelativeCurrentExecutionFilePath + "?preview=1") + "\"><img src=\"" + Url.Content("~/images/system/flexedit/btnPreviewOff.png") + "\" alt=\"Preview Is Off\" /></a></div>");
-            }
-
-            sb.Append("<div class=\"dragpart dragbutton\" id=\"columncontainer\" ><img src=\"" + Url.Content("~/images/system/flexedit/btnColumns.png") + "\" alt=\"Columns\" /></div>");            
-            sb.Append("<div class=\"dragpart dragbutton\" id=\"htmlpart\" ><img src=\"" + Url.Content("~/images/system/flexedit/btnHtml.png") + "\" alt=\"HTML\" /></div>");
-            sb.Append("<div class=\"dragpart dragbutton\" id=\"image\" ><img src=\"" + Url.Content("~/images/system/flexedit/btnImage.png") + "\" alt=\"Image\" /></div>");
+            string template = this.MTApp.ThemeManager().GetTemplateFromCurrentTheme("default-no-menu.html");            
+            Processor p = new Processor(this.MTApp, template, new TagProvider());
+            List<ITemplateAction> model = p.RenderForDisplay();
             
-            sb.Append("<div class=\"hidden\" id=\"flexpageid\">" + bvin + "</div>");
-            sb.Append("<div class=\"hidden\" id=\"flexjsonurl\">" + Url.Content("~/flexpartjson/" + bvin) + "</div>");
-            sb.Append("<div class=\"hidden\" id=\"flexpageediting\"></div>");
-            sb.Append("</div>");
-            return sb.ToString();
-        }
-
-        private string GetEditPopup()
-        {
-            StringBuilder sb = new StringBuilder();            
-            sb.Append("<div class=\"editormodal\">");
-            sb.Append("<div class=\"editorpopover\">");
-            sb.Append("<a id=\"editorclose\" href=\"#\">Close</a>");
-            sb.Append("<form id=\"editorform\" action=\"\" method=\"post\"></form><br />");            
-            sb.Append("</div>");
-            sb.Append("</div>");            
-                                               
-            return sb.ToString();
-        }
-
-
-       
+            return View("~/views/shared/templateengine.cshtml", model);
+        }        
     }
 }

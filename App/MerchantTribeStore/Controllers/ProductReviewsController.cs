@@ -134,7 +134,7 @@ namespace MerchantTribeStore.Controllers
                 rev.Karma = 0;
                 if (SessionManager.IsUserAuthenticated(MTApp) == true)
                 {
-                    rev.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+                    rev.UserID = MTApp.CurrentCustomerId;
                 }
                 else
                 {

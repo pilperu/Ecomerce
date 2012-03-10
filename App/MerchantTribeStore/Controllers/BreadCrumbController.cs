@@ -24,7 +24,7 @@ namespace MerchantTribeStore.Controllers
 
             LoadTrailForCategory(model, snap, false);
 
-            if (extras != null)
+            if (extras != null && extras.Count > 0)
             {                
                 foreach (BreadCrumbItem item in extras)
                 {

@@ -90,7 +90,7 @@ namespace MerchantTribe.Commerce.Utilities
             string SecureURL = app.StoreUrl(true, false).ToLowerInvariant();
 			string sessionId = WebAppSettings.SessionId;
 			string cartId = WebAppSettings.CartId;
-			string currentSessionId = SessionManager.GetCurrentUserId(currentStore);
+			string currentSessionId = SessionManager.GetCurrentUserId(currentStore, app.CurrentRequestContext.RoutingContext.HttpContext.Request.Cookies);
 			string currentCartId = SessionManager.GetCurrentCartID(currentStore);
 			string url = BuildUrlForRedirect(CurrentUrl, StandardURL, SecureURL, RedirectTo, sessionId, cartId, currentSessionId, currentCartId, false
 			);

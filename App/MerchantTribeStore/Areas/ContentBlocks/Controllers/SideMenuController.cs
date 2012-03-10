@@ -9,6 +9,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -19,23 +20,28 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 
         public ActionResult Index(ContentBlock block)
         {
-            SideMenuViewModel model = new SideMenuViewModel();
+            var profiler = MvcMiniProfiler.MiniProfiler.Current;
+            using (profiler.Step("Block:SideMenu"))
+            {
 
-            if (block != null)
-            {                
-                model.Title = block.BaseSettings.GetSettingOrEmpty("Title");
-                                                                    
-                List<ContentBlockSettingListItem> links = block.Lists.FindList("Links");
-                if (links != null)
-                {                    
-                    foreach (ContentBlockSettingListItem l in links)
+                SideMenuViewModel model = new SideMenuViewModel();
+
+                if (block != null)
+                {
+                    model.Title = block.BaseSettings.GetSettingOrEmpty("Title");
+
+                    List<ContentBlockSettingListItem> links = block.Lists.FindList("Links");
+                    if (links != null)
                     {
-                        model.Items.Add(AddSingleLink(l));
-                    }                    
+                        foreach (ContentBlockSettingListItem l in links)
+                        {
+                            model.Items.Add(AddSingleLink(l));
+                        }
+                    }
                 }
-            }
 
-            return View(model);
+                return View(model);
+            }
         }
 
         private SideMenuItem AddSingleLink(ContentBlockSettingListItem l)

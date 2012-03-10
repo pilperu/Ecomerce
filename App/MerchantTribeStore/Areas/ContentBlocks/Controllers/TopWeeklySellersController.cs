@@ -9,6 +9,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -19,17 +20,21 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 
         public ActionResult Index(ContentBlock b)
         {
-            SideMenuViewModel model = new SideMenuViewModel();
-            model.Title = "Top Weekly Sellers";
+            var profiler = MvcMiniProfiler.MiniProfiler.Current;
+            using (profiler.Step("Block:TopWeeklySellers"))
+            {
+                SideMenuViewModel model = new SideMenuViewModel();
+                model.Title = "Top Weekly Sellers";
 
 
-            DateTime _StartDate = DateTime.Now;
-            DateTime _EndDate = DateTime.Now;
-            System.DateTime c = DateTime.Now;
-            CalculateDates(c, _StartDate, _EndDate);
-            model.Items = LoadProducts(_StartDate, _EndDate);
+                DateTime _StartDate = DateTime.Now;
+                DateTime _EndDate = DateTime.Now;
+                System.DateTime c = DateTime.Now;
+                CalculateDates(c, _StartDate, _EndDate);
+                model.Items = LoadProducts(_StartDate, _EndDate);
 
-            return View(model);
+                return View(model);
+            }
         }
         
         public void CalculateDates(DateTime currentTime, DateTime start, DateTime end)

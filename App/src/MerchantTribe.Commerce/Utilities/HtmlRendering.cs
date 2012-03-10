@@ -44,7 +44,7 @@ namespace MerchantTribe.Commerce.Utilities
 
         public static string PromoTag()
         {
-            string copyrightTag = "<span class=\"bvtag\"><a href=\"http://www.MerchantTribe.com\" title=\"Free Open Source Shopping Cart Software\" target=\"_blank\">Shopping Cart Software by MerchantTribe</a></span>";
+            string copyrightTag = "<span class=\"bvtag\"><a href=\"http://merchanttribe.com\" title=\"Free Open Source Shopping Cart Software\" target=\"_blank\">Shopping Cart Software by MerchantTribe</a></span>";
             return copyrightTag;
         }
 

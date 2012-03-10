@@ -106,7 +106,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             AddressViewModel model = new AddressViewModel();
             if (TryUpdateModel(model))
             {
-                CustomerAccount u = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId(MTApp.CurrentStore));
+                CustomerAccount u = MTApp.MembershipServices.Customers.Find(MTApp.CurrentCustomerId);
                 if (u == null) return View(model);
                 
                 Address a = LoadAddress(id);

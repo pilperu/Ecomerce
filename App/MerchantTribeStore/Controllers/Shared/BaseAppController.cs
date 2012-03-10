@@ -7,7 +7,7 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
 using MerchantTribeStore.Filters;
 using MerchantTribe.Commerce.Utilities;
-
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Controllers.Shared
 {
@@ -18,42 +18,89 @@ namespace MerchantTribeStore.Controllers.Shared
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            base.OnActionExecuting(filterContext);
-            MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
-            // Check for non-www url and redirect if needed
-            //RedirectBVCommerceCom(System.Web.HttpContext.Current);
-            MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
-
-            // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
-            if (MTApp.CurrentStore == null)
+            var profiler = MvcMiniProfiler.MiniProfiler.Current;
+            using (profiler.Step("BaseAppController: Action Executed"))
             {
-                Response.Redirect("~/storenotfound");
+                using (profiler.Step("Base Controller Action Executed"))
+                {
+                    base.OnActionExecuting(filterContext);
+                }
+
+                using (profiler.Step("Determine Current Store"))
+                {
+                    using (profiler.Step("Create MT App"))
+                    {
+                        MTApp = MerchantTribeApplication.InstantiateForDataBase(new RequestContext());
+                        // Check for non-www url and redirect if needed
+                        //RedirectBVCommerceCom(System.Web.HttpContext.Current);
+                        MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+                    }
+
+                    using (profiler.Step("Parse Store Id from Url"))
+                    {
+                        // Determine store id        
+                        MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
+                        if (MTApp.CurrentStore == null)
+                        {
+                            Response.Redirect("~/storenotfound");
+                        }
+                    }
+                }
+
+                if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
+                {
+                    //if ((AvailableWhenInactive == false))
+                    //{
+                    Response.Redirect("~/storenotavailable");
+                    //}
+                }
+
+                using (profiler.Step("ViewBag Loads"))
+                {
+                    using (profiler.Step("IsAdminUser?"))
+                    {
+                        if (ViewBag.IsAdmin == null)
+                        {
+                            // Store data for admin panel
+                            ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
+                        }
+                    }
+
+                    using (profiler.Step("RootUrls"))
+                    {
+                        ViewBag.RootUrlSecure = this.MTApp.StoreUrl(true, false);
+                        ViewBag.RootUrl = this.MTApp.StoreUrl(false, true);
+                    }
+
+                    using (profiler.Step("Store Closed And Name"))
+                    {
+                        ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
+                        ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
+                    }
+                    using (profiler.Step("UniqueId"))
+                    {
+                        ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
+                    }
+                    using (profiler.Step("ip"))
+                    {
+                        ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
+                    }
+                    using (profiler.Step("CustomerId"))
+                    {                        
+                        ViewBag.CustomerId = MTApp.CurrentCustomerId ?? string.Empty;
+                    }
+                    using (profiler.Step("Analytics Off?"))
+                    {
+                        ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
+                    }
+                }
+
+                using (profiler.Step("Integration Loader"))
+                {
+                    // Integrations
+                    IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp);
+                }
             }
-
-            if (MTApp.CurrentStore.Status == MerchantTribe.Commerce.Accounts.StoreStatus.Deactivated)
-            {
-                //if ((AvailableWhenInactive == false))
-                //{
-                Response.Redirect("~/storenotavailable");
-                //}
-            }
-
-            // Store data for admin panel
-            ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
-            
-            ViewBag.RootUrlSecure = this.MTApp.StoreUrl(true, false);
-            ViewBag.RootUrl = this.MTApp.StoreUrl(false, true);
-
-            ViewBag.StoreClosed = MTApp.CurrentStore.Settings.StoreClosed;
-            ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
-            ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
-            ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
-            ViewBag.CustomerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore) ?? string.Empty;
-            ViewBag.HideAnalytics = MTApp.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;
-
-            // Integrations
-            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp);
         }
 
         public bool IsCurrentUserAdmin(MerchantTribeApplication app, HttpContextBase httpContext)

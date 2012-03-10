@@ -58,6 +58,8 @@ namespace MerchantTribeStore.Controllers
             // Populate Countries
             model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
             model.PaymentViewModel.AcceptedCardTypes = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
+            
+            ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
 
             return model;
         }
@@ -569,7 +571,7 @@ namespace MerchantTribeStore.Controllers
         {
             // Save as Order
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            c.UserId = MTApp.CurrentCustomerId;
             c.Order = model.CurrentOrder;
 
             // Check for PayPal Request            
@@ -632,6 +634,7 @@ namespace MerchantTribeStore.Controllers
         [NonCacheableResponseFilter]
         public ActionResult Receipt()
         {
+            ViewData["AdditionalMetaTags"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
             ViewBag.Title = "Order Receipt";
             ViewBag.BodyClass = "store-receipt-page";
             ViewBag.MetaDescription = "Order Receipt";
@@ -701,8 +704,8 @@ namespace MerchantTribeStore.Controllers
         private void RenderAnalytics(Order o)
         {
 
-            // Reset Analytics for receipt page
-            this.ViewData["analyticstop"] = string.Empty;
+            // Reset Analytics for receipt page            
+            this.ViewData["PassedAnalyticsTop"] = string.Empty;
 
             // Add Tracker and Maybe Ecommerce Tracker to Top
             if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
@@ -710,7 +713,7 @@ namespace MerchantTribeStore.Controllers
                 if (MTApp.CurrentStore.Settings.Analytics.UseGoogleEcommerce)
                 {
                     // Ecommerce + Page Tracker
-                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTrackerAndTransaction(
+                    this.ViewData["PassedAnalyticsTop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTrackerAndTransaction(
                         MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId,
                         o,
                         MTApp.CurrentStore.Settings.Analytics.GoogleEcommerceStoreName,
@@ -719,14 +722,14 @@ namespace MerchantTribeStore.Controllers
                 else
                 {
                     // Page Tracker Only
-                    this.ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
+                    this.ViewData["PassedAnalyticsTop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
                 }
             }
             
             // Adwords Tracker at bottom if needed
             if (MTApp.CurrentStore.Settings.Analytics.UseGoogleAdWords)
             {
-                this.ViewData["analyticsbottom"] += MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
+                this.ViewData["PassedAnalyticsBottom"] += MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderGoogleAdwordTracker(
                                                         o.TotalGrand,
                                                         MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsId,
                                                         MTApp.CurrentStore.Settings.Analytics.GoogleAdWordsLabel,
@@ -737,8 +740,19 @@ namespace MerchantTribeStore.Controllers
             // Add Yahoo Tracker to Bottom if Needed
             if (MTApp.CurrentStore.Settings.Analytics.UseYahooTracker)
             {
-                this.ViewData["analyticsbottom"] += MerchantTribe.Commerce.Metrics.YahooAnalytics.RenderYahooTracker(
+                this.ViewData["PassedAnalyticsBottom"] += MerchantTribe.Commerce.Metrics.YahooAnalytics.RenderYahooTracker(
                     o, MTApp.CurrentStore.Settings.Analytics.YahooAccountId);
+            }
+
+            if (!(bool)ViewBag.HideAnalytics)
+            {
+                System.Text.StringBuilder sbA = new System.Text.StringBuilder();
+                sbA.Append("<script type=\"text/javascript\">");
+                sbA.Append("MerchantTribeAnalytics.EventCode = '2';");
+                    sbA.Append("MerchantTribeAnalytics.EventAmount = '@Grand';");
+                    sbA.Append("MerchantTribeAnalytics.EventDescription = '@o.OrderNumber';");
+                sbA.Append("</script>");
+                this.ViewData["PassedAnalyticsBottom"] += sbA.ToString();
             }
         }
 
@@ -824,6 +838,7 @@ namespace MerchantTribeStore.Controllers
             model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
             model.PaymentViewModel.AcceptedCardTypes = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
 
+            ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
             return model;
         }
         private void LoadPendingOrder(CheckoutViewModel model)
@@ -911,7 +926,7 @@ namespace MerchantTribeStore.Controllers
         {
             // Save as Order
             OrderTaskContext c = new OrderTaskContext(MTApp);
-            c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            c.UserId = MTApp.CurrentCustomerId;
             c.Order = model.CurrentOrder;
 
             if (Workflow.RunByName(c, WorkflowNames.ProcessNewOrderPayments) == true)

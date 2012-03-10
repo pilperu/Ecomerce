@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using System.Reflection;
 using System.Collections.Generic;
 using MerchantTribe.Commerce.Catalog;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore
 {
@@ -25,99 +26,137 @@ namespace MerchantTribeStore
 
         public System.Web.IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            string fullSlug = (string)(requestContext.RouteData.Values["slug"] ?? string.Empty);
-            fullSlug = fullSlug.ToLowerInvariant() ?? string.Empty;
-
-            // Application Context
-            MerchantTribe.Commerce.MerchantTribeApplication MTApp = MerchantTribe.Commerce.MerchantTribeApplication.InstantiateForDataBase(new MerchantTribe.Commerce.RequestContext());
-            MTApp.CurrentRequestContext.RoutingContext = requestContext;
-
-            // Determine store id        
-            MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
-            
-            // Home page check
-            if (fullSlug == string.Empty)
+            var pro = MvcMiniProfiler.MiniProfiler.Current;
+            using (pro.Step("Custom Router"))
             {
 
-                // Redirect to Sign up if we're multi-store
-                if (!MerchantTribe.Commerce.WebAppSettings.IsIndividualMode)
+                MerchantTribe.Commerce.MerchantTribeApplication MTApp;
+                string fullSlug;
+
+                using (pro.Step("Determine Store Id"))
                 {
-                    if (MTApp.CurrentStore.StoreName == "www")
+                    fullSlug = (string)(requestContext.RouteData.Values["slug"] ?? string.Empty);
+                    fullSlug = fullSlug.ToLowerInvariant() ?? string.Empty;
+
+                    // Application Context
+                    MTApp = MerchantTribe.Commerce.MerchantTribeApplication.InstantiateForDataBase(new MerchantTribe.Commerce.RequestContext());
+                    MTApp.CurrentRequestContext.RoutingContext = requestContext;
+
+                    // Determine store id        
+                    MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);
+                }
+
+                using (pro.Step("Home Page Check"))
+                {
+                    // Home page check
+                    if (fullSlug == string.Empty)
                     {
-                        requestContext.RouteData.Values["controller"] = "Home";
-                        requestContext.RouteData.Values["area"] = "signup";
-                        requestContext.RouteData.Values["action"] = "Index";
-                        System.Web.Mvc.MvcHandler signupHandler = new MvcHandler(requestContext);
-                        return signupHandler;                                               
+                        // Redirect to Sign up if we're multi-store
+                        if (MerchantTribe.Commerce.WebAppSettings.IsHostedVersion)
+                        {
+                            if (MTApp.CurrentStore.StoreName == "www")
+                            {
+                                requestContext.RouteData.Values["controller"] = "Home";
+                                requestContext.RouteData.Values["area"] = "signup";
+                                requestContext.RouteData.Values["action"] = "Index";
+                                System.Web.Mvc.MvcHandler signupHandler = new MvcHandler(requestContext);
+                                return signupHandler;
+                            }
+                        }
+
+                        using (pro.Step("Sending to Home Page Controller"))
+                        {
+                            // Send to home controller
+                            requestContext.RouteData.Values["controller"] = "Home";
+                            requestContext.RouteData.Values["action"] = "Index";
+                            System.Web.Mvc.MvcHandler homeHandler = new MvcHandler(requestContext);
+                            return homeHandler;
+                        }
                     }
                 }
 
-                // Check for custom homepage
-                string customSlug = GetCustomSlug(MTApp);
-                if (customSlug.Trim().Length < 1)
+                // Check for Category/Page Match
+                CategoryUrlMatchData categoryMatchData = IsCategoryMatch(fullSlug, MTApp);
+                if (categoryMatchData.IsFound)
                 {
-                    // Send to home controller
-                    requestContext.RouteData.Values["controller"] = "Home";
+                    switch (categoryMatchData.SourceType)
+                    {
+                        case CategorySourceType.ByRules:
+                        case CategorySourceType.CustomLink:
+                        case CategorySourceType.Manual:
+                            requestContext.RouteData.Values["controller"] = "Category";
+                            requestContext.RouteData.Values["action"] = "Index";
+                            System.Web.Mvc.MvcHandler mvcHandlerCat = new MvcHandler(requestContext);
+                            return mvcHandlerCat;
+                        case CategorySourceType.DrillDown:
+                            requestContext.RouteData.Values["controller"] = "Category";
+                            requestContext.RouteData.Values["action"] = "DrillDownIndex";
+                            System.Web.Mvc.MvcHandler mvcHandlerCatDrill = new MvcHandler(requestContext);
+                            return mvcHandlerCatDrill;
+                        case CategorySourceType.FlexPage:
+                            requestContext.RouteData.Values["controller"] = "FlexPage";
+                            requestContext.RouteData.Values["action"] = "Index";
+                            System.Web.Mvc.MvcHandler mvcHandler2 = new System.Web.Mvc.MvcHandler(requestContext);
+                            return mvcHandler2;
+                        case CategorySourceType.CustomPage:
+                            requestContext.RouteData.Values["controller"] = "CustomPage";
+                            requestContext.RouteData.Values["action"] = "Index";
+                            System.Web.Mvc.MvcHandler mvcHandlerCustom = new MvcHandler(requestContext);
+                            return mvcHandlerCustom;
+                    }
+                }
+
+                // Check for Product URL
+                if (IsProductUrl(fullSlug, MTApp))
+                {
+                    requestContext.RouteData.Values["controller"] = "Products";
                     requestContext.RouteData.Values["action"] = "Index";
-                    System.Web.Mvc.MvcHandler homeHandler = new MvcHandler(requestContext);
-                    return homeHandler;                       
+                    System.Web.Mvc.MvcHandler mvcHandlerProducts = new MvcHandler(requestContext);
+                    return mvcHandlerProducts;
                 }
-                else
-                {
-                    // Pass along the slug to work with (custom page)
-                    fullSlug = customSlug;
-                    requestContext.RouteData.Values["slug"] = customSlug;
-                }
-            }
 
-            // Check for Category/Page Match
-            CategoryUrlMatchData categoryMatchData = IsCategoryMatch(fullSlug, MTApp);
-            if (categoryMatchData.IsFound)
-            {
-                switch(categoryMatchData.SourceType)
-                {
-                    case CategorySourceType.ByRules:
-                    case CategorySourceType.CustomLink:
-                    case CategorySourceType.Manual:      
-                        requestContext.RouteData.Values["controller"] = "Category";
-                        requestContext.RouteData.Values["action"] = "Index";
-                        System.Web.Mvc.MvcHandler mvcHandlerCat = new MvcHandler(requestContext);
-                        return mvcHandlerCat;                        
-                    case CategorySourceType.DrillDown:
-                        requestContext.RouteData.Values["controller"] = "Category";
-                        requestContext.RouteData.Values["action"] = "DrillDownIndex";
-                        System.Web.Mvc.MvcHandler mvcHandlerCatDrill = new MvcHandler(requestContext);
-                        return mvcHandlerCatDrill;                        
-                    case CategorySourceType.FlexPage:
-                        requestContext.RouteData.Values["controller"] = "FlexPage";
-                        requestContext.RouteData.Values["action"] = "Index";
-                        System.Web.Mvc.MvcHandler mvcHandler2 = new System.Web.Mvc.MvcHandler(requestContext);
-                        return mvcHandler2;                        
-                    case CategorySourceType.CustomPage:
-                        requestContext.RouteData.Values["controller"] = "CustomPage";
-                        requestContext.RouteData.Values["action"] = "Index";
-                        System.Web.Mvc.MvcHandler mvcHandlerCustom = new MvcHandler(requestContext);
-                        return mvcHandlerCustom;                        
-                }
-            }
+                // no match on product or category so do a 301 check
+                CheckFor301(fullSlug, MTApp);
 
-            // Check for Product URL
-            if (IsProductUrl(fullSlug, MTApp))
-            {
-                requestContext.RouteData.Values["controller"] = "Products";
+                // If not product, send to FlexPage Controller
+                requestContext.RouteData.Values["controller"] = "FlexPage";
                 requestContext.RouteData.Values["action"] = "Index";
-                System.Web.Mvc.MvcHandler mvcHandlerProducts = new MvcHandler(requestContext);
-                return mvcHandlerProducts;
+                System.Web.Mvc.MvcHandler mvcHandler = new System.Web.Mvc.MvcHandler(requestContext);
+                return mvcHandler;
             }
+        }
 
-            // no match on product or category so do a 301 check
-            CheckFor301(fullSlug, MTApp);
+        private void RedirectOldBVSoftwareDomains(RequestContext requestContext)
+        {
+            string path = requestContext.HttpContext.Request.Url.AbsolutePath;
+            path = path.TrimStart('/');
+            path = path.TrimStart('\\');
+            if (path.Length > 0)
+            {
+                // not default home
+                // change DNS host to new one and continue
+                return;
+            }
+            else
+            {
+                // skip homepage redirect for commercial and individual
+                if (MerchantTribe.Commerce.WebAppSettings.IsIndividualMode ||
+                    MerchantTribe.Commerce.WebAppSettings.IsCommercialVersion)
+                    return;
 
-            // If not product, send to FlexPage Controller
-            requestContext.RouteData.Values["controller"] = "FlexPage";
-            requestContext.RouteData.Values["action"] = "Index";
-            System.Web.Mvc.MvcHandler mvcHandler = new System.Web.Mvc.MvcHandler(requestContext);
-            return mvcHandler;
+                string host = requestContext.HttpContext.Request.Url.DnsSafeHost;
+                List<string> redirects = new List<string>();
+                redirects.Add("www.bvcommerce.com");
+                redirects.Add("www.merchanttribestores.com");
+                redirects.Add("bvcommerce.com");
+                redirects.Add("merchanttribestores.com");
+                redirects.Add("localhost");
+
+                if (redirects.Contains(host.Trim().ToLowerInvariant()))
+                {
+                    requestContext.HttpContext.Response.RedirectPermanent("http://merchanttribe.com");
+                }
+            }                                    
         }
 
         private void CheckFor301(string slug, MerchantTribe.Commerce.MerchantTribeApplication app)
@@ -164,18 +203,7 @@ namespace MerchantTribeStore
 
             return false;
         }
-
-        private string GetCustomSlug(MerchantTribe.Commerce.MerchantTribeApplication mtapp)
-        {
-            string result = string.Empty;
-            if (mtapp == null) return result;
-            if (mtapp.CurrentStore.Settings.HomePageIsFlex == false) return result;
-            string bvin = mtapp.CurrentStore.Settings.HomePageIsFlexBvin;
-            var cat = mtapp.CatalogServices.Categories.Find(bvin);
-            if (cat == null) return result;
-            result = cat.RewriteUrl;
-            return result;
-        }
+        
     }
 
 }

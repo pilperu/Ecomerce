@@ -230,7 +230,7 @@ namespace MerchantTribe.Commerce.Catalog
                     wi.ProductId = snapshot.ProductId;
                     wi.Quantity = quantity;
                     wi.SelectionData = snapshot.SelectionData;
-                    wi.CustomerId = SessionManager.GetCurrentUserId(app.CurrentStore); 
+                    wi.CustomerId = app.CurrentCustomerId; 
                 }
             }
             return WishListItems.Create(wi);

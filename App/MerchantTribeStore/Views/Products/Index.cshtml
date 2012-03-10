@@ -1,29 +1,4 @@
 ﻿@model MerchantTribeStore.Models.ProductPageViewModel
-@section OutsideWrapperContent
-{
-    @if (ViewBag.UseFaceBook == true)
-    {
-        @Html.Partial("~/views/shared/_FaceBookSetup.cshtml")
-    }
-}
-@section HeadContent
-{
-    <script src="@Url.Content("~/scripts/tabs.js")" type="text/javascript"></script>
-    <script src="@Url.Content("~/scripts/ProductPage.js")" type="text/javascript"></script>
-    @Html.Raw(Model.JavaScripts)
-
-    @if (ViewBag.UseFaceBook == true)
-    {
-        <!-- FaceBook OpenGraph Tags -->
-        <meta property="og:title" content="@ViewBag.Title"/>
-        <meta property="og:type" content="product"/>
-        <meta property="og:url" content="@ViewBag.CurrentUrl"/>
-        <meta property="og:image" content="@Model.MainImageUrl"/>   
-        <meta property="og:site_name" content="@ViewBag.StoreName"
-        <meta property="fb:admins" content="@ViewBag.FaceBookAdmins" />
-        <meta property="fb:app_id" content="@ViewBag.FaceBookAppId" />
-    }
-}
 <div id="productpage">
     @Html.Action("ProductTrail", "BreadCrumb", new { product = Model.LocalProduct })
     @Html.Action("Index", "ContentColumn", new { id = Model.LocalProduct.PreContentColumnId })

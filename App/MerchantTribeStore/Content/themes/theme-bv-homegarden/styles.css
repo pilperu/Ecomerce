@@ -35,7 +35,7 @@ a:hover {color:#ac211b;}
 #site-wrapper {padding:0px 0 0 0;width:960px;margin:0 auto;background:#e0e0e0;}
 
 /* Header */
-#header {background: url('{{assets}}HeaderBg3.png') no-repeat #3C6A2F;
+#header {background: url('assets/HeaderBg3.png') no-repeat #3C6A2F;
 height:114px;overflow:hidden;}
 #header #logo-area {height:70px;width:310px;float:left;}
 #header #logo-area a {font-size:36px;color:#fff;text-decoration:none;
@@ -58,7 +58,7 @@ height:114px;overflow:hidden;}
               overflow:hidden; color:#fff;clear:both;}
 #header-menu ul {}
 #header-menu li {margin: 0 0 0 2px; font-size: 11px; line-height: 24px;
-background: url('{{assets}}HeaderMenuSep.png') no-repeat bottom right;}
+background: url('assets/HeaderMenuSep.png') no-repeat bottom right;}
 #header-menu a {font-size:13px;font-weight:bold;float: left; 
                padding:5px 10px 0 10px; color: #255819;text-decoration: none;
                /*text-transform: uppercase;*/letter-spacing:-0.5px;}
@@ -72,7 +72,7 @@ background: url('{{assets}}HeaderMenuSep.png') no-repeat bottom right;}
 #search-form {clear:right;width:345px;margin:0;padding:0px 10px 0 0;
 height:35px;float:right; text-align:right;}
 #headersearchbox {display:block;border:solid 1px #333;margin:5px 0 0 140px;padding:0 5px;height:22px;width:150px;float:left;}
-#headersearchlink {display:block;width:30px;height:24px;margin:4px 0 0 5px;float:left;background: url('{{assets}}btnSearch.png') no-repeat;}
+#headersearchlink {display:block;width:30px;height:24px;margin:4px 0 0 5px;float:left;background: url('assets/btnSearch.png') no-repeat;}
 #headersearchlink span {display:none;}
 
 
@@ -80,7 +80,7 @@ height:35px;float:right; text-align:right;}
 /* Main Content Wrapper */
 #main-content {background-color:#fff;width:940px;margin:0 auto;padding:0 10px 10px 10px;}
 #main-with-left-nav {width:752px; float:right;margin: 0px 0px 0px 0;}
-.store-home-page #main-content {background: url('{{assets}}HomepageBg.png') repeat-y;}
+.store-home-page #main-content {background: url('assets/HomepageBg.png') repeat-y;}
 
 /* Footer */
 #footer {clear:both;text-align:center;color:#255819;font-weight:bold;}
@@ -96,9 +96,9 @@ border-top:solid 0px #494949;}
 .footerblock p {padding:0 0 0 5px;}
 .footerblock h3 {display:block;width:300px;height:19px;}
 .footerblock h3 span {display:none;}
-.footerblock h3.aboutus {background: url('{{assets}}h3_aboutus.png') no-repeat;}
-.footerblock h3.ourguarantee {background: url('{{assets}}h3_ourguarantee.png') no-repeat;}
-.footerblock h3.contactus {background: url('{{assets}}h3_contactus.png') no-repeat;}
+.footerblock h3.aboutus {background: url('assets/h3_aboutus.png') no-repeat;}
+.footerblock h3.ourguarantee {background: url('assets/h3_ourguarantee.png') no-repeat;}
+.footerblock h3.contactus {background: url('assets/h3_contactus.png') no-repeat;}
 
 
 /* Holds all left navigation items */
@@ -271,7 +271,7 @@ h4 {font-weight:bold;font-size:14px;line-height:1.286em;margin:0 9px;
 
 /* Bread Crumbs */
 .breadcrumbs {margin:0 0 0 -10px;padding:5px 10px;border-bottom:solid 1px #ccc;
-background: url('{{assets}}BreadCrumbBg.png');width:940px;}
+background: url('assets/BreadCrumbBg.png');width:940px;}
 .breadcrumbs a {}
 .breadcrumbs a:hover {}
 
@@ -318,7 +318,7 @@ background: url('{{assets}}BreadCrumbBg.png');width:940px;}
 .featuredproducts {background:#ecf5d4;padding:0;}
 .featuredproducts .record {float:left;margin:10px 0 20px 10px;height:280px;
                            background-color:#fff;}
-.homeh2 {margin:10px 0 0 0;width:700px;height:30px;background: url('{{assets}}FeaturedProducts.png') no-repeat;}
+.homeh2 {margin:10px 0 0 0;width:700px;height:30px;background: url('assets/FeaturedProducts.png') no-repeat;}
 .homeh2 h2 {display:none;}
 
 /* Simple & Bulk Order Lists */
@@ -508,4 +508,22 @@ ul.filterselected li, ul.filterselections li {margin:0.25em 1em;list-style:none;
 .popoverframe2 a {color:#fff;}
 #popoverpage2 {width:900px;height:900px;}
 
-{{commonupdates}}
+
+#carttotals .formlabel2 {font-size:11px;color:#666;}
+#carttotals .formfield2 {font-size:110%;font-weight:bold;color:#000;}
+#cartcoupons {display:block;}
+
+
+.totalsub,
+.totaltax,
+.totalshipping,
+.totalgrand,
+.totaldiscount {text-align:right;vertical-align:top;}
+
+.totaltable {width:400px;}
+
+.totallabel {text-align:left;vertical-align:top;}
+
+.totaldiscountdetail {font-size:11px;color:#666; text-align:left;}
+.totaldiscount {font-size:11px;}
+

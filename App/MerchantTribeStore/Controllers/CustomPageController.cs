@@ -7,8 +7,8 @@ using MerchantTribeStore.Controllers.Shared;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
-using MerchantTribe.Commerce.Content.Templates;
 using MerchantTribe.Commerce.Utilities;
+using MerchantTribeStore.code.TemplateEngine;
 using System.Text;
 
 namespace MerchantTribeStore.Controllers
@@ -27,12 +27,10 @@ namespace MerchantTribeStore.Controllers
             // Record View for Analytics
             RecordCategoryView(cat.Bvin);
             
-
             // Get page.html Template
             ThemeManager tm = MTApp.ThemeManager();
             if (cat.TemplateName == string.Empty) { cat.TemplateName = "default.html"; }
-            string template = tm.GetTemplateFromCurrentTheme(cat.TemplateName);
-
+            string template = tm.GetTemplateFromCurrentTheme(cat.TemplateName, "default.html"); // Try default in theme before system
 
             // Fill with data from category, making sure legacy description is used if no area data
             CategoryPageVersion version = cat.GetCurrentVersion();
@@ -50,22 +48,11 @@ namespace MerchantTribeStore.Controllers
                 version.Areas.SetAreaContent("main", cat.PreTransformDescription);
             }
 
-            TemplateProcessor proc = new TemplateProcessor(this.MTApp, template);
-            string processed = proc.RenderForDisplay();
+            ITagProvider tagProvider = new TagProvider();
+            Processor proc = new Processor(this.MTApp, template, tagProvider);
 
-            // Process Template Here 
-            return new ContentResult() { Content = processed, ContentEncoding = Encoding.UTF8, ContentType = "text/html" };
-
-
-            /* OLD RAZOR VIEW */
-            //ViewBag.Title = cat.MetaTitle;
-            //ViewBag.MetaKeywords = cat.MetaKeywords;
-            //ViewBag.MetaDescription = cat.MetaDescription;
-            //ViewBag.DisplayHtml = TagReplacer.ReplaceContentTags(cat.Description,
-            //                                                     this.MTApp,
-            //                                                     "", 
-            //                                                     Request.IsSecureConnection);
-            //return View(cat);
+            var model = proc.RenderForDisplay();
+            return View("~/views/shared/templateengine.cshtml", model);                                    
         }
 
         private void RecordCategoryView(string bvin)

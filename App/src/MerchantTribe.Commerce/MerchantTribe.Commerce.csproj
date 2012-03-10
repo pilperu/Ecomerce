@@ -122,6 +122,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
+    <Reference Include="MvcMiniProfiler">
+      <HintPath>..\..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler.EntityFramework">
+      <HintPath>..\..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="paypal_base">
       <HintPath>..\..\lib\paypal_base.dll</HintPath>
     </Reference>
@@ -224,6 +230,7 @@
     <Compile Include="BusinessRules\OrderTasks\UpdateOrder.cs" />
     <Compile Include="BusinessRules\OrderTasks\WorkflowNote.cs" />
     <Compile Include="BusinessRules\WorkflowNames.cs" />
+    <Compile Include="CacheManager.cs" />
     <Compile Include="Catalog\CatalogService.cs" />
     <Compile Include="Catalog\CategoryFacet.cs" />
     <Compile Include="Catalog\CategoryFacetDisplayMode.cs" />
@@ -351,26 +358,6 @@
     <Compile Include="Content\PublishStatus.cs" />
     <Compile Include="Content\Replaceable.cs" />
     <Compile Include="Content\SiteTermIds.cs" />
-    <Compile Include="Content\Templates\ITagHandler.cs" />
-    <Compile Include="Content\Templates\ParsedTag.cs" />
-    <Compile Include="Content\Templates\TagHandlers\AdminPanel.cs" />
-    <Compile Include="Content\Templates\TagHandlers\AnalyticsBottom.cs" />
-    <Compile Include="Content\Templates\TagHandlers\AnalyticsTop.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Area.cs" />
-    <Compile Include="Content\Templates\TagHandlers\PageMenu.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Copyright.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Css.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Include.cs" />
-    <Compile Include="Content\Templates\TagHandlers\JavaScript.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Link.cs" />
-    <Compile Include="Content\Templates\TagHandlers\Logo.cs" />
-    <Compile Include="Content\Templates\TagHandlers\MainMenu.cs" />
-    <Compile Include="Content\Templates\TagHandlers\MetaTags.cs" />
-    <Compile Include="Content\Templates\TagHandlers\PageTitle.cs" />
-    <Compile Include="Content\Templates\TagHandlers\PromoTag.cs" />
-    <Compile Include="Content\Templates\TagHandlers\SearchForm.cs" />
-    <Compile Include="Content\Templates\TagHandlers\TempMessage.cs" />
-    <Compile Include="Content\Templates\TemplateProcessor.cs" />
     <Compile Include="Content\ThemeManager.cs" />
     <Compile Include="Content\ThemeView.cs" />
     <Compile Include="Controls\AddressTypes.cs" />

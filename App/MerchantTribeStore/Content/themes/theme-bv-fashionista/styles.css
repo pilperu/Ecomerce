@@ -48,7 +48,7 @@ width:960px;margin:0 auto;}
 #cart-link a {text-decoration:none;}
 #cart-link a:hover {text-decoration:underline;}
 
-#headermain {clear:both;background: #000 url('{{assets}}HeaderBg2.png') repeat-x;margin:5px 10px 0 10px;
+#headermain {clear:both;background: #000 url('assets/HeaderBg2.png') repeat-x;margin:5px 10px 0 10px;
              height:70px;}
 #logo-area {height:70px;width:600px;float:left;}
 #header #logo-area a.logo {font-size:40px;color:#fff;text-decoration:none;line-height:1em;padding:18px 0 0 18px;display:block;font-weight:bold;}
@@ -59,14 +59,14 @@ width:960px;margin:0 auto;}
               margin:0 10px;}
 #header-menu ul {}
 #header-menu li {margin: 0 0 0 2px; font-size: 11px; line-height: 24px;
-                 background: url('{{assets}}LinkDivider2.png') bottom right no-repeat;}
+                 background: url('assets/LinkDivider2.png') bottom right no-repeat;}
 #header-menu a {font-size:14px;float: left; padding:3px 10px 0 10px; color: #fff;text-decoration: none;}
 #header-menu a:hover {color:#fff; text-decoration: underline;}
 
 
 #search-form {clear:right;width:200px;margin:20px 0 0 0;padding:0px 10px 0 0;height:35px;float:right; text-align:right;}
 #headersearchbox {display:block;border:solid 1px #666;margin:5px 0 0 0px;padding:0 5px;height:22px;width:100px;float:left;background-color:#fff;}
-#headersearchlink {display:block;width:75px;height:24px;margin:4px 0 0 5px;float:left;background: url('{{assets}}btnSearch2.png') no-repeat;}
+#headersearchlink {display:block;width:75px;height:24px;margin:4px 0 0 5px;float:left;background: url('assets/btnSearch2.png') no-repeat;}
 #headersearchlink span {display:none;}
 
 
@@ -95,9 +95,9 @@ width:960px;margin:0 auto;}
 .footerblock p {padding:0 0 0 5px;}
 .footerblock h3 {display:block;width:300px;height:19px;}
 .footerblock h3 span {display:none;}
-.footerblock h3.aboutus {background: url('{{assets}}h3_aboutus.png') no-repeat;}
-.footerblock h3.ourguarantee {background: url('{{assets}}h3_ourguarantee.png') no-repeat;}
-.footerblock h3.contactus {background: url('{{assets}}h3_contactus.png') no-repeat;}
+.footerblock h3.aboutus {background: url('assets/h3_aboutus.png') no-repeat;}
+.footerblock h3.ourguarantee {background: url('assets/h3_ourguarantee.png') no-repeat;}
+.footerblock h3.contactus {background: url('assets/h3_contactus.png') no-repeat;}
 
 
 /* Holds all left navigation items */
@@ -505,4 +505,22 @@ ul.filterselected li, ul.filterselections li {margin:0.25em 1em;list-style:none;
 .popoverframe2 a {color:#fff;}
 #popoverpage2 {width:900px;height:900px;}
 
-{{commonupdates}}
+
+#carttotals .formlabel2 {font-size:11px;color:#666;}
+#carttotals .formfield2 {font-size:110%;font-weight:bold;color:#000;}
+#cartcoupons {display:block;}
+
+
+.totalsub,
+.totaltax,
+.totalshipping,
+.totalgrand,
+.totaldiscount {text-align:right;vertical-align:top;}
+
+.totaltable {width:400px;}
+
+.totallabel {text-align:left;vertical-align:top;}
+
+.totaldiscountdetail {font-size:11px;color:#666; text-align:left;}
+.totaldiscount {font-size:11px;}
+

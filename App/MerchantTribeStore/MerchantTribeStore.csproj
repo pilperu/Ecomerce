@@ -113,12 +113,21 @@
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="HubSpotApiDotNet">
+      <HintPath>..\lib\HubSpotApiDotNet.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MerchantTribe.Web, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler">
+      <HintPath>..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
@@ -167,6 +176,8 @@
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
+    <Content Include="BVAdmin\Configuration\Acumatica.aspx" />
+    <Content Include="BVAdmin\Configuration\Acumatica2.aspx" />
     <Content Include="BVAdmin\Configuration\EventLog.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Images\FileIcons\aac_32.png" />
@@ -252,6 +263,7 @@
     <Content Include="BVAdmin\Images\FileIcons\xmp_32.png" />
     <Content Include="BVAdmin\Images\FileIcons\zip_32.png" />
     <Content Include="BVAdmin\Logout.aspx" />
+    <Content Include="BVAdmin\SetupWizard\EULA-Free.txt" />
     <Content Include="BVAdmin\SetupWizard\EULA.txt" />
     <Content Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx" />
     <Content Include="BVAdmin\SetupWizard\WizardStart.aspx" />
@@ -754,7 +766,10 @@
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
     <Content Include="content\systemtemplates\default-no-menu.html" />
     <Content Include="content\systemtemplates\default.html" />
+    <Content Include="content\systemtemplates\home.html" />
     <Content Include="content\systemtemplates\parts\footer.html" />
+    <Content Include="content\systemtemplates\parts\full-footer.html" />
+    <Content Include="content\systemtemplates\parts\full-header.html" />
     <Content Include="content\systemtemplates\parts\header.html" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -2755,6 +2770,20 @@
     <Compile Include="BVAdmin\ChangePlan.aspx.designer.cs">
       <DependentUpon>ChangePlan.aspx</DependentUpon>
     </Compile>
+    <Compile Include="BVAdmin\Configuration\Acumatica.aspx.cs">
+      <DependentUpon>Acumatica.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Acumatica.aspx.designer.cs">
+      <DependentUpon>Acumatica.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Acumatica2.aspx.cs">
+      <DependentUpon>Acumatica2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Acumatica2.aspx.designer.cs">
+      <DependentUpon>Acumatica2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BVAdmin\Configuration\Affiliates.aspx.cs">
       <DependentUpon>Affiliates.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4259,6 +4288,7 @@
     <Compile Include="BVModules\Shipping\US Postal Service - International\edit.ascx.designer.cs">
       <DependentUpon>edit.ascx</DependentUpon>
     </Compile>
+    <Compile Include="code\AcumaticaIntegration.cs" />
     <Compile Include="code\AdminTabType.cs" />
     <Compile Include="code\app\RegisterStoreData.cs" />
     <Compile Include="code\BaseAdminJsonPage.cs">
@@ -4286,6 +4316,67 @@
     <Compile Include="code\IVariantDisplay.cs" />
     <Compile Include="code\RouteEvaluator.cs" />
     <Compile Include="code\StringUtils.cs" />
+    <Compile Include="code\TemplateEngine\Actions\CallAction.cs" />
+    <Compile Include="code\TemplateEngine\Actions\LiteralText.cs" />
+    <Compile Include="code\TemplateEngine\Actions\PartialView.cs" />
+    <Compile Include="code\TemplateEngine\ITagHandler.cs" />
+    <Compile Include="code\TemplateEngine\ITagProvider.cs" />
+    <Compile Include="code\TemplateEngine\ParsedTag.cs" />
+    <Compile Include="code\TemplateEngine\Processor.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\AdminPanel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Area.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\BreadCrumbs.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\ContentColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Copyright.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Css.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Include.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\JavaScript.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Link.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Logo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\MainMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\MetaTags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PageMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PageTitle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PartialViewHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PromoTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\SearchForm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\TempMessages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\UrlFixer.cs" />
+    <Compile Include="code\TemplateEngine\TagProvider.cs" />
+    <Compile Include="code\TemplateEngine\ITemplateAction.cs" />
+    <Compile Include="code\TemplateEngine\TemplateActionType.cs" />
     <Compile Include="code\ViewUtilities.cs" />
     <Compile Include="code\XDocumentExtensions.cs" />
     <Compile Include="code\XElementExtensions.cs" />
@@ -4321,6 +4412,8 @@
     <Compile Include="Controllers\StyleSheetsController.cs" />
     <Compile Include="Controllers\SuperController.cs" />
     <Compile Include="Controllers\SuperStoresController.cs" />
+    <Compile Include="Controllers\TemplateEngineController.cs" />
+    <Compile Include="Controllers\TemplateTestController.cs" />
     <Compile Include="Controllers\ToDoController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
     <Compile Include="Filters\NonCacheableResponseFilterAttribute.cs" />
@@ -4333,6 +4426,7 @@
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\FaceBookLikeModel.cs" />
+    <Compile Include="Models\FlexPageEditorViewModel.cs" />
     <Compile Include="Models\GooglePlusOneViewModel.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
@@ -4463,7 +4557,6 @@
     <Content Include="Views\ToDo\Index.cshtml" />
     <Content Include="Views\ScheduledTasks\Index.cshtml" />
     <Content Include="Views\FlexPartJson\Index.cshtml" />
-    <Content Include="Views\FlexPage\Index.cshtml" />
     <Content Include="Views\Shared\_SuperLayout.cshtml" />
     <Content Include="Views\SuperStores\Index.cshtml" />
     <Content Include="Views\SuperStores\NewStoreReport.cshtml" />
@@ -4483,7 +4576,6 @@
     <Content Include="Views\Shared\_OrderPaymentSummary.cshtml" />
     <Content Include="Views\Shared\_ViewOrderItems.cshtml" />
     <Content Include="Views\Shared\_AddressEditor.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ContentColumn\Index.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Products\RenderSingleProduct.cshtml" />
@@ -4522,12 +4614,27 @@
     <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
     <Content Include="Views\Shared\_RegisteredScripts.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutWithNav.cshtml" />
+    <Content Include="Views\Shared\_MetaTags.cshtml" />
+    <Content Include="Views\Shared\_PageTitle.cshtml" />
+    <Content Include="Views\Shared\_AnalyticsBottom.cshtml" />
+    <Content Include="Views\Shared\_AnalyticsTop.cshtml" />
+    <Content Include="Views\Shared\_Copyright.cshtml" />
     <Content Include="Views\StoneEdge\Index.cshtml" />
+    <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\Shared\_SearchForm.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Shared\TemplateEngine.cshtml" />
+    <Content Include="Views\FlexPage\EditorPanel.cshtml" />
+    <Content Include="Views\FlexPage\EditorPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\src\BVSoftware.AcumaticaTools\BVSoftware.AcumaticaTools.csproj">
+      <Project>{30FABCFA-C2F6-446F-91F1-E22D94078EA3}</Project>
+      <Name>BVSoftware.AcumaticaTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\src\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
       <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
       <Name>MerchantTribe.Billing</Name>

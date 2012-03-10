@@ -325,7 +325,7 @@ namespace MerchantTribe.Commerce
         {
             get
             {
-                return SessionManager.GetCurrentUserId(this.CurrentStore);
+                return SessionManager.GetCurrentUserId(this.CurrentStore, CurrentRequestContext.RoutingContext.HttpContext.Request.Cookies);
             }
         }
         public Membership.CustomerAccount CurrentCustomer
@@ -565,7 +565,7 @@ namespace MerchantTribe.Commerce
             OrdersShipItems(p, o);
             BusinessRules.OrderTaskContext c = new BusinessRules.OrderTaskContext(this);
             c.Order = o;
-            c.UserId = SessionManager.GetCurrentUserId(this.CurrentStore);
+            c.UserId = this.CurrentCustomerId;
             if (!BusinessRules.Workflow.RunByName(c, BusinessRules.WorkflowNames.PackageShipped))
             {
                 EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", EventLogSeverity.Debug);
