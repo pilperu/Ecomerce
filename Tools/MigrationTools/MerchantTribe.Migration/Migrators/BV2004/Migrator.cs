@@ -1313,16 +1313,22 @@ namespace MerchantTribe.Migration.Migrators.BV2004
                 switch (item.Rating)
                 {
                     case 0:
+                        r.Rating = ProductReviewRatingDTO.ZeroStars;
                         break;
                     case 1:
+                        r.Rating = ProductReviewRatingDTO.OneStar;
                         break;
                     case 2:
+                        r.Rating = ProductReviewRatingDTO.TwoStars;
                         break;
                     case 3:
+                        r.Rating = ProductReviewRatingDTO.ThreeStars;
                         break;
                     case 4:
+                        r.Rating = ProductReviewRatingDTO.FourStars;
                         break;
                     case 5:
+                        r.Rating = ProductReviewRatingDTO.FiveStars;
                         break;
                 }
                 r.ReviewDateUtc = item.ReviewDate;
