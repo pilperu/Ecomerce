@@ -8,6 +8,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -17,8 +18,13 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/ProductGrid/
         public ActionResult Index(ContentBlock block)
         {
-            List<SingleProductViewModel> model = LoadProductGrid(block);
-            return View(model);
+            var profiler = MvcMiniProfiler.MiniProfiler.Current;
+            using (profiler.Step("Block:ProductGrid"))
+            {
+
+                List<SingleProductViewModel> model = LoadProductGrid(block);
+                return View(model);
+            }
         }
 
         private List<SingleProductViewModel> LoadProductGrid(ContentBlock b)

@@ -38,7 +38,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             string currentpassword = posted["currentpasswordfield"];
             string newpassword = posted["newpasswordfield"];
 
-            CustomerAccount current = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId(MTApp.CurrentStore));
+            CustomerAccount current = MTApp.MembershipServices.Customers.Find(MTApp.CurrentCustomerId);
             if (current == null) return View();
 
             if (!MTApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))
@@ -114,7 +114,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             string newemail = posted["newemailfield"];
             ViewBag.NewEmail = newemail;
 
-            CustomerAccount current = MTApp.MembershipServices.Customers.Find(SessionManager.GetCurrentUserId(MTApp.CurrentStore));
+            CustomerAccount current = MTApp.MembershipServices.Customers.Find(MTApp.CurrentCustomerId);
             if (current == null) return View();
 
             if (!MTApp.MembershipServices.DoPasswordsMatchForCustomer(currentpassword.Trim(), current))

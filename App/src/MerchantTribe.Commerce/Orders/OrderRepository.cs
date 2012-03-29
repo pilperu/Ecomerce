@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
 using MerchantTribe.Web.Logging;
+using MvcMiniProfiler;
 
 namespace MerchantTribe.Commerce.Orders
 {
@@ -59,7 +60,7 @@ namespace MerchantTribe.Commerce.Orders
             repository = r;            
             this.logger = log;
             repository.Logger = this.logger;
-            itemRepository = new LineItemRepository(itemr, this.logger);
+            itemRepository = new LineItemRepository(itemr, this.logger, c);
             notesRepository = new OrderNoteRepository(noter, this.logger);
             couponRepository = new OrderCouponRepository(couponr, this.logger);
             packageRepository = new OrderPackageRepository(packager, this.logger);
@@ -479,6 +480,11 @@ namespace MerchantTribe.Commerce.Orders
         {
             List<LineItem> items = this.itemRepository.FindForOrders(snaps.Select(y => y.bvin).ToList());
             return items;
+        }
+
+        public Dictionary<string, int> FindPopularItems(DateTime startDateUtc, DateTime endDateUtc, int maxItems)
+        {
+            return this.itemRepository.FindPopularItems(startDateUtc, endDateUtc, maxItems);
         }
 
     }

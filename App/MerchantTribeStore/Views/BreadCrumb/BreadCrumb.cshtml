@@ -20,7 +20,7 @@
                 <a href="@item.Link" title="@item.Title">@item.Name</a>    
             }
             
-            if (Model.Items.Count != 0)
+            if (Model.Items.Count > 0 && Model.Items.Peek() != null)
             {
                 @Html.Raw(Model.Spacer);
             }

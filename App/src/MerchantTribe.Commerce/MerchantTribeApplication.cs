@@ -325,7 +325,7 @@ namespace MerchantTribe.Commerce
         {
             get
             {
-                return SessionManager.GetCurrentUserId(this.CurrentStore);
+                return SessionManager.GetCurrentUserId(this.CurrentStore, CurrentRequestContext.RoutingContext.HttpContext.Request.Cookies);
             }
         }
         public Membership.CustomerAccount CurrentCustomer
@@ -565,7 +565,7 @@ namespace MerchantTribe.Commerce
             OrdersShipItems(p, o);
             BusinessRules.OrderTaskContext c = new BusinessRules.OrderTaskContext(this);
             c.Order = o;
-            c.UserId = SessionManager.GetCurrentUserId(this.CurrentStore);
+            c.UserId = this.CurrentCustomerId;
             if (!BusinessRules.Workflow.RunByName(c, BusinessRules.WorkflowNames.PackageShipped))
             {
                 EventLog.LogEvent("PackageShippedWorkflow", "Package Shipped Workflow Failed", EventLogSeverity.Debug);
@@ -968,41 +968,60 @@ namespace MerchantTribe.Commerce
         }
 
         //Reporting
-        public List<Product> ReportingTopSellersByDate(DateTime startDateUtc, DateTime endDateUtc, int maxResults)
+        public List<Product> ReportingTop10Sellers()
         {
             List<Product> results = new List<Product>();
+            
+            DateTime startDateUtc = DateTime.UtcNow.AddMonths(-2);
+            DateTime endDateUtc = DateTime.UtcNow;
 
-            // Find orders in the time period
-            List<Orders.OrderSnapshot> orders = OrderServices.Orders.FindByCriteria(new OrderSearchCriteria()
-            {
-                EndDateUtc = endDateUtc,
-                StartDateUtc = startDateUtc,
-                IsPlaced = true
-            });
-
-            // Find items for those orders
-            List<Orders.LineItem> items = OrderServices.Orders.FindLineItemsForOrders(orders);
-
-            // Group quantities on items
-            Dictionary<string, int> totals = new Dictionary<string, int>();
-            foreach (LineItem li in items)
-            {
-                if (totals.ContainsKey(li.ProductId))
-                {
-                    totals[li.ProductId] += li.Quantity;
-                }
-                else
-                {
-                    totals[li.ProductId] = li.Quantity;
-                }
-            }
-            // Select just the top bvins
-            var productIds = totals.OrderByDescending(y => y.Value).Take(maxResults);
-            var allKeys = productIds.Select(y => y.Key).ToList();
-            // Get the products matching
+            var idList = OrderServices.Orders.FindPopularItems(startDateUtc, endDateUtc, 10);                       
+            var allKeys = idList.Select(y => y.Key).ToList();            
             results = CatalogServices.Products.FindMany(allKeys);
 
             return results;
+        }
+        public List<Product> ReportingTopSellersByDate(DateTime startDateUtc, DateTime endDateUtc, int maxResults)
+        {
+            List<Product> results = new List<Product>();
+            
+            var idList = OrderServices.Orders.FindPopularItems(startDateUtc, endDateUtc, maxResults);
+            var allKeys = idList.Select(y => y.Key).ToList();
+            results = CatalogServices.Products.FindMany(allKeys);
+
+            return results;
+
+            //// Find orders in the time period
+            //List<Orders.OrderSnapshot> orders = OrderServices.Orders.FindByCriteria(new OrderSearchCriteria()
+            //{
+            //    EndDateUtc = endDateUtc,
+            //    StartDateUtc = startDateUtc,
+            //    IsPlaced = true
+            //});
+
+            //// Find items for those orders
+            //List<Orders.LineItem> items = OrderServices.Orders.FindLineItemsForOrders(orders);
+
+            //// Group quantities on items
+            //Dictionary<string, int> totals = new Dictionary<string, int>();
+            //foreach (LineItem li in items)
+            //{
+            //    if (totals.ContainsKey(li.ProductId))
+            //    {
+            //        totals[li.ProductId] += li.Quantity;
+            //    }
+            //    else
+            //    {
+            //        totals[li.ProductId] = li.Quantity;
+            //    }
+            //}
+            //// Select just the top bvins
+            //var productIds = totals.OrderByDescending(y => y.Value).Take(maxResults);
+            //var allKeys = productIds.Select(y => y.Key).ToList();
+            //// Get the products matching
+            //results = CatalogServices.Products.FindMany(allKeys);
+
+            //return results;
         }
         public List<ProductRelationship> GetAutoSuggestedRelatedItems(string bvin, int maxItemsToReturn)
         {

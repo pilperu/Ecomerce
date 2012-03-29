@@ -1,31 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title><sys:pagetitle /></title>
-    <sys:metatags />
-    <sys:css mode="system" file="content/system.css"/>
-    <sys:css mode="system" file="content/flexbase.css"/>
-    <sys:css file="styles.css"/>
-    <sys:javascript mode="system" />    
-    <sys:analyticstop />                
-</head>
-<body id="pagebody">    
-    <sys:adminpanel />    
-    <div id="site-wrapper">
-        <div id="header">
-            <sys:include part="header.html" />            
-        </div>
-        <div id="main-content">
-            <sys:tempmessages />
-            <sys:area name="main">
-                <h1>Your Page Title</h1>
-                <p>Your page content goes here</p>
-            </sys:area>              
-        </div>
-        <div id="footer">
-            <sys:include part="footer.html" />
-        </div>
-    </div>    
-    <sys:analyticsbottom />    
-</body>
-</html>
+﻿<sys:include part="full-header.html" />            
+        
+<div id="main-content">
+    <sys:tempmessages />
+    <sys:breadcrumbs />
+    <sys:area name="main">
+        <h1>Your Page Title</h1>
+        <p>Your page content goes here</p>
+    </sys:area>              
+</div>
+
+<sys:include part="full-footer.html" />   

@@ -53,7 +53,7 @@ namespace MerchantTribe.Commerce
 
         public static bool IsUserAuthenticated(MerchantTribeApplication app)
         {
-                string uid = GetCurrentUserId(app.CurrentStore);
+                string uid = app.CurrentCustomerId;
                 if (uid.Trim() == string.Empty) return false;
                 MerchantTribe.Commerce.Membership.CustomerAccount customer = app.MembershipServices.Customers.Find(uid);
                 if (customer == null) return false;
@@ -443,8 +443,6 @@ namespace MerchantTribe.Commerce
         }
         public static string GetCookieString(string cookieName, Store currentStore)
         {
-            string result = string.Empty;
-
             try
             {
                 if (HttpContext.Current != null)
@@ -453,28 +451,45 @@ namespace MerchantTribe.Commerce
                     {
                         if (HttpContext.Current.Request.Browser.Cookies == true)
                         {
-                            if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
-                            {
-                                string domain = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
-                                cookieName = cookieName + domain;
-                            }
-
-                            if (currentStore.Settings.CookiePath != string.Empty)
-                            {
-                                string path = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
-                                cookieName = cookieName + path;
-                            }
-
-                            HttpCookie checkCookie;
-                            checkCookie = HttpContext.Current.Request.Cookies[cookieName];
-                            if (checkCookie != null)
-                            {
-                                result = checkCookie.Value;
-                            }
-                            checkCookie = null;
+                            var cookies = HttpContext.Current.Request.Cookies;
+                            return GetCookieString(cookieName, currentStore, cookies);
                         }
                     }
                 }
+            }
+            catch
+            {
+                return string.Empty;
+            }
+            return string.Empty;
+        }
+        public static string GetCookieString(string cookieName, Store currentStore, HttpCookieCollection cookies)
+        {
+            string result = string.Empty;
+
+            if (cookies == null) return string.Empty;
+
+            try
+            {                
+                if (currentStore.Settings.CookieDomain.Trim() != string.Empty)
+                {
+                    string domain = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookieDomain, "[^A-Za-z0-9]", "");
+                    cookieName = cookieName + domain;
+                }
+
+                if (currentStore.Settings.CookiePath != string.Empty)
+                {
+                    string path = System.Text.RegularExpressions.Regex.Replace(currentStore.Settings.CookiePath, "[^A-Za-z0-9]", "");
+                    cookieName = cookieName + path;
+                }
+
+                HttpCookie checkCookie;
+                checkCookie = cookies[cookieName];
+                if (checkCookie != null)
+                {
+                    result = checkCookie.Value;
+                }
+                checkCookie = null;                
             }
             catch
             {
@@ -669,10 +684,10 @@ namespace MerchantTribe.Commerce
         }
 
 
-        public static string GetCurrentUserId(Store currentStore)
+        public static string GetCurrentUserId(Store currentStore, HttpCookieCollection cookies)
         {
             string result = string.Empty;
-            result = GetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(currentStore.Id), currentStore);
+            result = GetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(currentStore.Id), currentStore, cookies);
             return result;
         }
 

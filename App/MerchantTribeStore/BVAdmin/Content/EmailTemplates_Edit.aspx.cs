@@ -1,16 +1,12 @@
 using System;
-using System.Text;
-using System.Web;
-using System.Web.UI.WebControls;
-using MerchantTribe.Commerce.Membership;
-using MerchantTribe.Commerce.Content;
-using MerchantTribe.Commerce;
-using MerchantTribe.Commerce.Content.Templates;
-using MerchantTribe.Commerce.Orders;
-using MerchantTribe.Commerce.Catalog;
-using MerchantTribe.Commerce.Shipping;
-using MerchantTribe.Commerce.Contacts;
 using System.Collections.Generic;
+using System.Text;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Contacts;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Orders;
 
 namespace MerchantTribeStore
 {

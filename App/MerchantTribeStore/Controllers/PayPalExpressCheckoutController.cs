@@ -237,7 +237,7 @@ namespace MerchantTribeStore.Controllers
                 // Save as Order
                 MerchantTribe.Commerce.BusinessRules.OrderTaskContext c
                     = new MerchantTribe.Commerce.BusinessRules.OrderTaskContext(MTApp);
-                c.UserId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+                c.UserId = MTApp.CurrentCustomerId;
                 c.Order = model.CurrentOrder;
 
                 if (MerchantTribe.Commerce.BusinessRules.Workflow.RunByName(c, MerchantTribe.Commerce.BusinessRules.WorkflowNames.ProcessNewOrder))

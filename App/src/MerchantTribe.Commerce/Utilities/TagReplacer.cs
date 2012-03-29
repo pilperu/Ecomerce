@@ -11,7 +11,7 @@ namespace MerchantTribe.Commerce.Utilities
         public static string ReplaceContentTags(string source, MerchantTribeApplication app, string itemCount, bool isSecureRequest)            
         {
             Accounts.Store currentStore = app.CurrentStore;
-            string currentUserId = SessionManager.GetCurrentUserId(app.CurrentStore);
+            string currentUserId = app.CurrentCustomerId;
 
             string output = source;
             

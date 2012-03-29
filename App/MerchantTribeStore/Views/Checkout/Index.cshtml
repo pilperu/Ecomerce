@@ -1,8 +1,5 @@
 ﻿@model MerchantTribeStore.Models.CheckoutViewModel
 @using MerchantTribeStore.Models;           
-@section HeadContent{
-    <script type="text/javascript" src="@Url.Content("~/js/checkout.js")" ></script>
-}
 <div class="checkout">
     @Html.Raw((string)TempData["messages"])
     <h1>

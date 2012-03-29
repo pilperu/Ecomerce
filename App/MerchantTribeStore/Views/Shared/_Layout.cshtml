@@ -1,53 +1,18 @@
 ﻿@using MerchantTribeStore
-<!DOCTYPE html>
-<html>
-<head>
-    <title>@ViewBag.Title</title>
-    <meta name="keywords" content="@Html.Raw(ViewBag.MetaKeywords)" />
-    <meta name="description" content="@Html.Raw(ViewBag.MetaDescription)" />
-    <link href="@Url.Content("~/content/system.css")" rel="Stylesheet" type="text/css" />    
-    <link href="@Url.Content("~/content/flexbase.css")" rel="Stylesheet" type="text/css" />    
-    <link href="@Html.Raw((string)ViewData["css"])" rel="stylesheet" type="text/css" />    
-    @Html.Raw((string)ViewData["jqueryinclude"])   
-    @RenderSection("HeadContent", false)    
-    @Html.Raw((string)ViewData["analyticstop"])        
-    <script type="text/javascript" src="@Url.Content("~/scripts/ImageRotator.js")"></script>
-    @Html.Raw((string)ViewData["AdditionalMetaTags"])
-</head>
-<body @if (!String.IsNullOrEmpty(ViewBag.BodyClass)) { <text>class="@ViewBag.BodyClass"</text> } >
-    @if (IsSectionDefined("AdminPanel"))
-    {
-        @RenderSection("AdminPanel", false)
-    }
-    else
-    {
-        @Html.Partial("_AdminPanel")
-    }
-    @RenderSection("OutsideWrapperContent", false)
-    <div id="site-wrapper">
-        <div id="header">
-            @Html.Raw((string)ViewData["siteheader"])
-        </div>
-        <div id="main-content">
-            @RenderBody()
-        </div>
-        <div id="footer">
-            @Html.Raw((string)ViewData["sitefooter"])
-        </div>
-    </div>
-        @if (!(bool)ViewBag.HideAnalytics)
-        {
-        <script src="https://analytics.merchanttribe.com/scripts/merchanttribe.js" type="text/javascript"></script>
-        <script type="text/javascript">
-            MerchantTribeAnalytics.StoreId = '@ViewBag.StoreUniqueId';
-            MerchantTribeAnalytics.CustomerId = '@ViewBag.CustomerId';
-            MerchantTribeAnalytics.CustomerIp = '@ViewBag.CustomerIp';
-        </script>
-        }
-    
-    @RenderSection("PreBodyCloseContent", false)    
-    @Html.Raw((string)ViewData["analyticsbottom"])    
-    @Html.Partial("~/Views/Shared/_RegisteredScripts.cshtml")
-    
-</body>
-</html>
+@Html.Action("FullHeader", "TemplateEngine", new 
+{ Area="",
+  AnalyticsTop=ViewData["PassedAnalyticsTop"], 
+  AnalyticsBottom=ViewData["PassedAnalyticsBottom"], 
+  AdditionalMetaTags=ViewData["PassedAdditionalMetaTags"]
+})
+    <div id="main-content">
+        @RenderBody()
+    </div>            
+
+@Html.Action("FullFooter", "TemplateEngine", new
+{
+    Area = "",
+    AnalyticsTop = ViewData["PassedAnalyticsTop"],
+    AnalyticsBottom = ViewData["PassedAnalyticsBottom"],
+    AdditionalMetaTags = ViewData["PassedAdditionalMetaTags"]
+})        

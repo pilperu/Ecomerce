@@ -30,10 +30,10 @@ a, a:visited {color:#4982AB;}
 a:hover {color:#c00;}
 
 /* Wraps the entire site */
-#site-wrapper {padding:0px 0 0 0;background: url('{{assets}}TravelBg.jpg');}
+#site-wrapper {padding:0px 0 0 0;background: url('assets/TravelBg.jpg');}
 
 /* Header */
-#header {background: url('{{assets}}HeaderBg.png') #ddd;}
+#header {background: url('assets/HeaderBg.png') #ddd;}
 #header #logo-area {height:70px;width:310px;float:left;}
 #header #logo-area h6 {display:none;font-size:40px;font-weight:bold;color:#333;
 margin:28px 0 0 10px;line-height:1em;}
@@ -62,7 +62,7 @@ margin:28px 0 0 10px;line-height:1em;}
 
 #search-form {clear:right;width:345px;margin:0;padding:0px 10px 0 0;height:35px;float:right; text-align:right;}
 #headersearchbox {display:block;border:solid 1px #333;margin:5px 0 0 100px;padding:0 5px;height:22px;width:150px;float:left;}
-#headersearchlink {display:block;width:75px;height:24px;margin:4px 0 0 5px;float:left;background: url('{{assets}}btnSearch.png') no-repeat;}
+#headersearchlink {display:block;width:75px;height:24px;margin:4px 0 0 5px;float:left;background: url('assets/btnSearch.png') no-repeat;}
 #headersearchlink span {display:none;}
 
 
@@ -86,9 +86,9 @@ border-top:solid 0px #494949;}
 .footerblock p {padding:0 0 0 5px;}
 .footerblock h3 {display:block;width:300px;height:19px;}
 .footerblock h3 span {display:none;}
-.footerblock h3.aboutus {background: url('{{assets}}h3_aboutus.png') no-repeat;}
-.footerblock h3.ourguarantee {background: url('{{assets}}h3_ourguarantee.png') no-repeat;}
-.footerblock h3.contactus {background: url('{{assets}}h3_contactus.png') no-repeat;}
+.footerblock h3.aboutus {background: url('assets/h3_aboutus.png') no-repeat;}
+.footerblock h3.ourguarantee {background: url('assets/h3_ourguarantee.png') no-repeat;}
+.footerblock h3.contactus {background: url('assets/h3_contactus.png') no-repeat;}
 
 
 /* Holds all left navigation items */
@@ -473,6 +473,23 @@ ul.filterselections {margin:1em;}
 
 ul.filterselected li, ul.filterselections li {margin:0.25em 1em;list-style:none;}
 
-{{commonupdates}}
-
 #carttotals .formfield2 { font-size:110%; font-weight: bold; color: #000; }
+
+
+#carttotals .formlabel2 {font-size:11px;color:#666;}
+#carttotals .formfield2 {font-size:110%;font-weight:bold;color:#000;}
+#cartcoupons {display:block;}
+
+
+.totalsub,
+.totaltax,
+.totalshipping,
+.totalgrand,
+.totaldiscount {text-align:right;vertical-align:top;}
+
+.totaltable {width:400px;}
+
+.totallabel {text-align:left;vertical-align:top;}
+
+.totaldiscountdetail {font-size:11px;color:#666; text-align:left;}
+.totaldiscount {font-size:11px;}

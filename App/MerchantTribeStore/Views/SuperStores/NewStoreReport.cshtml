@@ -23,7 +23,7 @@
     }
     else
     {
-        @if (s.DateCancelled.HasValue)
+        if (s.DateCancelled.HasValue)
         {
             <td class=\"formlabel\">Cancelled<br />
             @s.DateCancelled.Value.ToLocalTime().ToShortDateString()
@@ -40,7 +40,7 @@
     <td class="formlabel">
     @foreach (UserAccount u in s.Users)
     {
-        @MerchantTribe.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", "")
+        @Html.Raw(MerchantTribe.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", ""))
         <br />
     }
     </td>

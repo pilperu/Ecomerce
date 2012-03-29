@@ -120,6 +120,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
+    <Reference Include="MvcMiniProfiler">
+      <HintPath>..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcMiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
     </Reference>
@@ -754,7 +760,10 @@
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
     <Content Include="content\systemtemplates\default-no-menu.html" />
     <Content Include="content\systemtemplates\default.html" />
+    <Content Include="content\systemtemplates\home.html" />
     <Content Include="content\systemtemplates\parts\footer.html" />
+    <Content Include="content\systemtemplates\parts\full-footer.html" />
+    <Content Include="content\systemtemplates\parts\full-header.html" />
     <Content Include="content\systemtemplates\parts\header.html" />
     <Content Include="content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -4286,6 +4295,67 @@
     <Compile Include="code\IVariantDisplay.cs" />
     <Compile Include="code\RouteEvaluator.cs" />
     <Compile Include="code\StringUtils.cs" />
+    <Compile Include="code\TemplateEngine\Actions\CallAction.cs" />
+    <Compile Include="code\TemplateEngine\Actions\LiteralText.cs" />
+    <Compile Include="code\TemplateEngine\Actions\PartialView.cs" />
+    <Compile Include="code\TemplateEngine\ITagHandler.cs" />
+    <Compile Include="code\TemplateEngine\ITagProvider.cs" />
+    <Compile Include="code\TemplateEngine\ParsedTag.cs" />
+    <Compile Include="code\TemplateEngine\Processor.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\AdminPanel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Area.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\BreadCrumbs.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\ContentColumn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Copyright.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Css.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Include.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\JavaScript.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Link.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Logo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\MainMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\MetaTags.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PageMenu.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PageTitle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PartialViewHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\PromoTag.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\SearchForm.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\TempMessages.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\UrlFixer.cs" />
+    <Compile Include="code\TemplateEngine\TagProvider.cs" />
+    <Compile Include="code\TemplateEngine\ITemplateAction.cs" />
+    <Compile Include="code\TemplateEngine\TemplateActionType.cs" />
     <Compile Include="code\ViewUtilities.cs" />
     <Compile Include="code\XDocumentExtensions.cs" />
     <Compile Include="code\XElementExtensions.cs" />
@@ -4321,6 +4391,8 @@
     <Compile Include="Controllers\StyleSheetsController.cs" />
     <Compile Include="Controllers\SuperController.cs" />
     <Compile Include="Controllers\SuperStoresController.cs" />
+    <Compile Include="Controllers\TemplateEngineController.cs" />
+    <Compile Include="Controllers\TemplateTestController.cs" />
     <Compile Include="Controllers\ToDoController.cs" />
     <Compile Include="Controllers\XmlResult.cs" />
     <Compile Include="Filters\NonCacheableResponseFilterAttribute.cs" />
@@ -4333,6 +4405,7 @@
     <Compile Include="Models\CheckoutViewModel.cs" />
     <Compile Include="Models\ContentColumnIdentifier.cs" />
     <Compile Include="Models\FaceBookLikeModel.cs" />
+    <Compile Include="Models\FlexPageEditorViewModel.cs" />
     <Compile Include="Models\GooglePlusOneViewModel.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
@@ -4355,6 +4428,7 @@
     <Compile Include="Models\AddressViewModel.cs" />
     <Compile Include="Models\EstimateShippingViewModel.cs" />
     <Compile Include="Models\StoneEdgeIntegrationModel.cs" />
+    <Compile Include="Models\StoreListViewModel.cs" />
     <Compile Include="Models\SuperStoreViewModel.cs" />
     <Compile Include="Models\TwitterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -4463,7 +4537,6 @@
     <Content Include="Views\ToDo\Index.cshtml" />
     <Content Include="Views\ScheduledTasks\Index.cshtml" />
     <Content Include="Views\FlexPartJson\Index.cshtml" />
-    <Content Include="Views\FlexPage\Index.cshtml" />
     <Content Include="Views\Shared\_SuperLayout.cshtml" />
     <Content Include="Views\SuperStores\Index.cshtml" />
     <Content Include="Views\SuperStores\NewStoreReport.cshtml" />
@@ -4483,7 +4556,6 @@
     <Content Include="Views\Shared\_OrderPaymentSummary.cshtml" />
     <Content Include="Views\Shared\_ViewOrderItems.cshtml" />
     <Content Include="Views\Shared\_AddressEditor.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ContentColumn\Index.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Products\RenderSingleProduct.cshtml" />
@@ -4522,7 +4594,19 @@
     <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
     <Content Include="Views\Shared\_RegisteredScripts.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutWithNav.cshtml" />
+    <Content Include="Views\Shared\_MetaTags.cshtml" />
+    <Content Include="Views\Shared\_PageTitle.cshtml" />
+    <Content Include="Views\Shared\_AnalyticsBottom.cshtml" />
+    <Content Include="Views\Shared\_AnalyticsTop.cshtml" />
+    <Content Include="Views\Shared\_Copyright.cshtml" />
     <Content Include="Views\StoneEdge\Index.cshtml" />
+    <Content Include="Views\Shared\_Logo.cshtml" />
+    <Content Include="Views\Shared\_SearchForm.cshtml" />
+    <Content Include="Views\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\Shared\TemplateEngine.cshtml" />
+    <Content Include="Views\FlexPage\EditorPanel.cshtml" />
+    <Content Include="Views\FlexPage\EditorPopup.cshtml" />
+    <Content Include="Views\SuperStores\Destroy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

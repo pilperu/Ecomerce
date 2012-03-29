@@ -1,0 +1,15 @@
+﻿@{ MerchantTribeStore.Models.FlexPageEditorViewModel editorModel = null;
+   if (ViewData["FlexEditorModel"] != null)
+   {
+       editorModel = (MerchantTribeStore.Models.FlexPageEditorViewModel)ViewData["FlexEditorModel"];
+   }
+}
+@if (editorModel != null && editorModel.IsEditMode == true)
+{
+    <div class="editormodal">
+        <div class="editorpopover">
+            <a id="editorclose" href="#">Close</a>
+            <form id="editorform" action="" method="post"></form><br />
+        </div>
+    </div>
+}

@@ -9,7 +9,7 @@
         <ControlName>Banner Ad</ControlName>
         <SortOrder>1</SortOrder>
         <ColumnId>1</ColumnId>
-        <SerializedSettings>{"imageurl":"{{assets}}HomeBanner.jpg","alttext":"Find Incredible Deals Today","cssclass":"","cssid":"homehero","linkurl":"#"}</SerializedSettings>
+        <SerializedSettings>{"imageurl":"{{assets}}/HomeBanner.jpg","alttext":"Find Incredible Deals Today","cssclass":"","cssid":"homehero","linkurl":"#"}</SerializedSettings>
         <Lists>{"Items":[]}</Lists>
       </ContentBlock>
     </Blocks>
@@ -24,7 +24,7 @@
         <ControlName>Banner Ad</ControlName>
         <SortOrder>1</SortOrder>
         <ColumnId>2</ColumnId>
-        <SerializedSettings>{"imageurl":"{{assets}}homead1.png","alttext":"Homepage Ad One","cssclass":"homebanner","cssid":"homead1","linkurl":"#"}</SerializedSettings>
+        <SerializedSettings>{"imageurl":"{{assets}}/homead1.png","alttext":"Homepage Ad One","cssclass":"homebanner","cssid":"homead1","linkurl":"#"}</SerializedSettings>
         <Lists>{"Items":[]}</Lists>
       </ContentBlock>
       <ContentBlock>

@@ -35,7 +35,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             List<OrderSnapshot> orders = new List<OrderSnapshot>();
 
             // pull all BV Orders
-            orders = MTApp.OrderServices.Orders.FindByUserId(SessionManager.GetCurrentUserId(MTApp.CurrentStore), 1, 100, ref totalCount);
+            orders = MTApp.OrderServices.Orders.FindByUserId(MTApp.CurrentCustomerId, 1, 100, ref totalCount);
 
             if (orders == null) return new List<OrderSnapshot>();
 
@@ -89,7 +89,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         {
             string orderBvin = Request.QueryString["oid"] ?? string.Empty;
             string fileId = id;
-            string userId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            string userId = MTApp.CurrentCustomerId;
 
             var o = MTApp.OrderServices.Orders.FindForCurrentStore(orderBvin);            
             var file = MTApp.CatalogServices.ProductFiles.Find(fileId);

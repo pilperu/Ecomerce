@@ -1,8 +1,5 @@
 ﻿@model MerchantTribeStore.Models.CheckoutViewModel
 @using MerchantTribeStore.Models;           
-@section HeadContent{
-    <script type="text/javascript" src="@Url.Content("~/js/checkoutpaymenterror.js")" ></script>
-}
 <div class="checkout">
     @Html.Raw((string)TempData["messages"])    
     <div class="flash-message-warning">The payment information you provided was not able to be processed. Please update your payment information and try again.</div>

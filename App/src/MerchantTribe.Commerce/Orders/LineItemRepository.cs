@@ -4,17 +4,19 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
 using MerchantTribe.Web.Logging;
+using MvcMiniProfiler;
 
 namespace MerchantTribe.Commerce.Orders
 {
     public class LineItemRepository: ConvertingRepositoryBase<Data.EF.bvc_LineItem, LineItem>
     {
+        RequestContext currentContext = null;
 
         public static LineItemRepository InstantiateForMemory(RequestContext c)
         {
             LineItemRepository result = null;
             ILogger logger = new MerchantTribe.Commerce.EventLog();
-            result = new LineItemRepository(new MemoryStrategy<Data.EF.bvc_LineItem>(PrimaryKeyType.Long), logger);
+            result = new LineItemRepository(new MemoryStrategy<Data.EF.bvc_LineItem>(PrimaryKeyType.Long), logger, c);            
             return result;
         }
         public static LineItemRepository InstantiateForDatabase(RequestContext c)
@@ -22,14 +24,15 @@ namespace MerchantTribe.Commerce.Orders
             LineItemRepository result = null;
             ILogger logger = new MerchantTribe.Commerce.EventLog();
             result = new LineItemRepository(new EntityFrameworkRepository<Data.EF.bvc_LineItem>(
-                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger);
+                    new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)), logger, c);
             return result;
         }
-        public LineItemRepository(IRepositoryStrategy<Data.EF.bvc_LineItem> strategy, ILogger log)
+        public LineItemRepository(IRepositoryStrategy<Data.EF.bvc_LineItem> strategy, ILogger log, RequestContext context)
         {
             repository = strategy;
             this.logger = log;
             repository.Logger = this.logger;
+            this.currentContext = context;
         }
 
         protected override void CopyModelToData(Data.EF.bvc_LineItem data, LineItem model)
@@ -168,6 +171,39 @@ namespace MerchantTribe.Commerce.Orders
                     Delete(ex.Id);
                 }
             }
+        }
+
+        public Dictionary<string, int> FindPopularItems(DateTime startDateUtc, DateTime endDateUtc, int maxItems)
+        {
+            Dictionary<string, int> result = new Dictionary<string, int>();
+            var storeId = currentContext.CurrentStore.Id;
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("LineItemRepository:FindPopularItems"))
+            {                
+                using (profiler.Step("First Popular Item Query"))
+                {
+                    var query = (from lineitems in this.repository.Find()
+                                 where lineitems.StoreId == storeId &&
+                                 lineitems.bvc_Order.TimeOfOrder >= startDateUtc &&
+                                 lineitems.bvc_Order.TimeOfOrder <= endDateUtc
+                                 group lineitems by lineitems.ProductId into groupedItems
+                                 orderby groupedItems.Sum(y => y.Quantity) descending
+                                 select new { ProductId = groupedItems.Key, Quantity = groupedItems.Sum(y => y.Quantity) }
+                                 );
+
+                    using (profiler.Step("Second Popular Item Query"))
+                    {
+                        var query2 = query.Take(maxItems).ToList();
+                        foreach (var popular in query2)
+                        {
+                            result.Add(popular.ProductId, popular.Quantity);
+                        }
+                    }
+
+                }
+                
+            }
+            return result;                                            
         }
 
     }

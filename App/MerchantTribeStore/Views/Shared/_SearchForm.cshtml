@@ -1,0 +1,4 @@
+﻿@model MerchantTribeStore.code.TemplateEngine.TagHandlers.SearchFormViewModel
+<form class="searchform" action="@Html.Raw(Model.SearchFormUrl)" method="get">
+    <input type="text" name="q" class="searchinput" /> <input class="searchgo" type="image" src="@Html.Raw(Model.ButtonImageUrl)" alt="Search" />
+</form>

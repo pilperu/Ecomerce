@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Edit Order" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="EditOrder.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Orders.EditOrder" %>
+﻿<%@ Page ValidateRequest="false" Title="Edit Order" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="true" CodeBehind="EditOrder.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Orders.EditOrder" %>
 
 <%@ Register Src="../Controls/AddressEditor.ascx" TagName="AddressEditor" TagPrefix="uc1" %>
 <%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc2" %>

@@ -357,8 +357,17 @@ namespace MerchantTribeStore
                     HtmlTemplate t = MTApp.ContentServices.HtmlTemplates.Find(templateId);
 
                     if (t == null) return;
-                                       
-                        string toEmail = o.UserEmail;
+
+                    string toEmail = o.UserEmail;
+
+                    if (t.TemplateType == HtmlTemplateType.NewOrderForAdmin ||
+                        t.TemplateType == HtmlTemplateType.DropShippingNotice ||
+                        t.TemplateType == HtmlTemplateType.ContactFormToAdmin)
+                    {
+                        toEmail = MTApp.CurrentStore.Settings.MailServer.EmailForNewOrder;
+                    }
+
+                        
                         if (toEmail.Trim().Length > 0)
                         {
                             System.Net.Mail.MailMessage m = new System.Net.Mail.MailMessage();

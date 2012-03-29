@@ -1,7 +1,60 @@
-﻿@{
+﻿@model MerchantTribeStore.Models.StoreListViewModel
+@using System.Collections.Generic;
+@using MerchantTribe.Commerce.Accounts;
+
+@{
     ViewBag.Title = "Stores";
     Layout = "~/Views/Shared/_SuperLayout.cshtml";
 }
-
 <h1>Current Stores</h1>
-<p>Current Store Search Form Here</p>
+@Html.Partial("~/views/shared/_Pager.cshtml", Model.PagerData)
+
+<table class="formtable" width="100%">
+    <tr>
+        <th>Status</th>
+        <th>Store Name</th>
+        <th>Created</th>
+        <th>Email</th>
+    </tr>
+@foreach (var s in Model.Stores)
+{
+    <tr>
+        @if (s.Status == StoreStatus.Active)
+    {
+        <td class="formlabel">Active</td>
+    }
+    else
+    {
+        if (s.DateCancelled.HasValue)
+        {
+            <td class="formlabel">Cancelled<br />
+            @s.DateCancelled.Value.ToLocalTime().ToShortDateString()<br />
+            <form action="@Url.Content("~/super/stores/destroy")" method="post" target="_blank">
+            <input type="hidden" value="@s.Id" name="id" />
+            <input type="submit" value="X" />
+            </form>
+            </td>
+        }
+        else
+        {
+            <td class="formlabel">Deactivated<br />
+            <form action="@Url.Content("~/super/stores/destroy")" method="post" target="_blank">
+            <input type="hidden" value="@s.Id" name="id" />
+            <input type="submit" value="X" />
+            </form></td>
+        }
+    }    
+    <td class="formlabel"><a href="@s.RootUrl()" target="_blank">@s.StoreName</a></td>
+    <td class="formlabel">@s.DateCreated.ToLocalTime().ToString()</td>
+
+    <td class="formlabel">
+        @foreach (UserAccount u in s.Users)
+        {
+            @Html.Raw(MerchantTribe.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", ""))
+            <br />
+        }
+    </td>
+    </tr>
+}            
+</table>
+@Html.Partial("~/views/shared/_Pager.cshtml", Model.PagerData)

@@ -25,7 +25,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
             ViewBag.XButton = MTApp.ThemeManager().ButtonUrl("x", Request.IsSecureConnection);
             ViewBag.AddButton = MTApp.ThemeManager().ButtonUrl("AddToCart", Request.IsSecureConnection);
 
-            List<WishListItem> items = MTApp.CatalogServices.WishListItems.FindByCustomerIdPaged(SessionManager.GetCurrentUserId(MTApp.CurrentStore), 1, 50);
+            List<WishListItem> items = MTApp.CatalogServices.WishListItems.FindByCustomerIdPaged(MTApp.CurrentCustomerId, 1, 50);
             List<Models.SavedItemViewModel> model = PrepItems(items);
             if (model.Count < 1)
             {
@@ -38,7 +38,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         [HttpPost]
         public ActionResult Delete(long itemid)
         {
-            string customerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            string customerId = MTApp.CurrentCustomerId;
             WishListItem wi = MTApp.CatalogServices.WishListItems.Find(itemid);
             if (wi != null)            
             {
@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Areas.account.Controllers
         [HttpPost]
         public ActionResult AddToCart(long itemid)
         {
-            string customerId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            string customerId = MTApp.CurrentCustomerId;
             WishListItem wi = MTApp.CatalogServices.WishListItems.Find(itemid);
             if (wi != null)
             {
@@ -72,9 +72,9 @@ namespace MerchantTribeStore.Areas.account.Controllers
                                                                                             1,
                                                                                             MTApp);
                             Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
-                            if (Basket.UserID != SessionManager.GetCurrentUserId(MTApp.CurrentStore))
+                            if (Basket.UserID != MTApp.CurrentCustomerId)
                             {
-                                Basket.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+                                Basket.UserID = MTApp.CurrentCustomerId;
                             }
 
                             MTApp.AddToOrderWithCalculateAndSave(Basket, li);

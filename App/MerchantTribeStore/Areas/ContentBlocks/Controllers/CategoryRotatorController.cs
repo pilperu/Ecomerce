@@ -9,6 +9,7 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
+using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -18,58 +19,62 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/CategoryRotator/
         public ActionResult Index(ContentBlock block)
         {
-            SingleCategoryViewModel model = new SingleCategoryViewModel();
-            
-            bool showInOrder = false;
-            if (block != null)
+            var profiler = MvcMiniProfiler.MiniProfiler.Current;
+            using (profiler.Step("Block:CategoryRotator"))
             {
-                showInOrder = block.BaseSettings.GetBoolSetting("ShowInOrder");
+                SingleCategoryViewModel model = new SingleCategoryViewModel();
 
-                int nextIndex;
-                if (Session[block.Bvin + "NextImageIndex"] != null)
+                bool showInOrder = false;
+                if (block != null)
                 {
-                    nextIndex = (int)Session[block.Bvin + "NextImageIndex"];
-                }
-                else
-                {
-                    nextIndex = 0;
-                }
+                    showInOrder = block.BaseSettings.GetBoolSetting("ShowInOrder");
 
-                List<ContentBlockSettingListItem> settings = block.Lists.FindList("Categories");
-
-                if (settings.Count != 0)
-                {
-                    if (settings.Count > nextIndex)
+                    int nextIndex;
+                    if (Session[block.Bvin + "NextImageIndex"] != null)
                     {
-                        LoadCategory(model, settings[nextIndex].Setting1);
+                        nextIndex = (int)Session[block.Bvin + "NextImageIndex"];
                     }
-                    else if (nextIndex >= settings.Count)
+                    else
                     {
+                        nextIndex = 0;
+                    }
+
+                    List<ContentBlockSettingListItem> settings = block.Lists.FindList("Categories");
+
+                    if (settings.Count != 0)
+                    {
+                        if (settings.Count > nextIndex)
+                        {
+                            LoadCategory(model, settings[nextIndex].Setting1);
+                        }
+                        else if (nextIndex >= settings.Count)
+                        {
+                            if (showInOrder)
+                            {
+                                nextIndex = 0;
+                            }
+                            else
+                            {
+                                nextIndex = MerchantTribe.Web.RandomNumbers.RandomInteger(settings.Count - 1, 0);
+                            }
+                            LoadCategory(model, settings[nextIndex].Setting1);
+                        }
+
                         if (showInOrder)
                         {
-                            nextIndex = 0;
+                            nextIndex += 1;
                         }
                         else
                         {
                             nextIndex = MerchantTribe.Web.RandomNumbers.RandomInteger(settings.Count - 1, 0);
                         }
-                        LoadCategory(model, settings[nextIndex].Setting1);
+                        Session[block.Bvin + "NextImageIndex"] = nextIndex;
                     }
 
-                    if (showInOrder)
-                    {
-                        nextIndex += 1;
-                    }
-                    else
-                    {
-                        nextIndex = MerchantTribe.Web.RandomNumbers.RandomInteger(settings.Count - 1, 0);
-                    }
-                    Session[block.Bvin + "NextImageIndex"] = nextIndex;
                 }
 
+                return View(model);
             }
-
-            return View(model);
         }
   
         private void LoadCategory(SingleCategoryViewModel model, string categoryId)

@@ -385,26 +385,54 @@ namespace MerchantTribe.Commerce.Content
             MTApp.ContentServices.Columns.Update(col);
 
         }
-
+        
         public string GetTemplatePartFromCurrentTheme(string partName)
         {
             string result = Storage.DiskStorage.ReadTemplatePart(partName, MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
             if (result == string.Empty) result = GetSystemTemplatePart(partName);
             return result;
         }
-        public string GetTemplateFromCurrentTheme(string templateName)
+        public string GetTemplateFromCurrentTheme(params string[] templates)
         {
-            string result = Storage.DiskStorage.ReadTemplate(templateName, MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
-            if (result == string.Empty) result = Storage.DiskStorage.ReadTemplate("default.html", MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
-            if (result == string.Empty) result = GetSystemTemplate(templateName);
+            string result = string.Empty;
+
+            // Check in merchant theme first
+            foreach (string s in templates)
+            {
+                result = Storage.DiskStorage.ReadTemplate(s, MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
+                if (!String.IsNullOrEmpty(result))
+                {
+                    break;
+                }
+            }
+
+            // If nothing, check system templates
+            if (result.Trim().Length < 1)
+            {
+                foreach (string s in templates)
+                {
+                    result = GetSystemTemplate(s);
+                    if (!String.IsNullOrEmpty(result))
+                    {
+                        break;
+                    }
+                }
+            }
+            
+            // Last resort, check system default template
+            if (result.Trim().Length < 1)
+            {
+                result = GetSystemTemplate("default.html");
+            }            
+
             return result;
         }
-        private string GetSystemTemplatePart(string partName)
+        public string GetSystemTemplatePart(string partName)
         {
             string result = Storage.DiskStorage.ReadSystemTemplatePart(partName);
             return result;
         }
-        private string GetSystemTemplate(string templateName)
+        public string GetSystemTemplate(string templateName)
         {
             string result = Storage.DiskStorage.ReadSystemTemplate(templateName);
             if (result == string.Empty) result = Storage.DiskStorage.ReadSystemTemplate("default.html");
@@ -414,10 +442,9 @@ namespace MerchantTribe.Commerce.Content
         {
             List<string> result = Storage.DiskStorage.ListAllAvailableTemplates(MTApp.CurrentStore.Id, MTApp.CurrentStore.Settings.ThemeId);
             if (result.Count < 1) result.Add("default.html");
-            if (result.Contains("default-no-menu.html") == false)
-            {
-                result.Add("default-no-menu.html");
-            }
+            if (!result.Contains("default-no-menu.html")) result.Add("default-no-menu.html");
+            if (!result.Contains("home.html")) result.Add("home.html");
+
             return result;
         }
         

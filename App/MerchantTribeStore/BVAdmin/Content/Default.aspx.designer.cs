@@ -22,33 +22,6 @@ namespace MerchantTribeStore {
         protected global::MerchantTribeStore.BVAdmin_Controls_MessageBox MessageBox1;
         
         /// <summary>
-        /// chkFlexHome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkFlexHome;
-        
-        /// <summary>
-        /// lstPages control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList lstPages;
-        
-        /// <summary>
-        /// btnSave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton btnSave;
-        
-        /// <summary>
         /// pnlColumns control.
         /// </summary>
         /// <remarks>

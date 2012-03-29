@@ -72,9 +72,9 @@ namespace MerchantTribeStore.Controllers
                                                                                         MTApp);
 
                         Order Basket = SessionManager.CurrentShoppingCart(MTApp.OrderServices, MTApp.CurrentStore);
-                        if (Basket.UserID != SessionManager.GetCurrentUserId(MTApp.CurrentStore))
+                        if (Basket.UserID != MTApp.CurrentCustomerId)
                         {
-                            Basket.UserID = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+                            Basket.UserID = MTApp.CurrentCustomerId;
                         }
 
                         if (model.LineItemId.Trim().Length > 0)
@@ -160,6 +160,38 @@ namespace MerchantTribeStore.Controllers
             {
                 model.IsAvailableForWishList = true;
             }
+
+
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<script src=\"" + Url.Content("~/scripts/tabs.js") + "\" type=\"text/javascript\"></script>");
+            sb.Append("<script src=\"" + Url.Content("~/scripts/ProductPage.js") + "\" type=\"text/javascript\"></script>");
+            sb.Append(model.JavaScripts);
+
+            if (ViewBag.UseFaceBook == true)
+            {
+                sb.Append("<!-- FaceBook OpenGraph Tags -->");
+                sb.Append("<meta property=\"og:title\" content=\"" + ViewBag.Title + "\"/>");
+                sb.Append("<meta property=\"og:type\" content=\"product\"/>");
+                sb.Append("<meta property=\"og:url\" content=\"" + ViewBag.CurrentUrl + "\"/>");
+                sb.Append("<meta property=\"og:image\" content=\"" + model.MainImageUrl + "\"/>");
+                sb.Append("<meta property=\"og:site_name\" content=\"" + ViewBag.StoreName + "\" />");
+                sb.Append("<meta property=\"fb:admins\" content=\"" + ViewBag.FaceBookAdmins + "\" />");
+                sb.Append("<meta property=\"fb:app_id\" content=\"" + ViewBag.FaceBookAppId + "\" />");
+            }
+            ViewData["PassedAnalyticsTop"] = sb.ToString();
+
+            StringBuilder sbb = new StringBuilder();
+            sbb.Append("<div id=\"fb-root\"></div>");
+            sbb.Append("<script>    (function (d, s, id) {");
+            sbb.Append("var js, fjs = d.getElementsByTagName(s)[0];");
+            sbb.Append("if (d.getElementById(id)) { return; }");
+            sbb.Append("js = d.createElement(s); js.id = id;");
+            sbb.Append("js.src = \"//connect.facebook.net/en_US/all.js#xfbml=1\";");
+            sbb.Append("fjs.parentNode.insertBefore(js, fjs);");
+            sbb.Append("} (document, 'script', 'facebook-jssdk'));</script>");
+
+            ViewData["PassedAnalyticsBottom"] += sbb.ToString();
             return model;
         }
         private Product ParseProductFromSlug(string slug)
@@ -320,7 +352,7 @@ namespace MerchantTribeStore.Controllers
         }
         private void RenderPrices(ProductPageViewModel model)
         {
-            string userId = SessionManager.GetCurrentUserId(MTApp.CurrentStore);
+            string userId = MTApp.CurrentCustomerId;
             StringBuilder sb = new StringBuilder();
 
             sb.Append("<div class=\"prices\">");

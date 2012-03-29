@@ -204,7 +204,7 @@ function OpenDialog(lnk) {
 
 // Document Ready Function
 $(document).ready(function () {
-
+    
     BindStateDropDownLists();
 
     $('#chkbillsame').click(function () { CheckChanged(); return true; });
@@ -249,6 +249,6 @@ $(document).ready(function () {
     });
 
     CloseDialog();
-});             // End Document Ready
+});              // End Document Ready
         
 

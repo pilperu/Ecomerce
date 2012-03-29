@@ -88,13 +88,30 @@ namespace MerchantTribe.Commerce.Accounts
 
         public Store FindById(long id)
         {
+            // Try cached version first
+            Store result = CacheManager.GetStoreById(id);
+            if (result != null) return result;
+
             IQueryable<Data.EF.ecommrc_Stores> s = repository.Find().Where(y => y.Id == id);
-            return FirstPoco(s);
+            var store = FirstPoco(s);
+            if (store != null)
+            {
+                CacheManager.AddStore(store);
+            }
+            return store;
         }
         public Store FindByStoreName(string storeName)
         {
+            long id = CacheManager.GetStoreIdByName(storeName);
+            if (id > 0) return FindById(id);
+
             IQueryable<Data.EF.ecommrc_Stores> s = repository.Find().Where(y => y.StoreName == storeName);
-            return FirstPoco(s);
+            var result = FirstPoco(s);
+            if (result != null)
+            {
+                CacheManager.AddStoreIdByName(storeName, result.Id);
+            }
+            return result;
         }
         public long FindStoreIdByCustomUrl(string hostName)
         {
@@ -111,10 +128,12 @@ namespace MerchantTribe.Commerce.Accounts
 
         public bool Update(Store s)
         {
+            CacheManager.ClearStoreById(s.Id);
             return this.Update(s, new PrimaryKey(s.Id));
         }
         public bool Delete(long id)
         {
+            CacheManager.ClearStoreById(id);
             return this.Delete(new PrimaryKey(id));
         }
 

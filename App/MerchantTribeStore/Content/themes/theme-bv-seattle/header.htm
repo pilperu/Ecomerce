@@ -1,5 +1,11 @@
-<div id="logo-area"><a href="{{homelink}}"><img src="{{assets}}StyleLogo.png" alt="Seattle Store Home" /></a></div>
-<div id="cart-link" class="curved">{{cartlink}}</div>
-<div id="links-area">{{headerlinks}}</div>
-<div id="search-form">{{searchform}}</div>
-<div id="header-menu">{{headermenu}}</div>
+<div id="logo-area"><sys:link mode="home"><img src="../assets/StyleLogo.png" alt="Seattle Store Home" /></sys:link></div>
+<div id="cart-link" class="curved"><sys:link mode="cart" /></div>
+<div id="links-area">
+<ul>
+        <li><sys:link mode="myaccount" class="myaccountlink"><span>My Account</span></sys:link></li>
+        <li><sys:link mode="signin" class="signinlink"></sys:link></li>
+        <li><sys:link mode="checkout" class="checkoutlink"><span>Checkout</span></sys:link></li>
+    </ul>
+</div>
+<div id="search-form"><sys:searchform /></div>
+<div id="header-menu"><sys:mainmenu /></div>

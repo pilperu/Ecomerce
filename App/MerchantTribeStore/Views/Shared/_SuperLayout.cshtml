@@ -20,12 +20,12 @@
         <div id="header">
             <div id="branding">
                 <div id="brand">
-                    @ViewBag["StoreName"] - <em>@ViewBag["AppVersion"]</em>
+                    @ViewBag.StoreName - <em>@ViewBag.AppVersion</em>
                 </div>
             </div>
             <div id="mainmenu">
                 <div class="menu">
-                    @Html.Raw((string)ViewBag["RenderedMenu"])
+                    @Html.Raw((string)ViewBag.RenderedMenu)
                 </div>
                 <div id="gotolinks">
                     <a href="@Url.Content("~/adminaccount/logout")">Log Out</a>

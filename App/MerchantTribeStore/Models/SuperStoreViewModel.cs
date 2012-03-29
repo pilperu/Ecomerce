@@ -22,6 +22,8 @@ namespace MerchantTribeStore.Models
         {
             this.Users = new List<UserAccount>();
 
+            this.DateCreated = s.DateCreated;
+            this.DateCancelled = s.DateCancelled;
             this.CurrentPlanDayOfMonth = s.CurrentPlanDayOfMonth;
             this.CurrentPlanPercent = s.CurrentPlanPercent;
             this.CurrentPlanRate = s.CurrentPlanRate;
@@ -30,7 +32,7 @@ namespace MerchantTribeStore.Models
             this.PlanId = s.PlanId;            
             this.Settings = s.Settings;
             this.Status = s.Status;
-            this.StoreName = s.StoreName;            
+            this.StoreName = s.StoreName;                        
         }
     }
 }

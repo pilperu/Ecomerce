@@ -70,9 +70,9 @@ namespace MerchantTribeStore.Controllers.Shared
             // Jquery
             ViewData["JQueryInclude"] = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
             
-            ViewBag["AppVersion"] = WebAppSettings.SystemVersionNumber;
-            ViewBag["StoreName"] = MTApp.CurrentStore.Settings.FriendlyName;
-            ViewBag["RenderedMenu"] = Helpers.Html.RenderSuperMenu(MTApp);                
+            ViewBag.AppVersion = WebAppSettings.SystemVersionNumber;
+            ViewBag.StoreName = MTApp.CurrentStore.Settings.FriendlyName;
+            ViewBag.RenderedMenu = Helpers.Html.RenderSuperMenu(MTApp);                
 
         }
 
