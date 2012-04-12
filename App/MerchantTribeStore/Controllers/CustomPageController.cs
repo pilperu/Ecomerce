@@ -23,7 +23,12 @@ namespace MerchantTribeStore.Controllers
                                         MTApp.CurrentRequestContext.CurrentStore.Id);
             if (cat == null) cat = new Category();
             MTApp.CurrentRequestContext.CurrentCategory = cat;
-            
+
+            ViewBag.Title = cat.MetaTitle;
+            if (String.IsNullOrEmpty(ViewBag.Title)) { ViewBag.Title = cat.Name; }
+            ViewBag.MetaKeywords = cat.MetaKeywords;
+            ViewBag.MetaDescription = cat.MetaDescription;
+
             // Record View for Analytics
             RecordCategoryView(cat.Bvin);
             
