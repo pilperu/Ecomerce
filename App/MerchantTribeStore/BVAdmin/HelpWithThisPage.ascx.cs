@@ -17,7 +17,7 @@ namespace MerchantTribeStore
 
             sb.Append("var w;");
             sb.Append("function OpenHelpWindow() {");
-            sb.Append("w = window.open('http://www.bvsoftware.com/OnlineHelp/Bvc5/default.aspx?page=");
+            sb.Append("w = window.open('http://help.merchanttribestores.com?page=");
             sb.Append(Server.UrlEncode(nameOfPage));
             sb.Append("', 'onlineHelp', 'height=700, width=200');");
             sb.Append("}");

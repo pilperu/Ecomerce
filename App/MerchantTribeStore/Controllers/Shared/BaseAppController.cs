@@ -15,6 +15,9 @@ namespace MerchantTribeStore.Controllers.Shared
     public class BaseAppController : Controller, IMultiStorePage
     {
         public MerchantTribeApplication MTApp { get; set; }
+        public string UniqueStoreId { get; set; }
+        public string CustomerId { get; set; }
+        public string CustomerIp { get; set; }
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
@@ -61,7 +64,7 @@ namespace MerchantTribeStore.Controllers.Shared
                     {
                         if (ViewBag.IsAdmin == null)
                         {
-                            // Store data for admin panel
+                            // Store data for admin panel                            
                             ViewBag.IsAdmin = IsCurrentUserAdmin(this.MTApp, this.Request.RequestContext.HttpContext);
                         }
                     }
@@ -79,15 +82,18 @@ namespace MerchantTribeStore.Controllers.Shared
                     }
                     using (profiler.Step("UniqueId"))
                     {
-                        ViewBag.StoreUniqueId = MTApp.CurrentStore.StoreUniqueId(MTApp);
+                        this.UniqueStoreId = MTApp.CurrentStore.StoreUniqueId(MTApp);
+                        ViewBag.StoreUniqueId = this.UniqueStoreId;
                     }
                     using (profiler.Step("ip"))
                     {
-                        ViewBag.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
+                        this.CustomerIp = Request.UserHostAddress ?? "0.0.0.0";
+                        ViewBag.CustomerIp = this.CustomerIp;
                     }
                     using (profiler.Step("CustomerId"))
                     {                        
-                        ViewBag.CustomerId = MTApp.CurrentCustomerId ?? string.Empty;
+                        this.CustomerId = MTApp.CurrentCustomerId ?? string.Empty;
+                        ViewBag.CustomerId = this.CustomerId;
                     }
                     using (profiler.Step("Analytics Off?"))
                     {

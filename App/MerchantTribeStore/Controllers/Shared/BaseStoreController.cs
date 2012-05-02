@@ -43,18 +43,10 @@ namespace MerchantTribeStore.Controllers.Shared
                 ThemeManager themes = MTApp.ThemeManager();
                 ViewBag.Css = themes.CurrentStyleSheet(MTApp,System.Web.HttpContext.Current.Request.IsSecureConnection);
 
-                // Add Google Tracker to Page
-                if (MTApp.CurrentStore.Settings.Analytics.UseGoogleTracker)
-                {
-                    ViewData["analyticstop"] = MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(MTApp.CurrentStore.Settings.Analytics.GoogleTrackerId);
-                }
-
-                // Additional Meta Tags
+                ViewData["analyticstop"] = this.MTApp.RenderAnalyticsTop(this.UniqueStoreId, this.CustomerId, this.CustomerIp);
+                ViewData["analyticsbottom"] = this.MTApp.RenderAnalyticsBottom();                
                 ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags ?? string.Empty;
-                
-                // Bottom Analytics Tags
-                this.ViewData["analyticsbottom"] = MTApp.CurrentStore.Settings.Analytics.BottomAnalytics ?? string.Empty;
-
+                                                                                
                 // JQuery
                 ViewBag.JqueryInclude = Helpers.Html.JQueryIncludes(Url.Content("~/scripts"), this.Request.IsSecureConnection);
 

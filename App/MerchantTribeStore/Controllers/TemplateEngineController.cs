@@ -10,8 +10,13 @@ namespace MerchantTribeStore.Controllers
     public class TemplateEngineController : Shared.BaseStoreController
     {
         [ChildActionOnly]
-        public ActionResult FullHeader(string AnalyticsTop, string AnalyticsBottom, string AdditionalMetaTags)
+        public ActionResult FullHeader(string AnalyticsTop, string AnalyticsBottom, string AdditionalMetaTags, string metaTitle = "")
         {
+            if (String.IsNullOrEmpty(ViewBag.Title))
+            {
+                ViewBag.Title = metaTitle;
+            }
+
             ViewData["analyticstop"] = AnalyticsTop;
             ViewData["analyticsbottom"] = AnalyticsBottom;
             ViewData["AdditionalMetaTags"] += AdditionalMetaTags;

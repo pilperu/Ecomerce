@@ -294,7 +294,16 @@ namespace MerchantTribeStore.Controllers
             LoadPaymentFromForm(model);
             SavePaymentSelections(model);
 
+            // Instructions
             model.CurrentOrder.Instructions = Request.Form["specialinstructions"];
+
+            // Agree to Terms
+            var agreedValue = Request.Form["agreed"];
+            if (!String.IsNullOrEmpty(agreedValue))
+            {
+                model.AgreedToTerms = true;
+            }
+
 
             // Save all the changes to the order
             MTApp.OrderServices.Orders.Update(model.CurrentOrder);

@@ -47,7 +47,7 @@
         <tr>
             <td class="formlabel" align="right" valign="top">
                 Company Web Site:<br />
-                (http://www.bvsoftware.com)
+                (http://merchanttribe.com)
             </td>
             <td class="formfield" align="left" valign="top">
                 <asp:TextBox ID="inURL" MaxLength="254" runat="server" Columns="40" />

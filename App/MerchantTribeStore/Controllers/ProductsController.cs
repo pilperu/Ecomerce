@@ -179,7 +179,7 @@ namespace MerchantTribeStore.Controllers
                 sb.Append("<meta property=\"fb:admins\" content=\"" + ViewBag.FaceBookAdmins + "\" />");
                 sb.Append("<meta property=\"fb:app_id\" content=\"" + ViewBag.FaceBookAppId + "\" />");
             }
-            ViewData["PassedAnalyticsTop"] = sb.ToString();
+            ViewData["PassedAnalyticsTop"] += sb.ToString();
 
             StringBuilder sbb = new StringBuilder();
             sbb.Append("<div id=\"fb-root\"></div>");

@@ -3,7 +3,8 @@
 { Area="",
   AnalyticsTop=ViewData["PassedAnalyticsTop"], 
   AnalyticsBottom=ViewData["PassedAnalyticsBottom"], 
-  AdditionalMetaTags=ViewData["PassedAdditionalMetaTags"]
+  AdditionalMetaTags=ViewData["PassedAdditionalMetaTags"],
+  metaTitle = ViewBag.Title
 })
     <div id="main-content">
         @RenderBody()

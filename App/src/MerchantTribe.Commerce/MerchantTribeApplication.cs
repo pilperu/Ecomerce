@@ -1266,6 +1266,58 @@ namespace MerchantTribe.Commerce
                 }
             }
         }
+
+        // Analytics
+        public string RenderAnalyticsTop()
+        {
+            try
+            {
+                string uniqueId = this.CurrentStore.StoreUniqueId(this);
+                string customerId = this.CurrentCustomerId ?? string.Empty;
+                string customerIp = this.CurrentRequestContext.RoutingContext.HttpContext.Request.UserHostAddress ?? "0.0.0.0";
+                return RenderAnalyticsTop(uniqueId, customerId, customerIp);
+            }
+            catch(Exception ex)
+            {
+                return RenderAnalyticsTop(string.Empty, string.Empty, string.Empty);
+            }
+        }
+        public string RenderAnalyticsTop(string uniqueStoreId, string customerId, string customerIp)
+        {
+            string result = string.Empty;
+
+            // Add Google Tracker to Page
+            if (this.CurrentStore.Settings.Analytics.UseGoogleTracker)
+            {
+                result += MerchantTribe.Commerce.Metrics.GoogleAnalytics.RenderLatestTracker(this.CurrentStore.Settings.Analytics.GoogleTrackerId);
+            }
+
+            // Add MerchantTribe Tracker
+            StringBuilder sb = new StringBuilder();
+            if (!this.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics)
+            {
+                sb.Append("\n<script type=\"text/javascript\"> ");
+                sb.Append("var _mtribe = _mtribe || []; ");
+                sb.Append("_mtribe.push(['_storeId', '" + uniqueStoreId + "']); ");
+                sb.Append("_mtribe.push(['_customerId', '" + customerId + "']); ");
+                sb.Append("_mtribe.push(['_customerIp', '" + customerIp + "']); ");
+                sb.Append("_mtribe.push(['_post']); ");
+                sb.Append("(function() { ");
+                sb.Append("var mtribe = document.createElement('script'); mtribe.type = 'text/javascript'; mtribe.async = true;");
+                //sb.Append("mtribe.src = 'http://127.0.0.1:81/scripts/merchanttribe.js'; ");
+                sb.Append("mtribe.src = 'https://analytics.merchanttribe.com/scripts/merchanttribe.js'; ");
+                sb.Append("var m = document.getElementsByTagName('script')[0]; m.parentNode.insertBefore(mtribe, m); ");
+                sb.Append("})(); ");
+                sb.Append("</script>\n");
+            }
+            result += sb.ToString();
+
+            return result;
+        }
+        public string RenderAnalyticsBottom()
+        {            
+            return this.CurrentStore.Settings.Analytics.BottomAnalytics ?? string.Empty;
+        }
         
     }
 }
