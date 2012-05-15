@@ -639,7 +639,18 @@ namespace MerchantTribe.Commerce.Accounts
             set { SetProp("StoreClosedGuestPassword", value); }
         }
         
+        
         // Shipping
+        public string ShippingFedExKey
+        {
+            get { return GetProp("ShippingFedExKey"); }
+            set { SetProp("ShippingFedExKey", value); }
+        }
+        public string ShippingFedExPassword
+        {
+            get { return GetProp("ShippingFedExPassword"); }
+            set { SetProp("ShippingFedExPassword", value); }
+        }
         public string ShippingFedExAccountNumber
         {
             get { return GetProp("ShippingFedExAccountNumber"); }

@@ -85,6 +85,24 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.DropDownList AdjustmentDropDownList;
         
         /// <summary>
+        /// KeyField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox KeyField;
+        
+        /// <summary>
+        /// PasswordField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox PasswordField;
+        
+        /// <summary>
         /// AccountNumberField control.
         /// </summary>
         /// <remarks>
@@ -101,15 +119,6 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox MeterNumberField;
-        
-        /// <summary>
-        /// lnkMeter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink lnkMeter;
         
         /// <summary>
         /// lstDefaultPackaging control.
@@ -173,5 +182,86 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton btnSave;
+        
+        /// <summary>
+        /// SourceAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor SourceAddress;
+        
+        /// <summary>
+        /// litTestOuput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal litTestOuput;
+        
+        /// <summary>
+        /// DestinationAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::MerchantTribeStore.BVAdmin_Controls_AddressEditor DestinationAddress;
+        
+        /// <summary>
+        /// lstServicesTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList lstServicesTest;
+        
+        /// <summary>
+        /// TestLength control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TestLength;
+        
+        /// <summary>
+        /// TestWidth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TestWidth;
+        
+        /// <summary>
+        /// TestHeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TestHeight;
+        
+        /// <summary>
+        /// TestWeight control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TestWeight;
+        
+        /// <summary>
+        /// btnTest control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTest;
     }
 }

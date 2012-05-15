@@ -20,6 +20,8 @@ namespace MerchantTribe.Commerce.Shipping
             //result.Add(new MerchantTribe.Shipping.Fedex.FedExProvider());
             //FedEx            
             MerchantTribe.Shipping.FedEx.FedExGlobalServiceSettings fedexGlobal = new FedExGlobalServiceSettings();
+            fedexGlobal.UserKey = currentStore.Settings.ShippingFedExKey;
+            fedexGlobal.UserPassword = currentStore.Settings.ShippingFedExPassword;
             fedexGlobal.AccountNumber = currentStore.Settings.ShippingFedExAccountNumber;
             fedexGlobal.MeterNumber = currentStore.Settings.ShippingFedExMeterNumber;
             fedexGlobal.DefaultDropOffType = (MerchantTribe.Shipping.FedEx.DropOffType)currentStore.Settings.ShippingFedExDropOffType;

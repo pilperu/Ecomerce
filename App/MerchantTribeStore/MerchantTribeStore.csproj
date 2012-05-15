@@ -358,7 +358,6 @@
     <Content Include="BVAdmin\Configuration\ShippingUSPSInternationalTester.aspx" />
     <Content Include="BVAdmin\Configuration\ShippingUSPSTester.aspx" />
     <Content Include="BVAdmin\Configuration\Shipping_EditMethod.aspx" />
-    <Content Include="BVAdmin\Configuration\Shipping_FedEx_Meter.aspx" />
     <Content Include="BVAdmin\Configuration\Shipping_Zones.aspx" />
     <Content Include="BVAdmin\Configuration\Shipping_Zones_Delete.aspx" />
     <Content Include="BVAdmin\Configuration\Shipping_Zones_DeleteArea.aspx" />
@@ -2974,13 +2973,6 @@
     <Compile Include="BVAdmin\Configuration\Shipping_EditMethod.aspx.designer.cs">
       <DependentUpon>Shipping_EditMethod.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BVAdmin\Configuration\Shipping_FedEx_Meter.aspx.cs">
-      <DependentUpon>Shipping_FedEx_Meter.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BVAdmin\Configuration\Shipping_FedEx_Meter.aspx.designer.cs">
-      <DependentUpon>Shipping_FedEx_Meter.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BVAdmin\Configuration\Shipping_Zones.aspx.cs">
       <DependentUpon>Shipping_Zones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4517,12 +4509,14 @@
     </Content>
     <Content Include="Web.Release-Hosted.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="Web.Release-Source.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release-HostedStaging.config">
       <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
     </Content>
     <None Include="content\themes\ButtonsSmall.psd" />
     <None Include="content\themes\ButtonsTiny.psd" />

@@ -36,6 +36,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 fileUrl = tm.ThemeFileUrl(fileName, app);
             }
 
+            if (fileUrl.StartsWith("http://"))
+            {
+                fileUrl = fileUrl.Replace("http://", "//");
+            }
+
             string result = string.Empty;
             result = "<link href=\"" + fileUrl + "\" rel=\"stylesheet\" type=\"text/css\" />";
             actions.Add(new Actions.LiteralText(result));            

@@ -33,6 +33,10 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             sb.Append("<" + _tagName);
             
             string pathToTemplate = app.ThemeManager().ThemeFileUrl("",app) + "templates/";
+            if (pathToTemplate.StartsWith("http://"))
+            {
+                pathToTemplate = pathToTemplate.Replace("http://", "//");
+            }
 
             foreach (var att in tag.Attributes)
             {

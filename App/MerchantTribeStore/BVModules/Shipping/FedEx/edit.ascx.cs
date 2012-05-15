@@ -11,6 +11,7 @@ using MerchantTribe.Commerce.Datalayer;
 using MerchantTribe.Shipping;
 using System.Collections.Generic;
 using MerchantTribe.Shipping.FedEx;
+using System.Text;
 
 namespace MerchantTribeStore
 {
@@ -38,6 +39,13 @@ namespace MerchantTribeStore
                 PopulateLists();
                 LoadData();
                 LoadZones();
+                this.SourceAddress.LoadFromAddress(MyPage.MTApp.ContactServices.Addresses.FindStoreContactAddress());
+
+                this.DestinationAddress.StreetLine1 = "9702 Gayton Rd";
+                this.DestinationAddress.StateCode = "VA";
+                this.DestinationAddress.StateName = "VA";
+                this.DestinationAddress.City = "Richmond";
+                this.DestinationAddress.PostalCode = "23238";
             }
         }
 
@@ -64,6 +72,7 @@ namespace MerchantTribeStore
                 foreach (IServiceCode code in codes)
                 {
                     this.lstServiceCode.Items.Add(new System.Web.UI.WebControls.ListItem(code.DisplayName, code.Code));
+                    this.lstServicesTest.Items.Add(new System.Web.UI.WebControls.ListItem(code.DisplayName, code.Code));
                 }
             }
         }
@@ -114,6 +123,8 @@ namespace MerchantTribeStore
                 this.lstPackaging.Items.FindByValue(Settings.Packaging.ToString()).Selected = true;
             }
 
+            this.KeyField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExKey;
+            this.PasswordField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExPassword;
             this.AccountNumberField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExAccountNumber;
             this.MeterNumberField.Text = MyPage.MTApp.CurrentStore.Settings.ShippingFedExMeterNumber;
             if (this.lstDefaultPackaging.Items.FindByValue(MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging.ToString()) != null)
@@ -149,13 +160,17 @@ namespace MerchantTribeStore
             ShippingMethod.Settings.Merge(Settings);
 
             // Globals
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExKey = this.KeyField.Text.Trim();
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExPassword = this.PasswordField.Text.Trim();
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExAccountNumber = this.AccountNumberField.Text.Trim();
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExMeterNumber = this.MeterNumberField.Text.Trim();
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExDefaultPackaging = int.Parse(this.lstDefaultPackaging.SelectedValue);
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExDropOffType = int.Parse(this.lstDropOffType.SelectedValue);
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExForceResidentialRates = this.chkResidential.Checked;
             MyPage.MTApp.CurrentStore.Settings.ShippingFedExUseListRates = this.chkListRates.Checked;
-            MyPage.MTApp.CurrentStore.Settings.ShippingFedExDiagnostics = this.chkDiagnostics.Checked;            
+            MyPage.MTApp.CurrentStore.Settings.ShippingFedExDiagnostics = this.chkDiagnostics.Checked;
+
+            MyPage.MTApp.UpdateCurrentStore();
         }
 
         protected void CustomValidator1_ServerValidate(object source, System.Web.UI.WebControls.ServerValidateEventArgs args)
@@ -169,6 +184,56 @@ namespace MerchantTribeStore
             {
                 args.IsValid = false;
             }
+        }
+
+        protected void btnTest_Click(object sender, EventArgs e)
+        {
+            this.SaveData();
+
+            var testSettings = new FedExGlobalServiceSettings();
+            testSettings.AccountNumber = this.AccountNumberField.Text;
+            testSettings.DefaultDropOffType = (DropOffType)int.Parse(this.lstDropOffType.SelectedValue);
+            testSettings.DefaultPackaging = (PackageType)int.Parse(this.lstPackaging.SelectedValue);
+            testSettings.DiagnosticsMode = true;
+            testSettings.ForceResidentialRates = this.chkResidential.Checked;
+            testSettings.MeterNumber = this.MeterNumberField.Text.Trim();
+            testSettings.UseListRates = this.chkListRates.Checked;
+            testSettings.UserKey = this.KeyField.Text.Trim();
+            testSettings.UserPassword = this.PasswordField.Text.Trim();
+
+            var logger = new MerchantTribe.Web.Logging.TextLogger();
+
+            var testSvc = new MerchantTribe.Shipping.FedEx.FedExProvider(testSettings, logger);
+            testSvc.Settings.ServiceCode = int.Parse(this.lstServicesTest.SelectedValue);
+            testSvc.Settings.Packaging = (int)testSettings.DefaultPackaging;
+
+            var testShipment = new Shipment();
+            testShipment.DestinationAddress = this.DestinationAddress.GetAsAddress();
+            testShipment.SourceAddress = this.SourceAddress.GetAsAddress();
+            var testItem = new Shippable();
+            testItem.BoxHeight = decimal.Parse(this.TestHeight.Text);
+            testItem.BoxLength = decimal.Parse(this.TestLength.Text);
+            testItem.BoxWidth = decimal.Parse(this.TestWidth.Text);
+            testItem.BoxLengthType = LengthType.Inches;
+            testItem.BoxWeight = decimal.Parse(this.TestWeight.Text);
+            testItem.BoxWeightType = MerchantTribe.Shipping.WeightType.Pounds;
+            testShipment.Items.Add(testItem);
+            
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Starting Rate Test at " + DateTime.Now + "<br />");
+            var rates = testSvc.RateShipment(testShipment);
+            foreach (var r in rates)
+            {
+                sb.Append("Rate Found: " + r.EstimatedCost.ToString("C") + " | " + r.DisplayName + " (" + r.ServiceCodes + ", " + r.ServiceId + ")<br />");
+            }
+            sb.Append("<br />");
+            sb.Append("LOG:<br />");
+            foreach (var m in logger.Messages)
+            {
+                sb.Append(m + "<br />");
+            }
+            sb.Append("Finished Rate Test at " + DateTime.Now);
+            this.litTestOuput.Text = sb.ToString();
         }
     }
 }

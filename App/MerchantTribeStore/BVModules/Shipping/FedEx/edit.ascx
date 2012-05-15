@@ -1,4 +1,5 @@
 <%@ Control Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVModules_Shipping_FedEx_edit" Codebehind="edit.ascx.cs" %>
+<%@ Register src="../../../BVAdmin/Controls/AddressEditor.ascx" tagname="AddressEditor" tagprefix="uc1" %>
 <h1>Edit Shipping Method - FedEx</h1>
 <asp:Panel ID="pnlMain" DefaultButton="btnSave" runat="server">
 <table border="0" cellspacing="0" cellpadding="3">
@@ -53,8 +54,19 @@
     <tr>
         <td colspan="2">
             <h2>
-                Global Settings</h2>
+                Global Settings</h2>&nbsp;<br />
+            To Obtain a FedEx Production Key/Password/Account/Meter visit:<br />
+            <a href="https://www.fedex.com/wpor/web/jsp/commonTC.jsp" target="_blank">https://www.fedex.com/wpor/web/jsp/commonTC.jsp</a><br />
+            &nbsp;<br />
         </td>
+    </tr>
+    <tr>
+        <td class="formlabel">Key:</td>
+        <td class="formfield"><asp:TextBox ID="KeyField" runat="server" Width="300" TextMode="SingleLine"></asp:TextBox></td>
+    </tr>
+    <tr>
+        <td class="formlabel">Password:</td>
+        <td class="formfield"><asp:TextBox ID="PasswordField" runat="server" Width="300" TextMode="SingleLine"></asp:TextBox></td>
     </tr>
     <tr>
         <td class="formlabel">Account Number:</td>
@@ -62,8 +74,7 @@
     </tr>
     <tr>
         <td class="formlabel">Meter Number:</td>
-        <td class="formfield"><asp:TextBox ID="MeterNumberField" runat="server" Width="300"></asp:TextBox><br />
-        <asp:hyperlink ID="lnkMeter" runat="server" NavigateUrl="~/BVAdmin/Configuration/Shipping_FedEx_Meter.aspx" Target="_blank">Need a Meter Number? - Click Here</asp:hyperlink></td>
+        <td class="formfield"><asp:TextBox ID="MeterNumberField" runat="server" Width="300"></asp:TextBox></td>
     </tr>
      <tr>
         <td class="formlabel">Default Packaging:</td>
@@ -109,3 +120,28 @@
                 ImageUrl="~/BVAdmin/Images/Buttons/SaveChanges.png" onclick="btnSave_Click" /></td>
     </tr>
 </table></asp:Panel>
+&nbsp;<br />
+<h2>Test Rates</h2>
+<table border="0" cellspacing="0" cellpadding="4">
+<tr>
+    <td><strong>Source:</strong><br />
+    <uc1:AddressEditor ID="SourceAddress" TabOrderOffSet="100" RequireFirstName="false" RequireLastName="false" RequireAddress="false" RequireCity="false" RequireCompany="false" RequirePostalCode="false" RequireRegion="false" runat="server" />
+    </td>
+    <td rowspan="3"><asp:Literal ID="litTestOuput" runat="server"></asp:Literal></td>
+</tr>
+<tr>
+    <td><strong>Destination:</strong><br />
+    <uc1:AddressEditor ID="DestinationAddress" TabOrderOffSet="200" RequireFirstName="false" RequireLastName="false" RequireAddress="false" RequireCity="false" RequireCompany="false" RequirePostalCode="false" RequireRegion="false" runat="server" /></td>
+</tr>
+<tr>
+    <td><strong>Package:</strong><br />
+    <asp:DropDownList ID="lstServicesTest" runat="server"></asp:DropDownList><br />
+    Length: <asp:TextBox ID="TestLength" Columns="4" runat="server" value="1"></asp:TextBox><br />
+    Width: <asp:TextBox ID="TestWidth" Columns="4" runat="server" value="1"></asp:TextBox><br />
+    Height: <asp:TextBox ID="TestHeight" Columns="4" runat="server" value="1"></asp:TextBox><br />
+    &nbsp;<br />
+    Weight: <asp:TextBox ID="TestWeight" Columns="4" runat="server" value="1"></asp:TextBox><br />
+    &nbsp;<br />
+    <asp:Button ID="btnTest" runat="server" Text="Get Rate" onclick="btnTest_Click" /></td>
+</tr>
+</table>
