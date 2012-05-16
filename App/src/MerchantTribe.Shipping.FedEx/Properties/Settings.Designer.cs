@@ -26,7 +26,7 @@ namespace MerchantTribe.Shipping.FedEx.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://wsbeta.fedex.com:443/web-services/rate")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://ws.fedex.com:443/web-services/rate")]
         public string MerchantTribe_Shipping_FedEx_FedExRateServices_RateService {
             get {
                 return ((string)(this["MerchantTribe_Shipping_FedEx_FedExRateServices_RateService"]));
