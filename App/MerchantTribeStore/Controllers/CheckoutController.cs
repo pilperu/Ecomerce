@@ -642,11 +642,11 @@ namespace MerchantTribeStore.Controllers
         //GET: /checkout/receipt
         [NonCacheableResponseFilter]
         public ActionResult Receipt()
-        {
-            ViewData["AdditionalMetaTags"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
+        {            
             ViewBag.Title = "Order Receipt";
             ViewBag.BodyClass = "store-receipt-page";
-            ViewBag.MetaDescription = "Order Receipt";
+            ViewBag.MetaDescription = "Order Receipt";            
+            ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/scripts/receipt.js") + "\" ></script>";
             LoadOrder();            
             return View();           
         }
@@ -753,16 +753,19 @@ namespace MerchantTribeStore.Controllers
                     o, MTApp.CurrentStore.Settings.Analytics.YahooAccountId);
             }
 
-            if (!(bool)ViewBag.HideAnalytics)
-            {
-                System.Text.StringBuilder sbA = new System.Text.StringBuilder();
-                sbA.Append("<script type=\"text/javascript\">");
-                sbA.Append("MerchantTribeAnalytics.EventCode = '2';");
-                    sbA.Append("MerchantTribeAnalytics.EventAmount = '@Grand';");
-                    sbA.Append("MerchantTribeAnalytics.EventDescription = '@o.OrderNumber';");
-                sbA.Append("</script>");
-                this.ViewData["PassedAnalyticsBottom"] += sbA.ToString();
-            }
+            //if (ViewBag.HideAnalytics != null)
+            //{
+            //    if (!(bool)ViewBag.HideAnalytics)
+            //    {
+            //        System.Text.StringBuilder sbA = new System.Text.StringBuilder();
+            //        sbA.Append("<script type=\"text/javascript\">");
+            //        sbA.Append("MerchantTribeAnalytics.EventCode = '2';");
+            //        sbA.Append("MerchantTribeAnalytics.EventAmount = '@Grand';");
+            //        sbA.Append("MerchantTribeAnalytics.EventDescription = '@o.OrderNumber';");
+            //        sbA.Append("</script>");
+            //        this.ViewData["PassedAnalyticsBottom"] += sbA.ToString();
+            //    }
+            //}
         }
 
         [HttpPost] // POST: /checkout/applyshipping
