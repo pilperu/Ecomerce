@@ -16,7 +16,7 @@ function SetFirstPassword() {
     var passwordfield = $('#password').val();
     var orderbvinfield = $('#orderbvin').val();
 
-    $.post('~/account/setfirstpassword',
+    $.post('../account/setfirstpassword',
             { "email": emailfield,
                 "password": passwordfield,
                 "orderbvin": orderbvinfield

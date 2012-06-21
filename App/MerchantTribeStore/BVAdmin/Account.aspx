@@ -7,7 +7,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" Runat="Server">
-<div style="width:700px;margin:10px auto;">
+    <div style="width:700px;margin:10px auto;">
     <h1>My Account</h1>
     <uc2:MessageBox ID="MessageBox1" runat="server" />
     <div class="editorpanel">
@@ -31,15 +31,13 @@
     </div>
     &nbsp;
     <div class="editorpanel">
-    <h3>My Stores</h3>&nbsp;
-        <table border="0" cellspacing="0" cellpadding="5" width="100%">                        
-        <asp:Literal ID="litStores" runat="server" EnableViewState="false" />
-        </table>
+    <h3>Subscription Information</h3>&nbsp;        
+    <asp:Literal ID="litStores" runat="server" EnableViewState="false" />        
     </div>
     &nbsp;
     <asp:Panel ID="pnlBilling" runat="server" Visible="true">
     <div class="editorpanel">
-    <h3>Billing Information</h3>&nbsp;
+    <h3>Update Credit Card</h3>&nbsp;
     <uc1:CreditCardInput ID="CreditCardInput1" runat="server" /><br />
     Billing Zip Code: <asp:textbox ID="txtZipCode" runat="server" Columns="10"></asp:textbox><br />&nbsp;<br />
     <asp:LinkButton ID="btnUpdateCreditCard" runat="server" CssClass="btn" 

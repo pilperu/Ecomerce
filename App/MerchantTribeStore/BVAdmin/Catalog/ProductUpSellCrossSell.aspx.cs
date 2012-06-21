@@ -69,37 +69,40 @@ namespace MerchantTribeStore
 
             string name = r.RelatedProductId;
             Product p = MTApp.CatalogServices.Products.Find(r.RelatedProductId);
-            if (p != null) name = p.Sku + "<br />" + p.ProductName;
-
-            string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp, p.Bvin, p.ImageFileSmall, true);
-
-            sb.Append("<div class=\"dragitem\" id=\"item" + r.RelatedProductId.ToString() + "\"><table class=\"formtable\" width=\"100%\"><tr>");
-            sb.Append("<td width=\"60\" class=\"imgfield\">");
-            sb.Append("<img width=\"50\" src=\"" + imageUrl + "\" border=\"0\" alt=\"" + p.ImageFileSmallAlternateText + "\" /></td>");
-
-            sb.Append("<td class=\"namefield\" style=\"line-height:1.5em;\">");            
-            sb.Append(name);
-            sb.Append("</td>");
-
-            sb.Append("<td width=\"75\" class=\"substitutefield\">");
-            if (r.IsSubstitute)
+            if (p != null)
             {
-                sb.Append("SUB");
+                name = p.Sku + "<br />" + p.ProductName;
+
+                string imageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp, p.Bvin, p.ImageFileSmall, true);
+
+                sb.Append("<div class=\"dragitem\" id=\"item" + r.RelatedProductId.ToString() + "\"><table class=\"formtable\" width=\"100%\"><tr>");
+                sb.Append("<td width=\"60\" class=\"imgfield\">");
+                sb.Append("<img width=\"50\" src=\"" + imageUrl + "\" border=\"0\" alt=\"" + p.ImageFileSmallAlternateText + "\" /></td>");
+
+                sb.Append("<td class=\"namefield\" style=\"line-height:1.5em;\">");
+                sb.Append(name);
+                sb.Append("</td>");
+
+                sb.Append("<td width=\"75\" class=\"substitutefield\">");
+                if (r.IsSubstitute)
+                {
+                    sb.Append("SUB");
+                }
+                else
+                {
+                    sb.Append("&nbsp;");
+                }
+                sb.Append("</td>");
+
+                // Disable Editing for Now
+                //sb.Append("<td width=\"75\"><a href=\"#\" class=\"dragitemedit\" id=\"edit" + r.RelatedProductId.ToString() + "\"><img src=\"../images/buttons/edit.png\" alt=\"edit\" /></a></td>");
+
+
+                sb.Append("<td width=\"30\"><a href=\"#\" class=\"trash\" id=\"rem" + r.RelatedProductId.ToString() + "\"><img src=\"../../images/system/trashcan.png\" alt=\"Delete\" /></a></td>");
+                sb.Append("<td width=\"30\"><a href=\"#\" class=\"handle\"><img src=\"../../images/system/draghandle.png\" alt=\"Move\" /></a></td>");
+                sb.Append("</tr></table></div>");
+
             }
-            else
-            {
-                sb.Append("&nbsp;");
-            }
-            sb.Append("</td>");
-            
-            // Disable Editing for Now
-            //sb.Append("<td width=\"75\"><a href=\"#\" class=\"dragitemedit\" id=\"edit" + r.RelatedProductId.ToString() + "\"><img src=\"../images/buttons/edit.png\" alt=\"edit\" /></a></td>");
-
-
-            sb.Append("<td width=\"30\"><a href=\"#\" class=\"trash\" id=\"rem" + r.RelatedProductId.ToString() + "\"><img src=\"../../images/system/trashcan.png\" alt=\"Delete\" /></a></td>");
-            sb.Append("<td width=\"30\"><a href=\"#\" class=\"handle\"><img src=\"../../images/system/draghandle.png\" alt=\"Move\" /></a></td>");
-            sb.Append("</tr></table></div>");
-
             return sb.ToString();
         }
 

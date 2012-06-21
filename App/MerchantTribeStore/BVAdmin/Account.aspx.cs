@@ -22,13 +22,10 @@ namespace MerchantTribeStore
             {
                 this.pnlBilling.Visible = false;
             }
-
-            if (!Page.IsPostBack)
-            {
-                Store s = MTApp.CurrentStore;
-                UserAccount u = GetCorrectUser();
-                PopulatePage(u);
-            }
+            
+            Store s = MTApp.CurrentStore;
+            UserAccount u = GetCorrectUser();
+            PopulatePage(u);            
         }
 
 

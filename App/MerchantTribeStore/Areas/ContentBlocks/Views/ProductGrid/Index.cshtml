@@ -6,8 +6,8 @@
     <div class="decoratedblock">
         <div class="blockcontent">
             @foreach (var vm in Model)
-            {
-                @Html.Partial("~/Views/Shared/_RenderSingleProduct.cshtml", vm)
+            {                
+                @Html.Partial("~/Views/Products/RenderSingleProduct.cshtml", vm)
             }            
         </div>
     </div>

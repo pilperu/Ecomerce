@@ -72,16 +72,7 @@ namespace MerchantTribeStore
                     }
                 }
             }
-
-            if (MTApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
-            {
-                this.lnkGenerateBVBills.Visible = true;
-            }
-            else
-            {
-                this.lnkGenerateBVBills.Visible = false;
-            }
-          
+         
             MerchantTribe.Commerce.SessionManager.SetCookieString("AdminLastManager", "Default.aspx?p=" + pageNumber.ToString(), MTApp.CurrentStore);
             FindOrders(pageNumber);
 
@@ -395,15 +386,6 @@ namespace MerchantTribeStore
         protected void lnkAcceptAll_Click(object sender, EventArgs e)
         {
             OrderBatchProcessor.AcceptAllNewOrders(MTApp.OrderServices);
-            FindOrders(1);
-        }
-        protected void lnkGenerateBVBills_Click(object sender, EventArgs e)
-        {
-            // only process if we're the billing store
-            if (MTApp.CurrentStore.Id == WebAppSettings.BillingStoreId)
-            {
-                MerchantTribe.Commerce.Accounts.BillingManager.GenerateInvoicesForLastWeek(MTApp);
-            }
             FindOrders(1);
         }
         protected void lnkShipAll_Click(object sender, EventArgs e)

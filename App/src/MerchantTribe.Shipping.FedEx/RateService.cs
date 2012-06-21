@@ -344,6 +344,21 @@ namespace MerchantTribe.Shipping.FedEx
                 req.RequestedShipment.Recipient.Address.StateOrProvinceCode = pak.DestinationAddress.RegionData.Abbreviation; // GetStateCode(pak.DestinationAddress.RegionData);
                 req.RequestedShipment.Recipient.Address.StreetLines = new string[2] { pak.DestinationAddress.Street, pak.DestinationAddress.Street2 };
 
+                if (service == ServiceType.GROUNDHOMEDELIVERY)
+                {
+                    req.RequestedShipment.Recipient.Address.Residential = true;
+                    req.RequestedShipment.Recipient.Address.ResidentialSpecified = true;
+                }
+                else if (service == ServiceType.FEDEXGROUND)
+                {
+                    req.RequestedShipment.Recipient.Address.Residential = false;
+                    req.RequestedShipment.Recipient.Address.ResidentialSpecified = true;
+                }
+                else
+                {
+                    req.RequestedShipment.Recipient.Address.ResidentialSpecified = false;
+                }
+
                 req.RequestedShipment.Shipper = new Party();
                 req.RequestedShipment.Shipper.AccountNumber = globalSettings.AccountNumber;
                 req.RequestedShipment.Shipper.Address = new FedExRateServices.Address();

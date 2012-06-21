@@ -81,7 +81,7 @@ namespace MerchantTribeStore
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("bvc.js");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("images/{*imagedata}");
+            routes.IgnoreRoute("images/{*imagedata}");            
             //routes.IgnoreRoute("bvadmin/*");
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
             

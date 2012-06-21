@@ -122,9 +122,6 @@
     <div id="OrderManagerActions" class="padded"  runat="server" visible="false">
         <asp:LinkButton ID="lnkAcceptAll" runat="server" CssClass="btn" 
             Text="<b>Accept All New Orders</b>" onclick="lnkAcceptAll_Click" Visible="false"></asp:LinkButton>
-        <asp:LinkButton ID="lnkGenerateBVBills" runat="server" Visible="false" 
-            CssClass="btn" Text="<b>Generate BV Invoices for This Week</b>" 
-            onclick="lnkGenerateBVBills_Click"></asp:LinkButton>
         <asp:LinkButton ID="lnkChargeAll" runat="server" CssClass="btn" 
             Text="<b>Charge All and Mark for Shipping</b>" onclick="lnkChargeAll_Click" Visible="false"></asp:LinkButton>        
         <asp:LinkButton ID="lnkShipAll" runat="server" CssClass="btn" 
