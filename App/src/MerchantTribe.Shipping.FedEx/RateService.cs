@@ -339,9 +339,17 @@ namespace MerchantTribe.Shipping.FedEx
                 req.RequestedShipment.Recipient.Address = new FedExRateServices.Address();
                 req.RequestedShipment.Recipient.Address.City = pak.DestinationAddress.City;
                 req.RequestedShipment.Recipient.Address.CountryCode = GetCountryCode(pak.DestinationAddress.CountryData);
-                req.RequestedShipment.Recipient.Address.PostalCode = pak.DestinationAddress.PostalCode;
-                req.RequestedShipment.Recipient.Address.Residential = globalSettings.ForceResidentialRates;
-                req.RequestedShipment.Recipient.Address.StateOrProvinceCode = pak.DestinationAddress.RegionData.Abbreviation; // GetStateCode(pak.DestinationAddress.RegionData);
+                req.RequestedShipment.Recipient.Address.PostalCode = pak.DestinationAddress.PostalCode;                                
+
+                if (pak.DestinationAddress.CountryData.Bvin == "bf7389a2-9b21-4d33-b276-23c9c18ea0c0" || // US or Canada
+                    pak.DestinationAddress.CountryData.Bvin == "94052dcf-1ac8-4b65-813b-b17b12a0491f")
+                {
+                    req.RequestedShipment.Recipient.Address.StateOrProvinceCode = pak.DestinationAddress.RegionData.Abbreviation; // GetStateCode(pak.DestinationAddress.RegionData);
+                }
+                else
+                {
+                    req.RequestedShipment.Recipient.Address.StateOrProvinceCode = string.Empty;
+                }
                 req.RequestedShipment.Recipient.Address.StreetLines = new string[2] { pak.DestinationAddress.Street, pak.DestinationAddress.Street2 };
 
                 if (service == ServiceType.GROUNDHOMEDELIVERY)
@@ -366,7 +374,15 @@ namespace MerchantTribe.Shipping.FedEx
                 req.RequestedShipment.Shipper.Address.CountryCode = GetCountryCode(pak.SourceAddress.CountryData);
                 req.RequestedShipment.Shipper.Address.PostalCode = pak.SourceAddress.PostalCode;
                 req.RequestedShipment.Shipper.Address.Residential = false;
-                req.RequestedShipment.Shipper.Address.StateOrProvinceCode = pak.SourceAddress.RegionData.Abbreviation;
+                if (pak.SourceAddress.CountryData.Bvin == "bf7389a2-9b21-4d33-b276-23c9c18ea0c0" || // US or Canada
+                    pak.SourceAddress.CountryData.Bvin == "94052dcf-1ac8-4b65-813b-b17b12a0491f")
+                {
+                    req.RequestedShipment.Shipper.Address.StateOrProvinceCode = pak.SourceAddress.RegionData.Abbreviation;
+                }
+                else
+                {
+                    req.RequestedShipment.Shipper.Address.StateOrProvinceCode = string.Empty;
+                }
                 req.RequestedShipment.Shipper.Address.StreetLines = new string[2] { pak.SourceAddress.Street, pak.SourceAddress.Street2 };
 
 

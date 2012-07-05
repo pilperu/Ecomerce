@@ -908,7 +908,7 @@ namespace MerchantTribe.Migration.Migrators.BV5
             p.Featured = false;
             p.GiftWrapAllowed = true;
             p.GiftWrapPrice = 0;
-            p.ImageFileSmall = System.IO.Path.GetFileName(old.ImageFileMedium);
+            p.ImageFileSmall = TextHelper.CleanFileName(System.IO.Path.GetFileName(old.ImageFileMedium));
             p.ImageFileSmallAlternateText = old.MediumImageAlternateText;
             p.InventoryMode = ProductInventoryModeDTO.AlwayInStock;
             if (old.TrackInventory == 1) p.InventoryMode = ProductInventoryModeDTO.WhenOutOfStockShow;
@@ -984,7 +984,18 @@ namespace MerchantTribe.Migration.Migrators.BV5
 
 
             Api proxy = GetBV6Proxy();
-            var res = proxy.ProductsCreate(p, bytes);
+            
+            ApiResponse<ProductDTO> res = null;
+            //if (settings.ImportProductImagesOnly == true)
+            //{
+            //    proxy.ProductsMainImageUpload(old.bvin, p.ImageFileSmall, bytes);
+            //    res = new ApiResponse<ProductDTO>();
+            //    res.Errors.Clear();
+            //}
+            //else
+            //{
+                res = proxy.ProductsCreate(p, bytes);
+            //}
             if (res != null)
             {
                 if (res.Errors.Count > 0)
@@ -1164,7 +1175,7 @@ namespace MerchantTribe.Migration.Migrators.BV5
                 img.AlternateText = old.AlternateText;
                 img.Bvin = old.bvin;
                 img.Caption = old.Caption;
-                img.FileName = System.IO.Path.GetFileName(old.FileName);
+                img.FileName = TextHelper.CleanFileName(System.IO.Path.GetFileName(old.FileName));
                 img.LastUpdatedUtc = old.LastUpdated;
                 img.ProductId = old.ProductID;
                 img.SortOrder = old.SortOrder;
