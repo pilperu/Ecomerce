@@ -138,10 +138,6 @@
     <Compile Include="StoreSettingsTest.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
-      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
-      <Name>MerchantTribe.Billing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
       <Name>MerchantTribe.CommerceDTO</Name>

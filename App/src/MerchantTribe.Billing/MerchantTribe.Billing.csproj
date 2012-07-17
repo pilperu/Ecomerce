@@ -149,20 +149,6 @@
       <DependentUpon>Db.dbml</DependentUpon>
     </Compile>
     <Compile Include="Data\IBillingAccountRepository.cs" />
-    <Compile Include="Data\IInvoiceRepository.cs" />
-    <Compile Include="Data\InvoiceRepository.cs" />
-    <Compile Include="Data\ISubscriptionRepository.cs" />
-    <Compile Include="Data\ITransactionRepository.cs" />
-    <Compile Include="Data\StaticBillingAccountRepository.cs" />
-    <Compile Include="Data\StaticInvoiceRepository.cs" />
-    <Compile Include="Data\StaticSubscriptionRepository.cs" />
-    <Compile Include="Data\StaticTransactionRepository.cs" />
-    <Compile Include="Data\SubscriptionRepository.cs" />
-    <Compile Include="Data\TransactionRepository.cs" />
-    <Compile Include="Invoice.cs" />
-    <Compile Include="InvoiceItem.cs" />
-    <Compile Include="InvoiceTerms.cs" />
-    <Compile Include="Periods.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -170,7 +156,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Service.cs" />
-    <Compile Include="Subscription.cs" />
     <Compile Include="Transaction.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -182,7 +167,9 @@
       <LastGenOutput>Db.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

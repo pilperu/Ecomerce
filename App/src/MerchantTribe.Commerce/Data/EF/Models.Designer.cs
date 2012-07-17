@@ -22434,7 +22434,8 @@ namespace MerchantTribe.Commerce.Data.EF
         /// <param name="currentPlanRate">Initial value of the CurrentPlanRate property.</param>
         /// <param name="currentPlanPercent">Initial value of the CurrentPlanPercent property.</param>
         /// <param name="currentPlanDayOfMonth">Initial value of the CurrentPlanDayOfMonth property.</param>
-        public static ecommrc_Stores Createecommrc_Stores(global::System.Int64 id, global::System.String storeName, global::System.Int32 status, global::System.DateTime dateCreated, global::System.Int64 subscriptionId, global::System.Int32 planId, global::System.String customUrl, global::System.Decimal currentPlanRate, global::System.Decimal currentPlanPercent, global::System.Int32 currentPlanDayOfMonth)
+        /// <param name="stripeCustomerId">Initial value of the StripeCustomerId property.</param>
+        public static ecommrc_Stores Createecommrc_Stores(global::System.Int64 id, global::System.String storeName, global::System.Int32 status, global::System.DateTime dateCreated, global::System.Int64 subscriptionId, global::System.Int32 planId, global::System.String customUrl, global::System.Decimal currentPlanRate, global::System.Decimal currentPlanPercent, global::System.Int32 currentPlanDayOfMonth, global::System.String stripeCustomerId)
         {
             ecommrc_Stores ecommrc_Stores = new ecommrc_Stores();
             ecommrc_Stores.Id = id;
@@ -22447,6 +22448,7 @@ namespace MerchantTribe.Commerce.Data.EF
             ecommrc_Stores.CurrentPlanRate = currentPlanRate;
             ecommrc_Stores.CurrentPlanPercent = currentPlanPercent;
             ecommrc_Stores.CurrentPlanDayOfMonth = currentPlanDayOfMonth;
+            ecommrc_Stores.StripeCustomerId = stripeCustomerId;
             return ecommrc_Stores;
         }
 
@@ -22719,6 +22721,30 @@ namespace MerchantTribe.Commerce.Data.EF
         private Nullable<global::System.DateTime> _DateCancelled;
         partial void OnDateCancelledChanging(Nullable<global::System.DateTime> value);
         partial void OnDateCancelledChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String StripeCustomerId
+        {
+            get
+            {
+                return _StripeCustomerId;
+            }
+            set
+            {
+                OnStripeCustomerIdChanging(value);
+                ReportPropertyChanging("StripeCustomerId");
+                _StripeCustomerId = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("StripeCustomerId");
+                OnStripeCustomerIdChanged();
+            }
+        }
+        private global::System.String _StripeCustomerId;
+        partial void OnStripeCustomerIdChanging(global::System.String value);
+        partial void OnStripeCustomerIdChanged();
 
         #endregion
     

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MerchantTribe.Web;
-using MerchantTribe.Billing;
 
 namespace MerchantTribe.Commerce.Accounts
 {
@@ -336,19 +335,7 @@ namespace MerchantTribe.Commerce.Accounts
 
             return false;
         }
-        public bool DestroyStore(long storeId)
-        {
-            bool result = true;
-
-            Store s = Stores.FindById(storeId);
-            if (s == null) return false;
-            if (s.Id != storeId) return false;
-
-            Storage.DiskStorage.DestroyAllFilesForStore(storeId);
-            RemoveAllUsersFromStore(storeId);
-
-            return result;
-        }
+        
         public bool CancelStore(long storeId, long userId)
         {
             Store s = FindStoreByIdForUser(storeId, userId);
@@ -401,8 +388,8 @@ namespace MerchantTribe.Commerce.Accounts
                                                 long userAccountId,
                                                 string friendlyName,
                                                 int plan,
-                                                decimal rate,
-                                                MerchantTribe.Billing.BillingAccount billingAccount)
+                                                decimal rate
+                                                )
         {
             Store s = null;
 
@@ -475,12 +462,7 @@ namespace MerchantTribe.Commerce.Accounts
 
                 // Save data to store 
                 Stores.Update(s);
-
-                // Create Billing Accout
-                MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(WebAppSettings.ApplicationConnectionString);
-                BillingAccount act = svc.Accounts.FindOrCreate(billingAccount);
-
-
+                
                 Utilities.MailServices.SendLeadAlert(u, s);
                 Utilities.MailServices.SendAccountInformation(u, s);
 

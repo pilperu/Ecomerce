@@ -24,36 +24,40 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         {
             if (id == null) return;
             if (id == string.Empty) return;
-            
-                switch (id.Trim().ToLower())
-                {
-                    case "starter":
-                        model.RegistrationData.plan = 0;
-                        model.HideCreditCard = true;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                    case "basic":
-                        model.RegistrationData.plan = 1;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                    case "plus":
-                        model.RegistrationData.plan = 2;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                    case "premium":
-                        model.RegistrationData.plan = 3;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                    case "max":
-                        model.RegistrationData.plan = 99;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                    default:
-                        model.RegistrationData.plan = 0;
-                        model.HideCreditCard = true;
-                        model.PlanName = id.Trim().ToLowerInvariant();
-                        break;
-                }            
+
+            // Force everything to trial plan
+            model.RegistrationData.plan = 0;
+            model.PlanName = id.Trim().ToLowerInvariant();
+
+                //switch (id.Trim().ToLower())
+                //{
+                //    case "starter":
+                //        model.RegistrationData.plan = 0;
+                //        model.HideCreditCard = true;
+                //        model.PlanName = id.Trim().ToLowerInvariant();        
+                //        break;
+                //    case "basic":
+                //        model.RegistrationData.plan = 1;
+                //        model.PlanName = id.Trim().ToLowerInvariant();
+                //        break;
+                //    case "plus":
+                //        model.RegistrationData.plan = 2;
+                //        model.PlanName = id.Trim().ToLowerInvariant();
+                //        break;
+                //    case "premium":
+                //        model.RegistrationData.plan = 3;
+                //        model.PlanName = id.Trim().ToLowerInvariant();
+                //        break;
+                //    case "max":
+                //        model.RegistrationData.plan = 99;
+                //        model.PlanName = id.Trim().ToLowerInvariant();
+                //        break;
+                //    default:
+                //        model.RegistrationData.plan = 0;
+                //        model.HideCreditCard = true;
+                //        model.PlanName = id.Trim().ToLowerInvariant();
+                //        break;
+                //}            
         }
         private void AddPlanDetails(RegisterViewModel model)
         {
@@ -117,18 +121,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
             {
                 model.RegistrationData.email = Request.Form["email"] ?? model.RegistrationData.email;
                 model.RegistrationData.password = Request.Form["password"] ?? model.RegistrationData.password;
-                model.RegistrationData.storename = Request.Form["storename"] ?? model.RegistrationData.storename;
-                if (Request.Form["expmonth"] != null)
-                {
-                    model.RegistrationData.expmonth = int.Parse(Request.Form["expmonth"]);
-                }
-                if (Request.Form["expyear"] != null)
-                {
-                    model.RegistrationData.expyear = int.Parse(Request.Form["expyear"]);
-                }
-                model.RegistrationData.cardholder = Request.Form["cardholder"] ?? model.RegistrationData.cardholder;
-                model.RegistrationData.cardnumber = Request.Form["cardnumber"] ?? model.RegistrationData.cardnumber;
-                model.RegistrationData.billingzipcode = Request.Form["billingzipcode"] ?? model.RegistrationData.billingzipcode;
+                model.RegistrationData.storename = Request.Form["storename"] ?? model.RegistrationData.storename;                                                                                
                 model.Agreed = Request.Form["chkagree"] != null;
                 if (Request.Form["hiddenaction"] != null) model.FromHomePage = true;
             }
@@ -136,16 +129,6 @@ namespace MerchantTribeStore.Areas.signup.Controllers
         private void DoSignUp(RegisterViewModel model)
         {                                                
             bool storeOkay = false;
-
-            if (model.RegistrationData.plan == 0)
-            {
-                // Fake CC information so that signup is easier
-                model.RegistrationData.cardholder = model.RegistrationData.email;
-                model.RegistrationData.cardnumber = "4111111111111111";
-                model.RegistrationData.billingzipcode = "00000";
-                model.RegistrationData.expyear = DateTime.Now.AddYears(1).Year;
-                model.RegistrationData.expmonth = DateTime.Now.Month;
-            }
 
             MerchantTribe.Commerce.Accounts.Store testStore = new MerchantTribe.Commerce.Accounts.Store();
             testStore.StoreName = model.RegistrationData.storename;
@@ -166,25 +149,7 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                 {
                     storeOkay = true;
                 }
-            }
-
-            // Check credit card number
-            bool cardOkay = true;
-            if (!MerchantTribe.Payment.CardValidator.IsCardNumberValid(model.RegistrationData.cardnumber))
-            {
-                cardOkay = false;
-                RenderError("cardnumber", "Please enter a valid credit card number", model);
-            }
-            if (model.RegistrationData.cardholder.Trim().Length < 1)
-            {
-                cardOkay = false;
-                RenderError("cardholder", "Please enter the name on your credit card.", model);
-            }
-            if (model.RegistrationData.billingzipcode.Trim().Length < 5)
-            {
-                cardOkay = false;
-                RenderError("billingzipcode", "Please enter the billing zip code for your credit card.", model);
-            }
+            }                        
 
             UserAccount u = MTApp.AccountServices.AdminUsers.FindByEmail(model.RegistrationData.email);
 
@@ -227,18 +192,10 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                 }
             }
 
-            if (userOk && storeOkay && cardOkay)
+            if (userOk && storeOkay)
             {
                 try
-                {
-                    MerchantTribe.Billing.BillingAccount billingAccount = new MerchantTribe.Billing.BillingAccount();
-                    billingAccount.Email = u.Email;
-                    billingAccount.BillingZipCode = model.RegistrationData.billingzipcode;
-                    billingAccount.CreditCard.CardNumber = model.RegistrationData.cardnumber;
-                    billingAccount.CreditCard.ExpirationMonth = model.RegistrationData.expmonth;
-                    billingAccount.CreditCard.ExpirationYear = model.RegistrationData.expyear;
-                    billingAccount.CreditCard.CardHolderName = model.RegistrationData.cardholder;
-
+                {                    
                     bool isPayPalLead = false;
                     if (MerchantTribe.Commerce.SessionManager.GetCookieString("PayPalLead", MTApp.CurrentStore) != string.Empty)
                     {
@@ -260,23 +217,14 @@ namespace MerchantTribeStore.Areas.signup.Controllers
                                                                 u.Id,
                                                                 model.RegistrationData.storename + " store for " + model.RegistrationData.email,
                                                                 model.RegistrationData.plan,
-                                                                rate,
-                                                                billingAccount);
+                                                                rate);
                     if (s != null)
-                    {
-                        
+                    {                        
 
                         string e = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(u.Email);
                         string st = MerchantTribe.Web.Cryptography.Base64.ConvertStringToBase64(s.StoreName);
 
-                        Response.Redirect("~/signup/ProcessSignUp?e=" + e + "&s=" + st);
-
-                        //this.completeemail.Text = u.Email;
-                        //this.completestorelink.Text = "<a href=\"" + s.RootUrl() + "\">" + s.RootUrl() + "</a>";
-                        //this.completestorelinkadmin.Text = "<a href=\"" + s.RootUrlSecure() + "bvadmin\">" + s.RootUrlSecure() + "bvadmin</a>";
-                        //this.completebiglogin.Text = "<a href=\"" + s.RootUrlSecure() + "adminaccount/login?wizard=1&username=" + u.Email + "\">Next Step &raquo; Choose a Theme</a>";
-                        //this.pnlComplete.Visible = true;
-                        //this.pnlMain.Visible = false;                                                                                
+                        Response.Redirect("~/signup/ProcessSignUp?e=" + e + "&s=" + st);                        
                     }
                 }
                 catch (MerchantTribe.Commerce.Accounts.CreateStoreException cex)
@@ -364,6 +312,5 @@ namespace MerchantTribeStore.Areas.signup.Controllers
 
             return new MerchantTribeStore.Controllers.PreJsonResult(json);            
         }
-
     }
 }

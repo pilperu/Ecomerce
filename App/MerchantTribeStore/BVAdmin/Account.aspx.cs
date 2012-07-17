@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce.Accounts;
-using MerchantTribe.Billing;
 using System.Text;
 using System.Configuration;
+using MerchantTribe.Commerce.Accounts.Billing;
 
 namespace MerchantTribeStore
 {
@@ -57,81 +57,80 @@ namespace MerchantTribeStore
             this.lblEmail.Text = u.Email;
             this.lblMemberSince.Text = u.DateCreated.ToLocalTime().ToShortDateString();
 
-            LoadStores(u);
-            LoadBilling(u);
-
+            LoadSubscriptionInformation();            
         }
 
-        private void LoadStores(UserAccount u)
+        private void LoadSubscriptionInformation()
         {
-            List<Store> stores = MTApp.AccountServices.FindStoresForUserId(u.Id);
+            var billingManager = new MerchantTribe.Commerce.Accounts.Billing.BillingManager(this.MTApp);
 
-            StringBuilder sb = new StringBuilder();
-
-            foreach (Store s in stores)
+            string customerId = this.MTApp.CurrentStore.StripeCustomerId;
+            if (customerId.Trim().Length < 1)
             {
-                RenderStore(s, sb);
+                this.pnlBilling.Visible = false;
+                this.litStores.Text = "Your store is on the free trial plan. No paid subscription is currently active for this store.<br />";
+                this.litStores.Text += "&nbsp;<br />";
+                this.litStores.Text += "If you would like to cancel your store completely: <a href=\"CancelStore.aspx\">View Cancel Options<br />";
+                this.litStores.Text += "&nbsp;<br />";
+                this.litStores.Text += "<a href=\"ChangePlan.aspx\">Click Here to Upgrade to a Paid Plan</a> to get support, more products and more features.";
             }
-
-            this.litStores.Text = sb.ToString();
-        }
-
-        private void RenderStore(Store s, StringBuilder sb)
-        {
-            bool isIndividual = MerchantTribe.Commerce.WebAppSettings.IsIndividualMode;
-
-            if (s != null)
+            else
             {
-                sb.Append("<tr>");
-                sb.Append("<td>" + s.Settings.FriendlyName + "</td>");
-
-                if (!isIndividual)
+                this.pnlBilling.Visible = true;
+                var customer = billingManager.GetCustomerInformation(customerId);
+                if (customer.Success)
                 {
-                    if (s.DateCancelled.HasValue)
+                    this.litStores.Text = customer.Description + "<br />";
+                    this.litStores.Text += "<b>Email:</b> " + customer.Email + "<br />";                    
+                    if (customer.HasCard)
                     {
-                        sb.Append("<td>Cancelled " + s.DateCancelled.Value.ToShortDateString() + "</td>");
+                        this.litStores.Text += "<b>Card:</b> Credit Card is On File<br />";
                     }
                     else
                     {
-                        sb.Append("<td>" + s.PlanName + " " + s.CurrentPlanRate.ToString("c") + "/month + " + s.CurrentPlanPercent + "%<br />");
-                        sb.Append("<a href=\"" + s.RootUrlSecure() + "bvadmin/ChangePlan.aspx\">Change Plans</a>");
-                        sb.Append("</td>");
+                        this.litStores.Text += "<b>Card:</b> ERROR - No active card on file<br />";
                     }
-                    sb.Append("<td><a href=\"CancelStore.aspx?id=" + s.Id + "\">Cancel</a></td>");
-                }
-                
-                sb.Append("<td><a target=\"_blank\" href=\"" + s.RootUrl() + "\">View Store</a></td>");
-                sb.Append("<td><a target=\"_blank\" href=\"" + s.RootUrlSecure() + "bvadmin\">Admin</a></td>");
-                sb.Append("</tr>");
-            }
-        }
-        private void LoadBilling(UserAccount u)
-        {
-            MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(MerchantTribe.Commerce.WebAppSettings.ApplicationConnectionString);
-            BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
-            if (act != null)
-            {
-                this.CreditCardInput1.LoadFromCardData(act.CreditCard);
-                if (act.CreditCard.CardNumber == "4111111111111111")
-                {
-                    this.CreditCardInput1.CardNumber = "";
-                }
-                this.txtZipCode.Text = act.BillingZipCode;
-            }
+                    this.litStores.Text += "<b>Plan:</b> " + customer.PlanName + " (" + customer.PlanAmount.ToString("C") + " per month)<br />";
+                    //this.litStores.Text += "<b>Next Charge:</b> " + customer.NextCharge + "<br />";
+                    this.litStores.Text += "<b>Plan Status:</b> " + customer.PlanStatus + "<br />";
 
+                    this.litStores.Text += "&nbsp;<br />";
+                    this.litStores.Text += "If you would like to cancel your store completely: <a href=\"CancelStore.aspx\">View Cancel Options<br />";
+                    this.litStores.Text += "&nbsp;<br />";
+                    this.litStores.Text += "<a href=\"ChangePlan.aspx\">Click Here to Upgrade or Downgrade your Paid Plan</a> to change, product limits and features.<br />";
+                }
+                else
+                {
+                    this.litStores.Text = "Unable to locate your subscription. Check with support for more information.";
+                }
+            }            
         }
+        
         protected void btnUpdateCreditCard_Click(object sender, EventArgs e)
         {
-            UserAccount u = GetCorrectUser();
-            MerchantTribe.Billing.Service svc = new MerchantTribe.Billing.Service(MerchantTribe.Commerce.WebAppSettings.ApplicationConnectionString);
-            BillingAccount act = svc.Accounts.FindOrCreate(u.Email);
+            if (!this.CreditCardInput1.IsValid())
+            {
+                this.MessageBox1.ShowWarning("Please check your credit card information is valid before attempting to update.");
+                return;
+            }
 
-            MerchantTribe.Payment.CardData data = this.CreditCardInput1.GetCardData();
-            if (data.CardNumber == "") data.CardNumber = act.CreditCard.CardNumber;
-            act.CreditCard = data;
-            act.BillingZipCode = this.txtZipCode.Text.Trim();
-            svc.Accounts.Update(act);
-            this.MessageBox1.ShowOk("Billing Details Updated!");
+            UserAccount u = GetCorrectUser();
+            
+            var billManager = new BillingManager(this.MTApp);
+
+            var updateRequest = new UpdateCustomerRequest();
+            updateRequest.CreditCard = this.CreditCardInput1.GetCardData();
+            updateRequest.CustomerId = this.MTApp.CurrentStore.StripeCustomerId;
+            updateRequest.PostalCode = this.txtZipCode.Text.Trim();
+
+            var res = billManager.UpdateCustomer(updateRequest);
+            if (!res.Success)
+            {
+                this.MessageBox1.ShowWarning("Unable to update card: " + res.Message);
+                return;
+            }
+
+            this.MessageBox1.ShowOk("Credit card information updated!");                        
         }
     }
 }

@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Accounts;
+using MerchantTribe.Commerce.Accounts.Billing;
 
 namespace MerchantTribeStore
 {
@@ -17,15 +18,10 @@ namespace MerchantTribeStore
             base.OnLoad(e);
 
             UserAccount u = GetCorrectUser();
-            Store s = FindValidStoreForUser(u, long.Parse(Request.QueryString["id"]));
+            Store s = this.MTApp.CurrentStore;
             if (s == null) Response.Redirect("/bvadmin/account.aspx");
             this.lblStoreName.Text = s.Settings.FriendlyName;
-        }
-
-        private Store FindValidStoreForUser(UserAccount u, long storeId)
-        {
-            return MTApp.AccountServices.FindStoreByIdForUser(storeId, u.Id);
-        }
+        }        
 
         private UserAccount GetCorrectUser()
         {
@@ -53,10 +49,12 @@ namespace MerchantTribeStore
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             UserAccount u = GetCorrectUser();
-            long storeId = 0;
-            storeId = long.Parse(Request.QueryString["id"]);
+            long storeId = this.MTApp.CurrentStore.Id;
+
+            var billManager = new BillingManager(this.MTApp);
+            var response = billManager.CancelSubscription(this.MTApp.CurrentStore.StripeCustomerId);            
             MTApp.AccountServices.CancelStore(storeId, u.Id);
-            Response.Redirect("/bvadmin/account.aspx");
+            Response.Redirect("http://www.merchanttribestores.com");
         }
     }
 }

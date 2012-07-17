@@ -1204,6 +1204,7 @@
           <Property Name="CurrentPlanPercent" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="CurrentPlanDayOfMonth" Type="int" Nullable="false" />
           <Property Name="DateCancelled" Type="datetime" />
+          <Property Name="StripeCustomerId" Type="nvarchar" Nullable="false" MaxLength="255" />
         </EntityType>
         <EntityType Name="ecommrc_StoreSettings">
           <Key>
@@ -2608,6 +2609,7 @@
           <NavigationProperty Name="ecommrc_TaxSchedules" Relationship="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_TaxSchedules" />
           <NavigationProperty Name="ecommrc_StoresXUsers" Relationship="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_StoresXUsers" />
           <NavigationProperty Name="ecommrc_StoreSettings" Relationship="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores" FromRole="ecommrc_Stores" ToRole="ecommrc_StoreSettings" />
+          <Property Type="String" Name="StripeCustomerId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ecommrc_Taxes">
           <Key>
@@ -4123,6 +4125,7 @@
           <EntitySetMapping Name="ecommrc_Stores">
             <EntityTypeMapping TypeName="EfModels.ecommrc_Stores">
               <MappingFragment StoreEntitySet="ecommrc_Stores">
+                <ScalarProperty Name="StripeCustomerId" ColumnName="StripeCustomerId" />
                 <ScalarProperty Name="DateCancelled" ColumnName="DateCancelled" />
                 <ScalarProperty Name="CurrentPlanDayOfMonth" ColumnName="CurrentPlanDayOfMonth" />
                 <ScalarProperty Name="CurrentPlanPercent" ColumnName="CurrentPlanPercent" />

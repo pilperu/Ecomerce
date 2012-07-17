@@ -1267,6 +1267,52 @@ namespace MerchantTribe.Commerce
             }
         }
 
+        // Multi-Store Destroy
+        public bool DestroyStore(long storeId)
+        {
+            bool result = true;
+
+            Store s = this.AccountServices.Stores.FindById(storeId);
+            if (s == null) return false;
+            if (s.Id != storeId) return false;
+
+            Storage.DiskStorage.DestroyAllFilesForStore(storeId);
+            this.AccountServices.RemoveAllUsersFromStore(storeId);
+            
+            //this.ContactServices.Affiliates.DestoryForStore(storeId);
+            //this.ContactServices.MailingLists.DestoryForStore(storeId);
+            //this.ContactServices.Manufacturers.DestoryAllForStore(storeId);
+            //this.ContactServices.PriceGroups.DestoryAllForStore(storeId);
+            //this.ContactServices.Vendors.DestoryAllForStore(storeId);
+            
+            //this.ContentServices.Columns.DestroyForStore(storeId);
+            //this.ContentServices.CustomUrls.DestoryAllForStore(storeId);
+            //this.ContentServices.HtmlTemplates.DestroyAllForStore(storeId);
+            //this.ContentServices.Policies.DestoryAllForStore(storeId);
+            
+            //this.CustomerPointsManager.DestroyAllForStore(storeId);
+
+            //this.MembershipServices.DestroyAllCustomers(storeId);
+
+            //this.MarketingServices.Promotions.DestroyAllForStore(storeId);
+            
+            //this.MetricsSerices.SearchQueries.DestoryAllForStore(storeId);
+
+            //this.OrderServices.Orders.DestoryAllForStore(storeId);
+            //this.OrderServices.ShippingMethods.DestoryAllForStore(storeId);
+            //this.OrderServices.ShippingZones.DestoryAllForStore(storeId);
+            //this.OrderServices.Taxes.DestoryAllForStore(storeId);
+            //this.OrderServices.TaxSchedulesDestroy(storeId);
+            //this.OrderServices.Transactions.DestoryAllForStore(storeId);   
+         
+            //this.ScheduleServices.QueuedTasks.DestoryAllForStore(storeId);
+
+            //this.AccountServices.ApiKeys.DestoryAllForStore(storeId);
+            //this.AccountServices.AuthTokens.DestoryAllForStore(storeId);            
+            this.AccountServices.Stores.Delete(storeId);
+            return result;
+        }
+
         // Analytics
         public string RenderAnalyticsTop()
         {

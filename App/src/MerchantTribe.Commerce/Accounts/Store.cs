@@ -66,6 +66,8 @@ namespace MerchantTribe.Commerce.Accounts
         public decimal CurrentPlanPercent { get; set; }
         public int CurrentPlanDayOfMonth { get; set; }
 
+        public string StripeCustomerId { get; set; }
+
         public StoreSettings Settings {get;set;}
    
 
@@ -81,6 +83,7 @@ namespace MerchantTribe.Commerce.Accounts
             CurrentPlanRate = 0;
             CurrentPlanDayOfMonth = 1;
             Settings = new StoreSettings(this);
+            this.StripeCustomerId = string.Empty;
         }
 
         public string StoreUniqueId(MerchantTribeApplication app)

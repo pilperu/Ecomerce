@@ -10,7 +10,6 @@ namespace MerchantTribeStore.Areas.signup.Models
     public class RegisterViewModel
     {
         public RegisterStoreData RegistrationData { get; set; }
-        public bool HideCreditCard { get; set; }
         public bool Agreed { get; set; }
         public bool FromHomePage { get; set; }
         public List<string> InvalidFields { get; set; }
@@ -18,8 +17,7 @@ namespace MerchantTribeStore.Areas.signup.Models
 
         public RegisterViewModel()
         {
-            this.RegistrationData = new RegisterStoreData();
-            this.HideCreditCard = false;
+            this.RegistrationData = new RegisterStoreData();            
             this.Agreed = false;
             this.FromHomePage = false;
             this.InvalidFields = new List<string>();

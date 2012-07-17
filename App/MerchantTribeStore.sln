@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore.Tests", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce", "src\MerchantTribe.Commerce\MerchantTribe.Commerce.csproj", "{4EFF0D3E-99D4-4A8D-A672-B88E5E47CBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Billing", "src\MerchantTribe.Billing\MerchantTribe.Billing.csproj", "{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Payment", "src\MerchantTribe.Payment\MerchantTribe.Payment.csproj", "{4C223AD8-685A-4AAC-8610-1BEC50636203}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping", "src\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj", "{99A252BB-D844-4581-B924-4E59AE19857F}"

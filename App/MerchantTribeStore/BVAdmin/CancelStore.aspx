@@ -34,7 +34,7 @@
                 <table border="0" cellspacing="0" cellpadding="0" width="100%">
                     <tr>
                         <td class="l">
-                            <a href="account.aspx">Keep My Store</a>
+                            <a href="account.aspx" class="btn"><b>Keep My Store</b></a>
                         </td>
                         <td class="r">                            
                             <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn" 

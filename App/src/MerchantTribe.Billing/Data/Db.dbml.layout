@@ -2,24 +2,11 @@
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Db">
   <DataContextMoniker Name="/DbDataContext" />
   <nestedChildShapes>
-    <classShape Id="eb6e5762-a45c-46f4-86b7-26a5f28513a2" absoluteBounds="7, 4.125, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/DbDataContext/bvb_Subscription" />
-      <nestedChildShapes>
-        <elementListCompartment Id="01f3b510-91be-4b24-9d9a-9e32df48c738" absoluteBounds="7.015, 4.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="6fef1237-4d5c-424f-8ea6-1ea9e77d6726" absoluteBounds="5.25, 2.375, 2, 1.5785953776041666">
       <DataClassMoniker Name="/DbDataContext/bvb_BillingAccount" />
       <nestedChildShapes>
         <elementListCompartment Id="362620c5-1dec-489f-80e5-1001891bff60" absoluteBounds="5.265, 2.835, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.1249995 : 3.95359537760417); (6.1249995 : 5.49120198567708); (7 : 5.49120198567708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
-      <AssociationMoniker Name="/DbDataContext/bvb_BillingAccount/bvb_BillingAccount_bvb_Subscription" />
-      <nodes>
-        <classShapeMoniker Id="6fef1237-4d5c-424f-8ea6-1ea9e77d6726" />
-        <classShapeMoniker Id="eb6e5762-a45c-46f4-86b7-26a5f28513a2" />
-      </nodes>
-    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

@@ -56,6 +56,7 @@ namespace MerchantTribe.Commerce.Accounts
             model.PlanId = data.PlanId;
             model.Status = (StoreStatus)data.Status;
             model.StoreName = data.StoreName;
+            model.StripeCustomerId = data.StripeCustomerId;
             //model.SubscriptionId = data.SubscriptionId;            
         }
         protected override void CopyModelToData(Data.EF.ecommrc_Stores data, Store model)
@@ -70,7 +71,9 @@ namespace MerchantTribe.Commerce.Accounts
             data.PlanId = model.PlanId;
             data.Status = (int)model.Status;
             data.StoreName = model.StoreName;
-            data.SubscriptionId = -1; // model.SubscriptionId;            
+            data.SubscriptionId = -1;
+            data.StripeCustomerId = model.StripeCustomerId;
+            // model.SubscriptionId;            
         }
 
         protected override void DeleteAllSubItems(Store model)

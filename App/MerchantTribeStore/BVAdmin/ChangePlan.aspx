@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_ChangePlan" Codebehind="ChangePlan.aspx.cs" %>
 
 <%@ Register src="Controls/MessageBox.ascx" tagname="MessageBox" tagprefix="uc1" %>
+<%@ Register src="../BVModules/Controls/CreditCardInput.ascx" tagname="CreditCardInput" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="headcontent" Runat="Server">
 <style>
@@ -25,7 +26,18 @@
         <h1>Change Store Plan</h1>
         <uc1:MessageBox ID="MessageBox1" runat="server" />
         
-
+        <asp:Panel ID="pnlCreditCard" runat="server">
+            <div class="editorpanel">
+                <h3>Credit Card Information</h3>
+                <p>You do not currently have a credit card on file. A valid credit card is required to switch to a non-free plan.</p>
+                &nbsp;<br />
+                <uc1:CreditCardInput ID="CreditCardInput1" runat="server" /><br />
+                Billing Zip Code: <asp:textbox ID="txtZipCode" runat="server" Columns="10"></asp:textbox><br />&nbsp;<br />
+            </div>
+            &nbsp;
+        </asp:Panel>
+        
+        <h2>Select Your New Plan</h2>
         <table class="priceplans">           
             <tr class="planname">
                 <td class="pnone">&nbsp;</td>
@@ -113,14 +125,13 @@
                         onclick="btnMax_Click"></asp:LinkButton></td>
             </tr>
             </table>
-            <div class="editorpanel">
-            <h3>Credit Card on File</h3>
-            <asp:Label ID="lblCardOnFile" runat="server"></asp:Label><br />
-            <a href="Account.aspx">Change This Card</a>
-            </div>  
             &nbsp;          
             <div class="editorpanel">
-            <p><b>Upgrading:</b><br />Upgrading will charge you credit card on file immediately at the new rate.  Your billing date will switch to this day of the month.</p>
+            <p><b>Upgrading:</b><br /></p>
+                Your store will immediately move to the new rate and your card will be charged a 
+                pro-rated amount for the current month under your old plan and the remainder of 
+                the month under the new plan. The next billing cycle your card will be charged 
+                the full new plan rate.<br />
             &nbsp;<br />
             <p><b>Downgrading</b><br />Downgrading will change your store functionality immediately to the new features. You will be billed at the lower rate on your next regular bill. Free plans have no charge as always.</p>
             </div>

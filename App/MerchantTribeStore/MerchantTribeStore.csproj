@@ -258,6 +258,7 @@
     <Content Include="BVAdmin\Images\FileIcons\xmp_32.png" />
     <Content Include="BVAdmin\Images\FileIcons\zip_32.png" />
     <Content Include="BVAdmin\Logout.aspx" />
+    <Content Include="BVAdmin\SetupWizard\EULA-Free.txt" />
     <Content Include="BVAdmin\SetupWizard\EULA.txt" />
     <Content Include="BVAdmin\SetupWizard\WizardSocialMedia.aspx" />
     <Content Include="BVAdmin\SetupWizard\WizardStart.aspx" />
@@ -4606,10 +4607,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\src\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
-      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
-      <Name>MerchantTribe.Billing</Name>
-    </ProjectReference>
+   
     <ProjectReference Include="..\src\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
       <Name>MerchantTribe.CommerceDTO</Name>

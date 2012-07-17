@@ -131,6 +131,9 @@
     <Reference Include="paypal_base">
       <HintPath>..\..\lib\paypal_base.dll</HintPath>
     </Reference>
+    <Reference Include="Stripe.net">
+      <HintPath>..\..\packages\Stripe.net.1.1.12\lib\net40\Stripe.net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.configuration" />
@@ -170,7 +173,12 @@
     <Compile Include="Accounts\ApiKeyRepository.cs" />
     <Compile Include="Accounts\AuthToken.cs" />
     <Compile Include="Accounts\AuthTokenRepository.cs" />
-    <Compile Include="Accounts\BillingManager.cs" />
+    <Compile Include="Accounts\Billing\BillingManager.cs" />
+    <Compile Include="Accounts\Billing\CreateCustomerRequest.cs" />
+    <Compile Include="Accounts\Billing\CreateCustomerResponse.cs" />
+    <Compile Include="Accounts\Billing\GetCustomerResponse.cs" />
+    <Compile Include="Accounts\Billing\UpdateCustomerRequest.cs" />
+    <Compile Include="Accounts\Billing\UpdateCustomerResponse.cs" />
     <Compile Include="Accounts\HostedPlan.cs" />
     <Compile Include="Accounts\Store.cs" />
     <Compile Include="Accounts\StoreAccessMode.cs" />
@@ -677,10 +685,6 @@
     <ProjectReference Include="..\MerchantTribe.Shipping\MerchantTribe.Shipping.csproj">
       <Project>{99A252BB-D844-4581-B924-4E59AE19857F}</Project>
       <Name>MerchantTribe.Shipping</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MerchantTribe.Billing\MerchantTribe.Billing.csproj">
-      <Project>{39CB3B9D-94B5-46B1-9C5F-E1C3348565D9}</Project>
-      <Name>MerchantTribe.Billing</Name>
     </ProjectReference>
     <ProjectReference Include="..\MerchantTribe.Payment\MerchantTribe.Payment.csproj">
       <Project>{4C223AD8-685A-4AAC-8610-1BEC50636203}</Project>
