@@ -12,7 +12,7 @@ namespace MerchantTribeStore
     {
         protected const string DefaultCatalogPage = "~/BVAdmin/Catalog/Default.aspx";
 
-        private Guid? _AuthTokenGuid = null;
+        private Guid? _AuthTokenGuid = null;        
 
         //private MerchantTribe.Commerce.RequestContext _CurrentRequestContext = new MerchantTribe.Commerce.RequestContext();
         private IMessageBox _messageBox = null;
@@ -64,7 +64,7 @@ namespace MerchantTribeStore
             }
             set { Session["ActiveAdminTab"] = value; }
         }
-
+        
         protected override void OnPreInit(EventArgs e)
         {
             base.OnPreInit(e);
@@ -89,7 +89,6 @@ namespace MerchantTribeStore
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MTApp.CurrentStore.Settings.CultureCode);
 
-            IntegrationLoader.AddIntegrations(this.MTApp.CurrentRequestContext.IntegrationEvents, this.MTApp);
 
 			ValidateAdminLogin();
         }

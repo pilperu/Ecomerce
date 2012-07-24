@@ -122,12 +122,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
-    <Reference Include="MvcMiniProfiler">
-      <HintPath>..\..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcMiniProfiler.EntityFramework">
-      <HintPath>..\..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="paypal_base">
       <HintPath>..\..\lib\paypal_base.dll</HintPath>
     </Reference>

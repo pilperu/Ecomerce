@@ -9,7 +9,6 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -20,41 +19,37 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 
         public ActionResult Index(ContentBlock block)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("Block:SideMenu"))
+
+            SideMenuViewModel model = new SideMenuViewModel();
+
+            if (block != null)
             {
+                model.Title = block.BaseSettings.GetSettingOrEmpty("Title");
 
-                SideMenuViewModel model = new SideMenuViewModel();
-
-                if (block != null)
+                List<ContentBlockSettingListItem> links = block.Lists.FindList("Links");
+                if (links != null)
                 {
-                    model.Title = block.BaseSettings.GetSettingOrEmpty("Title");
-
-                    List<ContentBlockSettingListItem> links = block.Lists.FindList("Links");
-                    if (links != null)
+                    foreach (ContentBlockSettingListItem l in links)
                     {
-                        foreach (ContentBlockSettingListItem l in links)
-                        {
-                            model.Items.Add(AddSingleLink(l));
-                        }
+                        model.Items.Add(AddSingleLink(l));
                     }
                 }
-
-                return View(model);
             }
+
+            return View(model);
         }
 
         private SideMenuItem AddSingleLink(ContentBlockSettingListItem l)
         {
-            SideMenuItem result = new SideMenuItem();                        
+            SideMenuItem result = new SideMenuItem();
             result.Title = l.Setting4;
             result.Name = l.Setting1;
             result.Url = l.Setting2;
             if (l.Setting3 == "1")
             {
-                result.OpenInNewWindow = true;                
+                result.OpenInNewWindow = true;
             }
-            result.CssClass = l.Setting5;            
+            result.CssClass = l.Setting5;
             return result;
         }
 

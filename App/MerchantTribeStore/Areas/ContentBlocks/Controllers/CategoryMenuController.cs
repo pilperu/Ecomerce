@@ -8,7 +8,6 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
 using MerchantTribeStore.Controllers.Shared;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -18,13 +17,9 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/CategoryMenu/
         public ActionResult Index(ContentBlock block)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("Block:CategoryMenu"))
-            {         
-                CategoryMenuViewModel model = new CategoryMenuViewModel();
-                LoadMenu(model, block);
-                return View(model);            
-            }
+            CategoryMenuViewModel model = new CategoryMenuViewModel();
+            LoadMenu(model, block);
+            return View(model);
         }
 
         private void LoadMenu(CategoryMenuViewModel model, ContentBlock b)
@@ -546,7 +541,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
                     model.sb.Append("</li>" + System.Environment.NewLine);
                 }
             }
-        }        
+        }
 
     }
 }

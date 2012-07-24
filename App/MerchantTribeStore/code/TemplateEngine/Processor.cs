@@ -4,7 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Text;
 using MerchantTribe.Commerce;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore.code.TemplateEngine
 {
@@ -20,7 +19,7 @@ namespace MerchantTribeStore.code.TemplateEngine
             this.TagProvider = tagProvider;
             this.Template = template;
         }
-       
+
         public Queue<string> Tokenize()
         {
             Queue<string> result = new Queue<string>();
@@ -112,96 +111,93 @@ namespace MerchantTribeStore.code.TemplateEngine
 
         private void ProcessTemplate(Queue<string> tokens, List<ITemplateAction> actions)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("Process Template"))
+            string tagStarter = "<";
+
+            bool parsingTag = false;
+            Queue<string> subqueue = new Queue<string>();
+            string startToken = string.Empty;
+
+            while (tokens.Count > 0)
             {
-                string tagStarter = "<";
+                string currentToken = tokens.Dequeue();
 
-                bool parsingTag = false;
-                Queue<string> subqueue = new Queue<string>();
-                string startToken = string.Empty;
-
-                while (tokens.Count > 0)
+                if (parsingTag)
                 {
-                    string currentToken = tokens.Dequeue();
-
-                    if (parsingTag)
+                    if (IsClosingTag(currentToken, ParseTagName(startToken)))
                     {
-                        if (IsClosingTag(currentToken, ParseTagName(startToken)))
+                        // Yes, this tag closed the starting tag
+                        ParsedTag t = ParseTag(startToken, false);
+                        ProcessTag(t, subqueue, actions);
+
+                        // reset everything since the tag is parsed below
+                        parsingTag = false;
+                        startToken = "";
+                        subqueue = new Queue<string>();
+
+                    }
+                    else
+                    {
+                        // Nope, no closing yet, just enqueue the token
+                        subqueue.Enqueue(currentToken);
+                    }
+                }
+                else
+                {
+                    // we're not parsing, check for a tag start
+                    if (currentToken.StartsWith(tagStarter))
+                    {
+                        if (IsAcceptedTag(currentToken))
                         {
-                            // Yes, this tag closed the starting tag
-                            ParsedTag t = ParseTag(startToken, false);
-                            ProcessTag(t, subqueue, actions);
+                            parsingTag = true;
 
-                            // reset everything since the tag is parsed below
-                            parsingTag = false;
-                            startToken = "";
-                            subqueue = new Queue<string>();
+                            if (IsSelfClosed(currentToken))
+                            {
+                                // Tag is self closed, just parse it
+                                ParsedTag t2 = ParseTag(currentToken, true);
+                                ProcessTag(t2, subqueue, actions);
 
+                                parsingTag = false;
+                            }
+                            else
+                            {
+                                // store the starting token for later parsing
+                                startToken = currentToken;
+                            }
                         }
                         else
                         {
-                            // Nope, no closing yet, just enqueue the token
-                            subqueue.Enqueue(currentToken);
+                            // not an accepted tag, just dump the sucker
+                            actions.Add(new Actions.LiteralText(currentToken));
                         }
                     }
                     else
                     {
-                        // we're not parsing, check for a tag start
-                        if (currentToken.StartsWith(tagStarter))
-                        {
-                            if (IsAcceptedTag(currentToken))
-                            {
-                                parsingTag = true;
-
-                                if (IsSelfClosed(currentToken))
-                                {
-                                    // Tag is self closed, just parse it
-                                    ParsedTag t2 = ParseTag(currentToken, true);
-                                    ProcessTag(t2, subqueue, actions);
-
-                                    parsingTag = false;
-                                }
-                                else
-                                {
-                                    // store the starting token for later parsing
-                                    startToken = currentToken;
-                                }
-                            }
-                            else
-                            {
-                                // not an accepted tag, just dump the sucker
-                                actions.Add(new Actions.LiteralText(currentToken));
-                            }
-                        }
-                        else
-                        {
-                            // not starting a tag, just dump the output
-                            actions.Add(new Actions.LiteralText(currentToken));
-                        }
+                        // not starting a tag, just dump the output
+                        actions.Add(new Actions.LiteralText(currentToken));
                     }
                 }
-
-
-                if (parsingTag)
-                {
-                    if (startToken.Length > 0)
-                    {
-                        actions.Add(new Actions.LiteralText(startToken));
-                    }
-                }
-
-                // if the subque has items in it because we didn't find a closing tag, dump them
-                if (subqueue.Count > 0)
-                {
-                    while (subqueue.Count > 0)
-                    {
-                        string subqueuetoken = subqueue.Dequeue();
-                        actions.Add(new Actions.LiteralText(subqueuetoken));
-                    }
-                }
-
             }
+
+
+            if (parsingTag)
+            {
+                if (startToken.Length > 0)
+                {
+                    actions.Add(new Actions.LiteralText(startToken));
+                }
+            }
+
+            // if the subque has items in it because we didn't find a closing tag, dump them
+            if (subqueue.Count > 0)
+            {
+                while (subqueue.Count > 0)
+                {
+                    string subqueuetoken = subqueue.Dequeue();
+                    actions.Add(new Actions.LiteralText(subqueuetoken));
+                }
+            }
+
+
         }
         private void ProcessTag(ParsedTag tag, Queue<string> contentTokens, List<ITemplateAction> actions)
         {
@@ -217,7 +213,7 @@ namespace MerchantTribeStore.code.TemplateEngine
                     {
                         contentsFlat += s;
                     }
-                    handler.Process(actions, this.MTApp, this.TagProvider, tag, contentsFlat);                    
+                    handler.Process(actions, this.MTApp, this.TagProvider, tag, contentsFlat);
                 }
             }
         }
@@ -373,7 +369,7 @@ namespace MerchantTribeStore.code.TemplateEngine
             return false;
         }
         private bool IsSelfClosed(string currentToken)
-        {            
+        {
             if (currentToken.EndsWith("/>"))
             {
                 return true;
@@ -381,7 +377,7 @@ namespace MerchantTribeStore.code.TemplateEngine
             return false;
         }
 
-        
+
     }
 }
 

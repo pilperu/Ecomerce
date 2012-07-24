@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
 using MerchantTribe.Web.Logging;
-using MvcMiniProfiler;
 
 namespace MerchantTribe.Commerce.Catalog
 {
-    public class ProductRepository: ConvertingRepositoryBase<Data.EF.bvc_Product, Product>
+    public class ProductRepository : ConvertingRepositoryBase<Data.EF.bvc_Product, Product>
     {
         private RequestContext context = null;
-        
+
         private OptionRepository optionRespository = null;
         private VariantRepository variantRepository = null;
         private ProductImageRepository imageRepository = null;
         private ProductReviewRepository reviewRepository = null;
         private ProductOptionAssociationRepository productsXOptions = null;
-        
+
         public static ProductRepository InstantiateForMemory(RequestContext c)
         {
             return new ProductRepository(c, new MemoryStrategy<Data.EF.bvc_Product>(PrimaryKeyType.Bvin),
@@ -32,7 +31,7 @@ namespace MerchantTribe.Commerce.Catalog
         public static ProductRepository InstantiateForDatabase(RequestContext c)
         {
             ProductRepository result = null;
-            result = new ProductRepository(c, 
+            result = new ProductRepository(c,
                 new EntityFrameworkRepository<Data.EF.bvc_Product>(
                     new Data.EF.EntityFrameworkDevConnectionString(c.ConnectionStringForEntityFramework)),
                 new EntityFrameworkRepository<Data.EF.bvc_ProductOptions>(
@@ -51,20 +50,20 @@ namespace MerchantTribe.Commerce.Catalog
                     );
             return result;
         }
-        
+
         private ProductRepository(RequestContext c, IRepositoryStrategy<Data.EF.bvc_Product> r,
                                  IRepositoryStrategy<Data.EF.bvc_ProductOptions> opts,
                                  IRepositoryStrategy<Data.EF.bvc_ProductOptionsItems> optitems,
                                  IRepositoryStrategy<Data.EF.bvc_ProductXOption> optionCrosses,
                                  IRepositoryStrategy<Data.EF.bvc_Variants> vars,
                                  IRepositoryStrategy<Data.EF.bvc_ProductImage> images,
-                                 IRepositoryStrategy<Data.EF.bvc_ProductReview> reviews, 
+                                 IRepositoryStrategy<Data.EF.bvc_ProductReview> reviews,
                                  ILogger log)
         {
             context = c;
             repository = r;
             this.logger = log;
-            repository.Logger = this.logger;                        
+            repository.Logger = this.logger;
             this.optionRespository = new OptionRepository(c, opts, optitems, optionCrosses, this.logger);
             this.variantRepository = new VariantRepository(c, vars, this.logger);
             this.imageRepository = new ProductImageRepository(c, images, this.logger);
@@ -72,13 +71,13 @@ namespace MerchantTribe.Commerce.Catalog
         }
 
         protected override void CopyDataToModel(Data.EF.bvc_Product data, Product model)
-        {            
+        {
             model.AllowReviews = data.AllowReviews;
             model.Bvin = data.bvin;
             model.CreationDateUtc = data.CreationDate;
-            model.CustomPropertiesFromXml(data.CustomProperties);                        
+            model.CustomPropertiesFromXml(data.CustomProperties);
             model.Featured = data.Featured;
-            model.GiftWrapAllowed = data.GiftWrapAllowed == 1 ? true: false;
+            model.GiftWrapAllowed = data.GiftWrapAllowed == 1 ? true : false;
             model.GiftWrapPrice = data.GiftWrapPrice;
             model.ImageFileMedium = data.ImageFileMedium;
             model.ImageFileMediumAlternateText = data.MediumImageAlternateText;
@@ -88,25 +87,25 @@ namespace MerchantTribe.Commerce.Catalog
             model.IsAvailableForSale = data.IsAvailableForSale;
             model.Keywords = data.Keywords;
             model.LastUpdated = data.LastUpdated;
-            model.ListPrice = data.ListPrice;            
+            model.ListPrice = data.ListPrice;
             model.LongDescription = data.LongDescription;
             model.ManufacturerId = data.ManufacturerID;
             model.MetaDescription = data.MetaDescription;
             model.MetaKeywords = data.MetaKeywords;
             model.MetaTitle = data.MetaTitle;
-            model.MinimumQty = data.MinimumQty;            
+            model.MinimumQty = data.MinimumQty;
             model.PostContentColumnId = data.PostContentColumnId;
             model.PreContentColumnId = data.PreContentColumnId;
             model.PreTransformLongDescription = data.PreTransformLongDescription;
             model.ProductName = data.ProductName;
-            model.ProductTypeId = data.ProductTypeId;            
+            model.ProductTypeId = data.ProductTypeId;
             model.ShippingDetails.ExtraShipFee = data.ExtraShipFee;
             model.ShippingDetails.Height = data.ShippingHeight;
-            model.ShippingDetails.IsNonShipping = data.NonShipping == 1 ? true: false;
+            model.ShippingDetails.IsNonShipping = data.NonShipping == 1 ? true : false;
             model.ShippingDetails.Length = data.ShippingLength;
             model.ShippingDetails.Weight = data.ShippingWeight;
-            model.ShippingDetails.Width = data.ShippingWidth;            
-            model.ShippingDetails.ShipSeparately = data.ShipSeparately == 1 ? true: false;            
+            model.ShippingDetails.Width = data.ShippingWidth;
+            model.ShippingDetails.ShipSeparately = data.ShipSeparately == 1 ? true : false;
             model.ShippingMode = (Shipping.ShippingMode)data.ShippingMode;
             model.ShortDescription = data.ShortDescription;
             model.SiteCost = data.SiteCost;
@@ -115,13 +114,13 @@ namespace MerchantTribe.Commerce.Catalog
             model.Sku = data.SKU;
             model.Status = (ProductStatus)data.Status;
             model.StoreId = data.StoreId;
-            model.TabsFromXml(data.DescriptionTabs);            
-            model.TaxExempt = data.TaxExempt == 1 ? true: false;
+            model.TabsFromXml(data.DescriptionTabs);
+            model.TaxExempt = data.TaxExempt == 1 ? true : false;
             string taxString = data.TaxClass;
-            long tempTax = -1;            if (long.TryParse(taxString, out tempTax)) model.TaxSchedule = tempTax;
+            long tempTax = -1; if (long.TryParse(taxString, out tempTax)) model.TaxSchedule = tempTax;
             model.TemplateName = data.TemplateName;
             model.UrlSlug = data.RewriteUrl;
-            model.VendorId = data.VendorID; 
+            model.VendorId = data.VendorID;
         }
         protected override void CopyModelToData(Data.EF.bvc_Product data, Product model)
         {
@@ -172,7 +171,7 @@ namespace MerchantTribe.Commerce.Catalog
             data.TaxClass = model.TaxSchedule.ToString();
             data.TemplateName = model.TemplateName;
             data.RewriteUrl = model.UrlSlug;
-            data.VendorID = model.VendorId; 
+            data.VendorID = model.VendorId;
         }
 
         protected override void DeleteAllSubItems(Product model)
@@ -189,56 +188,48 @@ namespace MerchantTribe.Commerce.Catalog
             model.Options.Clear();
             model.Options.AddRange(optionRespository.FindByProductId(model.Bvin));
             model.Images = imageRepository.FindByProductId(model.Bvin);
-            model.Reviews = reviewRepository.FindByProductId(model.Bvin);            
+            model.Reviews = reviewRepository.FindByProductId(model.Bvin);
         }
         protected override void MergeSubItems(Product model)
         {
             variantRepository.MergeList(model.Bvin, model.Variants);
             optionRespository.MergeList(model.Bvin, model.Options);
             imageRepository.MergeList(model.Bvin, model.Images);
-            reviewRepository.MergeList(model.Bvin, model.Reviews);            
+            reviewRepository.MergeList(model.Bvin, model.Reviews);
         }
 
         public Product FindWithCache(string bvin)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindWithCache"))
+            Product result = CacheManager.GetProduct(bvin, context.CurrentStore.Id);
+            if (result != null) return result;
+
+            result = FindForAllStores(bvin);
+            if (result != null)
             {
-                Product result = CacheManager.GetProduct(bvin, context.CurrentStore.Id);
-                if (result != null) return result;
-
-                result = FindForAllStores(bvin);
-                if (result != null)
+                if (result.StoreId == context.CurrentStore.Id)
                 {
-                    if (result.StoreId == context.CurrentStore.Id)
-                    {
-                        CacheManager.AddProduct(result);
-                        return result;
-                    }
+                    CacheManager.AddProduct(result);
+                    return result;
                 }
-
-                return null;
             }
+
+            return null;
         }
         public Product Find(string bvin)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:Find-NO-Cache"))
+            Product result = FindForAllStores(bvin);
+            if (result != null)
             {
-                Product result = FindForAllStores(bvin);
-                if (result != null)
+                if (result.StoreId == context.CurrentStore.Id)
                 {
-                    if (result.StoreId == context.CurrentStore.Id)
-                    {
-                        return result;
-                    }
+                    return result;
                 }
-                return null;
             }
+            return null;
         }
         public Product FindForAllStores(string bvin)
         {
-            return this.Find(new PrimaryKey(bvin));            
+            return this.Find(new PrimaryKey(bvin));
         }
         public Product FindBySlug(string urlSlug)
         {
@@ -246,18 +237,14 @@ namespace MerchantTribe.Commerce.Catalog
         }
         public Product FindBySlugForStore(string urlSlug, long storeId)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindBySlugForStore"))
+            IQueryable<Data.EF.bvc_Product> data = repository.Find().Where(y => y.RewriteUrl == urlSlug).Where(y => y.StoreId == storeId).OrderBy(y => y.Id);
+            if (data.Count() > 0)
             {
-                IQueryable<Data.EF.bvc_Product> data = repository.Find().Where(y => y.RewriteUrl == urlSlug).Where(y => y.StoreId == storeId).OrderBy(y => y.Id);
-                if (data.Count() > 0)
-                {
-                    var result = SinglePoco(data);
-                    if (result != null) CacheManager.AddProduct(result);
-                    return result;
-                }
-                return null;
+                var result = SinglePoco(data);
+                if (result != null) CacheManager.AddProduct(result);
+                return result;
             }
+            return null;
         }
         public Product FindBySku(string sku)
         {
@@ -265,20 +252,16 @@ namespace MerchantTribe.Commerce.Catalog
         }
         public Product FindBySkuForStore(string sku, long storeId)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindBySkuForStore"))
+            IQueryable<Data.EF.bvc_Product> data = repository.Find().Where(y => y.SKU == sku).Where(y => y.StoreId == storeId).OrderBy(y => y.Id);
+            if (data.Count() > 0)
             {
-                IQueryable<Data.EF.bvc_Product> data = repository.Find().Where(y => y.SKU == sku).Where(y => y.StoreId == storeId).OrderBy(y => y.Id);
-                if (data.Count() > 0)
-                {
-                    var result = SinglePoco(data);
-                    if (result != null) CacheManager.AddProduct(result);
-                    return result;
-                }
-                return null;
+                var result = SinglePoco(data);
+                if (result != null) CacheManager.AddProduct(result);
+                return result;
             }
+            return null;
         }
-       
+
         public override bool Create(Product item)
         {
             item.LastUpdated = DateTime.UtcNow;
@@ -298,7 +281,7 @@ namespace MerchantTribe.Commerce.Catalog
             }
             CacheManager.ClearProduct(c.Bvin, c.StoreId);
             c.LastUpdated = DateTime.UtcNow;
-            return this.Update(c, new PrimaryKey(c.Bvin));            
+            return this.Update(c, new PrimaryKey(c.Bvin));
         }
         public bool Delete(string bvin)
         {
@@ -330,7 +313,7 @@ namespace MerchantTribe.Commerce.Catalog
 
             IQueryable<Data.EF.bvc_Product> items = repository.Find().Where(y => y.StoreId == storeId).OrderBy(y => y.ProductName).Skip(skip).Take(take);
             if (items != null)
-            {                
+            {
                 result = ListPoco(items);
             }
 
@@ -343,7 +326,7 @@ namespace MerchantTribe.Commerce.Catalog
         }
         public int FindAllCount(long storeId)
         {
-            int result = 0;            
+            int result = 0;
             result = repository.Find().Where(y => y.StoreId == storeId).Count();
             return result;
         }
@@ -354,7 +337,7 @@ namespace MerchantTribe.Commerce.Catalog
             if (pageNumber < 1) pageNumber = 1;
 
             int take = pageSize;
-            int skip = (pageNumber - 1) * pageSize;            
+            int skip = (pageNumber - 1) * pageSize;
 
             IQueryable<Data.EF.bvc_Product> items = repository.Find().OrderBy(y => y.ProductName).Skip(skip).Take(take);
             if (items != null)
@@ -379,31 +362,28 @@ namespace MerchantTribe.Commerce.Catalog
             return result;
         }
 
-        public List<Product>FindByCategoryId(string categoryBvin, CategorySortOrder sort, 
-                                            bool showUnavailable, 
-                                            int pageNumber,int pageSize, ref int totalResults)
+        public List<Product> FindByCategoryId(string categoryBvin, CategorySortOrder sort,
+                                            bool showUnavailable,
+                                            int pageNumber, int pageSize, ref int totalResults)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindByCategoryId"))
+            ProductSearchCriteria criteria = new ProductSearchCriteria();
+            criteria.CategorySort = sort;
+            criteria.CategoryId = categoryBvin;
+            criteria.DisplayInactiveProducts = showUnavailable;
+            if (showUnavailable)
             {
-                ProductSearchCriteria criteria = new ProductSearchCriteria();
-                criteria.CategorySort = sort;
-                criteria.CategoryId = categoryBvin;
-                criteria.DisplayInactiveProducts = showUnavailable;
-                if (showUnavailable)
-                {
-                    criteria.InventoryStatus = ProductInventoryStatus.NotSet;
-                }
-                else
-                {
-                    criteria.InventoryStatus = ProductInventoryStatus.Available;
-                }
-                int totalFromSearch = 0;
-                List<Product> results = FindByCriteria(criteria, pageNumber, pageSize, ref totalFromSearch);
-                totalResults = totalFromSearch;
-                return results;
+                criteria.InventoryStatus = ProductInventoryStatus.NotSet;
             }
-        }        
+            else
+            {
+                criteria.InventoryStatus = ProductInventoryStatus.Available;
+            }
+            int totalFromSearch = 0;
+            List<Product> results = FindByCriteria(criteria, pageNumber, pageSize, ref totalFromSearch);
+            totalResults = totalFromSearch;
+            return results;
+
+        }
         public List<Product> FindByCriteria(ProductSearchCriteria criteria)
         {
             int temp = -1;
@@ -411,164 +391,146 @@ namespace MerchantTribe.Commerce.Catalog
         }
         public List<Product> FindByCriteria(ProductSearchCriteria criteria, int pageNumber, int pageSize, ref int totalCount)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindByCriteria"))
+            List<Product> result = new List<Product>();
+
+            if (pageNumber < 1) pageNumber = 1;
+
+            int take = pageSize;
+            int skip = (pageNumber - 1) * pageSize;
+            long storeId = context.CurrentStore.Id;
+
+            IQueryable<Data.EF.bvc_Product> items = repository.Find()
+                                            .Where(y => y.StoreId == storeId);
+
+            // Display Inactive
+            if (criteria.DisplayInactiveProducts == false)
             {
-                List<Product> result = new List<Product>();
-
-                if (pageNumber < 1) pageNumber = 1;
-
-                int take = pageSize;
-                int skip = (pageNumber - 1) * pageSize;
-                long storeId = context.CurrentStore.Id;
-
-                IQueryable<Data.EF.bvc_Product> items = repository.Find()
-                                                .Where(y => y.StoreId == storeId);
-
-                // Display Inactive
-                if (criteria.DisplayInactiveProducts == false)
+                items = items.Where(y => y.Status == 1);
+            }
+            // Status
+            if (criteria.Status != ProductStatus.NotSet)
+            {
+                items = items.Where(y => y.Status == (int)criteria.Status);
+            }
+            // Inventory Status
+            if (criteria.InventoryStatus != ProductInventoryStatus.NotSet)
+            {
+                if (criteria.InventoryStatus == ProductInventoryStatus.NotAvailable)
                 {
-                    items = items.Where(y => y.Status == 1);
-                }
-                // Status
-                if (criteria.Status != ProductStatus.NotSet)
-                {
-                    items = items.Where(y => y.Status == (int)criteria.Status);
-                }
-                // Inventory Status
-                if (criteria.InventoryStatus != ProductInventoryStatus.NotSet)
-                {
-                    if (criteria.InventoryStatus == ProductInventoryStatus.NotAvailable)
-                    {
-                        items = items.Where(y => y.IsAvailableForSale == false);
-                    }
-                    else
-                    {
-                        items = items.Where(y => y.IsAvailableForSale == true);
-                    }
-                }
-                // Manufacturer
-                if (criteria.ManufacturerId != string.Empty)
-                {
-                    items = items.Where(y => y.ManufacturerID == criteria.ManufacturerId);
-                }
-                // Vendor
-                if (criteria.VendorId != string.Empty)
-                {
-                    items = items.Where(y => y.VendorID == criteria.VendorId);
-                }
-                // Keywords
-                if (criteria.Keyword != string.Empty)
-                {
-                    items = items.Where(y => y.SKU.Contains(criteria.Keyword) ||
-                                          y.ProductName.Contains(criteria.Keyword) ||
-                                          y.MetaDescription.Contains(criteria.Keyword) ||
-                                          y.MetaKeywords.Contains(criteria.Keyword) ||
-                                          y.ShortDescription.Contains(criteria.Keyword) ||
-                                          y.LongDescription.Contains(criteria.Keyword) ||
-                                          y.Keywords.Contains(criteria.Keyword));
-                }
-                if (criteria.CategoryId != string.Empty)
-                {
-                    items = items.Where(y => y.bvc_ProductXCategory.Where(z => z.CategoryId == criteria.CategoryId).FirstOrDefault() != null);
-                    // Sort
-                    switch (criteria.CategorySort)
-                    {
-                        case CategorySortOrder.ProductName:
-                            items = items.OrderBy(y => y.ProductName);
-                            break;
-                        case CategorySortOrder.ProductPriceAscending:
-                            items = items.OrderBy(y => y.SitePrice);
-                            break;
-                        case CategorySortOrder.ProductPriceDescending:
-                            items = items.OrderByDescending(y => y.SitePrice);
-                            break;
-                        default:
-                            // TODO: This needs to respect merchant set sort order instead.
-                            items = items.OrderBy(y => y.ProductName);
-                            items = items.OrderBy(y => y.bvc_ProductXCategory.Where(z => z.CategoryId == criteria.CategoryId).Select(z => z.SortOrder).FirstOrDefault());
-                            break;
-                    }
+                    items = items.Where(y => y.IsAvailableForSale == false);
                 }
                 else
                 {
-                    items = items.OrderBy(y => y.ProductName);
+                    items = items.Where(y => y.IsAvailableForSale == true);
                 }
-
-                // Get Total Count
-                IQueryable<Data.EF.bvc_Product> itemsForCount = items;
-                totalCount = itemsForCount.Count();
-
-                // Get Paged            
-                items = items.Skip(skip).Take(take);
-                if (items != null)
-                {
-                    result = ListPoco(items);
-                }
-
-                return result;
             }
+            // Manufacturer
+            if (criteria.ManufacturerId != string.Empty)
+            {
+                items = items.Where(y => y.ManufacturerID == criteria.ManufacturerId);
+            }
+            // Vendor
+            if (criteria.VendorId != string.Empty)
+            {
+                items = items.Where(y => y.VendorID == criteria.VendorId);
+            }
+            // Keywords
+            if (criteria.Keyword != string.Empty)
+            {
+                items = items.Where(y => y.SKU.Contains(criteria.Keyword) ||
+                                      y.ProductName.Contains(criteria.Keyword) ||
+                                      y.MetaDescription.Contains(criteria.Keyword) ||
+                                      y.MetaKeywords.Contains(criteria.Keyword) ||
+                                      y.ShortDescription.Contains(criteria.Keyword) ||
+                                      y.LongDescription.Contains(criteria.Keyword) ||
+                                      y.Keywords.Contains(criteria.Keyword));
+            }
+            if (criteria.CategoryId != string.Empty)
+            {
+                items = items.Where(y => y.bvc_ProductXCategory.Where(z => z.CategoryId == criteria.CategoryId).FirstOrDefault() != null);
+                // Sort
+                switch (criteria.CategorySort)
+                {
+                    case CategorySortOrder.ProductName:
+                        items = items.OrderBy(y => y.ProductName);
+                        break;
+                    case CategorySortOrder.ProductPriceAscending:
+                        items = items.OrderBy(y => y.SitePrice);
+                        break;
+                    case CategorySortOrder.ProductPriceDescending:
+                        items = items.OrderByDescending(y => y.SitePrice);
+                        break;
+                    default:
+                        // TODO: This needs to respect merchant set sort order instead.
+                        items = items.OrderBy(y => y.ProductName);
+                        items = items.OrderBy(y => y.bvc_ProductXCategory.Where(z => z.CategoryId == criteria.CategoryId).Select(z => z.SortOrder).FirstOrDefault());
+                        break;
+                }
+            }
+            else
+            {
+                items = items.OrderBy(y => y.ProductName);
+            }
+
+            // Get Total Count
+            IQueryable<Data.EF.bvc_Product> itemsForCount = items;
+            totalCount = itemsForCount.Count();
+
+            // Get Paged            
+            items = items.Skip(skip).Take(take);
+            if (items != null)
+            {
+                result = ListPoco(items);
+            }
+
+            return result;
+
         }
 
         public List<string> FindFeaturedProductBvins(int pageNumber, int pageSize)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindFeaturedBvins"))
-            {
-                List<string> result = new List<string>();
 
-                if (pageNumber < 1) pageNumber = 1;
+            List<string> result = new List<string>();
 
-                int take = pageSize;
-                int skip = (pageNumber - 1) * pageSize;
-                long storeId = context.CurrentStore.Id;
+            if (pageNumber < 1) pageNumber = 1;
 
-                var bvins = repository.Find().Where(y => y.StoreId == storeId)
-                                 .Where(y => y.Featured == true)
-                                 .OrderByDescending(y => y.LastUpdated)
-                                 .Select(y => y.bvin)
-                                 .Skip(skip).Take(take).ToList();
+            int take = pageSize;
+            int skip = (pageNumber - 1) * pageSize;
+            long storeId = context.CurrentStore.Id;
 
-                if (bvins != null) result.AddRange(bvins);
-                
-                return result;
-            }
+            var bvins = repository.Find().Where(y => y.StoreId == storeId)
+                             .Where(y => y.Featured == true)
+                             .OrderByDescending(y => y.LastUpdated)
+                             .Select(y => y.bvin)
+                             .Skip(skip).Take(take).ToList();
+
+            if (bvins != null) result.AddRange(bvins);
+
+            return result;
         }
+
         public List<Product> FindFeatured(int pageNumber, int pageSize)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindFeatured"))
-            {
-                List<string> bvins = FindFeaturedProductBvins(pageNumber, pageSize);                
-                return FindMany(bvins);                
-            }
+            List<string> bvins = FindFeaturedProductBvins(pageNumber, pageSize);
+            return FindMany(bvins);
         }
 
         public List<Product> FindMany(List<string> bvins)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("ProductRepository:FindMany"))
+
+            long storeId = context.CurrentStore.Id;
+
+            List<Product> result = new List<Product>();
+
+            foreach (string bvin in bvins)
             {
-                long storeId = context.CurrentStore.Id;
-
-                List<Product> result = new List<Product>();
-
-                foreach (string bvin in bvins)
-                {
-                    // Hopefully they're cached
-                    var p = FindWithCache(bvin);
-                    if (p != null) result.Add(p);
-                }
-
-                //IQueryable<Data.EF.bvc_Product> items = repository.Find().Where(y => bvins.Contains(y.bvin))
-                //                                                          .Where(y => y.StoreId == storeId).OrderBy(y => y.Id == y.Id);
-                //if (items != null)
-                //{
-                //    result = ListPoco(items);
-                //}
-
-                return result;
+                // Hopefully they're cached
+                var p = FindWithCache(bvin);
+                if (p != null) result.Add(p);
             }
+
+            return result;
+
         }
     }
 }

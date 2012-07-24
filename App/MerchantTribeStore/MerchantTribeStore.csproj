@@ -120,12 +120,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
-    <Reference Include="MvcMiniProfiler">
-      <HintPath>..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcMiniProfiler.EntityFramework">
-      <HintPath>..\packages\MiniProfiler.EF.1.9.1\lib\net40\MvcMiniProfiler.EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
     </Reference>
@@ -4283,7 +4277,6 @@
     <Compile Include="code\Helpers\Html.cs" />
     <Compile Include="code\HtmlHelperExtensions.cs" />
     <Compile Include="code\IMessageBox.cs" />
-    <Compile Include="code\IntegrationLoader.cs" />
     <Compile Include="code\IStorePage.cs" />
     <Compile Include="code\IVariantDisplay.cs" />
     <Compile Include="code\RouteEvaluator.cs" />
@@ -4607,7 +4600,6 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-   
     <ProjectReference Include="..\src\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
       <Name>MerchantTribe.CommerceDTO</Name>

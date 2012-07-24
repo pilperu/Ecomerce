@@ -9,7 +9,6 @@ using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
 using log4net;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore
 {
@@ -27,12 +26,12 @@ namespace MerchantTribeStore
         {
             HttpRuntime.Cache.Add("ScheduledTaskTrigger",
                                   "42", // Magic string that really could be anything but 42 is nice.
-                                  null, 
-                                  Cache.NoAbsoluteExpiration, 
-                                  TimeSpan.FromMinutes(2), 
-                                  CacheItemPriority.NotRemovable, 
+                                  null,
+                                  Cache.NoAbsoluteExpiration,
+                                  TimeSpan.FromMinutes(2),
+                                  CacheItemPriority.NotRemovable,
                                   new CacheItemRemovedCallback(PerformScheduledTasks));
-        }        
+        }
         static void PerformScheduledTasks(string key, Object value, CacheItemRemovedReason reason)
         {
             try
@@ -56,7 +55,7 @@ namespace MerchantTribeStore
                         //}
                     }
                 }
-                
+
             }
             catch
             {
@@ -74,26 +73,26 @@ namespace MerchantTribeStore
             MerchantTribe.Commerce.Utilities.WebForms.SendRequestByPost(destination, string.Empty);
         }
 
-#endregion
+        #endregion
 
         void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("bvc.js");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-            routes.IgnoreRoute("images/{*imagedata}");            
+            routes.IgnoreRoute("images/{*imagedata}");
             //routes.IgnoreRoute("bvadmin/*");
             //routes.IgnoreRoute("{resource}.aspx/{*pathInfo}");
-            
+
             // Admin Routes
             routes.MapPageRoute("adminlogin", "adminaccount/login", "~/BVAdmin/Login.aspx");
             routes.MapPageRoute("adminresetpassword", "adminaccount/resetpassword", "~/BVAdmin/ResetPassword.aspx");
             routes.MapPageRoute("adminresetpassword2", "adminaccount/resetpassword2", "~/BVAdmin/ResetPassword2.aspx");
             routes.MapPageRoute("adminlogout", "adminaccount/logout", "~/BVAdmin/logout.aspx");
-                                                                                      
+
             // Products
             routes.MapRoute("products-rendersingle", "products/rendersingleproduct/{*params}",
-                                new {controller = "Products",action = "RenderSingleProduct"});
+                                new { controller = "Products", action = "RenderSingleProduct" });
             routes.MapRoute("products-validate", "products/validate/{*params}",
                                 new { controller = "Products", action = "Validate" });
 
@@ -102,11 +101,11 @@ namespace MerchantTribeStore
                                 new { controller = "ProductReviews", action = "Index" });
             routes.MapRoute("productreviews", "productreviews/{action}/{id}",
                                 new { controller = "ProductReviews", action = "index", id = "" });
-                                      
+
             // policies
             routes.MapRoute("policy-route", "policies/{policykind}",
-                                new { controller = "Policies", action="Index", area="" },
-                                new[] {"MerchantTribeStore.Controllers"});
+                                new { controller = "Policies", action = "Index", area = "" },
+                                new[] { "MerchantTribeStore.Controllers" });
             routes.MapRoute("faq-route", "faq", new { controller = "Policies", action = "Faq" });
 
             // estimate shipping
@@ -127,8 +126,8 @@ namespace MerchantTribeStore
                                 new { controller = "PayPalExpressCheckout", action = "Index" });
             routes.MapRoute("checkout-paypal-edit", "paypalexpresscheckout/edit",
                                 new { controller = "PayPalExpressCheckout", action = "Edit" });
-            routes.MapRoute("paypal-ipn-route", "paypalipn", 
-                                new {controller = "PayPalIpn", action="Index" });
+            routes.MapRoute("paypal-ipn-route", "paypalipn",
+                                new { controller = "PayPalIpn", action = "Index" });
 
             // Search
             routes.MapRoute("search-route", "search", new { controller = "Search", action = "Index" });
@@ -142,7 +141,7 @@ namespace MerchantTribeStore
 
             // Admin
             routes.MapPageRoute("admin", "admin", "~/bvadmin/default.aspx");
-                                    
+
             // Home page
             routes.MapRoute("homepage", "", new { controller = "Home", action = "Index" });
 
@@ -156,10 +155,10 @@ namespace MerchantTribeStore
 
             // Site Map
             routes.MapRoute("sitemap-route", "sitemap/{*params}", new { controller = "SiteMap", action = "Index" });
-            routes.MapRoute("sitemapxml", "sitemap.xml", new { controller = "SiteMap", action = "Xml"});
-            
+            routes.MapRoute("sitemapxml", "sitemap.xml", new { controller = "SiteMap", action = "Xml" });
+
             // Api
-            routes.MapRoute("apirest", "api/rest/v{version}/{modelname}/{*parameters}", new { controller = "ApiRest", action = "Index", version=1 });
+            routes.MapRoute("apirest", "api/rest/v{version}/{modelname}/{*parameters}", new { controller = "ApiRest", action = "Index", version = 1 });
             routes.MapRoute("stoneedge", "api/stoneedge", new { controller = "StoneEdge", action = "Index" });
 
             // Multi-Store Super Routes          
@@ -171,12 +170,12 @@ namespace MerchantTribeStore
 
             // Custom Router
             // This should catch anything
-            routes.Add("bvroute", new Route("{*slug}", new CustomRouter()));            
-                        
+            routes.Add("bvroute", new Route("{*slug}", new CustomRouter()));
+
         }
-        
+
         void Application_Start(object sender, EventArgs e)
-        {            
+        {
             // Log4Net
             log4net.Config.XmlConfigurator.Configure();
             EventLog.LogEvent("System", "Application Startup", MerchantTribe.Web.Logging.EventLogSeverity.Information);
@@ -184,7 +183,7 @@ namespace MerchantTribeStore
             // routing
             AreaRegistration.RegisterAllAreas();
             RegisterGlobalFilters(GlobalFilters.Filters);
-            RegisterRoutes(RouteTable.Routes);                        
+            RegisterRoutes(RouteTable.Routes);
 
             // Scheduled Tasks Launcher
             string disableCacheTimers = System.Configuration.ConfigurationManager.AppSettings["disablecachetimers"];
@@ -193,7 +192,7 @@ namespace MerchantTribeStore
                 ScheduleTaskTrigger();
             }
 
-            
+
         }
 
         void Application_End(object sender, EventArgs e)
@@ -204,7 +203,7 @@ namespace MerchantTribeStore
         void Application_Error(object sender, EventArgs e)
         {
             // Code that runs when an unhandled error occurs
-            Exception ex = Server.GetLastError().GetBaseException();            
+            Exception ex = Server.GetLastError().GetBaseException();
             MerchantTribe.Commerce.EventLog.LogEvent(ex, MerchantTribe.Web.Logging.EventLogSeverity.Error);
             while (ex.InnerException != null)
             {
@@ -217,30 +216,18 @@ namespace MerchantTribeStore
         }
 
         void Session_End(object sender, EventArgs e)
-        {           
+        {
         }
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
-            if (Request.IsLocal)
-            {
-                MvcMiniProfiler.MiniProfiler profiler = MvcMiniProfiler.MiniProfiler.Start();
-            }
-            var pro = MvcMiniProfiler.MiniProfiler.Current;
-            using (pro.Step("Clean Up Domains"))
-            {
-                CleanUpDomains();
-            }
-            using (pro.Step("Culture"))
-            {
-                System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
-                System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
-            }
+            CleanUpDomains();
+            System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
         }
 
         void Application_EndRequest()
         {
-            MvcMiniProfiler.MiniProfiler.Stop();
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)
@@ -272,7 +259,7 @@ namespace MerchantTribeStore
                 builder.Host = builder.Host.Replace("bvcommerce.com", "merchanttribestores.com");
                 Response.RedirectPermanent(builder.ToString());
             }
-            
+
             // Skip case adjustment for now until we can test more
             //builder.Host = builder.Host.ToLowerInvariant();
             //builder.Path = builder.Path.ToLowerInvariant();

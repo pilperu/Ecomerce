@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using MerchantTribe.Web.Data;
 using MerchantTribe.Web.Logging;
-using MvcMiniProfiler;
 
 namespace MerchantTribe.Commerce.Orders
 {

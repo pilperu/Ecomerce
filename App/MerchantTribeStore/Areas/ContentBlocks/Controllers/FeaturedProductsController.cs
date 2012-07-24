@@ -9,7 +9,6 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -19,13 +18,9 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/FeaturedProducts/
         public ActionResult Index(ContentBlock block)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("Block:FeaturedProducts"))
-            {
-                FeaturedProductsViewModel model = new FeaturedProductsViewModel();
-                model.Items = PrepProducts(MTApp.CatalogServices.Products.FindFeatured(1, 100));
-                return View(model);
-            }
+            FeaturedProductsViewModel model = new FeaturedProductsViewModel();
+            model.Items = PrepProducts(MTApp.CatalogServices.Products.FindFeatured(1, 100));
+            return View(model);
         }
 
         private List<SingleProductViewModel> PrepProducts(List<Product> products)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using MerchantTribe.Commerce.Accounts;
-using MvcMiniProfiler;
 
 namespace MerchantTribe.Commerce.Utilities
 {
@@ -21,7 +20,7 @@ namespace MerchantTribe.Commerce.Utilities
             bool secure = false;
             if (requestedUrl.ToString().ToLowerInvariant().StartsWith("https://")) secure = true;
             string destination = app.StoreUrl(secure, false);
-            
+
             string pathAndQuery = requestedUrl.PathAndQuery;
             // Trim starting slash because root URL already has this
             pathAndQuery = pathAndQuery.TrimStart('/');
@@ -48,7 +47,7 @@ namespace MerchantTribe.Commerce.Utilities
                 if (possible != null)
                 {
                     if (possible.StoreId > 0)
-                    {                        
+                    {
                         RedirectToMainStoreUrl(possible.StoreId, url, app);
                     }
                 }
@@ -95,8 +94,6 @@ namespace MerchantTribe.Commerce.Utilities
         {
             long result = -1;
 
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-
             // Individual Mode
             if (WebAppSettings.IsIndividualMode)
             {
@@ -106,11 +103,7 @@ namespace MerchantTribe.Commerce.Utilities
 
             string host = url.DnsSafeHost.ToLowerInvariant();
             string mainDomain;
-
-            using (profiler.Step("Web App Settings Base Url"))
-            {
-                mainDomain = WebAppSettings.ApplicationBaseUrl;
-            }
+            mainDomain = WebAppSettings.ApplicationBaseUrl;
 
             // Trim off http://www
             if (mainDomain.Length > 11)
@@ -119,76 +112,55 @@ namespace MerchantTribe.Commerce.Utilities
                 mainDomain = mainDomain.TrimEnd('/');
             }
 
-            
+
             if (host.EndsWith(mainDomain))
             {
-                using (profiler.Step("Match Store on Main Domain"))
-                {
-                    // see if we're matching site domain first
+                // see if we're matching site domain first
 
-                    string storeName;
-                    using (profiler.Step("Parse Name From Url"))
+                string storeName;
+                storeName = ParseStoreName(url);
+
+                Accounts.Store current = null;
+                current = app.AccountServices.Stores.FindByStoreName(storeName);
+
+                if (current != null)
+                {
+                    if (current.Id > 0)
                     {
-                        storeName = ParseStoreName(url);
-                    }
-                    Accounts.Store current = null;                                                            
-                    using (profiler.Step("Loading Store by Name"))
-                    {
-                        current = app.AccountServices.Stores.FindByStoreName(storeName);                            
-                    }
-                                        
-                    if (current != null)
-                    {
-                        if (current.Id > 0)
-                        {
-                            result = current.Id;
-                        }
+                        result = current.Id;
                     }
                 }
             }
             else
             {
-                using (profiler.Step("Match Custom Domain"))
-                {
-                    // not on main domain, try custom urls
-                    result = GetStoreIdForCustomUrl(url, app);
-                }
+                // not on main domain, try custom urls
+                result = GetStoreIdForCustomUrl(url, app);
             }
 
-            return result;                           
+            return result;
         }
 
-       
+
         // Primary Method to Detect Store from Uri
         public static Accounts.Store ParseStoreFromUrl(System.Uri url, MerchantTribeApplication app)
         {
-            var profiler = MvcMiniProfiler.MiniProfiler.Current;
-            using (profiler.Step("UrlHelper.ParseStoreFromUrl"))
+            // Individual Mode
+            if (WebAppSettings.IsIndividualMode)
             {
-                // Individual Mode
-                if (WebAppSettings.IsIndividualMode)
-                {
-                    return app.AccountServices.FindOrCreateIndividualStore();
-                }
+                return app.AccountServices.FindOrCreateIndividualStore();
+            }
 
-                // Multi Mode
-                Accounts.Store result = null;
+            // Multi Mode
+            Accounts.Store result = null;
 
-                long storeid;
-                using (profiler.Step("Parse Id"))
-                {
-                    storeid = ParseStoreId(url, app);
-                }
-                using (profiler.Step("Load Store"))
-                {
-                    if (storeid > 0)
-                    {
-                        result = app.AccountServices.Stores.FindById(storeid);
-                    }
-                }
-                return result;
-            }            
+            long storeid;
+            storeid = ParseStoreId(url, app);
+            if (storeid > 0)
+            {
+                result = app.AccountServices.Stores.FindById(storeid);
+            }
+            return result;
         }
-        
+
     }
 }

@@ -9,7 +9,6 @@ using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Controllers.Shared;
 using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
-using MvcMiniProfiler;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
