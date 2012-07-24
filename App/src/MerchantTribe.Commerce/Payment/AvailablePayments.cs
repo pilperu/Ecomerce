@@ -22,7 +22,7 @@ namespace MerchantTribe.Commerce.Payment
             _Methods.Add(new Payment.Method.Telephone());
             _Methods.Add(new Payment.Method.CashOnDelivery());
             //_Methods.Add(new Payment.Method.GiftCertificate());
-            _Methods.Add(new Payment.Method.PaypalExpress());
+            _Methods.Add(new Payment.Method.PaypalExpress());            
         }
         private Collection<DisplayPaymentMethod> _Methods = new Collection<DisplayPaymentMethod>();
 
@@ -33,26 +33,7 @@ namespace MerchantTribe.Commerce.Payment
 
         public Collection<DisplayPaymentMethod> AvailableMethodsForPlan(int planId)
         {
-            Collection<DisplayPaymentMethod> result = new Collection<DisplayPaymentMethod>();
-
-            result.Add(new Payment.Method.CreditCard());
-                        
-            switch (planId)
-            {
-                case 2: // plus
-                case 3: // premium
-                case 99: // max
-                    result.Add(new Payment.Method.PurchaseOrder());
-                    result.Add(new Payment.Method.CompanyAccount());
-                    result.Add(new Payment.Method.Check());
-                    result.Add(new Payment.Method.Telephone());
-                    result.Add(new Payment.Method.CashOnDelivery());                    
-                    break;
-            }
-
-            result.Add(new Payment.Method.PaypalExpress());
-
-            return result;
+            return _Methods;                        
         }
         public Collection<DisplayPaymentMethod> EnabledMethods(Accounts.Store currentStore)
         {

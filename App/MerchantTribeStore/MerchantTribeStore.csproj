@@ -729,6 +729,7 @@
     <Content Include="BVModules\CreditCardGateways\Cybersource %28SOAP%29\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Payflow Pro\edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\PayPal Payments Pro\Edit.ascx" />
+    <Content Include="BVModules\CreditCardGateways\Stripe\Edit.ascx" />
     <Content Include="BVModules\CreditCardGateways\Test Gateway\edit.ascx" />
     <Content Include="BVModules\Editors\None\editor.ascx" />
     <Content Include="BVModules\Editors\TinyMCE\editor.ascx" />
@@ -4092,6 +4093,13 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\PayPal Payments Pro\Edit.ascx.designer.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="BVModules\CreditCardGateways\Stripe\Edit.ascx.cs">
+      <DependentUpon>Edit.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVModules\CreditCardGateways\Stripe\Edit.ascx.designer.cs">
       <DependentUpon>Edit.ascx</DependentUpon>
     </Compile>
     <Compile Include="BVModules\CreditCardGateways\Test Gateway\edit.ascx.cs">

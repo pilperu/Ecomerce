@@ -123,11 +123,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\stripe-custom\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Payflow_dotNET">
       <HintPath>..\..\lib\Payflow_dotNET.dll</HintPath>
     </Reference>
     <Reference Include="paypal_base">
       <HintPath>..\..\lib\paypal_base.dll</HintPath>
+    </Reference>
+    <Reference Include="Stripe">
+      <HintPath>..\..\lib\stripe-custom\Stripe.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -177,6 +183,8 @@
     <Compile Include="Methods\PayLeapSettings.cs" />
     <Compile Include="Methods\PayPalPaymentsPro.cs" />
     <Compile Include="Methods\PayPalPaymentsProSettings.cs" />
+    <Compile Include="Methods\StripeProcessor.cs" />
+    <Compile Include="Methods\StripeSettings.cs" />
     <Compile Include="Methods\TestGateway.cs" />
     <Compile Include="Methods\TestGatewaySettings.cs" />
     <Compile Include="NetworkUtilities.cs" />

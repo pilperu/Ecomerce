@@ -34,7 +34,8 @@ namespace MerchantTribe.Payment.Methods
             result.Add(new AvailableMethod(new CybersourceSOAP()));
             result.Add(new AvailableMethod(new PayLeap()));
             result.Add(new AvailableMethod(new PayFlowPro()));
-            result.Add(new AvailableMethod(new PayPalPaymentsPro()));            
+            result.Add(new AvailableMethod(new PayPalPaymentsPro()));
+            result.Add(new AvailableMethod(new StripeProcessor()));
             return result;
         }
 
@@ -72,6 +73,8 @@ namespace MerchantTribe.Payment.Methods
                     return new PayPalPaymentsPro();
                 case "C36CDBAB-28B0-4F47-B61C-87CED8EE7222":
                     return new CybersourceSOAP();
+                case "15011DF5-13DA-42BE-9DFF-31C71ED64D4A":
+                    return new StripeProcessor();
             }
             return null;
         }

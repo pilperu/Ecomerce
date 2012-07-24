@@ -1,5 +1,4 @@
 ﻿@model List<MerchantTribeStore.code.TemplateEngine.ITemplateAction>
-@using MvcMiniProfiler;
 @{
     Layout = null;
 }
@@ -23,4 +22,3 @@
         @Html.Raw(action.RenderCustom());
     }
 }
-@MvcMiniProfiler.MiniProfiler.RenderIncludes()
