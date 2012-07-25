@@ -4,7 +4,7 @@
 <%@ Register src="Controls/DashboardAlerts.ascx" tagname="DashboardAlerts" tagprefix="uc5" %>
 <%@ Register src="Controls/DashboardSalesSummary.ascx" tagname="DashboardSalesSummary" tagprefix="uc7" %>
 <asp:Content ID="headercontent" ContentPlaceHolderID="headcontent" runat="server">
-    <script src="../scripts/newsfeed.js" type="text/javascript"></script>
+    
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <uc2:MessageBox ID="MessageBox1" runat="server" EnableViewState="false" />
@@ -37,13 +37,14 @@
         <div class="dashcol"><asp:Literal ID="litFreePlan" runat="server" EnableViewState="false" />
                 <div class="block">
                     <uc7:DashboardSalesSummary ID="DashboardSalesSummary1" runat="server" />                    
+                </div>                
+                <h3>News and Updates</h3>                
+                &nbsp;
+                <div id="newsfeed">
+                <ul>
+                    <li><strong>July 24</strong><br />Version 1.4: Added several updates including Stripe payment processor. Visit Stripe.com to sign up.</li>
+                </ul>
                 </div>
-                <iframe src="<%=NewsUrl%>" width="610" height="350" scrolling="auto"></iframe>  
-                <!--<h3>News and Updates</h3>
-                <div id="changing" style="display: none;">
-                    <img src="../content/images/system/ajax-loader-small.gif" border="0" alt="Loading..." /> Please Wait...
-                </div>
-                <div id="newsfeed"></div>                -->
         </div>       
         <div class="clear">&nbsp;</div>
     </div>
