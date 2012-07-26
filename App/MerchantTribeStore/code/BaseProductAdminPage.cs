@@ -12,22 +12,28 @@ namespace MerchantTribeStore
         protected override void OnInit(System.EventArgs e)
         {
             base.OnInit(e);
+            PopulateMenuControl();
             // Added after conversion to wireup
             _ProductNavigator.Clicked += ProductNavigator_Clicked;
         }
 
-        protected override void OnLoad(System.EventArgs e)
+        protected override void OnUnload(System.EventArgs e)
         {
-            base.OnLoad(e);
-            PopulateMenuControl();
+            base.OnUnload(e);
+            // Remove the handler to prevent a memory leak
+            _ProductNavigator.Clicked -= ProductNavigator_Clicked;
         }
 
         private void PopulateMenuControl()
         {
-            System.Web.UI.Control c = Page.Master.FindControl("ProductNavigator");
-            if (c != null)
+            System.Web.UI.Control nav = Page.Master.FindControl("NavContent");
+            if (nav != null)
             {
-                this._ProductNavigator = (NotifyClickControl)c;
+                System.Web.UI.Control c = nav.FindControl("ProductNavigator");
+                if (c != null)
+                {
+                    this._ProductNavigator = (NotifyClickControl)c;
+                }
             }
         }
 
