@@ -21,7 +21,7 @@ namespace MerchantTribeStore.code.TemplateEngine
         }
 
         public Queue<string> Tokenize()
-        {
+        {            
             Queue<string> result = new Queue<string>();
 
             bool in_tag = false;

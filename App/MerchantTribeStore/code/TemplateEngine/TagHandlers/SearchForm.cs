@@ -24,7 +24,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             SearchFormViewModel model = new SearchFormViewModel();
             string rootUrl = app.StoreUrl(false, true);
             model.SearchFormUrl = rootUrl + "search";                        
-            model.ButtonImageUrl = app.ThemeManager().ButtonUrl("Go", app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection);
+            model.ButtonImageUrl = app.ThemeManager().ButtonUrl("Go", app.IsCurrentRequestSecure());
                         
             actions.Add(new Actions.PartialView("~/views/shared/_SearchForm.cshtml", model));
         }

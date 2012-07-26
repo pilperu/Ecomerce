@@ -301,7 +301,19 @@ namespace MerchantTribe.Commerce
             get { return _CurrentRequestContext.CurrentStore; }
             set { _CurrentRequestContext.CurrentStore = value; }
         }
-
+        public bool IsCurrentRequestSecure()
+        {
+            bool secure = false;
+            try
+            {
+                secure = this.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection;
+            }
+            catch
+            {
+                secure = false;
+            }
+            return secure;
+        }
         public static MerchantTribeApplication InstantiateForMemory(RequestContext c)
         {
             return new MerchantTribeApplication(c, true);
@@ -325,6 +337,11 @@ namespace MerchantTribe.Commerce
         {
             get
             {
+                if (CurrentRequestContext == null) return string.Empty;
+                if (CurrentRequestContext.RoutingContext == null) return string.Empty;
+                if (CurrentRequestContext.RoutingContext.HttpContext == null) return string.Empty;
+                if (CurrentRequestContext.RoutingContext.HttpContext.Request == null) return string.Empty;
+                if (CurrentRequestContext.RoutingContext.HttpContext.Request.Cookies == null) return string.Empty;
                 return SessionManager.GetCurrentUserId(this.CurrentStore, CurrentRequestContext.RoutingContext.HttpContext.Request.Cookies);
             }
         }

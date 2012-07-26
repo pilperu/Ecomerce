@@ -21,7 +21,7 @@ namespace MerchantTribe.Commerce.Utilities
             output = output.Replace("{{homelink}}", app.StoreUrl(isSecureRequest, false));
             output = output.Replace("{{logo}}", HtmlRendering.Logo(app, isSecureRequest));
             output = output.Replace("{{logotext}}", HtmlRendering.LogoText(app));
-            output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app.CurrentRequestContext.RoutingContext, app.CurrentRequestContext));
+            output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app));
             output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(app, itemCount));
             output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
             output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));

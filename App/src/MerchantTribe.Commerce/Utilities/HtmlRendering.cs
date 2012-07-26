@@ -102,16 +102,17 @@ namespace MerchantTribe.Commerce.Utilities
             return sb.ToString();
         }
 
-        public static string HeaderMenu(System.Web.Routing.RequestContext routingContext, RequestContext requestContext)
+        
+        //public static string HeaderMenu(System.Web.Routing.RequestContext routingContext, RequestContext requestContext)
+        public static string HeaderMenu(MerchantTribeApplication app)                
         {
             int linksPerRow = 9;
             int maxLinks = 9;
             int tabIndex = 0;
             int tempTabIndex = 0;
             
-            //Find Categories to Display in Menu
-            Catalog.CategoryRepository repo = Catalog.CategoryRepository.InstantiateForDatabase(requestContext);
-            List<Catalog.CategorySnapshot> categories = repo.FindForMainMenu();
+            //Find Categories to Display in Menu            
+            List<Catalog.CategorySnapshot> categories = app.CatalogServices.Categories.FindForMainMenu();
             
             // Limit number of links
             int stopCount = categories.Count -1;
@@ -133,7 +134,7 @@ namespace MerchantTribe.Commerce.Utilities
             //Build each Row
             for (int i = 0; i <= stopCount;i++)
             {
-                sb.Append(BuildLink(categories[i], routingContext,ref tempTabIndex));
+                sb.Append(BuildLink(categories[i], app.CurrentRequestContext.RoutingContext,ref tempTabIndex));
                 // Move to Next Row if Not Last Item
                 int endOfRowCount = (i + 1) % linksPerRow;
                 

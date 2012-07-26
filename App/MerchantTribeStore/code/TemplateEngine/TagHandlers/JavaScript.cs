@@ -17,7 +17,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
         public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
         {
             StringBuilder sb = new StringBuilder();
-            bool secure = app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection;
+            bool secure = app.IsCurrentRequestSecure();            
             string mode = tag.GetSafeAttribute("mode");
 
             if (mode == "system")

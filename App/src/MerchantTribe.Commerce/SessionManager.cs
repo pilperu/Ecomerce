@@ -687,6 +687,7 @@ namespace MerchantTribe.Commerce
         public static string GetCurrentUserId(Store currentStore, HttpCookieCollection cookies)
         {
             string result = string.Empty;
+            if (cookies == null) return result;
             result = GetCookieString(WebAppSettings.CookieNameAuthenticationTokenCustomer(currentStore.Id), currentStore, cookies);
             return result;
         }

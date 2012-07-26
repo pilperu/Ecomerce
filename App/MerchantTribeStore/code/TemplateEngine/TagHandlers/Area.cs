@@ -44,7 +44,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             result = MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(result,
                             app,
                             "",
-                            app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection);
+                            app.IsCurrentRequestSecure());
             actions.Add(new Actions.LiteralText(result));
         }
     }

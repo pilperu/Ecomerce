@@ -26,7 +26,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
         public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
         {
             StringBuilder sb = new StringBuilder();
-            bool isSecureRequest = app.CurrentRequestContext.RoutingContext.HttpContext.Request.IsSecureConnection;            
+            bool isSecureRequest = app.IsCurrentRequestSecure();            
             bool textOnly = !app.CurrentStore.Settings.UseLogoImage;
             string textOnlyTag = tag.GetSafeAttribute("textonly").Trim().ToLowerInvariant();
             if (textOnlyTag == "1" || textOnlyTag == "y" || textOnlyTag == "yes" || textOnlyTag == "true") textOnly = true;

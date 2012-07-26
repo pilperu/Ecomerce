@@ -150,10 +150,21 @@ namespace MerchantTribe.Commerce
         //{
         //    get { return ApplicationBaseUrl + "images/sites/"; }
         //}
+        private static string _UnitTestPhysicalPath = string.Empty;
+        public static void SetUnitTestPhysicalPath(string rootPhysicalPath)
+        {
+            _UnitTestPhysicalPath = rootPhysicalPath;
+        }
         public static string ApplicationBaseImagePhysicalPath
         {
             get
             {
+                // For Unit Testing
+                if (_UnitTestPhysicalPath != string.Empty)
+                {
+                    return _UnitTestPhysicalPath + "\\images\\sites\\";
+                }
+
                 string result = string.Empty;
 
                 result = System.Web.Hosting.HostingEnvironment.MapPath("~/images/sites");
@@ -170,6 +181,12 @@ namespace MerchantTribe.Commerce
             get
             {
                 string result = string.Empty;
+
+                // For Unit Testing
+                if (_UnitTestPhysicalPath != string.Empty)
+                {
+                    return _UnitTestPhysicalPath + "\\content\\themes\\";
+                }
 
                 result = System.Web.Hosting.HostingEnvironment.MapPath("~/content/themes");
                 //if (HttpContext.Current != null)

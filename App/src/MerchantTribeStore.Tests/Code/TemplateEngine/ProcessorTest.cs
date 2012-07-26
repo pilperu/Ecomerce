@@ -19,11 +19,13 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
         [TestInitialize]
         public void Setup()
         {
-            context = new RequestContext();
-            app = new MerchantTribeApplication(context);            
+            WebAppSettings.SetUnitTestPhysicalPath(@"C:\git\MerchantTribe\App\MerchantTribeStore");
+                        
+            context = ContextHelper.GetFakeRequestContext("", "http://demo.localhost.dev/", "");            
+            app = MerchantTribeApplication.InstantiateForMemory(context);                        
+
             tagProvider = new TagProvider();
         }
-
 
         [TestMethod]
         public void CanProcessTemplateWithNoTags()
@@ -76,6 +78,44 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             Assert.AreEqual(expected.Count, actual.Count);
             Assert.AreEqual(TemplateActionType.PartialView, actual[1].ActionType());
             Assert.AreEqual("~/views/shared/_adminpanel.cshtml", ((PartialView)actual[1]).ViewName);
+        }
+
+        [TestMethod]
+        public void SpeedTestTokenization()
+        {            
+            long count = 10000;
+            System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
+            for (long i = 0; i < count; i++)
+            {
+                string template = app.ThemeManager().GetSystemTemplate("default.html");
+                Processor target = new Processor(app, template, tagProvider);
+                var tokens = target.Tokenize();
+            }
+
+            watch.Stop();
+            decimal avg = ((decimal)watch.ElapsedMilliseconds / (decimal)count);
+            Console.WriteLine("Avg Milliseconds = " + avg);            
+        }
+
+        [TestMethod]
+        public void SpeedTestRenderActions()
+        {
+            long count = 1;
+            System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
+            watch.Start();
+
+            for (long i = 0; i < count; i++)
+            {
+                string template = app.ThemeManager().GetSystemTemplate("default.html");
+                Processor target = new Processor(app, template, tagProvider);
+                var actions = target.RenderForDisplay();
+            }
+
+            watch.Stop();
+            decimal avg = ((decimal)watch.ElapsedMilliseconds / (decimal)count);
+            Console.WriteLine("Avg Milliseconds = " + avg);
         }
     }
 }
