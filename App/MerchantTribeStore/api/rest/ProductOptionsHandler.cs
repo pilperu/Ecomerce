@@ -29,7 +29,7 @@ namespace MerchantTribeStore.api.rest
 
                 string productBvin = querystring["productbvin"] ?? string.Empty;
                 List<Option> results;
-                if (productBvin.Trim().Length > 0)
+                if (productBvin.Trim().Length == 0)
                 {
                     results = MTApp.CatalogServices.ProductOptions.FindAllShared(1, 1000);
                 }
