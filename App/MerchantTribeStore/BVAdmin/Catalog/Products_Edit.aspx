@@ -7,7 +7,7 @@
 <%@ Register src="../Controls/ProductEditMenu.ascx" tagname="ProductEditMenu" tagprefix="uc5" %>
 <%@ Register src="../Controls/UrlsAssociated.ascx" tagname="UrlsAssociated" tagprefix="uc4" %>
 <asp:Content ID="nav" ContentPlaceHolderID="NavContent" runat="server">
-    <uc5:ProductEditMenu ID="ProductEditMenu1" runat="server" />
+    <uc5:ProductEditMenu ID="ProductNavigator" runat="server" />
 </asp:Content>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">
 

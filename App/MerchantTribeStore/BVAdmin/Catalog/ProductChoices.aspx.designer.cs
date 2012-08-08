@@ -13,13 +13,13 @@ namespace MerchantTribeStore {
     public partial class BVAdmin_Catalog_ProductChoices {
         
         /// <summary>
-        /// ProductEditMenu1 control.
+        /// ProductNavigator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductEditMenu1;
+        protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductNavigator;
         
         /// <summary>
         /// ProductEditing1 control.
