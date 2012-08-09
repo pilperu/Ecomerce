@@ -32,11 +32,10 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 colId = tag.GetSafeAttribute("columnname");
             }
 
-            actions.Add(new Actions.LiteralText(RenderColumn(colId, app, viewBag)));
-            //actions.Add(new Actions.CallAction("contentcolumn", "Index", new { id = colId, Area="" }));
+            actions.Add(new Actions.LiteralText(RenderColumn(colId, app, viewBag)));            
         }
 
-        private string RenderColumn(string colId, MerchantTribeApplication app, dynamic viewBag)
+        public string RenderColumn(string colId, MerchantTribeApplication app, dynamic viewBag)
         {            
             StringBuilder sb = new StringBuilder();
 

@@ -26,7 +26,18 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             dynamic model = new ExpandoObject();
             model.By = byParam;
 
-            actions.Add(new Actions.PartialView("~/views/shared/_copyright.cshtml", model));
+            actions.Add(new Actions.LiteralText(Render(model)));
+        }
+
+        private string Render(dynamic model)
+        {
+            string result = 
+            "<span class=\"copyright\">Copyright &copy; " + DateTime.Now.Year.ToString() + "</span>&nbsp;";
+            if (!String.IsNullOrEmpty(model.By))
+            {
+                result += model.By;
+            }
+            return result;
         }
     }
 }

@@ -63,10 +63,11 @@ namespace MerchantTribeStore.Areas.AdminContent.Controllers
 
             FileManagerViewModel model = new FileManagerViewModel(cleanPath);
             model.Directories = DiskStorage.FileManagerListDirectories(MTApp.CurrentStore.Id, cleanPath);
-            model.Files = DiskStorage.FileManagerListFiles(MTApp.CurrentStore.Id, cleanPath);
-            model.BreadCrumbs = BuildBreadCrumbs(cleanPath);
+            model.Files = DiskStorage.FileManagerListFiles(MTApp.CurrentStore.Id, cleanPath);            
             model.BasePreviewUrl = "~/images/sites/" + MTApp.CurrentStore.Id + "/";
 
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.Render(MTApp, BuildBreadCrumbs(cleanPath));
             return View(model);
         }
 

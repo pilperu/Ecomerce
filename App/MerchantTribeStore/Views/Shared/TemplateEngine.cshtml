@@ -5,20 +5,5 @@
 
 @foreach (var action in Model)
 {
-    if (action.ActionType() == MerchantTribeStore.code.TemplateEngine.TemplateActionType.PartialView)
-    {
-       MerchantTribeStore.code.TemplateEngine.Actions.PartialView partialAction = 
-           (MerchantTribeStore.code.TemplateEngine.Actions.PartialView)action;
-       @Html.Partial(partialAction.ViewName, partialAction.Model)
-    }
-    else if (action.ActionType() == MerchantTribeStore.code.TemplateEngine.TemplateActionType.CallAction)
-    {
-        MerchantTribeStore.code.TemplateEngine.Actions.CallAction callAction 
-            = (MerchantTribeStore.code.TemplateEngine.Actions.CallAction)action;                
-        @Html.Action(callAction.ActionName, callAction.ControllerName, callAction.RouteValues) 
-    }
-    else
-    {
-        @Html.Raw(action.RenderCustom());
-    }
+    @Html.Raw(action.Render());
 }

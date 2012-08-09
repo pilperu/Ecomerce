@@ -2,22 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Text;
+using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Content;
-using MerchantTribe.Commerce.Utilities;
-using MerchantTribeStore.Controllers.Shared;
-using MerchantTribeStore.Models;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
+using MerchantTribe.Commerce.Utilities;
 
-namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
+namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
 {
-    public class TopWeeklySellersController : BaseAppController
+    public class TopWeeklySellersRenderController : BaseRenderController, IContentBlockRenderController
     {
-        //
-        // GET: /ContentBlocks/TopWeeklySellers/
-
-        public ActionResult Index(ContentBlock b)
+        public string Render(MerchantTribe.Commerce.MerchantTribeApplication app, dynamic viewBag, MerchantTribe.Commerce.Content.ContentBlock block)
         {
             SideMenuViewModel model = new SideMenuViewModel();
             model.Title = "Top Weekly Sellers";
@@ -26,9 +22,29 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
             DateTime _EndDate = DateTime.Now;
             System.DateTime c = DateTime.Now;
             CalculateDates(c, _StartDate, _EndDate);
-            model.Items = LoadProducts(_StartDate, _EndDate);
+            model.Items = LoadProducts(app, _StartDate, _EndDate);
 
-            return View(model);
+            model.Title = "Top Sellers";
+
+            return RenderModel(model);
+        }
+        public string RenderModel(SideMenuViewModel model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<div class=\"sidemenu topweeklysellers\">");
+            sb.Append("<div class=\"decoratedblock\">");
+            sb.Append("<h3>" + HttpUtility.HtmlEncode(model.Title) + "</h3>");
+            sb.Append("<ol>");
+            foreach (var item in model.Items)
+            {
+                sb.Append("<li><a href=\"" + item.Url + "\" title=\"" + HttpUtility.HtmlEncode(item.Title) + "\">" + HttpUtility.HtmlEncode(item.Name) + "</a></li>");
+            }
+            sb.Append("</ol>");
+            sb.Append("</div>");
+            sb.Append("</div>");
+
+            return sb.ToString();
         }
 
         public void CalculateDates(DateTime currentTime, DateTime start, DateTime end)
@@ -69,12 +85,12 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
             return result;
         }
 
-        private List<SideMenuItem> LoadProducts(DateTime start, DateTime end)
+        private List<SideMenuItem> LoadProducts(MerchantTribeApplication app, DateTime start, DateTime end)
         {
             System.DateTime s = start;
             System.DateTime e = end;
 
-            List<Product> t = MTApp.ReportingTopSellersByDate(s, e, 10);
+            List<Product> t = app.ReportingTopSellersByDate(s, e, 10);
 
             List<SideMenuItem> result = new List<SideMenuItem>();
             foreach (Product p in t)
@@ -82,7 +98,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
                 SideMenuItem item = new SideMenuItem();
                 item.Title = p.ProductName;
                 item.Name = p.ProductName;
-                item.Url = UrlRewriter.BuildUrlForProduct(p, MTApp.CurrentRequestContext.RoutingContext, string.Empty);
+                item.Url = UrlRewriter.BuildUrlForProduct(p, app.CurrentRequestContext.RoutingContext, string.Empty);
                 result.Add(item);
             }
             return result;

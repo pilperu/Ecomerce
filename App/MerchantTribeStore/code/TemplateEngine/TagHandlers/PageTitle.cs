@@ -20,7 +20,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             ParsedTag tag, 
                             string innerContents)
         {
-            actions.Add(new Actions.PartialView("~/views/shared/_PageTitle.cshtml", null));
+            actions.Add(new Actions.LiteralText(HttpUtility.HtmlEncode(viewBag.PageTitle)));
         }
     }
 }

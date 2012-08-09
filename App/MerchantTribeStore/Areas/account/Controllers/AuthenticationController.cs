@@ -22,8 +22,9 @@ namespace MerchantTribeStore.Areas.account.Controllers
             ViewBag.Title = SiteTerms.GetTerm(SiteTermIds.Login);
             
             List<BreadCrumbItem> extraCrumbs = new List<BreadCrumbItem>();
-            extraCrumbs.Add(new BreadCrumbItem() { Name = ViewBag.Title });
-            ViewBag.ExtraCrumbs = extraCrumbs;
+            extraCrumbs.Add(new BreadCrumbItem() { Name = ViewBag.Title });            
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.RenderManual(this.MTApp, extraCrumbs);
 
             ViewBag.IsPrivateStore = MTApp.CurrentStore.Settings.IsPrivateStore;
             ViewBag.PrivateStoreMessage = SiteTerms.GetTerm(SiteTermIds.PrivateStoreNewUser);
@@ -230,8 +231,9 @@ namespace MerchantTribeStore.Areas.account.Controllers
 
             List<BreadCrumbItem> extraCrumbs = new List<BreadCrumbItem>();
             extraCrumbs.Add(new BreadCrumbItem() { Name = ViewBag.Title });
-            ViewBag.ExtraCrumbs = extraCrumbs;
-
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.RenderManual(MTApp, extraCrumbs);
+            
             ViewBag.SendButtonUrl = MTApp.ThemeManager().ButtonUrl("Submit", Request.IsSecureConnection);
 
             if (returnmode.Trim().ToLowerInvariant() == "1")

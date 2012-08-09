@@ -59,8 +59,9 @@ namespace MerchantTribeStore.Controllers
                 Name = SiteTerms.GetTerm(SiteTermIds.CustomerService),
                 Link = Url.Content("~/ContactUs")
             });
-            crumbs.Items.Enqueue(new BreadCrumbItem() { Name = SiteTerms.GetTerm(SiteTermIds.FAQ) });
-            ViewBag.BreadCrumbTrail = crumbs;
+            crumbs.Items.Enqueue(new BreadCrumbItem() { Name = SiteTerms.GetTerm(SiteTermIds.FAQ) });            
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.Render(MTApp, crumbs);
 
             // Titles
             ViewBag.Title = SiteTerms.GetTerm(SiteTermIds.FAQ);

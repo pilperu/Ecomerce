@@ -75,6 +75,16 @@ namespace MerchantTribeStore.Controllers
             MerchantTribe.Commerce.SessionManager.CategoryLastId = cat.Bvin;            
             MTApp.CurrentRequestContext.CurrentCategory = cat;
 
+            // Render Bread Crumbs
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.RenderCategory(MTApp, new List<BreadCrumbItem>(), cat);
+
+            // Render Columns
+            var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
+            model.LeftColumn = columnRender.RenderColumn("4", MTApp, ViewBag);
+            model.PreColumn = columnRender.RenderColumn(cat.PreContentColumnId, MTApp, ViewBag);
+            model.PostColumn = columnRender.RenderColumn(cat.PostContentColumnId, MTApp, ViewBag);
+
             if (cat.TemplateName == "BV Grid") cat.TemplateName = "Grid"; // Safety Check from older versions
             string viewName = cat.TemplateName.Trim();
             return View(viewName, model);
@@ -262,7 +272,10 @@ namespace MerchantTribeStore.Controllers
                 }
             }
 
-            ViewBag.ExtraCrumbs = extraCrumbs;
+            // Render Bread Crumbs
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.RenderCategory(MTApp, extraCrumbs, cat);
+            
             ViewBag.Filters = sbNotSelected.ToString();
 
             

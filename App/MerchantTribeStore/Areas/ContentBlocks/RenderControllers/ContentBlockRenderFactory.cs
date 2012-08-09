@@ -25,16 +25,21 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
 
         private static void Init()
         {
-            _Controllers = new Dictionary<string, IContentBlockRenderController>();
-            _Controllers.Add("Banner Ad", new BannerAdRenderController());
+            _Controllers = new Dictionary<string, IContentBlockRenderController>();            
+            _Controllers.Add("BannerAd", new BannerAdRenderController());
             _Controllers.Add("Html", new HtmlRenderController());
+            _Controllers.Add("CategoryMenu", new CategoryMenuRenderController());
+            _Controllers.Add("Top10Products", new Top10ProductsRenderController());
+            _Controllers.Add("SideMenu", new SideMenuRenderController());
+            _Controllers.Add("TopWeeklySellers", new TopWeeklySellersRenderController());
         }
 
         public static IContentBlockRenderController GetRenderer(ContentBlock block)
-        {            
-            if (Controllers.ContainsKey(block.ControlName))
+        {
+            string noSpacesName = block.ControlName.Replace(" ", "");
+            if (Controllers.ContainsKey(noSpacesName))
             {
-                return Controllers[block.ControlName];
+                return Controllers[noSpacesName];
             }
             return new NullRenderer();
         }

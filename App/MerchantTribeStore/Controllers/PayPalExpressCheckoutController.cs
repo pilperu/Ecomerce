@@ -61,6 +61,10 @@ namespace MerchantTribeStore.Controllers
             // Populate Countries
             model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
 
+            // Side Column
+            var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
+            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
+
             return model;
         }        
         private void DisplayPaypalExpressMode(CheckoutViewModel model)

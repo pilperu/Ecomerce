@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce;
+using System.Text;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -93,7 +94,41 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 tempTabIndex += 1;
             }
 
-            actions.Add(new Actions.PartialView("~/views/shared/_MainMenu.cshtml", model));                                           
+            actions.Add(new Actions.LiteralText(Render(model)));
+        }
+
+        private string Render(MainMenuViewModel model)
+        {
+           StringBuilder sb = new StringBuilder();
+
+            // Limit number of links
+            int stopCount = model.Links.Count - 1;
+            if ((model.MaxLinks > 0) && ((model.MaxLinks - 1) < stopCount))
+            {
+                stopCount = (model.MaxLinks - 1);
+            }
+
+            if (model.Links.Count > 0)
+            {
+                sb.Append("<ul>");
+                 for (int i = 0; i <= stopCount; i++)
+                 {
+                     var link = model.Links[i];
+                     sb.Append("<li><a href=\"" + link.Url + "\" title=\"" + HttpUtility.HtmlEncode(link.AltText) + "\"");
+                     if(link.IsActive) { sb.Append(" class=\"activemainmenuitem\""); }
+                     if (link.Target.Length > 0) { sb.Append(" target=\"" + link.Target + "\""); }
+                     sb.Append("><span>" + HttpUtility.HtmlEncode(link.DisplayName) + "</span></a></li>");
+                     
+                     // Move to Next Row if Not Last Item
+                     int endOfRowCount = (i + 1) % model.LinksPerRow;
+                     if ((endOfRowCount == 0) && (i < stopCount))
+                     {
+                         sb.Append("</ul><ul>");
+                     }
+                 }
+                sb.Append("</ul>");
+            }
+            return sb.ToString();
         }
     }
 }

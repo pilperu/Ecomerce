@@ -14,13 +14,19 @@ namespace MerchantTribeStore.Models
         public PagerViewModel PagerData { get; set; }
         public List<SingleCategoryViewModel> SubCategories { get; set; }
         public List<SingleProductViewModel> Products { get; set; }
-        
+        public string LeftColumn { get; set; }
+        public string PreColumn { get; set; }
+        public string PostColumn { get; set; }
+
         public CategoryPageViewModel()
         {
             LocalCategory = null;
             PagerData = new PagerViewModel();
             SubCategories = new List<SingleCategoryViewModel>();
             Products = new List<SingleProductViewModel>();
+            LeftColumn = string.Empty;
+            PreColumn = string.Empty;
+            PostColumn = string.Empty;
         }
     }
 }

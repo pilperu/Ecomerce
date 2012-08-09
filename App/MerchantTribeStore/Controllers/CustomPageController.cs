@@ -10,6 +10,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.code.TemplateEngine;
 using System.Text;
+using MerchantTribeStore.Models;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -55,6 +56,13 @@ namespace MerchantTribeStore.Controllers
 
             ITagProvider tagProvider = new TagProvider();
             Processor proc = new Processor(this.MTApp, this.ViewBag, template, tagProvider);
+
+            // Render Bread Crumbs
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = breadRender.RenderCategory(MTApp, new List<BreadCrumbItem>(), cat);
+
+            var columnRenderer = new code.TemplateEngine.TagHandlers.ContentColumn();
+            ViewBag.SideColumn = columnRenderer.RenderColumn("4", MTApp, ViewBag);
 
             var model = proc.RenderForDisplay();
             return View("~/views/shared/templateengine.cshtml", model);                                    

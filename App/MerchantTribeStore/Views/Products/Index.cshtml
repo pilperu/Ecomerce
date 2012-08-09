@@ -1,7 +1,7 @@
 ﻿@model MerchantTribeStore.Models.ProductPageViewModel
-<div id="productpage">
-    @Html.Action("ProductTrail", "BreadCrumb", new { product = Model.LocalProduct })
-    @Html.Action("Index", "ContentColumn", new { id = Model.LocalProduct.PreContentColumnId })
+<div id="productpage">    
+    @Html.Raw(Model.BreadCrumbsFinal)
+    @Html.Raw(Model.PreColumn)    
     <div class="productpagemain">
         <div class="imagecolumn">
             <div class="productimage">
@@ -186,7 +186,7 @@
             }
         </div>
     </div>
-    @Html.Action("Index", "ContentColumn", new { id = Model.LocalProduct.PostContentColumnId })
+    @Html.Raw(Model.PostColumn)    
 </div>
 <div class="modal2">
     <div class="popoverframe2">

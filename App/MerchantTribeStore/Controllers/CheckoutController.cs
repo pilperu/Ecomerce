@@ -61,6 +61,10 @@ namespace MerchantTribeStore.Controllers
             
             ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
 
+            // Render Side Column
+            var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
+            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
+
             return model;
         }
         private void LoadOrder(CheckoutViewModel model)
@@ -849,6 +853,10 @@ namespace MerchantTribeStore.Controllers
             // Populate Countries
             model.Countries = MTApp.CurrentStore.Settings.FindActiveCountries();
             model.PaymentViewModel.AcceptedCardTypes = MTApp.CurrentStore.Settings.PaymentAcceptedCards;
+
+            // Render Side Column
+            var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
+            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
 
             ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
             return model;

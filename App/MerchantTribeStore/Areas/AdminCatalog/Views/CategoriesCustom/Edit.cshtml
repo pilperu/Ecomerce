@@ -50,7 +50,7 @@
 }
 <h1>Edit Custom Page</h1>    
 @Html.Raw((string)TempData["messages"])
-@Html.Action("CategoryTrail", "BreadCrumb", new { Area="", cat = Model })<br />
+@Html.Raw(ViewBag.BreadCrumbsFinal)<br />
 <form method="post" action="">
         <div class="controlarea2 padded">
         <table class="formtable" border="0" cellspacing="0" cellpadding="3" width="100%">

@@ -1,5 +1,5 @@
 ﻿@model MerchantTribeStore.Models.CategoryPageViewModel
-@Html.Action("CategoryTrail", "BreadCrumb", new { cat = Model.LocalCategory, extras = ViewBag.ExtraCrumbs })
+@Html.Raw(ViewBag.BreadCrumbsFinal)
 <div id="categoryleft">
     @Html.Raw(ViewBag.Filters)
 </div>

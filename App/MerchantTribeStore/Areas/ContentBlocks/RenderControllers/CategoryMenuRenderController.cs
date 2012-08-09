@@ -2,24 +2,43 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
-using MerchantTribe.Commerce.Catalog;
-using MerchantTribe.Commerce.Content;
-using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
-using MerchantTribeStore.Controllers.Shared;
+using System.Text;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Catalog;
+using MerchantTribe.Commerce.Utilities;
 
-namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
+namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
 {
-    public class CategoryMenuController : BaseAppController
+    public class CategoryMenuRenderController: BaseRenderController, IContentBlockRenderController
     {
-        //
-        // GET: /ContentBlocks/CategoryMenu/
-        public ActionResult Index(ContentBlock block)
+        private MerchantTribeApplication MTApp;
+        private dynamic ViewBag;
+        public string Render(MerchantTribe.Commerce.MerchantTribeApplication app, dynamic viewBag, MerchantTribe.Commerce.Content.ContentBlock block)        
         {
+            this.MTApp = app;
+            this.ViewBag = viewBag;
+
             CategoryMenuViewModel model = new CategoryMenuViewModel();
             LoadMenu(model, block);
-            return View(model);
+            return Render(model);
+        }
+        public string Render(CategoryMenuViewModel model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<div class=\"categorymenu\">");
+            sb.Append("<div class=\"decoratedblock\">");
+                if (!string.IsNullOrEmpty(model.Title))
+                { 
+                    sb.Append(model.Title); 
+                }
+            sb.Append(model.Contents);
+            sb.Append("</div>");
+            sb.Append("</div>");
+
+            return sb.ToString();
         }
 
         private void LoadMenu(CategoryMenuViewModel model, ContentBlock b)
@@ -75,11 +94,10 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         private string LocateCurrentCategory()
         {
             string result = string.Empty;
-
-
-            if (Request.QueryString["categoryId"] != null)
+            
+            if (MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.QueryString["categoryId"] != null)
             {
-                result = Request.QueryString["categoryId"];
+                result = MTApp.CurrentRequestContext.RoutingContext.HttpContext.Request.QueryString["categoryId"];
             }
             else
             {
@@ -102,7 +120,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         private void AddHomeLink(CategoryMenuViewModel model)
         {
             model.sb.Append("<li>");
-            model.sb.Append("<a href=\"" + Url.Content("~") + "\" title=\"Home\">Home</a>");
+            model.sb.Append("<a href=\"" + MTApp.StoreUrl(false,false) + "\" title=\"Home\">Home</a>");
             model.sb.Append("</li>");
         }
         private void AddSingleLink(CategoryMenuViewModel model, CategorySnapshot c, List<CategorySnapshot> allCats)
@@ -542,6 +560,5 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
                 }
             }
         }
-
     }
 }

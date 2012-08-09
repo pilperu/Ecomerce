@@ -4,7 +4,7 @@
     <h1>
         PayPal Express Checkout</h1>
     <div class="section-sidebar">
-        @Html.Action("Index", "ContentColumn", new { id = "601" })
+        @Html.Raw(Model.SideColumn)        
     </div>
     <div class="sections">
         <form action="@Url.Content("~/paypalexpresscheckout/edit")?token=@Model.PayPalToken&payerid=@Model.PayPalPayerId" method="post">

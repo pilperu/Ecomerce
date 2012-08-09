@@ -1,14 +1,14 @@
 ﻿@model MerchantTribeStore.Models.CategoryPageViewModel
-@Html.Action("CategoryTrail", "BreadCrumb", new { cat = Model.LocalCategory })
+@Html.Raw(ViewBag.BreadCrumbsFinal)
 <div id="categoryleft">
-    @Html.Action("Index", "ContentColumn", new {id="4"})
+    @Html.Raw(Model.LeftColumn)
 </div>
 <div id="categorymain">
     @if (Model.LocalCategory.ShowTitle)
     {
         <h1>@Model.LocalCategory.Name</h1>
     }
-    @Html.Action("Index", "ContentColumn", new {id=Model.LocalCategory.PreContentColumnId})
+    @Html.Raw(Model.PreColumn)
     @if (ViewBag.ShowBanner == true)
     {
         <div id="categorybanner">
@@ -32,6 +32,6 @@
         </div>
         @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
     </div>
-    @Html.Action("Index", "ContentColumn", new { id = Model.LocalCategory.PostContentColumnId })        
+    @Html.Raw(Model.PostColumn)  
 </div>
 <div class="clear"></div>

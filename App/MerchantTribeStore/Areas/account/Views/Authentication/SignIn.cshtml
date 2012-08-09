@@ -5,7 +5,7 @@
 @using MerchantTribeStore.Models
 @using MerchantTribeStore.Areas.account.Models
 <div class="loginpage">
-    @Html.Action("ManualTrail", "BreadCrumb", new { area = "", extras = (List<BreadCrumbItem>)ViewBag.ExtraCrumbs })
+    @Html.Raw(ViewBag.BreadCrumbsFinal)
     <h1>
         <span>@ViewBag.Title</span></h1>
     @Html.Raw((string)TempData["messages"])

@@ -192,6 +192,16 @@ namespace MerchantTribeStore.Controllers
             sbb.Append("} (document, 'script', 'facebook-jssdk'));</script>");
 
             ViewData["PassedAnalyticsBottom"] += sbb.ToString();
+
+            // Bread Crumbs
+            var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            model.BreadCrumbsFinal = breadRender.RenderProduct(MTApp, new List<BreadCrumbItem>(), model.LocalProduct);
+
+            // Columns
+            var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
+            model.PreColumn = columnRender.RenderColumn(model.LocalProduct.PreContentColumnId, MTApp, ViewBag);
+            model.PostColumn = columnRender.RenderColumn(model.LocalProduct.PostContentColumnId, MTApp, ViewBag);
+
             return model;
         }
         private Product ParseProductFromSlug(string slug)

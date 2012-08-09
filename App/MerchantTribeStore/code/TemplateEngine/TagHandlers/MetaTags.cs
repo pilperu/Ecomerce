@@ -20,7 +20,15 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             ParsedTag tag, 
                             string innerContents)
         {
-            actions.Add(new Actions.PartialView("~/views/shared/_MetaTags.cshtml", null));
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<meta name=\"keywords\" content=\"" + HttpUtility.HtmlEncode(viewBag.MetaKeywords) + "\" />");
+            sb.Append("<meta name=\"description\" content=\"" + HttpUtility.HtmlEncode(viewBag.MetaDescription) + "\" />");
+            if (!String.IsNullOrEmpty(viewBag.AdditionalMetaTags))
+            {
+                sb.Append(viewBag.AdditionalMetaTags);
+            }
+            actions.Add(new Actions.LiteralText(sb.ToString()));            
         }
     }
 }

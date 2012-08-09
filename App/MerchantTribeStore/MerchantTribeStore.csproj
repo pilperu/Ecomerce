@@ -2243,19 +2243,13 @@
     <Compile Include="Areas\AdminContent\Controllers\FileManagerController.cs" />
     <Compile Include="Areas\AdminContent\Models\FileManagerViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\BannerAdController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\CategoryMenuController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\CategoryRotatorController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\FeaturedProductsController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\HtmlController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\ImageRotatorController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\LastProductsViewedController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\ProductGridController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\ProductRotatorController.cs" />
     <Compile Include="Areas\ContentBlocks\Controllers\RssFeedViewerController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\SideMenuController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\Top10ProductsController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\TopWeeklySellersController.cs" />
     <Compile Include="Areas\ContentBlocks\Models\BannerAdViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\CategoryMenuViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\FeaturedProductsViewModel.cs" />
@@ -2265,10 +2259,14 @@
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\BannerAdRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\BaseRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\CategoryMenuRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\HtmlRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\IContentBlockRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\ContentBlockRenderFactory.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\NullRenderer.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\SideMenuRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\Top10ProductsRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\TopWeeklySellersRenderController.cs" />
     <Compile Include="Areas\signup\Controllers\BaseSignupController.cs" />
     <Compile Include="Areas\signup\Controllers\MarketingPagesController.cs" />
     <Compile Include="Areas\signup\Controllers\PoliciesController.cs" />
@@ -4309,9 +4307,7 @@
     <Compile Include="code\IVariantDisplay.cs" />
     <Compile Include="code\RouteEvaluator.cs" />
     <Compile Include="code\StringUtils.cs" />
-    <Compile Include="code\TemplateEngine\Actions\CallAction.cs" />
     <Compile Include="code\TemplateEngine\Actions\LiteralText.cs" />
-    <Compile Include="code\TemplateEngine\Actions\PartialView.cs" />
     <Compile Include="code\TemplateEngine\ITagHandler.cs" />
     <Compile Include="code\TemplateEngine\ITagProvider.cs" />
     <Compile Include="code\TemplateEngine\ParsedTag.cs" />
@@ -4319,6 +4315,8 @@
     <Compile Include="code\TemplateEngine\TagHandlers\AdminPanel.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\AnalyticsBottom.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\AnalyticsTop.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\Area.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\BreadCrumbs.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\ContentColumn.cs">
@@ -4330,6 +4328,8 @@
     <Compile Include="code\TemplateEngine\TagHandlers\Css.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\FlexEditorPanel.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\FlexEditorPopup.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\Include.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -4354,9 +4354,6 @@
     <Compile Include="code\TemplateEngine\TagHandlers\PageTitle.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="code\TemplateEngine\TagHandlers\PartialViewHandler.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="code\TemplateEngine\TagHandlers\ProfilerRender.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\PromoTag.cs">
       <SubType>Code</SubType>
@@ -4370,12 +4367,10 @@
     <Compile Include="code\TemplateEngine\TagHandlers\UrlFixer.cs" />
     <Compile Include="code\TemplateEngine\TagProvider.cs" />
     <Compile Include="code\TemplateEngine\ITemplateAction.cs" />
-    <Compile Include="code\TemplateEngine\TemplateActionType.cs" />
     <Compile Include="code\ViewUtilities.cs" />
     <Compile Include="code\XDocumentExtensions.cs" />
     <Compile Include="code\XElementExtensions.cs" />
     <Compile Include="Controllers\ApiRestController.cs" />
-    <Compile Include="Controllers\BreadCrumbController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\CheckoutController.cs" />
@@ -4462,6 +4457,7 @@
     <Folder Include="content\themes\theme-bv-simplered\assets\" />
     <Folder Include="Files\" />
     <Folder Include="Scripts\tinymce\plugins\autosave\images\" />
+    <Folder Include="Views\BreadCrumb\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="BVAdmin\AdminWizard.master" />
@@ -4564,7 +4560,6 @@
     <Content Include="Views\EstimateShipping\Index.cshtml" />
     <Content Include="Views\Store\NotFound.cshtml" />
     <Content Include="Views\Store\NotAvailable.cshtml" />
-    <Content Include="Views\Shared\_AdminPanel.cshtml" />
     <Content Include="Views\SiteMap\Index.cshtml" />
     <Content Include="Views\Store\Closed.cshtml" />
     <Content Include="Views\Shared\_ViewOrder.cshtml" />
@@ -4572,10 +4567,8 @@
     <Content Include="Views\Shared\_OrderPaymentSummary.cshtml" />
     <Content Include="Views\Shared\_ViewOrderItems.cshtml" />
     <Content Include="Views\Shared\_AddressEditor.cshtml" />
-    <Content Include="Views\ContentColumn\Index.cshtml" />
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Products\RenderSingleProduct.cshtml" />
-    <Content Include="Views\BreadCrumb\BreadCrumb.cshtml" />
     <Content Include="Views\CustomPage\Index.cshtml" />
     <Content Include="Views\Policies\Faq.cshtml" />
     <Content Include="Views\Category\Grid.cshtml" />
@@ -4610,18 +4603,8 @@
     <Content Include="Views\Checkout\_SetFirstPassword.cshtml" />
     <Content Include="Views\Shared\_RegisteredScripts.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutWithNav.cshtml" />
-    <Content Include="Views\Shared\_MetaTags.cshtml" />
-    <Content Include="Views\Shared\_PageTitle.cshtml" />
-    <Content Include="Views\Shared\_AnalyticsBottom.cshtml" />
-    <Content Include="Views\Shared\_AnalyticsTop.cshtml" />
-    <Content Include="Views\Shared\_Copyright.cshtml" />
     <Content Include="Views\StoneEdge\Index.cshtml" />
-    <Content Include="Views\Shared\_Logo.cshtml" />
-    <Content Include="Views\Shared\_SearchForm.cshtml" />
-    <Content Include="Views\Shared\_MainMenu.cshtml" />
     <Content Include="Views\Shared\TemplateEngine.cshtml" />
-    <Content Include="Views\FlexPage\EditorPanel.cshtml" />
-    <Content Include="Views\FlexPage\EditorPopup.cshtml" />
     <Content Include="Views\SuperStores\Destroy.cshtml" />
     <Content Include="Views\Shared\_MINIPROFILER UPDATED Layout.cshtml" />
   </ItemGroup>

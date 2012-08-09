@@ -34,6 +34,9 @@ namespace MerchantTribeStore.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public string OrderId { get; set; }
         public bool IsAvailableForWishList { get; set; }
+        public string PostColumn { get; set; }
+        public string PreColumn { get; set; }
+        public string BreadCrumbsFinal { get; set; }
 
         public ProductPageViewModel()
         {
@@ -54,6 +57,9 @@ namespace MerchantTribeStore.Models
             this.LineItemId = string.Empty;
             this.OrderId = string.Empty;
             this.IsAvailableForWishList = false;
+            this.PreColumn = string.Empty;
+            this.PostColumn = string.Empty;
+            this.BreadCrumbsFinal = string.Empty;
         }
     }
 }

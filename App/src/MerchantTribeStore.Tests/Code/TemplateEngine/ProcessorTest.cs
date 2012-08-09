@@ -67,29 +67,27 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("\n"));
 
             Assert.IsNotNull(actual);
-            Assert.AreEqual(expected.Count, actual.Count);
-            Assert.AreEqual(TemplateActionType.Custom, actual[4].ActionType());
-            Assert.AreEqual("Page Title", actual[4].RenderCustom());
+            Assert.AreEqual(expected.Count, actual.Count);            
+            Assert.AreEqual("Page Title", actual[4].Render());
         }
 
         [TestMethod]
         public void CanProcessTemplateWithTag()
         {
-            string template = "<html><sys:adminpanel /></html>";
+            string template = "<html><sys:pagetitle /></html>";
 
+            viewBag.PageTitle = "My Page Title";
             Processor target = new Processor(app, viewBag, template, tagProvider);
 
             var actual = target.RenderForDisplay();
 
             List<ITemplateAction> expected = new List<ITemplateAction>();
             expected.Add(new LiteralText("<html>"));
-            expected.Add(new PartialView("~/views/shared/_adminpanel.cshtml", null));
+            expected.Add(new LiteralText("My Page Title"));
             expected.Add(new LiteralText("</html>"));            
 
             Assert.IsNotNull(actual);
             Assert.AreEqual(expected.Count, actual.Count);
-            Assert.AreEqual(TemplateActionType.PartialView, actual[1].ActionType());
-            Assert.AreEqual("~/views/shared/_adminpanel.cshtml", ((PartialView)actual[1]).ViewName);
         }
 
         [TestMethod]
@@ -114,7 +112,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
         [TestMethod]
         public void SpeedTestRenderActions()
         {
-            long count = 1;
+            long count = 100;
             System.Diagnostics.Stopwatch watch = new System.Diagnostics.Stopwatch();
             watch.Start();
 

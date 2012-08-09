@@ -63,6 +63,8 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
         public ActionResult Edit(string id)
         {
             Category c = EditorSetup(id);
+
+            BreadCrumbs(c);
             return View(c);
         }
 
@@ -90,9 +92,15 @@ namespace MerchantTribeStore.Areas.AdminCatalog.Controllers
                 }                
             }
             
+            BreadCrumbs(c);
             return View(c);
         }
 
+        private void BreadCrumbs(Category cat)
+        {
+            var renderer = new code.TemplateEngine.TagHandlers.BreadCrumbs();
+            ViewBag.BreadCrumbsFinal = renderer.RenderCategory(this.MTApp, new List<Models.BreadCrumbItem>(), cat);
+        }
         private bool Save(Category current, Category posted, System.Collections.Specialized.NameValueCollection form)
         {
 

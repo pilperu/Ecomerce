@@ -7,7 +7,6 @@ namespace MerchantTribeStore.code.TemplateEngine.Actions
 {
     public class LiteralText: ITemplateAction
     {
-        public TemplateActionType ActionType() { return TemplateActionType.Custom;}
         private string Text { get; set; }
 
         public LiteralText(string text)
@@ -15,7 +14,7 @@ namespace MerchantTribeStore.code.TemplateEngine.Actions
             this.Text = text;            
         }
 
-        public string RenderCustom()
+        public string Render()
         {
             return this.Text;
         }

@@ -49,7 +49,29 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             model.StoreName = storeName;
             model.UseTextOnly = textOnly;
 
-            actions.Add(new Actions.PartialView("~/views/shared/_Logo.cshtml", model));            
+            actions.Add(new Actions.LiteralText(Render(model)));
+        }
+
+        private string Render(LogoViewModel model)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<a href=\"" + model.LinkUrl + "\" title=\"" + HttpUtility.HtmlEncode(model.StoreName) + "\" class=\"logo\">");
+            if (model.InnerContent.Trim().Length > 0)
+            {
+                sb.Append(model.InnerContent);
+            }
+            else if (model.UseTextOnly == false && model.LogoImageUrl.Length > 0)
+            {
+                sb.Append("<img src=\"" + model.LogoImageUrl + "\" alt=\"" + HttpUtility.HtmlEncode(model.StoreName) + "\" />");
+            }
+            else
+            {
+                sb.Append(HttpUtility.HtmlEncode(model.LogoText));
+            }
+            sb.Append("</a>");
+
+            return sb.ToString();
         }
     }
 }

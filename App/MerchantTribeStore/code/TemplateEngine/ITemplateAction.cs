@@ -7,7 +7,6 @@ namespace MerchantTribeStore.code.TemplateEngine
 {
     public interface ITemplateAction
     {
-        TemplateActionType ActionType();
-        string RenderCustom();
+        string Render();
     }
 }

@@ -74,7 +74,7 @@
     </div>
 }
 <h1>File Manager</h1>
-@Html.Partial("~/views/BreadCrumb/BreadCrumb.cshtml", Model.BreadCrumbs)
+@Html.Raw(ViewBag.BreadCrumbsFinal)
 <hr />
 <table width="100%" class="liststyle1">
 @if (Model.AllowParentPath)

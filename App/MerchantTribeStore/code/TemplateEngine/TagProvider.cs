@@ -24,11 +24,11 @@ namespace MerchantTribeStore.code.TemplateEngine
         {                        
             AddHandler(this.Handlers, new TagHandlers.Include());
             AddHandler(this.Handlers, new TagHandlers.ContentColumn());
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:adminpanel", "~/views/shared/_adminpanel.cshtml", null));
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:pagetitle", "~/views/shared/_PageTitle.cshtml", null));
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:metatags", "~/views/shared/_MetaTags.cshtml", null));
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:analyticstop", "~/views/shared/_AnalyticsTop.cshtml", null));
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:analyticsbottom", "~/views/shared/_AnalyticsBottom.cshtml", null));            
+            AddHandler(this.Handlers, new TagHandlers.AdminPanel()); 
+            AddHandler(this.Handlers, new TagHandlers.PageTitle());
+            AddHandler(this.Handlers, new TagHandlers.MetaTags());
+            AddHandler(this.Handlers, new TagHandlers.AnalyticsTop());
+            AddHandler(this.Handlers, new TagHandlers.AnalyticsBottom());
             AddHandler(this.Handlers, new TagHandlers.Css());
             AddHandler(this.Handlers, new TagHandlers.JavaScript());
             AddHandler(this.Handlers, new TagHandlers.Copyright());
@@ -44,8 +44,8 @@ namespace MerchantTribeStore.code.TemplateEngine
             AddHandler(this.Handlers, new TagHandlers.ProfilerRender());
 
             // Legacy Tags that will eventually be removed
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:flexeditor", "~/views/flexpage/editorpanel.cshtml", null));
-            AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:flexpopup", "~/views/flexpage/editorpopup.cshtml", null));
+            AddHandler(this.Handlers, new TagHandlers.FlexEditorPanel());
+            AddHandler(this.Handlers, new TagHandlers.FlexEditorPopup()); 
 
             // Fix up relative urls
             AddHandler(this.Handlers, new TagHandlers.UrlFixer("img", "src"));

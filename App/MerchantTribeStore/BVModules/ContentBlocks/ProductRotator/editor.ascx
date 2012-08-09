@@ -24,7 +24,7 @@
     &nbsp;
     <asp:Panel ID="pnlMain" runat="server" DefaultButton="btnOkay">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="3"
-            GridLines="None" DataKeyNames="bvin" Width="400px" 
+            GridLines="None" DataKeyNames="Id" Width="400px" 
             onrowcancelingedit="GridView1_RowCancelingEdit" 
             onrowdeleting="GridView1_RowDeleting" onrowupdating="GridView1_RowUpdating">
             <Columns>

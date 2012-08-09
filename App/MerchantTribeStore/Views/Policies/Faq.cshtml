@@ -1,5 +1,5 @@
 ﻿@model MerchantTribe.Commerce.Content.Policy           
-@Html.Partial("~/Views/BreadCrumb/BreadCrumb.cshtml", (object)ViewBag.BreadCrumbTrail)
+@Html.Raw(ViewBag.BreadCrumbsFinal)
 <h1 id="top">
     @ViewBag.Title
 </h1>

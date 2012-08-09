@@ -35,6 +35,8 @@ namespace MerchantTribeStore.Models
         public string PayPalToken { get; set; }
         public string PayPalPayerId { get; set; }
 
+        public string SideColumn { get; set; }
+
         public CheckoutViewModel()
         {
             this.CurrentOrder = new Order();
@@ -59,6 +61,7 @@ namespace MerchantTribeStore.Models
             this.ErrorCssClass = "input-validation-error";
             this.PayPalPayerId = string.Empty;
             this.PayPalToken = string.Empty;
+            this.SideColumn = string.Empty;
         }
 
         public string IsErr(string nameWithoutPrefix)

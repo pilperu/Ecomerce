@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
+using MerchantTribe.Commerce.Utilities;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -31,7 +33,19 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             model.SearchFormUrl = rootUrl + "search";                        
             model.ButtonImageUrl = app.ThemeManager().ButtonUrl("Go", app.IsCurrentRequestSecure());
                         
-            actions.Add(new Actions.PartialView("~/views/shared/_SearchForm.cshtml", model));
+            actions.Add(new Actions.LiteralText(Render(model)));
         }
+
+        private string Render(SearchFormViewModel model)
+        {   
+            StringBuilder sb = new StringBuilder();
+
+            sb.Append("<form class=\"searchform\" action=\"" + model.SearchFormUrl + "\" method=\"get\">");
+            sb.Append("<input type=\"text\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + model.ButtonImageUrl + "\" alt=\"Search\" />");
+            sb.Append("</form>");
+
+            return sb.ToString();
+        }
+
     }
 }

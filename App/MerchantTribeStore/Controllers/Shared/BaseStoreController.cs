@@ -36,7 +36,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ThemeManager themes = MTApp.ThemeManager();
             ViewBag.Css = themes.CurrentStyleSheet(MTApp, System.Web.HttpContext.Current.Request.IsSecureConnection);
 
-            ViewData["analyticstop"] = this.MTApp.RenderAnalyticsTop(this.UniqueStoreId, this.CustomerId, this.CustomerIp);
+            ViewData["analyticstop"] = this.MTApp.RenderAnalyticsTop(this.UniqueStoreId, this.CustomerId, this.CustomerIp);            
             ViewData["analyticsbottom"] = this.MTApp.RenderAnalyticsBottom();
             ViewData["AdditionalMetaTags"] = MTApp.CurrentStore.Settings.Analytics.AdditionalMetaTags ?? string.Empty;
 
