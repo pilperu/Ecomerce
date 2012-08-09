@@ -19,7 +19,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:searchform"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             SearchFormViewModel model = new SearchFormViewModel();
             string rootUrl = app.StoreUrl(false, true);

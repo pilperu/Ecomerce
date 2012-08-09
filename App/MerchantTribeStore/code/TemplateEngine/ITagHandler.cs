@@ -10,7 +10,8 @@ namespace MerchantTribeStore.code.TemplateEngine
     {
         string TagName { get; }
         void Process(List<ITemplateAction> actions, 
-                     MerchantTribeApplication app, 
+                     MerchantTribeApplication app,
+                     dynamic viewBag,
                      ITagProvider tagProvider, 
                      ParsedTag tag, 
                      string innerContents);

@@ -19,7 +19,7 @@ namespace MerchantTribeStore.Controllers
             string template;
             Processor p;
             template = this.MTApp.ThemeManager().GetSystemTemplate("home.html");
-            p = new Processor(this.MTApp, template, new TagProvider());
+            p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
             List<ITemplateAction> actions;
             actions = p.RenderForDisplay();
             return View("~/views/shared/TemplateEngine.cshtml", actions);

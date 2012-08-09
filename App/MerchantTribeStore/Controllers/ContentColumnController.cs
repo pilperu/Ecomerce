@@ -14,6 +14,8 @@ namespace MerchantTribeStore.Controllers
         [ChildActionOnly]
         public ActionResult Index(string id)
         {
+            // TODO: This should be replaced by a direct render call like the tag handler version. 
+            // eventually, there should not be controllers or methods for content blocks
             if (string.IsNullOrEmpty(id)) return Content("");
          
             ContentColumn col = null;            

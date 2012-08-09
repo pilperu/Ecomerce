@@ -79,6 +79,6 @@ namespace MerchantTribe.Commerce.Content
                 xw.WriteEndElement(); // end Column
             }
         }
-			
+
 	}
 }

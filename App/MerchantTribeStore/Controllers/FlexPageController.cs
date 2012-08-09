@@ -123,7 +123,7 @@ namespace MerchantTribeStore.Controllers
             MTApp.CurrentRequestContext.CurrentCategory = cat;            
 
             string template = this.MTApp.ThemeManager().GetTemplateFromCurrentTheme("default-no-menu.html");            
-            Processor p = new Processor(this.MTApp, template, new TagProvider());
+            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
             List<ITemplateAction> model = p.RenderForDisplay();
             
             return View("~/views/shared/templateengine.cshtml", model);

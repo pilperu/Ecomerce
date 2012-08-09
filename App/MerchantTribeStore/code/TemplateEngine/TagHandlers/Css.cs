@@ -13,7 +13,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:css"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             string fileUrl = string.Empty;
             bool secure = app.IsCurrentRequestSecure();

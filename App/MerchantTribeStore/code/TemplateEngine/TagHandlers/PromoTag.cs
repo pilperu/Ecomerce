@@ -13,7 +13,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:promotag"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
            actions.Add(new Actions.LiteralText(MerchantTribe.Commerce.Utilities.HtmlRendering.PromoTag()));
         }

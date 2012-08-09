@@ -9,6 +9,7 @@ using MerchantTribe.Commerce;
 using System.Web.Mvc;
 using System.Web.Caching;
 using log4net;
+using StackExchange.Profiling;
 
 namespace MerchantTribeStore
 {
@@ -221,6 +222,8 @@ namespace MerchantTribeStore
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
+            MiniProfiler.Start();
+
             CleanUpDomains();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
@@ -228,6 +231,7 @@ namespace MerchantTribeStore
 
         void Application_EndRequest()
         {
+            MiniProfiler.Stop();
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)

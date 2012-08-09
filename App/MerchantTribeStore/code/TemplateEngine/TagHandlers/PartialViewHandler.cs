@@ -23,7 +23,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return _tagName; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             actions.Add(new Actions.PartialView(_viewName, _model));
         }            

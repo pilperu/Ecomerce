@@ -120,6 +120,16 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\MerchantTribe.Web.1.4.1.0\lib\net4\MerchantTribe.Web.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.2.0.2\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework">
+      <HintPath>..\packages\MiniProfiler.EF.2.0.3\lib\net40\MiniProfiler.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="RouteDebugger">
       <HintPath>..\packages\routedebugger.2.0.0.7\lib\net40\RouteDebugger.dll</HintPath>
     </Reference>
@@ -156,6 +166,9 @@
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="Yahoo.Yui.Compressor, Version=1.6.0.2, Culture=neutral, PublicKeyToken=f8b4b81ec75097e2, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\YUICompressor.NET.1.6.0.2\lib\net35\Yahoo.Yui.Compressor.dll</HintPath>
@@ -2215,6 +2228,7 @@
     <Compile Include="api\rest\UtilitiesHandler.cs" />
     <Compile Include="api\rest\VendorsHandler.cs" />
     <Compile Include="api\rest\WishListItemsHandler.cs" />
+    <Compile Include="App_Start\MiniProfiler.cs" />
     <Compile Include="Areas\account\accountAreaRegistration.cs" />
     <Compile Include="Areas\account\Controllers\AuthenticationController.cs" />
     <Compile Include="Areas\account\Controllers\ManagementController.cs" />
@@ -2249,6 +2263,12 @@
     <Compile Include="Areas\ContentBlocks\Models\RssFeedViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuItem.cs" />
     <Compile Include="Areas\ContentBlocks\Models\SideMenuViewModel.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\BannerAdRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\BaseRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\HtmlRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\IContentBlockRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\ContentBlockRenderFactory.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\NullRenderer.cs" />
     <Compile Include="Areas\signup\Controllers\BaseSignupController.cs" />
     <Compile Include="Areas\signup\Controllers\MarketingPagesController.cs" />
     <Compile Include="Areas\signup\Controllers\PoliciesController.cs" />
@@ -4337,6 +4357,7 @@
     <Compile Include="code\TemplateEngine\TagHandlers\PartialViewHandler.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\ProfilerRender.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\PromoTag.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -4459,7 +4480,6 @@
     <Content Include="Areas\account\Views\AddressBook\Edit.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\Web.config" />
     <Content Include="Areas\ContentBlocks\Views\CategoryMenu\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\BannerAd\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\CategoryRotator\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\FeaturedProducts\Index.cshtml" />
     <Content Include="Areas\ContentBlocks\Views\LastProductsViewed\Index.cshtml" />
@@ -4603,6 +4623,7 @@
     <Content Include="Views\FlexPage\EditorPanel.cshtml" />
     <Content Include="Views\FlexPage\EditorPopup.cshtml" />
     <Content Include="Views\SuperStores\Destroy.cshtml" />
+    <Content Include="Views\Shared\_MINIPROFILER UPDATED Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

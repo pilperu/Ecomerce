@@ -12,12 +12,14 @@ namespace MerchantTribeStore.code.TemplateEngine
         public string Template { get; set; }
         private MerchantTribeApplication MTApp;
         ITagProvider TagProvider { get; set; }
+        private dynamic ViewBag;
 
-        public Processor(MerchantTribeApplication app, string template, ITagProvider tagProvider)
+        public Processor(MerchantTribeApplication app, dynamic viewBag, string template, ITagProvider tagProvider)
         {
             this.MTApp = app;
             this.TagProvider = tagProvider;
             this.Template = template;
+            this.ViewBag = viewBag;
         }
 
         public Queue<string> Tokenize()
@@ -213,7 +215,7 @@ namespace MerchantTribeStore.code.TemplateEngine
                     {
                         contentsFlat += s;
                     }
-                    handler.Process(actions, this.MTApp, this.TagProvider, tag, contentsFlat);
+                    handler.Process(actions, this.MTApp, this.ViewBag, this.TagProvider, tag, contentsFlat);
                 }
             }
         }

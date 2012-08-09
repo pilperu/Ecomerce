@@ -14,7 +14,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:breadcrumbs"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             List<BreadCrumbItem> extras = new List<BreadCrumbItem>();
 

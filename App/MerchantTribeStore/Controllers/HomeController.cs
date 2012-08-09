@@ -23,7 +23,7 @@ namespace MerchantTribeStore.Controllers
         public ActionResult Index()
         {
             // Redirect to Sign up if we're multi-store
-            // TODO - Change this to return the signup view instead
+            // TODO: Change this to return the signup view instead
             if (!WebAppSettings.IsIndividualMode)
             {
                 if (MTApp.CurrentStore.StoreName == "www")
@@ -45,7 +45,7 @@ namespace MerchantTribeStore.Controllers
             ViewBag.Title = MTApp.CurrentStore.Settings.FriendlyName;
             ViewBag.BodyClass = "store-home-page";
             string template = this.MTApp.ThemeManager().GetTemplateFromCurrentTheme("home.html");
-            Processor p = new Processor(this.MTApp, template, new TagProvider());
+            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
             List<ITemplateAction> model = p.RenderForDisplay();
             return View("~/views/shared/templateengine.cshtml", model);
 

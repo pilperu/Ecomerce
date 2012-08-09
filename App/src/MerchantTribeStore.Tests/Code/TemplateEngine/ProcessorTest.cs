@@ -6,6 +6,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MerchantTribe.Commerce;
 using MerchantTribeStore.code.TemplateEngine;
 using MerchantTribeStore.code.TemplateEngine.Actions;
+using System.Dynamic;
 
 namespace MerchantTribeStore.Tests.Code.TemplateEngine
 {
@@ -15,6 +16,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
         RequestContext context;
         MerchantTribeApplication app;
         ITagProvider tagProvider;
+        dynamic viewBag;
 
         [TestInitialize]
         public void Setup()
@@ -22,7 +24,17 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             WebAppSettings.SetUnitTestPhysicalPath(@"C:\git\MerchantTribe\App\MerchantTribeStore");
                         
             context = ContextHelper.GetFakeRequestContext("", "http://demo.localhost.dev/", "");            
-            app = MerchantTribeApplication.InstantiateForMemory(context);                        
+            app = MerchantTribeApplication.InstantiateForMemory(context);
+
+            viewBag = new DynamicViewDataDictionary(() => new System.Web.Mvc.ViewDataDictionary());
+            //viewBag.RootUrlSecure = app.StoreUrl(true, false);
+            //viewBag.RootUrl = app.StoreUrl(false, true);
+            //viewBag.StoreClosed = app.CurrentStore.Settings.StoreClosed;
+            //viewBag.StoreName = app.CurrentStore.Settings.FriendlyName;            
+            //viewBag.StoreUniqueId = app.CurrentStore.StoreUniqueId(app);            
+            viewBag.CustomerIp = "0.0.0.0";            
+            //viewBag.CustomerId = app.CurrentCustomerId ?? string.Empty;
+            //viewBag.HideAnalytics = app.CurrentStore.Settings.Analytics.DisableMerchantTribeAnalytics;     
 
             tagProvider = new TagProvider();
         }
@@ -32,7 +44,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
         {
             string template = "<html>\n<head><title>Page Title</title></head>\n<body><h1>My Page</h1></body>\n</html>\n";
             
-            Processor target = new Processor(app, template, tagProvider);
+            Processor target = new Processor(app, viewBag, template, tagProvider);
 
             var actual = target.RenderForDisplay();
 
@@ -65,7 +77,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
         {
             string template = "<html><sys:adminpanel /></html>";
 
-            Processor target = new Processor(app, template, tagProvider);
+            Processor target = new Processor(app, viewBag, template, tagProvider);
 
             var actual = target.RenderForDisplay();
 
@@ -90,7 +102,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             for (long i = 0; i < count; i++)
             {
                 string template = app.ThemeManager().GetSystemTemplate("default.html");
-                Processor target = new Processor(app, template, tagProvider);
+                Processor target = new Processor(app, viewBag, template, tagProvider);
                 var tokens = target.Tokenize();
             }
 
@@ -109,7 +121,7 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             for (long i = 0; i < count; i++)
             {
                 string template = app.ThemeManager().GetSystemTemplate("default.html");
-                Processor target = new Processor(app, template, tagProvider);
+                Processor target = new Processor(app, viewBag, template, tagProvider);
                 var actions = target.RenderForDisplay();
             }
 

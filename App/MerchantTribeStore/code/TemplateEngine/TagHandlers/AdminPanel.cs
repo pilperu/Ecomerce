@@ -13,7 +13,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:adminpanel"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string contents)
+        public void Process(List<ITemplateAction> actions, MerchantTribeApplication app, dynamic viewBag, ITagProvider tagProvider, ParsedTag tag, string contents)
         {
             actions.Add(new Actions.PartialView("~/views/shared/_adminpanel.cshtml", null));            
         }

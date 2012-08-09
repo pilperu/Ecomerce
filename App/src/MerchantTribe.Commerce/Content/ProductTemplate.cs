@@ -28,7 +28,7 @@ namespace MerchantTribe.Commerce.Content
                 Catalog.CatalogService catalogServices = Catalog.CatalogService.InstantiateForDatabase(MyPage.MTApp.CurrentRequestContext);
                 int relatedCount = catalogServices.ProductRelationships.FindForProduct(this.ModuleProduct.Bvin).Count;
 
-                // Todo verify for cross-sells and up-sells
+                // TODO: verify for cross-sells and up-sells
 				if (relatedCount > 0) {
 					return "~/AdditionalProductInfo.aspx?id=" + HttpUtility.UrlEncode(this.ModuleProduct.Bvin) + "&quantity=" + this.ModuleProductQuantity.ToString();
 				}

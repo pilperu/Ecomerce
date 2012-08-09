@@ -14,13 +14,18 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:include"; }
         }
 
-        void ITagHandler.Process(List<ITemplateAction> actions, MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        void ITagHandler.Process(List<ITemplateAction> actions, 
+                                 MerchantTribeApplication app, 
+                                 dynamic viewBag,
+                                 ITagProvider tagProvider, 
+                                 ParsedTag tag, 
+                                 string innerContents)
         {
             string partName = tag.GetSafeAttribute("part");
 
             ThemeManager tm = app.ThemeManager();
             string result = tm.GetTemplatePartFromCurrentTheme(partName);
-            Processor proc = new Processor(app, result, tagProvider);
+            Processor proc = new Processor(app, viewBag, result, tagProvider);
             var subActions = proc.RenderForDisplay();
             actions.AddRange(subActions);             
         }

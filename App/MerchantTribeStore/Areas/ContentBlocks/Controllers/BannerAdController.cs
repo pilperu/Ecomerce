@@ -7,6 +7,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Utilities;
 using MerchantTribeStore.Areas.ContentBlocks.Models;
 using MerchantTribeStore.Controllers.Shared;
+using MerchantTribeStore.Areas.ContentBlocks.RenderControllers;
 
 namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
 {
@@ -16,25 +17,26 @@ namespace MerchantTribeStore.Areas.ContentBlocks.Controllers
         // GET: /ContentBlocks/BannerAd/
         public ActionResult Index(ContentBlock block)
         {
-            BannerAdViewModel model = new BannerAdViewModel();
 
-            if (block != null)
-            {
-                model.ImageUrl = block.BaseSettings.GetSettingOrEmpty("imageurl");
-                model.AltText = block.BaseSettings.GetSettingOrEmpty("alttext");
-                model.CssId = block.BaseSettings.GetSettingOrEmpty("cssid");
-                model.CssClass = block.BaseSettings.GetSettingOrEmpty("cssclass");
-                model.LinkUrl = block.BaseSettings.GetSettingOrEmpty("linkurl");
-                model.ImageUrl = TagReplacer.ReplaceContentTags(model.ImageUrl,
-                                                                MTApp,
-                                                                "",
-                                                                Request.IsSecureConnection);
-            }
+            return Content(ContentBlockRenderFactory.RenderBlock(block, this.MTApp, this.ViewBag));
 
-            return View(model);
+            //BannerAdViewModel model = new BannerAdViewModel();
+
+            //if (block != null)
+            //{
+            //    model.ImageUrl = block.BaseSettings.GetSettingOrEmpty("imageurl");
+            //    model.AltText = block.BaseSettings.GetSettingOrEmpty("alttext");
+            //    model.CssId = block.BaseSettings.GetSettingOrEmpty("cssid");
+            //    model.CssClass = block.BaseSettings.GetSettingOrEmpty("cssclass");
+            //    model.LinkUrl = block.BaseSettings.GetSettingOrEmpty("linkurl");
+            //    model.ImageUrl = TagReplacer.ReplaceContentTags(model.ImageUrl,
+            //                                                    MTApp,
+            //                                                    "",
+            //                                                    Request.IsSecureConnection);
+            //}
+            
+            //return View(model);
         }
-
-
 
     }
 }

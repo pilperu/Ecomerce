@@ -23,7 +23,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
         protected bool ShowProductCount = false;
         protected bool ShowCategoryCount = false;
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             this.App = app;
             this.Url = new System.Web.Mvc.UrlHelper(app.CurrentRequestContext.RoutingContext);

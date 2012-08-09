@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Controllers
             }
 
             ITagProvider tagProvider = new TagProvider();
-            Processor proc = new Processor(this.MTApp, template, tagProvider);
+            Processor proc = new Processor(this.MTApp, this.ViewBag, template, tagProvider);
 
             var model = proc.RenderForDisplay();
             return View("~/views/shared/templateengine.cshtml", model);                                    

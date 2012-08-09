@@ -16,7 +16,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:link"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {
             
 
@@ -111,7 +116,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 actions.Add(new Actions.LiteralText(sb.ToString()));
 
                 // Process any inner tags
-                Processor proc = new Processor(app, innerContents, tagProvider);
+                Processor proc = new Processor(app, viewBag, innerContents, tagProvider);
                 var subActions = proc.RenderForDisplay();                
                 actions.AddRange(subActions);
 

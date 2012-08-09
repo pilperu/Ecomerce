@@ -20,7 +20,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:area"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string contents)
+        public void Process(List<ITemplateAction> actions, 
+            MerchantTribeApplication app, 
+            dynamic viewBag, 
+            ITagProvider tagProvider, 
+            ParsedTag tag, string contents)
         {
             string areaName = tag.GetSafeAttribute("name");
 

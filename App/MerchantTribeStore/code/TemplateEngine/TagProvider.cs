@@ -41,6 +41,7 @@ namespace MerchantTribeStore.code.TemplateEngine
             AddHandler(this.Handlers, new TagHandlers.MainMenu());
             AddHandler(this.Handlers, new TagHandlers.PageMenu());
             AddHandler(this.Handlers, new TagHandlers.BreadCrumbs());
+            AddHandler(this.Handlers, new TagHandlers.ProfilerRender());
 
             // Legacy Tags that will eventually be removed
             AddHandler(this.Handlers, new TagHandlers.PartialViewHandler("sys:flexeditor", "~/views/flexpage/editorpanel.cshtml", null));

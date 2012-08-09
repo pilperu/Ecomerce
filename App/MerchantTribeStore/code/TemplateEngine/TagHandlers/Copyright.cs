@@ -14,7 +14,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:copyright"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribe.Commerce.MerchantTribeApplication app, ITagProvider tagProvider, ParsedTag tag, string innerContents)
+        public void Process(List<ITemplateAction> actions, 
+                            MerchantTribe.Commerce.MerchantTribeApplication app, 
+                            dynamic viewBag,
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, 
+                            string innerContents)
         {            
             string byParam = tag.GetSafeAttribute("by");
             

@@ -13,8 +13,7 @@ namespace MerchantTribe.Commerce.Content
 		{            
             string result = GetTermDefault(id);
 
-            // TODO
-            // Allow individual stores to override with 
+            // TODO: Allow individual stores to override with 
             // custom language sets
 
             return result;
