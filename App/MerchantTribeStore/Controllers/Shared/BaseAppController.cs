@@ -26,6 +26,7 @@ namespace MerchantTribeStore.Controllers.Shared
                 // Check for non-www url and redirect if needed
                 //RedirectBVCommerceCom(System.Web.HttpContext.Current);
                 MTApp.CurrentRequestContext.RoutingContext = this.Request.RequestContext;
+                MTApp.CurrentRequestContext.UrlHelper = this.Url;
 
                 // Determine store id        
                 MTApp.CurrentStore = MerchantTribe.Commerce.Utilities.UrlHelper.ParseStoreFromUrl(System.Web.HttpContext.Current.Request.Url, MTApp);

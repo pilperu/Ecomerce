@@ -719,6 +719,7 @@
     <Content Include="BVModules\ContentBlocks\BannerAd\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\CategoryMenu\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\CategoryRotator\editor.ascx" />
+    <Content Include="BVModules\ContentBlocks\FeaturedProducts\placeholder.txt" />
     <Content Include="BVModules\ContentBlocks\Html\adminview.ascx" />
     <Content Include="BVModules\ContentBlocks\Html\editor.ascx" />
     <Content Include="BVModules\ContentBlocks\ImageRotator\editor.ascx" />
@@ -2243,13 +2244,6 @@
     <Compile Include="Areas\AdminContent\Controllers\FileManagerController.cs" />
     <Compile Include="Areas\AdminContent\Models\FileManagerViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\CategoryRotatorController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\FeaturedProductsController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\ImageRotatorController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\LastProductsViewedController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\ProductGridController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\ProductRotatorController.cs" />
-    <Compile Include="Areas\ContentBlocks\Controllers\RssFeedViewerController.cs" />
     <Compile Include="Areas\ContentBlocks\Models\BannerAdViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\CategoryMenuViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\Models\FeaturedProductsViewModel.cs" />
@@ -2260,10 +2254,17 @@
     <Compile Include="Areas\ContentBlocks\RenderControllers\BannerAdRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\BaseRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\CategoryMenuRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\CategoryRotatorRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\FeaturedProductsRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\HtmlRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\IContentBlockRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\ContentBlockRenderFactory.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\ImageRotatorRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\LastViewedProductsRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\NullRenderer.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\ProductGridRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\ProductRotatorRenderController.cs" />
+    <Compile Include="Areas\ContentBlocks\RenderControllers\RssFeedViewerRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\SideMenuRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\Top10ProductsRenderController.cs" />
     <Compile Include="Areas\ContentBlocks\RenderControllers\TopWeeklySellersRenderController.cs" />
@@ -4361,6 +4362,7 @@
     <Compile Include="code\TemplateEngine\TagHandlers\SearchForm.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\SingleProduct.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\TempMessages.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -4448,7 +4450,6 @@
     <Folder Include="Areas\AdminCatalog\Models\" />
     <Folder Include="Areas\AdminCatalog\Views\Shared\" />
     <Folder Include="Areas\AdminContent\Views\Shared\" />
-    <Folder Include="Areas\ContentBlocks\Views\Shared\" />
     <Folder Include="aspnet_client\system_web\4_0_30128\" />
     <Folder Include="content\themes\theme-bv-simpleblue\assets\" />
     <Folder Include="content\themes\theme-bv-simplegray\assets\" />
@@ -4474,17 +4475,6 @@
     <Content Include="Areas\account\Views\Management\ChangeEmail.cshtml" />
     <Content Include="Areas\account\Views\AddressBook\Index.cshtml" />
     <Content Include="Areas\account\Views\AddressBook\Edit.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\Web.config" />
-    <Content Include="Areas\ContentBlocks\Views\CategoryMenu\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\CategoryRotator\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\FeaturedProducts\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\LastProductsViewed\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\ProductGrid\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\ProductRotator\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\RssFeedViewer\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\SideMenu\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\Top10Products\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\TopWeeklySellers\Index.cshtml" />
     <Content Include="Areas\account\Views\Authentication\ForgotPassword.cshtml" />
     <Content Include="Areas\account\Views\Authentication\SignIn.cshtml" />
     <Content Include="Areas\signup\Views\Web.config" />
@@ -4496,13 +4486,11 @@
     <Content Include="Areas\signup\Views\Register\ProcessSignup.cshtml" />
     <Content Include="Areas\signup\Views\Register\Index.cshtml" />
     <Content Include="Areas\account\Views\WishList\Index.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\ImageRotator\Index.cshtml" />
     <Content Include="Areas\AdminCatalog\Views\Web.config" />
     <Content Include="Areas\AdminCatalog\Views\CategoriesCustom\Edit.cshtml" />
     <Content Include="Areas\AdminContent\Views\Web.config" />
     <Content Include="Areas\AdminContent\Views\FileManager\Index.cshtml" />
     <Content Include="Areas\account\Views\OrderHistory\DownloadFileError.cshtml" />
-    <Content Include="Areas\ContentBlocks\Views\Html\Index.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />

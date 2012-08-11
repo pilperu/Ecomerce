@@ -354,26 +354,6 @@ namespace MerchantTribeStore.Helpers
         {
             return "<div id=\"footer\"><div id=\"copyright\">&copy; Copyright 2002-" + DateTime.Now.Year.ToString() + " BV Software LLC, All Rights Reserved</div></div>";
         }
-        
-        public static string RenderPartialToString(string controlName, object viewData)
-        {
-            ViewDataDictionary vd = new ViewDataDictionary(viewData);
-            ViewPage vp = new ViewPage { ViewData = vd };
-            Control control = vp.LoadControl(controlName);
-
-            vp.Controls.Add(control);
-
-            StringBuilder sb = new StringBuilder();
-            using (StringWriter sw = new StringWriter(sb))
-            {
-                using (HtmlTextWriter tw = new HtmlTextWriter(sw))
-                {
-                    vp.RenderControl(tw);
-                }
-            }
-
-            return sb.ToString();
-        }        
-
+               
     }
 }

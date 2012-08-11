@@ -26,17 +26,26 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
         private static void Init()
         {
             _Controllers = new Dictionary<string, IContentBlockRenderController>();            
-            _Controllers.Add("BannerAd", new BannerAdRenderController());
-            _Controllers.Add("Html", new HtmlRenderController());
-            _Controllers.Add("CategoryMenu", new CategoryMenuRenderController());
-            _Controllers.Add("Top10Products", new Top10ProductsRenderController());
-            _Controllers.Add("SideMenu", new SideMenuRenderController());
-            _Controllers.Add("TopWeeklySellers", new TopWeeklySellersRenderController());
+            _Controllers.Add("bannerad", new BannerAdRenderController());
+            _Controllers.Add("html", new HtmlRenderController());
+            _Controllers.Add("categorymenu", new CategoryMenuRenderController());
+            _Controllers.Add("top10products", new Top10ProductsRenderController());
+            _Controllers.Add("sidemenu", new SideMenuRenderController());
+            _Controllers.Add("topweeklysellers", new TopWeeklySellersRenderController());
+            _Controllers.Add("imagerotator", new ImageRotatorRenderController());
+            _Controllers.Add("rssfeedviewer", new ImageRotatorRenderController());
+            _Controllers.Add("featuredproducts", new FeaturedProductsRenderController());
+            _Controllers.Add("lastproductsviewed", new LastViewedProductsRenderController());
+            _Controllers.Add("lastviewedproducts", new LastViewedProductsRenderController());
+            _Controllers.Add("productgrid", new ProductGridRenderController());
+            _Controllers.Add("productrotator", new ProductRotatorRenderController());
+            _Controllers.Add("categoryrotator", new CategoryRotatorRenderController());
         }
 
         public static IContentBlockRenderController GetRenderer(ContentBlock block)
         {
             string noSpacesName = block.ControlName.Replace(" ", "");
+            noSpacesName = noSpacesName.ToLowerInvariant();
             if (Controllers.ContainsKey(noSpacesName))
             {
                 return Controllers[noSpacesName];

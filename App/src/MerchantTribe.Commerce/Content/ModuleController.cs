@@ -57,7 +57,7 @@ namespace MerchantTribe.Commerce.Content
 		public static StringCollection FindContentBlocks()
 		{
 			StringCollection result = new StringCollection();
-			result = ListFolders("Areas\\ContentBlocks\\Views", "Index.cshtml");
+            result = ListFolders("BVModules\\ContentBlocks", string.Empty);			
 			return result;
 		}    
 		public static System.Web.UI.Control LoadContentBlockAdminView(string blockName, System.Web.UI.Page p)
