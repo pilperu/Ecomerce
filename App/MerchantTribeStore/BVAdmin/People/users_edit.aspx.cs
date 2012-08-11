@@ -290,6 +290,7 @@ namespace MerchantTribeStore
                 if (this.BvinField.Value == string.Empty)
                 {
                     // Create new user
+                    u.Email = this.EmailField.Text.Trim();
                     result = MTApp.MembershipServices.CreateCustomer(u, ref s, this.PasswordField.Text.Trim());
                 }
                 else
