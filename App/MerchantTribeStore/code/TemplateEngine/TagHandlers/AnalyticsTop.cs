@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -13,14 +14,14 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:analyticstop"; }
         }
 
-        public void Process(List<ITemplateAction> actions,
+        public void Process(StringBuilder output,
                             MerchantTribe.Commerce.MerchantTribeApplication app,
                             dynamic viewBag,
                             ITagProvider tagProvider,
                             ParsedTag tag,
                             string innerContents)
         {
-            actions.Add(new Actions.LiteralText(viewBag.analyticstop));
+            output.Append((string)viewBag.analyticstop);
         }
     }
 }

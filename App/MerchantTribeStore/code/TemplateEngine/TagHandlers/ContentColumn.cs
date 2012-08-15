@@ -15,7 +15,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:contentcolumn"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag, 
                             ITagProvider tagProvider, 
@@ -32,22 +32,24 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 colId = tag.GetSafeAttribute("columnname");
             }
 
-            actions.Add(new Actions.LiteralText(RenderColumn(colId, app, viewBag)));            
+            RenderColumn(output, colId, app, viewBag);            
         }
 
-        public string RenderColumn(string colId, MerchantTribeApplication app, dynamic viewBag)
-        {            
-            StringBuilder sb = new StringBuilder();
-
+        public void RenderColumn(StringBuilder sb, string colId, MerchantTribeApplication app, dynamic viewBag)
+        {
             var column = LocateColumn(colId, app);
             if (column != null)
             {
                 foreach (var block in column.Blocks)
                 {
                     sb.Append(MerchantTribeStore.Areas.ContentBlocks.RenderControllers.ContentBlockRenderFactory.RenderBlock(block, app, viewBag));
-                }                
+                }
             }
-
+        }
+        public string RenderColumnToString(string colId, MerchantTribeApplication app, dynamic viewBag)
+        {            
+            StringBuilder sb = new StringBuilder();
+            RenderColumn(sb, colId, app, viewBag);
             return sb.ToString();
         }
 

@@ -199,8 +199,8 @@ namespace MerchantTribeStore.Controllers
 
             // Columns
             var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            model.PreColumn = columnRender.RenderColumn(model.LocalProduct.PreContentColumnId, MTApp, ViewBag);
-            model.PostColumn = columnRender.RenderColumn(model.LocalProduct.PostContentColumnId, MTApp, ViewBag);
+            model.PreColumn = columnRender.RenderColumnToString(model.LocalProduct.PreContentColumnId, MTApp, ViewBag);
+            model.PostColumn = columnRender.RenderColumnToString(model.LocalProduct.PostContentColumnId, MTApp, ViewBag);
 
             return model;
         }

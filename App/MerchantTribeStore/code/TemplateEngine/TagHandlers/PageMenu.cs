@@ -23,7 +23,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
         protected bool ShowProductCount = false;
         protected bool ShowCategoryCount = false;
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -39,19 +39,16 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 CurrentCategory.Bvin = "0";
             }
 
-
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("<div class=\"categorymenu\">");
-            sb.Append("<div class=\"decoratedblock\">");
+            output.Append("<div class=\"categorymenu\">");
+            output.Append("<div class=\"decoratedblock\">");
 
             string title = tag.GetSafeAttribute("title");
             if (title.Trim().Length > 0)
             {
-                sb.Append("<h4>" + title + "</h4>");
+                output.Append("<h4>" + title + "</h4>");
             }
 
-            sb.Append("<ul>");
+            output.Append("<ul>");
 
             int maxDepth = 5;
 
@@ -61,33 +58,31 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 case "ROOT":
                 case "ROOTS":
                     // Root Categories Only
-                    LoadRoots(sb);
+                    LoadRoots(output);
                     break;
                 case "ALL":
                     // All Categories
-                    LoadAllCategories(sb, maxDepth);
+                    LoadAllCategories(output, maxDepth);
                     break;
                 case "":
                 case "PEERS":
                     // Peers, Children and Parents
-                    LoadPeersAndChildren(sb);
+                    LoadPeersAndChildren(output);
                     break;
                 case "ROOTPLUS":
                     // Show root and expanded children
-                    LoadRootPlusExpandedChildren(sb);
+                    LoadRootPlusExpandedChildren(output);
                     break;
                 default:
                     // All Categories
-                    LoadPeersAndChildren(sb);
+                    LoadPeersAndChildren(output);
                     break;
             }
 
-            sb.Append("</ul>");
+            output.Append("</ul>");
 
-            sb.Append("</div>");
-            sb.Append("</div>");
-
-            actions.Add(new Actions.LiteralText(sb.ToString()));
+            output.Append("</div>");
+            output.Append("</div>");            
         }
 
         private void LoadRoots(StringBuilder sb)

@@ -27,15 +27,14 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return _tagName; }
         }        
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
         {
-            StringBuilder sb = new StringBuilder();
-            sb.Append("<" + _tagName);
+            output.Append("<" + _tagName);
             
             string pathToTemplate = app.ThemeManager().ThemeFileUrl("",app) + "templates/";
             if (pathToTemplate.StartsWith("http://"))
@@ -50,20 +49,18 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 if (_attributesToFix.Contains(att.Key.ToLowerInvariant()))
                 {
                     val = FixUpValue(val, pathToTemplate);
-                }                
-                sb.Append(" " + name + "=\"" + val + "\"");                
+                }
+                output.Append(" " + name + "=\"" + val + "\"");                
             }
             
             if (tag.IsSelfClosed)
             {
-                sb.Append("/>");
+                output.Append("/>");
             }
             else
             {
-                sb.Append(">" + innerContents + "</" + _tagName + ">");
-            }
-            
-            actions.Add(new Actions.LiteralText(sb.ToString()));
+                output.Append(">" + innerContents + "</" + _tagName + ">");
+            }                        
         }
 
         private string FixUpValue(string original, string basePath)

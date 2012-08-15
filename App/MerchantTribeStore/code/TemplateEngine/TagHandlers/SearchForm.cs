@@ -21,7 +21,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:searchform"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -32,19 +32,15 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             string rootUrl = app.StoreUrl(false, true);
             model.SearchFormUrl = rootUrl + "search";                        
             model.ButtonImageUrl = app.ThemeManager().ButtonUrl("Go", app.IsCurrentRequestSecure());
-                        
-            actions.Add(new Actions.LiteralText(Render(model)));
+
+            Render(output, model);            
         }
 
-        private string Render(SearchFormViewModel model)
-        {   
-            StringBuilder sb = new StringBuilder();
-
+        private void Render(StringBuilder sb, SearchFormViewModel model)
+        {               
             sb.Append("<form class=\"searchform\" action=\"" + model.SearchFormUrl + "\" method=\"get\">");
             sb.Append("<input type=\"text\" name=\"q\" class=\"searchinput\" /> <input class=\"searchgo\" type=\"image\" src=\"" + model.ButtonImageUrl + "\" alt=\"Search\" />");
-            sb.Append("</form>");
-
-            return sb.ToString();
+            sb.Append("</form>");            
         }
 
     }

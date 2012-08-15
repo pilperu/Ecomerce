@@ -13,22 +13,19 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:metatags"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
         {
-            StringBuilder sb = new StringBuilder();
-
-            sb.Append("<meta name=\"keywords\" content=\"" + HttpUtility.HtmlEncode(viewBag.MetaKeywords) + "\" />");
-            sb.Append("<meta name=\"description\" content=\"" + HttpUtility.HtmlEncode(viewBag.MetaDescription) + "\" />");
+            output.Append("<meta name=\"keywords\" content=\"" + HttpUtility.HtmlEncode((string)viewBag.MetaKeywords) + "\" />");
+            output.Append("<meta name=\"description\" content=\"" + HttpUtility.HtmlEncode((string)viewBag.MetaDescription) + "\" />");
             if (!String.IsNullOrEmpty(viewBag.AdditionalMetaTags))
             {
-                sb.Append(viewBag.AdditionalMetaTags);
-            }
-            actions.Add(new Actions.LiteralText(sb.ToString()));            
+                output.Append((string)viewBag.AdditionalMetaTags);
+            }            
         }
     }
 }

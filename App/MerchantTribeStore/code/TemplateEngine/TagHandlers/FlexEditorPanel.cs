@@ -15,14 +15,14 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:flexeditor"; }
         }
 
-        public void Process(List<ITemplateAction> actions,
+        public void Process(StringBuilder output,
                             MerchantTribe.Commerce.MerchantTribeApplication app,
                             dynamic viewBag,
                             ITagProvider tagProvider,
                             ParsedTag tag,
                             string innerContents)
         {
-            actions.Add(new Actions.LiteralText(Render(app, viewBag)));
+            output.Append(Render(app, viewBag));
         }
 
         public string Render(MerchantTribeApplication app, dynamic viewBag)

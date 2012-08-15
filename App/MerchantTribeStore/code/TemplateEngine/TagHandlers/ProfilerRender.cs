@@ -14,7 +14,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:profilerrender"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag, 
                             ITagProvider tagProvider, 
@@ -22,7 +22,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             string innerContents)
         {
             var rendered = MiniProfiler.RenderIncludes();            
-            actions.Add(new Actions.LiteralText(rendered.ToHtmlString()));            
+            output.Append(rendered.ToHtmlString());            
         }
     }
 }

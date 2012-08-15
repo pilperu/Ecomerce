@@ -14,14 +14,18 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:adminpanel"; }
         }
 
-        public void Process(List<ITemplateAction> actions, MerchantTribeApplication app, dynamic viewBag, ITagProvider tagProvider, ParsedTag tag, string contents)
+        public void Process(StringBuilder output, 
+                            MerchantTribeApplication app, 
+                            dynamic viewBag, 
+                            ITagProvider tagProvider, 
+                            ParsedTag tag, string contents)
         {
-            actions.Add(new Actions.LiteralText(Render(app, viewBag)));
+            Render(output, app, viewBag);
         }
 
         private string AddSecureRoot(dynamic viewBag, string baseUrl)
         {
-            return viewBag.RootUrlSecure + baseUrl;
+            return (string)viewBag.RootUrlSecure + baseUrl;
         }
 
         private string StoreClosedLink(dynamic viewBag)
@@ -35,10 +39,8 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             return result;
         }
 
-        public string Render(MerchantTribeApplication app, dynamic viewBag)
-        {
-            StringBuilder sb = new StringBuilder();
-
+        public void Render(StringBuilder sb, MerchantTribeApplication app, dynamic viewBag)
+        {            
             if (viewBag.IsAdmin == true)
             {
                 sb.Append("<div id=\"adminpanel\">");
@@ -46,9 +48,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 sb.Append(StoreClosedLink(viewBag));
                 sb.Append("   <a href=\"" + AddSecureRoot(viewBag, "bvadmin") + "\" class=\"right\">Go To Admin Dashboard</a>");
                 sb.Append("</div>");
-            }
-
-            return sb.ToString();
+            }         
         }
     }
 }

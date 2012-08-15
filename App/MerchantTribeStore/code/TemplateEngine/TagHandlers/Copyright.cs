@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Dynamic;
+using System.Text;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -14,7 +15,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:copyright"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -26,7 +27,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             dynamic model = new ExpandoObject();
             model.By = byParam;
 
-            actions.Add(new Actions.LiteralText(Render(model)));
+            output.Append(Render(model));
         }
 
         private string Render(dynamic model)

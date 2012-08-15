@@ -38,7 +38,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:mainmenu"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -94,13 +94,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 tempTabIndex += 1;
             }
 
-            actions.Add(new Actions.LiteralText(Render(model)));
+            Render(output, model);            
         }
 
-        private string Render(MainMenuViewModel model)
-        {
-           StringBuilder sb = new StringBuilder();
-
+        private string Render(StringBuilder sb, MainMenuViewModel model)
+        {           
             // Limit number of links
             int stopCount = model.Links.Count - 1;
             if ((model.MaxLinks > 0) && ((model.MaxLinks - 1) < stopCount))

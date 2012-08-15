@@ -100,18 +100,16 @@ namespace MerchantTribeStore.code.TemplateEngine
             return input;
         }
 
-        public List<ITemplateAction> RenderForDisplay()
+        public void RenderForDisplay(StringBuilder sb)
         {
-            return RenderForDisplay(Tokenize());
+            RenderForDisplay(sb, Tokenize());
         }
-        public List<ITemplateAction> RenderForDisplay(Queue<string> tokens)
+        public void RenderForDisplay(StringBuilder sb, Queue<string> tokens)
         {
-            List<ITemplateAction> actions = new List<ITemplateAction>();
-            ProcessTemplate(tokens, actions);
-            return actions;
+            ProcessTemplate(sb, tokens);            
         }
 
-        private void ProcessTemplate(Queue<string> tokens, List<ITemplateAction> actions)
+        private void ProcessTemplate(StringBuilder sb, Queue<string> tokens)
         {
             string tagStarter = "<";
 
@@ -129,7 +127,7 @@ namespace MerchantTribeStore.code.TemplateEngine
                     {
                         // Yes, this tag closed the starting tag
                         ParsedTag t = ParseTag(startToken, false);
-                        ProcessTag(t, subqueue, actions);
+                        ProcessTag(t, subqueue, sb);
 
                         // reset everything since the tag is parsed below
                         parsingTag = false;
@@ -156,7 +154,7 @@ namespace MerchantTribeStore.code.TemplateEngine
                             {
                                 // Tag is self closed, just parse it
                                 ParsedTag t2 = ParseTag(currentToken, true);
-                                ProcessTag(t2, subqueue, actions);
+                                ProcessTag(t2, subqueue, sb);
 
                                 parsingTag = false;
                             }
@@ -169,13 +167,13 @@ namespace MerchantTribeStore.code.TemplateEngine
                         else
                         {
                             // not an accepted tag, just dump the sucker
-                            actions.Add(new Actions.LiteralText(currentToken));
+                            sb.Append(currentToken);
                         }
                     }
                     else
                     {
                         // not starting a tag, just dump the output
-                        actions.Add(new Actions.LiteralText(currentToken));
+                        sb.Append(currentToken);
                     }
                 }
             }
@@ -185,7 +183,7 @@ namespace MerchantTribeStore.code.TemplateEngine
             {
                 if (startToken.Length > 0)
                 {
-                    actions.Add(new Actions.LiteralText(startToken));
+                    sb.Append(startToken);
                 }
             }
 
@@ -195,13 +193,13 @@ namespace MerchantTribeStore.code.TemplateEngine
                 while (subqueue.Count > 0)
                 {
                     string subqueuetoken = subqueue.Dequeue();
-                    actions.Add(new Actions.LiteralText(subqueuetoken));
+                    sb.Append(subqueuetoken);
                 }
             }
 
 
         }
-        private void ProcessTag(ParsedTag tag, Queue<string> contentTokens, List<ITemplateAction> actions)
+        private void ProcessTag(ParsedTag tag, Queue<string> contentTokens, StringBuilder sb)
         {
             var handlers = TagProvider.GetHandlers();
 
@@ -215,7 +213,7 @@ namespace MerchantTribeStore.code.TemplateEngine
                     {
                         contentsFlat += s;
                     }
-                    handler.Process(actions, this.MTApp, this.ViewBag, this.TagProvider, tag, contentsFlat);
+                    handler.Process(sb, this.MTApp, this.ViewBag, this.TagProvider, tag, contentsFlat);
                 }
             }
         }

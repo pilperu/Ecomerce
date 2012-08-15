@@ -23,14 +23,13 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:logo"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
-        {
-            StringBuilder sb = new StringBuilder();
+        {            
             bool isSecureRequest = app.IsCurrentRequestSecure();            
             bool textOnly = !app.CurrentStore.Settings.UseLogoImage;
             string textOnlyTag = tag.GetSafeAttribute("textonly").Trim().ToLowerInvariant();
@@ -49,13 +48,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             model.StoreName = storeName;
             model.UseTextOnly = textOnly;
 
-            actions.Add(new Actions.LiteralText(Render(model)));
+            Render(output, model);            
         }
 
-        private string Render(LogoViewModel model)
-        {
-            StringBuilder sb = new StringBuilder();
-
+        private void Render(StringBuilder sb, LogoViewModel model)
+        {            
             sb.Append("<a href=\"" + model.LinkUrl + "\" title=\"" + HttpUtility.HtmlEncode(model.StoreName) + "\" class=\"logo\">");
             if (model.InnerContent.Trim().Length > 0)
             {
@@ -69,9 +66,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             {
                 sb.Append(HttpUtility.HtmlEncode(model.LogoText));
             }
-            sb.Append("</a>");
-
-            return sb.ToString();
+            sb.Append("</a>");         
         }
     }
 }

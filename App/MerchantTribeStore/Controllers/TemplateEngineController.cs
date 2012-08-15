@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MerchantTribeStore.code.TemplateEngine;
+using System.Text;
 
 namespace MerchantTribeStore.Controllers
 {
@@ -22,9 +23,11 @@ namespace MerchantTribeStore.Controllers
             ViewData["AdditionalMetaTags"] += AdditionalMetaTags;
 
             string template = this.MTApp.ThemeManager().GetTemplatePartFromCurrentTheme("full-header.html");            
-            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());            
-            List<ITemplateAction> model = p.RenderForDisplay();
-            return View("~/views/shared/templateengine.cshtml", model);
+            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
+
+            StringBuilder output = new StringBuilder();
+            p.RenderForDisplay(output);
+            return Content(output.ToString());                   
         }
 
         [ChildActionOnly]
@@ -36,8 +39,10 @@ namespace MerchantTribeStore.Controllers
 
             string template = this.MTApp.ThemeManager().GetTemplatePartFromCurrentTheme("full-footer.html");
             Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
-            List<ITemplateAction> model = p.RenderForDisplay();
-            return View("~/views/shared/templateengine.cshtml", model);
+
+            StringBuilder output = new StringBuilder();
+            p.RenderForDisplay(output);
+            return Content(output.ToString());       
         }
     }
 }

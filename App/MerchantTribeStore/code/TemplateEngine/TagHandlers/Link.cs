@@ -16,7 +16,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:link"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -97,30 +97,27 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             }
 
             //if (href.Trim().Length > 0)
-            //{
-                StringBuilder sb = new StringBuilder();
-                sb.Append("<a href=\"" + href + "\"");
-                PassAttribute(ref sb, tag, "id");
-                PassAttribute(ref sb, tag, "title");
-                PassAttribute(ref sb, tag, "style");
-                PassAttribute(ref sb, tag, "class");
-                PassAttribute(ref sb, tag, "dir");
-                PassAttribute(ref sb, tag, "lang");
-                PassAttribute(ref sb, tag, "target");
-                PassAttribute(ref sb, tag, "rel");
-                PassAttribute(ref sb, tag, "media");
-                PassAttribute(ref sb, tag, "hreflang");
-                PassAttribute(ref sb, tag, "type");
-                PassAttribute(ref sb, tag, "name");
-                sb.Append(">");
-                actions.Add(new Actions.LiteralText(sb.ToString()));
-
+            //{                
+                output.Append("<a href=\"" + href + "\"");
+                PassAttribute(ref output, tag, "id");
+                PassAttribute(ref output, tag, "title");
+                PassAttribute(ref output, tag, "style");
+                PassAttribute(ref output, tag, "class");
+                PassAttribute(ref output, tag, "dir");
+                PassAttribute(ref output, tag, "lang");
+                PassAttribute(ref output, tag, "target");
+                PassAttribute(ref output, tag, "rel");
+                PassAttribute(ref output, tag, "media");
+                PassAttribute(ref output, tag, "hreflang");
+                PassAttribute(ref output, tag, "type");
+                PassAttribute(ref output, tag, "name");
+                output.Append(">");
+                
                 // Process any inner tags
                 Processor proc = new Processor(app, viewBag, innerContents, tagProvider);
-                var subActions = proc.RenderForDisplay();                
-                actions.AddRange(subActions);
-
-                actions.Add(new Actions.LiteralText("</a>"));
+                proc.RenderForDisplay(output);                
+                
+                output.Append("</a>");
             //}            
             
         }

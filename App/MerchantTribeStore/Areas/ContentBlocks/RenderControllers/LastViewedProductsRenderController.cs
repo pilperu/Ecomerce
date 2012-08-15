@@ -33,7 +33,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             sb.Append("<h4>" + HttpUtility.HtmlEncode(model.Title) + "</h4>");
             foreach (var p in model.Items)
             {
-                sb.Append(productRenderer.Render(p, app));
+                sb.Append(productRenderer.RenderToString(p, app));
             }
             sb.Append("<div class=\"clear\"></div>");
             sb.Append("</div>");

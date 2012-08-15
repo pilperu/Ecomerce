@@ -29,7 +29,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             sb.Append("<div class=\"featuredproducts\">");    
             foreach (var p in model.Items)
             {
-                sb.Append(productRenderer.RenderModel(p, app));
+                sb.Append(productRenderer.RenderModelToString(p, app));
             }
             sb.Append("<div class=\"clear\"></div>");
             sb.Append("</div>");

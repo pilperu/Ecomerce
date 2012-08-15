@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
+using System.Text;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -14,7 +15,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:include"; }
         }
 
-        void ITagHandler.Process(List<ITemplateAction> actions, 
+        void ITagHandler.Process(StringBuilder output, 
                                  MerchantTribeApplication app, 
                                  dynamic viewBag,
                                  ITagProvider tagProvider, 
@@ -26,8 +27,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             ThemeManager tm = app.ThemeManager();
             string result = tm.GetTemplatePartFromCurrentTheme(partName);
             Processor proc = new Processor(app, viewBag, result, tagProvider);
-            var subActions = proc.RenderForDisplay();
-            actions.AddRange(subActions);             
+            proc.RenderForDisplay(output);            
         }
 
         public Include()

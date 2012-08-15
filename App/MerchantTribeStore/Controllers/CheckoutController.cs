@@ -63,7 +63,7 @@ namespace MerchantTribeStore.Controllers
 
             // Render Side Column
             var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
+            model.SideColumn = columnRender.RenderColumnToString("601", MTApp, ViewBag);
 
             return model;
         }
@@ -856,7 +856,7 @@ namespace MerchantTribeStore.Controllers
 
             // Render Side Column
             var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
+            model.SideColumn = columnRender.RenderColumnToString("601", MTApp, ViewBag);
 
             ViewData["PassedAnalyticsTop"] += "<script type=\"text/javascript\" src=\"" + Url.Content("~/js/checkout.js") + "\" ></script>";
             return model;

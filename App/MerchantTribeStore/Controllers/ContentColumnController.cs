@@ -19,7 +19,7 @@ namespace MerchantTribeStore.Controllers
             if (string.IsNullOrEmpty(id)) return Content("");
 
             var renderer = new code.TemplateEngine.TagHandlers.ContentColumn();
-            string output = renderer.RenderColumn(id, MTApp, this.ViewBag);
+            string output = renderer.RenderColumnToString(id, MTApp, this.ViewBag);
 
             return Content(output);                        
         }

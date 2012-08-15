@@ -14,19 +14,17 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:tempmessages"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
-        {
-            StringBuilder sb = new StringBuilder();
+        {            
             foreach (string s in app.CurrentRequestContext.TempMessages)
             {
-                sb.Append(s);
-            }            
-            actions.Add(new Actions.LiteralText(sb.ToString()));
+                output.Append(s);
+            }                        
         }
     }
 }

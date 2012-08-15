@@ -81,9 +81,9 @@ namespace MerchantTribeStore.Controllers
 
             // Render Columns
             var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            model.LeftColumn = columnRender.RenderColumn("4", MTApp, ViewBag);
-            model.PreColumn = columnRender.RenderColumn(cat.PreContentColumnId, MTApp, ViewBag);
-            model.PostColumn = columnRender.RenderColumn(cat.PostContentColumnId, MTApp, ViewBag);
+            model.LeftColumn = columnRender.RenderColumnToString("4", MTApp, ViewBag);
+            model.PreColumn = columnRender.RenderColumnToString(cat.PreContentColumnId, MTApp, ViewBag);
+            model.PostColumn = columnRender.RenderColumnToString(cat.PostContentColumnId, MTApp, ViewBag);
 
             if (cat.TemplateName == "BV Grid") cat.TemplateName = "Grid"; // Safety Check from older versions
             string viewName = cat.TemplateName.Trim();

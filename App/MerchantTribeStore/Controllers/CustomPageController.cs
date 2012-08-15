@@ -62,10 +62,11 @@ namespace MerchantTribeStore.Controllers
             ViewBag.BreadCrumbsFinal = breadRender.RenderCategory(MTApp, new List<BreadCrumbItem>(), cat);
 
             var columnRenderer = new code.TemplateEngine.TagHandlers.ContentColumn();
-            ViewBag.SideColumn = columnRenderer.RenderColumn("4", MTApp, ViewBag);
+            ViewBag.SideColumn = columnRenderer.RenderColumnToString("4", MTApp, ViewBag);
 
-            var model = proc.RenderForDisplay();
-            return View("~/views/shared/templateengine.cshtml", model);                                    
+            StringBuilder output = new StringBuilder();
+            proc.RenderForDisplay(output);
+            return Content(output.ToString());            
         }
 
         private void RecordCategoryView(string bvin)

@@ -63,7 +63,7 @@ namespace MerchantTribeStore.Controllers
 
             // Side Column
             var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            model.SideColumn = columnRender.RenderColumn("601", MTApp, ViewBag);
+            model.SideColumn = columnRender.RenderColumnToString("601", MTApp, ViewBag);
 
             return model;
         }        

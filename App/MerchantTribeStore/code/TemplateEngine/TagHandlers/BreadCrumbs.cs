@@ -18,7 +18,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:breadcrumbs"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -54,21 +54,21 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             string mode = tag.GetSafeAttribute("mode");
             if (mode == "manual")
             {
-                actions.Add(new Actions.LiteralText(RenderManual(app, extras)));
+                output.Append(RenderManual(app, extras));
             }
             else
             {
                 if (app.CurrentRequestContext.CurrentProduct != null)
                 {
-                    actions.Add(new Actions.LiteralText(RenderProduct(app, extras)));
+                    output.Append(RenderProduct(app, extras));
                 }
                 else if (app.CurrentRequestContext.CurrentCategory != null)
                 {
-                    actions.Add(new Actions.LiteralText(RenderCategory(app, extras)));                    
+                    output.Append(RenderCategory(app, extras));                    
                 }
                 else
                 {
-                    actions.Add(new Actions.LiteralText(RenderManual(app, extras)));
+                    output.Append(RenderManual(app, extras));
                 }
             }
         }

@@ -14,14 +14,13 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:javascript"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
-        {
-            StringBuilder sb = new StringBuilder();
+        {            
             bool secure = app.IsCurrentRequestSecure();            
             string mode = tag.GetSafeAttribute("mode");
 
@@ -44,23 +43,23 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                     // CDN JQuery
                     if (secure)
                     {
-                        sb.Append("<script src='https://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
+                        output.Append("<script src='https://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
                     }
                     else
                     {
-                        sb.Append("<script src='http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
+                        output.Append("<script src='http://ajax.microsoft.com/ajax/jQuery/jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
                     }
                 }
                 else
                 {
                     // Local JQuery
-                    sb.Append("<script src='" + baseScriptFolder + "jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
+                    output.Append("<script src='" + baseScriptFolder + "jquery-1.5.1.min.js' type=\"text/javascript\"></script>");
                 }
-                sb.Append(System.Environment.NewLine);
+                output.Append(System.Environment.NewLine);
 
-                sb.Append("<script src='" + baseScriptFolder + "jquery-ui-1.8.7.custom/js/jquery-ui-1.8.7.custom.min.js' type=\"text/javascript\"></script>");
-                sb.Append("<script src='" + baseScriptFolder + "jquery.form.js' type=\"text/javascript\"></script>");
-                sb.Append(System.Environment.NewLine);
+                output.Append("<script src='" + baseScriptFolder + "jquery-ui-1.8.7.custom/js/jquery-ui-1.8.7.custom.min.js' type=\"text/javascript\"></script>");
+                output.Append("<script src='" + baseScriptFolder + "jquery.form.js' type=\"text/javascript\"></script>");
+                output.Append(System.Environment.NewLine);
             }
             else
             {
@@ -71,10 +70,8 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                     var tm = app.ThemeManager();
                     src = tm.ThemeFileUrl(fileName, app);
                 }
-                sb.Append("<script src=\"" + src + "\" type=\"text/javascript\"></script>");
-            }
-
-            actions.Add(new Actions.LiteralText(sb.ToString()));
+                output.Append("<script src=\"" + src + "\" type=\"text/javascript\"></script>");
+            }            
         }
     }
 }

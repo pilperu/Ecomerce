@@ -20,7 +20,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:area"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
             MerchantTribeApplication app, 
             dynamic viewBag, 
             ITagProvider tagProvider, 
@@ -49,7 +49,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             app,
                             "",
                             app.IsCurrentRequestSecure());
-            actions.Add(new Actions.LiteralText(result));
+            output.Append(result);
         }
     }
 }

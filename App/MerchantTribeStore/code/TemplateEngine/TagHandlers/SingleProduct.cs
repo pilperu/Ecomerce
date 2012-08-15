@@ -17,7 +17,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:product"; }
         }
 
-        public void Process(List<ITemplateAction> actions,
+        public void Process(StringBuilder output,
                             MerchantTribe.Commerce.MerchantTribeApplication app,
                             dynamic viewBag,
                             ITagProvider tagProvider,
@@ -33,38 +33,41 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 product = app.CatalogServices.Products.FindBySku(sku);
             }
 
-            actions.Add(new Actions.LiteralText(Render(product, app)));
+            Render(output, product, app);            
         }
 
-        public string Render(MerchantTribe.Commerce.Catalog.Product p, MerchantTribeApplication app)
+        public void Render(StringBuilder sb, MerchantTribe.Commerce.Catalog.Product p, MerchantTribeApplication app)
         {
-            if (p == null) return string.Empty;
-            if (p.Bvin == string.Empty) return string.Empty;
+            if (p == null) return;
+            if (p.Bvin == string.Empty) return;
             var model = new SingleProductViewModel(p, app);
-            return RenderModel(model, app);
+            RenderModel(sb, model, app);
         }
-
-        public string RenderModel(SingleProductViewModel model, MerchantTribeApplication app)
+        public string RenderToString(MerchantTribe.Commerce.Catalog.Product p, MerchantTribeApplication app)
         {
             StringBuilder sb = new StringBuilder();
-
-            if (model.IsLastItem == true) 
+            Render(sb, p, app);
+            return sb.ToString();            
+        }
+        public void RenderModel(StringBuilder sb, SingleProductViewModel model, MerchantTribeApplication app)
+        {
+            if (model.IsLastItem == true)
             {
                 sb.Append("<div class=\"record lastrecord\">");
             }
             else if (model.IsFirstItem == true)
             {
-              sb.Append("<div class=\"record firstrecord\">");
+                sb.Append("<div class=\"record firstrecord\">");
             }
             else
             {
-              sb.Append("<div class=\"record\">");
+                sb.Append("<div class=\"record\">");
             }
             sb.Append("<div class=\"recordimage\">");
             sb.Append("<a href=\"" + model.ProductLink + "\">");
             sb.Append("<img src=\"" + model.ImageUrl + "\" border=\"0\" alt=\"" + HttpUtility.HtmlEncode(model.Item.ImageFileSmallAlternateText) + "\" /></a>");
             sb.Append("</div>");
-            
+
             sb.Append("<div class=\"recordname\">");
             sb.Append("<a href=\"" + model.ProductLink + "\">" + HttpUtility.HtmlEncode(model.Item.ProductName) + "</a>");
             sb.Append("</div>");
@@ -75,7 +78,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             sb.Append("<a href=\"" + model.ProductLink + "\">" + model.UserPrice.DisplayPrice(true) + "</a>");
             sb.Append("</div>");
             sb.Append("</div>");
-
+        }
+        public string RenderModelToString(SingleProductViewModel model, MerchantTribeApplication app)
+        {
+            StringBuilder sb = new StringBuilder();
+            RenderModel(sb, model, app);            
             return sb.ToString();
         }
 

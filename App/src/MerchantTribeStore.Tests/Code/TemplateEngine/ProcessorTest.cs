@@ -5,7 +5,6 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MerchantTribe.Commerce;
 using MerchantTribeStore.code.TemplateEngine;
-using MerchantTribeStore.code.TemplateEngine.Actions;
 using System.Dynamic;
 
 namespace MerchantTribeStore.Tests.Code.TemplateEngine
@@ -46,48 +45,30 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             
             Processor target = new Processor(app, viewBag, template, tagProvider);
 
-            var actual = target.RenderForDisplay();
+            StringBuilder output = new StringBuilder();
+            target.RenderForDisplay(output);
 
-            List<ITemplateAction> expected = new List<ITemplateAction>();
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("<html>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("\n"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("<head>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("<title>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("Page Title"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("</title>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("</head>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("\n"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("<body>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("<h1>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("My Page"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("</h1>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("</body>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("\n"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("</html>"));
-            expected.Add(new MerchantTribeStore.code.TemplateEngine.Actions.LiteralText("\n"));
+            var actual = output.ToString();                        
 
             Assert.IsNotNull(actual);
-            Assert.AreEqual(expected.Count, actual.Count);            
-            Assert.AreEqual("Page Title", actual[4].Render());
+            Assert.AreEqual(template, actual);                        
         }
 
         [TestMethod]
         public void CanProcessTemplateWithTag()
         {
             string template = "<html><sys:pagetitle /></html>";
-
+            string expected = "<html>My Page Title</html>";
+            
             viewBag.PageTitle = "My Page Title";
             Processor target = new Processor(app, viewBag, template, tagProvider);
 
-            var actual = target.RenderForDisplay();
-
-            List<ITemplateAction> expected = new List<ITemplateAction>();
-            expected.Add(new LiteralText("<html>"));
-            expected.Add(new LiteralText("My Page Title"));
-            expected.Add(new LiteralText("</html>"));            
+            StringBuilder output = new StringBuilder();
+            target.RenderForDisplay(output);
+            var actual = output.ToString();            
 
             Assert.IsNotNull(actual);
-            Assert.AreEqual(expected.Count, actual.Count);
+            Assert.AreEqual(expected, actual);
         }
 
         [TestMethod]
@@ -120,7 +101,9 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
             {
                 string template = app.ThemeManager().GetSystemTemplate("default.html");
                 Processor target = new Processor(app, viewBag, template, tagProvider);
-                var actions = target.RenderForDisplay();
+                StringBuilder output = new StringBuilder();
+                target.RenderForDisplay(output);
+                var actions = output.ToString();
             }
 
             watch.Stop();

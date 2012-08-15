@@ -54,7 +54,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             var productRenderer = new code.TemplateEngine.TagHandlers.SingleProduct();
 
             sb.Append("<div class=\"productrotator\"><div class=\"decoratedblock\"><div class=\"blockcontent\">");            
-            sb.Append(productRenderer.RenderModel(model, app));            
+            sb.Append(productRenderer.RenderModelToString(model, app));            
             sb.Append("<div class=\"clear\"></div></div></div></div>");
 
             return sb.ToString();

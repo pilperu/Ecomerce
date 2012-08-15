@@ -1,9 +1,0 @@
-﻿@model List<MerchantTribeStore.code.TemplateEngine.ITemplateAction>
-@{
-    Layout = null;
-}
-
-@foreach (var action in Model)
-{
-    @Html.Raw(action.Render());
-}

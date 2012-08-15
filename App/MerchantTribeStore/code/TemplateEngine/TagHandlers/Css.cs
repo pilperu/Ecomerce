@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Text;
 
 namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 {
@@ -13,7 +14,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:css"; }
         }
 
-        public void Process(List<ITemplateAction> actions, 
+        public void Process(StringBuilder output, 
                             MerchantTribe.Commerce.MerchantTribeApplication app, 
                             dynamic viewBag,
                             ITagProvider tagProvider, 
@@ -47,7 +48,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 
             string result = string.Empty;
             result = "<link href=\"" + fileUrl + "\" rel=\"stylesheet\" type=\"text/css\" />";
-            actions.Add(new Actions.LiteralText(result));            
+            output.Append(result);            
         }
     }
 }
