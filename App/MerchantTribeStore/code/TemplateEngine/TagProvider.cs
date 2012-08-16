@@ -48,7 +48,12 @@ namespace MerchantTribeStore.code.TemplateEngine
             AddHandler(this.Handlers, new TagHandlers.CategoryTitle());
             AddHandler(this.Handlers, new TagHandlers.CategoryDescription());
             AddHandler(this.Handlers, new TagHandlers.ProductsGrid());
+            AddHandler(this.Handlers, new TagHandlers.ProductsList());
+            AddHandler(this.Handlers, new TagHandlers.ProductsDetailedList());
+            AddHandler(this.Handlers, new TagHandlers.ProductsQuantityList());
+            AddHandler(this.Handlers, new TagHandlers.ProductsOrderList());
             AddHandler(this.Handlers, new TagHandlers.Pager());
+            AddHandler(this.Handlers, new TagHandlers.CategoriesGrid());
 
             // Legacy Tags that will eventually be removed
             AddHandler(this.Handlers, new TagHandlers.FlexEditorPanel());

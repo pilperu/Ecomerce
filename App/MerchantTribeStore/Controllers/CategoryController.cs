@@ -26,20 +26,7 @@ namespace MerchantTribeStore.Controllers
             if (String.IsNullOrEmpty(ViewBag.Title)) { ViewBag.Title = cat.Name; }
             ViewBag.MetaKeywords = cat.MetaKeywords;
             ViewBag.MetaDescription = cat.MetaDescription;
-
-            //ViewBag.DisplayHtml = TagReplacer.ReplaceContentTags(cat.Description,
-            //                                                     this.MTApp,
-            //                                                     "",
-            //                                                     Request.IsSecureConnection);
-
-            //ViewBag.AddToCartButton = this.MTApp.ThemeManager().ButtonUrl("AddToCart", Request.IsSecureConnection);
-            //ViewBag.DetailsButton = this.MTApp.ThemeManager().ButtonUrl("View", Request.IsSecureConnection);
-            
-            CategoryPageViewModel model = new CategoryPageViewModel();
-            
-            model.SubCategories = PrepSubCategories(MTApp.CatalogServices.Categories.FindVisibleChildren(cat.Bvin));
-            
-
+                                                  
             // Record Category View
             MerchantTribe.Commerce.SessionManager.CategoryLastId = cat.Bvin;            
             MTApp.CurrentRequestContext.CurrentCategory = cat;            
@@ -49,7 +36,7 @@ namespace MerchantTribeStore.Controllers
             viewName = viewName.ToLowerInvariant();
             
             ThemeManager tm = MTApp.ThemeManager();
-            string templateName = "category-" + viewName + ".html";            
+            string templateName = "category-" + viewName + ".html";              
             string template = tm.GetTemplateFromCurrentTheme(true, templateName, "category-grid.html");
             ITagProvider tagProvider = new TagProvider();
             Processor proc = new Processor(this.MTApp, this.ViewBag, template, tagProvider);                               

@@ -30,6 +30,6 @@ namespace MerchantTribe.Commerce.Utilities
 			while (num != 0);
 			return val;
 		}
-
+       
 	}
 }

@@ -804,7 +804,12 @@
     <Content Include="BVModules\Shipping\UPS\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - Domestic\edit.ascx" />
     <Content Include="BVModules\Shipping\US Postal Service - International\edit.ascx" />
+    <Content Include="content\systemtemplates\category-bulk-order-list.html" />
+    <Content Include="content\systemtemplates\category-bulk-quantity-list.html" />
+    <Content Include="content\systemtemplates\category-detailed-list.html" />
     <Content Include="content\systemtemplates\category-grid.html" />
+    <Content Include="content\systemtemplates\category-simple-list.html" />
+    <Content Include="content\systemtemplates\category-grid-with-subs.html" />
     <Content Include="content\systemtemplates\default-no-menu.html" />
     <Content Include="content\systemtemplates\default.html" />
     <Content Include="content\systemtemplates\home.html" />
@@ -4354,8 +4359,10 @@
     <Compile Include="code\TemplateEngine\TagHandlers\AnalyticsBottom.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\AnalyticsTop.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\Area.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\BaseProductsDisplayHandler.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\BodyOpen.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\BreadCrumbs.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\CategoriesGrid.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\CategoryBanner.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\CategoryDescription.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\CategoryTitle.cs" />
@@ -4395,7 +4402,11 @@
     <Compile Include="code\TemplateEngine\TagHandlers\PageTitle.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\ProductsDetailedList.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\ProductsGrid.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\ProductsList.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\ProductsOrderList.cs" />
+    <Compile Include="code\TemplateEngine\TagHandlers\ProductsQuantityList.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\ProfilerRender.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\PromoTag.cs">
       <SubType>Code</SubType>
@@ -4598,8 +4609,6 @@
     <Content Include="Views\Products\RenderSingleProduct.cshtml" />
     <Content Include="Views\CustomPage\Index.cshtml" />
     <Content Include="Views\Policies\Faq.cshtml" />
-    <Content Include="Views\Category\SimpleList.cshtml" />
-    <Content Include="Views\Products\RenderSingleProductSimple.cshtml" />
     <Content Include="Views\Category\DrillDown.cshtml" />
     <Content Include="Views\Store\NoPermission.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
@@ -4618,10 +4627,6 @@
     <Content Include="Views\Checkout\PaymentError.cshtml" />
     <Content Include="Views\PayPalExpressCheckout\Index.cshtml" />
     <Content Include="Views\Category\GridWithSubs.cshtml" />
-    <Content Include="Views\Category\DetailedList.cshtml" />
-    <Content Include="Views\Products\RenderSingleProductDetailed.cshtml" />
-    <Content Include="Views\Category\BulkOrderList.cshtml" />
-    <Content Include="Views\Category\BulkQuantityList.cshtml" />
     <Content Include="Views\Shared\_FaceBookSetup.cshtml" />
     <Content Include="Views\Shared\_FaceBookLike.cshtml" />
     <Content Include="Views\Shared\_Twitter.cshtml" />

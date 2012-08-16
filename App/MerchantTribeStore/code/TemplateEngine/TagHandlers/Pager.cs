@@ -25,7 +25,8 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             //model.TotalPages = tag.GetSafeAttributeAsInteger("totalpages");
             model.TotalItems = tag.GetSafeAttributeAsInteger("totalitems");
             model.PageSize = tag.GetSafeAttributeAsInteger("pagesize");
-            model.CurrentPage = tag.GetSafeAttributeAsInteger("currentpage");
+            if (model.PageSize < 1) model.PageSize = 1;
+            model.CurrentPage = tag.GetSafeAttributeAsInteger("currentpage");            
             model.PagerUrlFormat = tag.GetSafeAttribute("urlformat");
             model.PagerUrlFormatFirst = tag.GetSafeAttribute("urlformatfirst");            
             

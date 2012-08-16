@@ -7,6 +7,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
+using System.Globalization;
 
 namespace MerchantTribe.Commerce.Content
 {
@@ -23,14 +24,22 @@ namespace MerchantTribe.Commerce.Content
 		public static List<string> FindCategoryTemplates()
 		{
             List<string> result = new List<string>();
+            
+            TextInfo textInfo = new CultureInfo("en-US", false).TextInfo;
 
-            List<string> raw = ListFiles("Views\\Category");
+            List<string> raw = ListFiles("Content\\SystemTemplates");
             foreach (string s in raw)
             {
                 string temp = Path.GetFileNameWithoutExtension(s);
-                if (temp.ToLowerInvariant() != "drilldown")
-                {                    
-                    result.Add(temp);
+                if (temp.ToLowerInvariant().StartsWith("category-"))
+                {
+                    if (temp.Length > 9)
+                    {
+                        temp = temp.Substring(9, temp.Length - 9);
+                        temp = temp.Replace('-', ' ');                        
+                        temp = textInfo.ToTitleCase(temp);                        
+                        result.Add(temp);
+                    }
                 }
             }
 			

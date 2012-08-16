@@ -136,10 +136,14 @@ namespace MerchantTribeStore
                     //Me.chkShowInTopMenu.Checked = c.ShowInTopMenu
 
                     if (c.TemplateName == "BV Grid") c.TemplateName = "Grid";
+                    TemplateList.ClearSelection();
                     if (TemplateList.Items.FindByValue(c.TemplateName) != null)
-                    {
-                        TemplateList.ClearSelection();
+                    {                        
                         TemplateList.Items.FindByValue(c.TemplateName).Selected = true;
+                    }
+                    else
+                    {
+                        TemplateList.Items.Insert(0, new ListItem() { Selected = true, Text = "MISSING (" + c.TemplateName + ")", Value = c.TemplateName });
                     }
                     
                     if (c.PreContentColumnId.Trim() != string.Empty)

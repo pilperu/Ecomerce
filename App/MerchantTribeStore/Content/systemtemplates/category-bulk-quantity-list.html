@@ -1,0 +1,32 @@
+﻿<sys:include part="full-header.html" />
+
+<div id="main-content">
+    <sys:tempmessages />
+    <sys:breadcrumbs />    
+    <div id="categoryleft">
+        <sys:contentcolumn columnid="4" />        
+    </div>    
+    <div id="categorymain">
+        <sys:category-title />
+        <sys:contentcolumn columnid="pre" />                
+        <sys:category-banner />
+        <sys:category-description />                
+        <div class="categorybulkorderlisttemplate">                        
+            <div class="categorybulkorderlisttemplaterecords">            
+                <sys:productsquantitylist source="category" categoryid="current" columns="1" pagesize="9" showpager="true" />            
+                <div class="clear"></div>           
+            </div>        
+        </div>
+        <sys:contentcolumn columnid="post" /> 
+    </div>
+    <div class="clear"></div>            
+</div>
+
+<sys:include part="full-footer.html" />
+
+        
+
+        
+        
+             
+                
