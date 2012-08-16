@@ -19,7 +19,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             ITagProvider tagProvider, 
                             ParsedTag tag, 
                             string innerContents)
-        {
+        {            
             output.Append("<meta name=\"keywords\" content=\"" + HttpUtility.HtmlEncode((string)viewBag.MetaKeywords) + "\" />");
             output.Append("<meta name=\"description\" content=\"" + HttpUtility.HtmlEncode((string)viewBag.MetaDescription) + "\" />");
             if (!String.IsNullOrEmpty(viewBag.AdditionalMetaTags))

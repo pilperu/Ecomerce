@@ -22,11 +22,11 @@ namespace MerchantTribeStore.Controllers
             Category cat = MTApp.CatalogServices.Categories.FindBySlugForStore(slug,
                                         MTApp.CurrentRequestContext.CurrentStore.Id);
             if (cat == null) cat = new Category();
-
             ViewBag.Title = cat.MetaTitle;
             if (String.IsNullOrEmpty(ViewBag.Title)) { ViewBag.Title = cat.Name; }
             ViewBag.MetaKeywords = cat.MetaKeywords;
             ViewBag.MetaDescription = cat.MetaDescription;
+
             //ViewBag.DisplayHtml = TagReplacer.ReplaceContentTags(cat.Description,
             //                                                     this.MTApp,
             //                                                     "",
@@ -34,77 +34,31 @@ namespace MerchantTribeStore.Controllers
 
             //ViewBag.AddToCartButton = this.MTApp.ThemeManager().ButtonUrl("AddToCart", Request.IsSecureConnection);
             //ViewBag.DetailsButton = this.MTApp.ThemeManager().ButtonUrl("View", Request.IsSecureConnection);
-
-            //int pageNumber = GetPageNumber();
-            //int pageSize = 9;
-            //int totalItems = 0;
-
+            
             CategoryPageViewModel model = new CategoryPageViewModel();
-            //List<Product> products = MTApp.CatalogServices.FindProductForCategoryWithSort(
-            //                                cat.Bvin, 
-            //                                CategorySortOrder.ManualOrder,
-            //                                false, 
-            //                                pageNumber, pageSize, ref totalItems);
-            //model.Products = PrepProducts(products);
-            //model.LocalCategory = cat;
-            //model.PagerData.PageSize = pageSize;
-            //model.PagerData.TotalItems = totalItems;
-            //model.PagerData.CurrentPage = pageNumber;
-            //model.PagerData.PagerUrlFormat = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(cat), 
-            //                                MTApp.CurrentRequestContext.RoutingContext, 
-            //                                "{0}");
-            //model.PagerData.PagerUrlFormatFirst = UrlRewriter.BuildUrlForCategory(new CategorySnapshot(cat),
-            //                                MTApp.CurrentRequestContext.RoutingContext);
+            
             model.SubCategories = PrepSubCategories(MTApp.CatalogServices.Categories.FindVisibleChildren(cat.Bvin));
-
-
-            // Banner
-            //if (cat.BannerImageUrl.Trim().Length > 0)
-            //{
-            //    ViewBag.ShowBanner = true;
-            //    ViewBag.BannerUrl = MerchantTribe.Commerce.Storage.DiskStorage.CategoryBannerUrl(
-            //                            MTApp, 
-            //                            cat.Bvin, 
-            //                            cat.BannerImageUrl, 
-            //                            Request.IsSecureConnection);                
-            //}
-            //else
-            //{
-            //    ViewBag.ShowBanner = false;
-            //}
+            
 
             // Record Category View
             MerchantTribe.Commerce.SessionManager.CategoryLastId = cat.Bvin;            
-            MTApp.CurrentRequestContext.CurrentCategory = cat;
-
-            // Render Bread Crumbs
-            //var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
-            //ViewBag.BreadCrumbsFinal = breadRender.RenderCategory(MTApp, new List<BreadCrumbItem>(), cat);
-
-            // Render Columns
-            //var columnRender = new code.TemplateEngine.TagHandlers.ContentColumn();
-            //model.LeftColumn = columnRender.RenderColumnToString("4", MTApp, ViewBag);
-            //model.PreColumn = columnRender.RenderColumnToString(cat.PreContentColumnId, MTApp, ViewBag);
-            //model.PostColumn = columnRender.RenderColumnToString(cat.PostContentColumnId, MTApp, ViewBag);
-
-            if (cat.TemplateName == "BV Grid") cat.TemplateName = "Grid"; // Safety Check from older versions
+            MTApp.CurrentRequestContext.CurrentCategory = cat;            
+            
             string viewName = cat.TemplateName.Trim();
-
-            if (viewName.Trim().ToLowerInvariant() == "grid")
-            {                
-                ThemeManager tm = MTApp.ThemeManager();
-                string template = tm.GetTemplateFromCurrentTheme("category-grid.html");                
-                ITagProvider tagProvider = new TagProvider();
-                Processor proc = new Processor(this.MTApp, this.ViewBag, template, tagProvider);                               
-                StringBuilder output = new StringBuilder();
-                proc.RenderForDisplay(output);
-                return Content(output.ToString());
-            }
-            else
-            {
-                return View(viewName, model);
-            }
+            viewName = viewName.Replace(' ', '-');
+            viewName = viewName.ToLowerInvariant();
+            
+            ThemeManager tm = MTApp.ThemeManager();
+            string templateName = "category-" + viewName + ".html";            
+            string template = tm.GetTemplateFromCurrentTheme(true, templateName, "category-grid.html");
+            ITagProvider tagProvider = new TagProvider();
+            Processor proc = new Processor(this.MTApp, this.ViewBag, template, tagProvider);                               
+            StringBuilder output = new StringBuilder();
+            proc.RenderForDisplay(output);
+            return Content(output.ToString());
+            
         }
+
         private int GetPageNumber()
         {
             int result = 1;
@@ -115,6 +69,7 @@ namespace MerchantTribeStore.Controllers
             if (result < 1) result = 1;
             return result;
         }
+
         private List<SingleCategoryViewModel> PrepSubCategories(List<CategorySnapshot> snaps)
         {
             List<SingleCategoryViewModel> result = new List<SingleCategoryViewModel>();
@@ -222,9 +177,6 @@ namespace MerchantTribeStore.Controllers
             int pageNumber = GetPageNumber();
             int pageSize = 9;
             int totalItems = 0;
-
-
-
 
             CategoryPageViewModel model = new CategoryPageViewModel();
 

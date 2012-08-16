@@ -554,5 +554,21 @@ namespace MerchantTribe.Commerce.Catalog
             return result;
 
         }
+        public List<Product> FindManySkus(List<string> skus)
+        {
+
+            long storeId = context.CurrentStore.Id;
+
+            List<Product> result = new List<Product>();
+
+            IQueryable<Data.EF.bvc_Product> data = repository.Find().Where(y => skus.Contains(y.SKU)).Where(y => y.StoreId == storeId).OrderBy(y => y.Id);
+            if (data.Count() > 0)
+            {
+                result = ListPoco(data);                                
+            }            
+
+            return result;
+
+        }
     }
 }

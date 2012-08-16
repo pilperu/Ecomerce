@@ -4391,6 +4391,7 @@
     <Compile Include="code\TemplateEngine\TagHandlers\PageMenu.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\Pager.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\PageTitle.cs">
       <SubType>Code</SubType>
     </Compile>

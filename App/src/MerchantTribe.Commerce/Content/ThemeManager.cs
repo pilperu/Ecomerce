@@ -392,7 +392,12 @@ namespace MerchantTribe.Commerce.Content
             if (result == string.Empty) result = GetSystemTemplatePart(partName);
             return result;
         }
+
         public string GetTemplateFromCurrentTheme(params string[] templates)
+        {
+            return GetTemplateFromCurrentTheme(false, templates);
+        }
+        public string GetTemplateFromCurrentTheme(bool ignoreDefault, params string[] templates)
         {
             string result = string.Empty;
 
@@ -405,13 +410,13 @@ namespace MerchantTribe.Commerce.Content
                     break;
                 }
             }
-
+            
             // If nothing, check system templates
             if (result.Trim().Length < 1)
             {
                 foreach (string s in templates)
                 {
-                    result = GetSystemTemplate(s);
+                    result = GetSystemTemplate(ignoreDefault, s);
                     if (!String.IsNullOrEmpty(result))
                     {
                         break;
@@ -434,8 +439,15 @@ namespace MerchantTribe.Commerce.Content
         }
         public string GetSystemTemplate(string templateName)
         {
+            return GetSystemTemplate(false, templateName);
+        }
+        public string GetSystemTemplate(bool ignoreDefault, string templateName)
+        {
             string result = Storage.DiskStorage.ReadSystemTemplate(templateName);
-            if (result == string.Empty) result = Storage.DiskStorage.ReadSystemTemplate("default.html");
+            if (!ignoreDefault)
+            {
+                if (result == string.Empty) result = Storage.DiskStorage.ReadSystemTemplate("default.html");
+            }
             return result;
         }
         public List<string> ListTemplatesForCurrentTheme()

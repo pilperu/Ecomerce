@@ -59,6 +59,11 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                         string manualProducts = tag.GetSafeAttribute("products");
                         List<string> bvins = manualProducts.Split(',').ToList();
                         model.Items = app.CatalogServices.Products.FindMany(bvins);
+
+                        string manualSkus = tag.GetSafeAttribute("skus");
+                        List<string> skus = manualSkus.Split(',').ToList();
+                        model.Items.AddRange(app.CatalogServices.Products.FindManySkus(skus));
+
                         showPagers = false;
                         break;
                     default:
@@ -131,12 +136,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             using (profiler.Step("Rendering Grid..."))
             {
                 var preppedItems = PrepProducts(model.Items, columns, app);
+                var pagerRenderer = new code.TemplateEngine.TagHandlers.Pager();
                 var productRenderer = new code.TemplateEngine.TagHandlers.SingleProduct();
 
                 if (showPagers == true)
                 {
-                    //RenderPager(model.PagerData, app, viewBag);
-                    sb.Append("<div>PAGER</div>");
+                    pagerRenderer.Render(sb, model.PagerData);                    
                 }
                 foreach (var item in preppedItems)
                 {
@@ -144,8 +149,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 }
                 if (showPagers == true)
                 {
-                    //RenderPager(model.PagerData, app, viewBag);
-                    sb.Append("<div>PAGER</div>");
+                    pagerRenderer.Render(sb, model.PagerData);                    
                 }
             }
         }
