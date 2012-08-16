@@ -425,21 +425,13 @@ namespace MerchantTribeStore
                             dataRead = fs.Read(content, 0, BufferSize);
                             rs.Write(content, 0, dataRead);
                         }
-                        while (!(dataRead < BufferSize));
-                        rs.Close();
+                        while (!(dataRead < BufferSize));                        
                     }
                 }
                 catch (Exception ex)
                 {
                     EventLog.LogEvent(ex);
                 }
-
-                finally
-                {
-                    //ensure file closed
-                    fs.Close();
-                }
-
             }
             ftp = null;
             return true;

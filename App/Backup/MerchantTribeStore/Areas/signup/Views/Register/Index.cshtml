@@ -1,0 +1,159 @@
+﻿@model MerchantTribeStore.Areas.signup.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Sign Up for MerchantTribe Hosted Ecommerce Service";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@helper IsErr(string id)
+{
+    if (Model.InvalidFields.Contains(id))
+    {
+        <text> class="input-validation-error"</text>
+    }
+}
+@section HeadContent{        
+    <script type="text/javascript">        
+        // Jquery Setup
+        $(document).ready(function () {
+
+                    $('#storename').blur(
+                        function () {
+
+                            $('#storename-results').html('<img src="@Url.Content("~/content/images/system/ajax-loader.gif")" alt="Loading..." />');
+                            $('#storename-results').show();                            
+
+                            var name = $('#storename').attr('value');
+                            var jsondata = "{storename:'" + name.replace("'", "") + "'}";
+                            $.ajax(
+                            { type: "POST",
+                                contentType: "application/json; charset=utf-8",
+                                url: "@Url.Content("~/signup/jsoncheckstorename")",
+                                data: jsondata,
+                                dataType: "json",
+                                success: function (data) {
+                                    $('#storename').attr('value', data.cleanstorename);
+                                    $('#storename-results').html(data.message);
+                                },
+                                error: function () { $('#storename-results').html(''); }
+                            });
+
+                            return;
+                        }
+                        );
+
+                    $('#chkagree').click(
+                            function () {
+                                if ($('#chkagree').is(':checked')) {
+                                    $('#submitbutton').removeAttr('disabled');
+                                }
+                                else {
+                                    $('#submitbutton').attr('disabled', true);
+                                }
+                                return;
+                            }
+                         );
+        
+        
+        });    
+    </script>
+}
+<div class="col-1">
+    <div class="block registration">
+        <h1 class="c">
+            Sign Up Form</h1>
+        <h2 class="c">
+            No long-term contracts. Cancel at any time risk free.</h2>
+        @Html.Raw((string)TempData["messages"])
+        <form action="@Url.Content("~/signup/register/" + Model.PlanName)" method="post">
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    User Account</h3>
+                <fieldset>
+                    <table border="0" cellspacing="0" cellpadding="3">
+                        <tr>
+                            <td class="r vt">
+                                Email:
+                            </td>
+                            <td>
+                                <input type="text" id="email" name="email" @IsErr("email") value="@Model.RegistrationData.email" size="20" />                                
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">
+                                Password:
+                            </td>
+                            <td>
+                                <input type="password" id="password" name="password" @IsErr("password") value="@Model.RegistrationData.password" size="20" />                                
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+            </div>
+            <div class="registration-instructions">
+                <p class="first">
+                    Create a user account or use your existing account to add more stores. If you don't
+                    have an account you'll need to create your own password.</p>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    Store Name</h3>
+                <fieldset>
+                    <p>
+                        Every MerchantTribe store needs a unique name which becomes the store's address. Later,
+                        you'll be able to create a display name or use your own domain name.<br />
+                        <strong>Use only letters and numbers - no spaces</strong></p>
+                    <strong><input type="text" id="storename" name="storename" @IsErr("storename") value="@Model.RegistrationData.storename" class="" size="20" />.merchanttribestores.com</strong><br />
+                    <div id="storename-results">
+                    </div>
+                </fieldset>
+            </div>
+            <div class="registration-instructions">
+                <p class="first">
+                    Name your store. Use only letters and numbers. Try using a short name to make it
+                    easier for customers to remember your store. You will have the option to upgrade
+                    to your own custom domain name later.</p>
+            </div>
+            <p class="clear">
+            </p>
+        </div>        
+        <div class="registration-section">
+            <div class="registration-form-area">
+                <h3>
+                    Terms and Conditions</h3>
+                <fieldset class="terms">
+                    <p>
+                        @Html.Raw(Model.RegistrationData.plandetails)
+                    </p>
+                    <p>
+                        MerchantTribe Service is billed monthly and may be cancelled at any time. Please see
+                        our <a href="@Url.Content("~/signup/policies/refund")" target="_blank">Refund Policy</a>, 
+                        <a href="@Url.Content("~/signup/policies/privacy")"
+                            target="_blank">Privacy Policy</a> and 
+                            <a href="@Url.Content("~/signup/policies/terms")" target="_blank">
+                                Terms of Service</a> for more information.</p>
+                    <p>
+                        If you have questions please <a href="http://www.merchanttribe.com/company/contact.aspx"
+                            target="_blank">contact us</a>.</p>
+                    <p>
+                        <input type="checkbox" id="chkagree" style="width:auto !important;" name="chkagree"
+                        @if (Model.Agreed) {
+                            <text> checked="checked"</text> 
+                            }/>                        
+                        I agree to the Refund Policy, Privacy Privacy and Terms of Service.</p>
+                        <input type="submit" name="submitbutton" id="submitbutton"
+                        @if (!Model.Agreed) {
+                            <text> disabled="disabled"</text>
+                            } value="Submit Order &amp; Sign Up for BV Commerce" />
+                </fieldset>
+            </div>
+            <p class="clear">
+            </p>
+        </div>
+        </form>
+
+    </div>
+</div>

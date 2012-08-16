@@ -1,27 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
-using System;
-using System.Web;
-using System.Web.UI.WebControls;
-using System.Text;
 using MerchantTribe.Commerce;
-using MerchantTribe.Commerce.Accounts;
-using MerchantTribe.Commerce.BusinessRules;
-using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Contacts;
-using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Membership;
-using MerchantTribe.Commerce.Metrics;
-using MerchantTribe.Commerce.Orders;
-using MerchantTribe.Commerce.Payment;
-using MerchantTribe.Commerce.Shipping;
-using MerchantTribe.Commerce.Taxes;
-using MerchantTribe.Commerce.Utilities;
-using System.Collections.ObjectModel;
 using MerchantTribe.Web.Geography;
 
 namespace MerchantTribeStore.BVAdmin.Configuration

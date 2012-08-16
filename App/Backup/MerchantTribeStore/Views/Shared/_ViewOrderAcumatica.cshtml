@@ -1,0 +1,155 @@
+﻿@model BVSoftware.AcumaticaTools.OrderData
+@using MerchantTribe.Commerce.Orders;
+@using MerchantTribe.Web.Geography;
+@using BVSoftware.AcumaticaTools;
+
+@functions
+{
+    Order CurrentOrder
+    {
+        get {return (Order)ViewBag.Order;}
+    }
+    
+    string UnavailableMessage()
+    {
+        return MerchantTribe.Commerce.Content.SiteTerms.GetTerm(MerchantTribe.Commerce.Content.SiteTermIds.AcumaticaUnavailable);
+    }
+    string RenderAddress(IAddress a)
+    {
+        if (a != null)
+        {
+            try
+            {
+                return ((SimpleAddress)a).ToHtmlString();
+            }
+            catch
+            {
+            }
+        }        
+        return string.Empty;
+    }    
+    List<LineItem> ItemsToLineItems(List<OrderItemData> items)
+    {
+        List<LineItem> result = new List<LineItem>();
+        foreach(OrderItemData item in items)
+        {
+            LineItem li = new LineItem();
+            li.ProductName = item.Product.Description;
+            li.Quantity = (int)item.Quantity;
+            li.BasePricePerItem = item.Product.Price.Value;
+            li.ProductSku = item.Product.UniqueId;
+            result.Add(li);
+        }
+        return result;
+    }
+}
+
+@if (Model == null)
+{
+    <p>@UnavailableMessage()</p>
+}
+<table cellspacing="0" cellpadding="3" width="100%">
+    <tr>
+        <td width="67%" colspan="2">
+            <h1>Order @((Model.BVOrderNumber != string.Empty) ? Model.BVOrderNumber : Model.AcumaticaOrderNumber)</h1>                            
+        </td>
+        <td width="33%" valign="top" align="right">
+            &nbsp;
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">
+            <span class="lightlabel">Bill To:</span><br />
+            @if (Model.Customer != null)
+            {
+                if (Model.Customer.BillingAddress != null)
+                {
+                    @Html.Raw(RenderAddress(Model.Customer.BillingAddress))                                 
+                }
+            }
+            
+        </td>
+        <td valign="top">            
+            <span class="lightlabel">Ship To:</span><br />
+            @if (Model.Customer != null)
+            {
+                if (Model.Customer.ShippingAddress != null)
+                {
+                    @Html.Raw(RenderAddress(Model.Customer.ShippingAddress))
+                }
+            }            
+        </td>
+        <td>&nbsp;</td>
+    </tr>
+    <tr>
+        <td colspan="3">@Html.Partial("_ViewOrderItems", ItemsToLineItems(Model.Items))</td>
+    </tr>
+    <tr>
+        <td colspan="3" valign="top" align="right">            
+            <table class="totaltable">
+            <tr>
+                <td class="totallabel">Items:</td>
+                <td class="totalsub">@((Model.GrandTotal - Model.TaxTotal - Model.ShippingTotal).ToString("C"))</td>
+            </tr>
+            <tr>
+                <td class="totallabel">Shipping:</td>
+                <td class="totalsub">@Model.ShippingTotal.ToString("C")</td>
+            </tr>
+            <tr>
+                <td class="totallabel">Tax:</td>
+                <td class="totalsub">@Model.TaxTotal.ToString("C")</td>
+            </tr>
+            <tr>
+                <td class="totallabel">Grand Total:</td>
+                <td class="totalsub">@Model.GrandTotal.ToString("C")</td>
+            </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <div id="packagesdiv" runat="server">
+                <em>Packages:</em>      
+                @if (Model.Shipments.Count > 0)
+                {
+                    <table>
+                    <tr>
+                        <th>Shipment #</th>
+                        <th>Ship Date</th>
+                        <th>Status</th>
+                        <th>Items</th>
+                        <th>Tracking #</th>
+                    </tr>
+                    @foreach (var package in Model.Shipments)
+                    {
+                        <tr>
+                            <td>@package.ShipmentNumber</td>
+                            <td>@if (package.ShipDate.HasValue)
+                                {
+                                    @package.ShipDate.Value.ToShortDateString()
+                                }                                
+                            </td>
+                            <td>@package.StatusCode</td>
+                            <td>
+                                @foreach (var shipitem in package.Items)
+                                {
+                                    @System.Math.Round(shipitem.Quantity, 0) <text> x </text>
+                                    @shipitem.ItemId <text>, </text>
+                                    @shipitem.Description<br />
+                                }
+                            </td>
+                            <td>
+                                @foreach (string s in package.TrackingNumber)
+                                {
+                                    @s<br />
+                                }
+                            </td>
+                        </tr>
+                    }
+                    </table>
+                }  
+            </div>
+            <br/>            
+        </td>
+    </tr>    
+</table>

@@ -240,7 +240,7 @@ namespace MerchantTribeStore
 
         }
 
-        protected void DateRangeField_RangeTypeChanged(System.EventArgs e)
+        protected void DateRangeField_RangeTypeChanged(object sender, System.EventArgs e)
         {
             if (DateRangeField.RangeType != DateRangeType.Custom)
             {

@@ -75,7 +75,7 @@ namespace MerchantTribeStore
             Response.Redirect("~/BVAdmin/Catalog/Products_Edit.aspx?id=" + bvin);
         }
 
-        protected void DateRangeField_RangeTypeChanged(System.EventArgs e)
+        protected void DateRangeField_RangeTypeChanged(object sender, System.EventArgs e)
         {
             if (DateRangeField.RangeType != DateRangeType.Custom)
             {

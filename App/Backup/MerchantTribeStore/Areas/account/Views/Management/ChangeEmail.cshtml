@@ -1,0 +1,22 @@
+﻿@{    
+    Layout = "~/Areas/account/Views/Shared/_AccountLayout.cshtml";
+}
+<h1>Change Email</h1>
+@Html.Raw((string)TempData["messages"])
+<form action="@Url.Content("~/account/management/changeemail")" method="post">
+<table class="formtable">
+<tr>
+    <td class="formlabel">New Email:</td>
+    <td class="formfield"><input type="text" id="newemailfield" name="newemailfield" size="50" value="@ViewBag.NewEmail" /></td>
+</tr>
+<tr>
+    <td class="formlabel">Current Password:</td>
+    <td class="formfield"><input type="password" id="currentpasswordfield" name="currentpasswordfield" size="50" /></td>
+</tr>
+<tr>
+    <td class="formlabel"><a href="@Url.Content("~/account")">Cancel</a></td>
+    <td class="formfield"><input type="image" src="@ViewBag.SaveButtonUrl" alt="Save Changes" /></td>
+</tr>
+</table>
+</form>
+

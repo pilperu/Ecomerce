@@ -1,0 +1,146 @@
+using System;
+using System.Web;
+using System.Web.UI.WebControls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+
+partial class BVAdmin_Orders_RMA : BaseAdminPage
+{
+
+    protected override void OnPreInit(EventArgs e)
+    {
+        base.OnPreInit(e);
+		this.PageTitle = "Returns";
+		this.CurrentTab = AdminTabType.Orders;
+		ValidateCurrentUserHasPermission(SystemPermissions.OrdersEdit);
+	}
+
+    protected override void OnLoad(EventArgs e)
+    {
+        base.OnLoad(e);
+		RMAGridView.PageSize = WebAppSettings.RowsPerPage;
+		if (!Page.IsPostBack) {
+			BindRMAGridView();
+		}
+	}
+
+	private void BindRMAGridView()
+	{
+		RMAGridView.DataBind();
+	}
+
+	protected void ApproveImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+	{
+		if (Page.IsValid) {
+			foreach (GridViewRow row in RMAGridView.Rows) {
+				if (((CheckBox)row.FindControl("SelectedCheckBox")).Checked) {
+					string key = (string)RMAGridView.DataKeys[row.RowIndex].Value;
+					RMA rma = RMA.FindByBvin(key);
+					if (rma != null) {
+						if (rma.Status == RMAStatus.Pending) {
+							rma.Status = RMAStatus.Open;
+							if (!RMA.Update(rma, true)) {
+								MessageBox.ShowError("An error occurred while trying to update the RMA, please try again later.");
+							}
+							else {
+								MessageBox.ShowOk("RMA was successfully approved.");
+							}
+						}
+					}
+				}
+			}
+			BindRMAGridView();
+		}
+	}
+
+	protected void CloseImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+	{
+		if (Page.IsValid) {
+			foreach (GridViewRow row in RMAGridView.Rows) {
+				if (((CheckBox)row.FindControl("SelectedCheckBox")).Checked) {
+					string key = (string)RMAGridView.DataKeys[row.RowIndex].Value;
+					RMA rma = RMA.FindByBvin(key);
+					if (rma != null) {
+						if (rma.Status == RMAStatus.Open) {
+							rma.Status = RMAStatus.Closed;
+							if (!RMA.Update(rma, true)) {
+								MessageBox.ShowError("An error occurred while trying to update the RMA, please try again later.");
+							}
+							else {
+								MessageBox.ShowOk("RMA was successfully closed.");
+							}
+						}
+					}
+				}
+			}
+			BindRMAGridView();
+		}
+	}
+
+	protected void StatusFilterDropDownList_SelectedIndexChanged(object sender, System.EventArgs e)
+	{
+		BindRMAGridView();
+		if (RMAGridView.PageIndex > (RMAGridView.PageCount - 1)) {
+			RMAGridView.PageIndex = 0;
+			BindRMAGridView();
+		}
+	}
+
+	protected void RejectImageButton_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+	{
+		if (Page.IsValid) {
+			foreach (GridViewRow row in RMAGridView.Rows) {
+				if (((CheckBox)row.FindControl("SelectedCheckBox")).Checked) {
+					string key = (string)RMAGridView.DataKeys[row.RowIndex].Value;
+					RMA rma = RMA.FindByBvin(key);
+					if (rma != null) {
+						if (rma.Status == RMAStatus.Pending) {
+							rma.Status = RMAStatus.Rejected;
+							if (!RMA.Update(rma, true)) {
+								MessageBox.ShowError("An error occurred while trying to update the RMA, please try again later.");
+							}
+							else {
+								MessageBox.ShowOk("RMA was successfully rejected.");
+							}
+						}
+					}
+				}
+			}
+			BindRMAGridView();
+		}
+	}
+
+	protected void ObjectDataSource1_Selecting(object sender, System.Web.UI.WebControls.ObjectDataSourceSelectingEventArgs e)
+	{
+		if (e.ExecutingSelectCount) {
+			e.InputParameters["rowCount"] = HttpContext.Current.Items["RowCount"];
+			HttpContext.Current.Items["RowCount"] = null;
+		}
+	}
+
+	protected void ObjectDataSource1_Selected(object sender, System.Web.UI.WebControls.ObjectDataSourceStatusEventArgs e)
+	{
+		if (e.OutputParameters["RowCount"] != null) {
+			HttpContext.Current.Items["RowCount"] = e.OutputParameters["RowCount"];
+		}
+	}
+
+	protected void RMAGridView_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
+	{
+		string val = (string)e.Keys[0];
+		if (RMA.Delete(val)) {
+			MessageBox.ShowOk("RMA Deleted Successfully.");
+		}
+		else {
+			MessageBox.ShowError("Error Deleting RMA.");
+		}
+		BindRMAGridView();
+		e.Cancel = true;
+	}
+}

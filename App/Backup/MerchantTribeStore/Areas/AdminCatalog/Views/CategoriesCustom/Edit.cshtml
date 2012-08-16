@@ -1,0 +1,125 @@
+﻿@model MerchantTribe.Commerce.Catalog.Category
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section HeadContent
+{
+
+<script src="@Url.Content("~/scripts/tinymce/jquery.tinymce.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/js/bvinit.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+
+    function Remove301(lnk) {
+        var id = lnk.attr('id');
+        var idr = id.replace('remove', '');
+        $.post('@Url.Content("~/bvadmin/content/CustomUrlRemove.aspx")',
+            { "id": idr },
+            function () {
+                lnk.parent().slideUp('slow', function () { lnk.parent().remove(); });
+            }
+            );
+    }
+
+    // Jquery Setup
+    $(document).ready(function () {
+
+        $("#name").change(function () {
+
+            rawName = $("#name").val();
+            cleanName = $("#rewriteurl").val();
+
+            $.post('@Url.Content("~/bvadmin/Controllers/Slugify.aspx")',
+                        { "input": rawName },
+                        function (data) {
+                            if (cleanName == "") {
+                                $("#rewriteurl").val(data);
+                            }
+                        });
+        });
+
+        $('.remove301').click(function () {
+            Remove301($(this));
+            return false;
+        });
+
+    });
+    </script>
+}
+<h1>Edit Custom Page</h1>    
+@Html.Raw((string)TempData["messages"])
+@Html.Raw(ViewBag.BreadCrumbsFinal)<br />
+<form method="post" action="">
+        <div class="controlarea2 padded">
+        <table class="formtable" border="0" cellspacing="0" cellpadding="3" width="100%">
+            <tr>
+                <td class="formlabel">Template:</td>
+                <td colspan="2" class="formfield">
+                    <select name="templatename">
+                        @foreach (string templateName in (List<string>)ViewData["templates"])
+                        {
+                            <option @if (Model.TemplateName.ToLowerInvariant() == templateName.ToLowerInvariant()) 
+                                    { <text>selected="selected"</text> } value="@templateName">@templateName</option>
+                        }                        
+                    </select></td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                    Name:</td>
+                <td class="formfield">
+                    <input type="text" name="name" id="name" maxlength="100" tabindex="1900" value="@Model.Name" style="width:700px;" />
+                </td>                
+            </tr>            
+            <tr>
+                <td class="formlabel">Page Name (URL):
+                    </td>
+                <td class="formfield">                    
+                    <input type="text" id="rewriteurl" name="rewriteurl" value="@Model.RewriteUrl" tabindex="2001" style="width:700px;" />
+                    <br />
+                    @Html.Raw((string)ViewData["OtherUrls"])                    
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Title:</td>
+                <td class="formfield">                    
+                    <input type="text" id="metatitle" name="metatitle" value="@Model.MetaTitle" maxlength="512" tabindex="2002" style="width:700px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Desc:</td>
+                <td class="formfield">                  
+                  <input type="text" id="metadescription" name="metadescription" value="@Model.MetaDescription" maxlength="255" tabindex="2003" style="width:700px;" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">Meta Keywords:</td>
+                <td class="formfield">
+                  <input type="text" id="metakeywords" name="metakeywords" value="@Model.MetaKeywords" maxlength="255" tabindex="2004" style="width:700px;" />
+                </td>
+            </tr>      
+            <tr>
+                <td class="formlabel">&nbsp;</td>
+                <td class="formfield">
+                    <input type="checkbox" id="chkhidden" name="hidden" @if (Model.Hidden == true){ <text>checked="checked"</text> } value="true" tabindex="2005" /> Hide Category (unless home page)</td>
+            </tr>                  
+            <tr>
+                <td class="formlabel">HTML:</td>
+                <td class="formfield">
+                    <textarea id="area-main" rows="10" cols="60" name="area-main" class="tinymce" style="width:700px;height:300px;">
+                        @Html.Raw(Model.GetCurrentVersion().Areas.GetAreaContent("main"))
+                    </textarea>
+                </td>
+            </tr>
+        </table>
+        
+        </div>
+        <div class="editorcontrols">
+            <a href="@Url.Content("~/bvadmin/catalog/categories.aspx")">Close</a>
+            <a href="@Html.Raw((string)ViewData["ViewInStoreUrl"])"><img src="@Url.Content("~/BVAdmin/Images/Buttons/ViewInStore.png")" alt="View In Store" /></a>
+            <input type="image" src="@Url.Content("~/bvadmin/images/buttons/update.png")" alt="Update" name="UpdateButton" value="UpdateButton" />
+            <input type="image" src="@Url.Content("~/bvadmin/images/buttons/SaveAndClose.png")" alt="Save Changes" name="SaveButton" value="SaveButton" />                    
+            
+        </div>    
+</form>

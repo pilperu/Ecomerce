@@ -1,0 +1,128 @@
+<ColumnData>
+  <ContentColumn>
+    <Bvin>1</Bvin>
+    <DisplayName>STORE: Homepage 1</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>299c8870-d9ad-446d-b8c3-fc665ff61675</Bvin>
+        <ControlName>Banner Ad</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>1</ColumnId>
+        <SerializedSettings>{"imageurl":"{{assets}}homead1.jpg","alttext":"Summer Sale Ad","cssclass":"","cssid":"homead1","linkurl":"#"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>2</Bvin>
+    <DisplayName>STORE: Homepage 2</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>476bbb79-81aa-44b9-89ac-18b7ba597363</Bvin>
+        <ControlName>Html</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>2</ColumnId>
+        <SerializedSettings>{"HtmlData":"\u003cdiv class=\"welcome-message\"\u003e \u003ch3\u003eWelcome\u003cbr /\u003eto Home &amp;amp; Garden\u003c/h3\u003e \u003cp\u003eLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\u003c/p\u003e \u003c/div\u003e","PreTransformHtmlData":"\u003cdiv class=\"welcome-message\"\u003e \u003ch3\u003eWelcome\u003cbr /\u003eto Home &amp;amp; Garden\u003c/h3\u003e \u003cp\u003eLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\u003c/p\u003e \u003c/div\u003e"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+      <ContentBlock>
+        <Bvin>f441744c-35fc-423d-97ee-9a1ec25896fb</Bvin>
+        <ControlName>Top 10 Products</ControlName>
+        <SortOrder>2</SortOrder>
+        <ColumnId>2</ColumnId>
+        <SerializedSettings>{}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>3</Bvin>
+    <DisplayName>STORE: Homepage 3</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>46ed8772-d300-44ba-8ce0-9960cbf0fabc</Bvin>
+        <ControlName>Html</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>3</ColumnId>
+        <SerializedSettings>{"HtmlData":"\u003cdiv class=\"homeh2\"\u003e\u003ch2\u003eFeatured Products\u003c/h2\u003e\u003c/div\u003e","PreTransformHtmlData":"\u003cdiv class=\"homeh2\"\u003e\u003ch2\u003eFeatured Products\u003c/h2\u003e\u003c/div\u003e"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+      <ContentBlock>
+        <Bvin>38e76d7a-7835-4a0f-9251-d4cefffafc83</Bvin>
+        <ControlName>Featured Products</ControlName>
+        <SortOrder>2</SortOrder>
+        <ColumnId>3</ColumnId>
+        <SerializedSettings>{}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>4</Bvin>
+    <DisplayName>STORE: Category Sidebar</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>6ad7aa05-92c6-4db5-9ad0-800d5902fbc4</Bvin>
+        <ControlName>Category Menu</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>4</ColumnId>
+        <SerializedSettings>{"Title":"","CategoryMenuMode":"3","ShowProductCount":"0","ShowCategoryCount":"0","HomeLink":"1","MaximumDepth":"0"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>5</Bvin>
+    <DisplayName>STORE: Product Sidebar</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>9387789a-c9a5-4cad-9b00-2568f2365513</Bvin>
+        <ControlName>Category Menu</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>5</ColumnId>
+        <SerializedSettings>{"Title":"","CategoryMenuMode":"3","ShowProductCount":"0","ShowCategoryCount":"0","HomeLink":"1","MaximumDepth":"0"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>201</Bvin>
+    <DisplayName>STORE: My Account Sidebar</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks />
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>202</Bvin>
+    <DisplayName>STORE: Customer Service Sidebar</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks />
+  </ContentColumn>
+  <ContentColumn>
+    <Bvin>601</Bvin>
+    <DisplayName>STORE: Checkout Sidebar</DisplayName>
+    <SystemColumn>true</SystemColumn>
+    <Blocks>
+      <ContentBlock>
+        <Bvin>4749a3d8-74bd-4b87-8dc3-f8f63fe02b1d</Bvin>
+        <ControlName>Html</ControlName>
+        <SortOrder>1</SortOrder>
+        <ColumnId>601</ColumnId>
+        <SerializedSettings>{"HtmlData":"\u003cdiv class=\"decoratedblock\"\u003e\u003cdiv class=\"padded\"\u003eIf you have any questions or concerns please contact us:\u003cbr /\u003e&amp;nbsp;\u003cbr /\u003e{{storeaddress}}\u003cbr /\u003e&amp;nbsp;\u003cbr /\u003eYour order is secure!\u003c/div\u003e\u003c/div\u003e","PreTransformHtmlData":"\u003cdiv class=\"decoratedblock\"\u003e\u003cdiv class=\"padded\"\u003eIf you have any questions or concerns please contact us:\u003cbr /\u003e&amp;nbsp;\u003cbr /\u003e{{storeaddress}}\u003cbr /\u003e&amp;nbsp;\u003cbr /\u003eYour order is secure!\u003c/div\u003e\u003c/div\u003e"}</SerializedSettings>
+        <Lists>{"Items":[]}</Lists>
+      </ContentBlock>
+      <ContentBlock>
+        <Bvin>ec0c2918-d0f5-4440-840e-13575f1ee7b5</Bvin>
+        <ControlName>Side Menu</ControlName>
+        <SortOrder>2</SortOrder>
+        <ColumnId>601</ColumnId>
+        <SerializedSettings>{"Title":"Policies"}</SerializedSettings>
+        <Lists>{"Items":[{"Id":"d7ddd3a7-1468-4b43-9fb8-612b3de85460","ListName":"Links","Setting1":"Privacy Policy","Setting2":"/policies/privacy","Setting3":"0","Setting4":"Privacy Policy","Setting5":"popover","Setting6":"","Setting7":"","Setting8":"","Setting9":"","Setting10":"","SortOrder":1},{"Id":"b8c78db7-8ddc-4279-bb84-700d2802feb5","ListName":"Links","Setting1":"Terms and Conditions","Setting2":"/policies/terms","Setting3":"0","Setting4":"Terms and Conditions","Setting5":"popover","Setting6":"","Setting7":"","Setting8":"","Setting9":"","Setting10":"","SortOrder":2},{"Id":"e8185ca6-087f-4462-a4ef-bc13c144b716","ListName":"Links","Setting1":"Return Policy","Setting2":"/policies/returns","Setting3":"0","Setting4":"Return Policy","Setting5":"popover","Setting6":"","Setting7":"","Setting8":"","Setting9":"","Setting10":"","SortOrder":3}]}</Lists>
+      </ContentBlock>
+    </Blocks>
+  </ContentColumn>
+</ColumnData>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+
+<head>
+    <title>BVSoftware.SilverlightFileUpload</title>
+    <style type="text/css">
+    html, body {
+	    height: 100%;
+	    overflow: auto;
+    }
+    body {
+	    padding: 0;
+	    margin: 0;
+    }
+    #silverlightControlHost {
+	    height: 100%;
+	    text-align:center;
+    }
+    </style>
+    <script type="text/javascript" src="../Silverlight.js"></script>    
+    <script type="text/javascript" src="../jquery-1.4.4.min.js"></script>    
+    <script type="text/javascript">
+        function WasUploaded(resultMessage) {
+            var data = jQuery.parseJSON(resultMessage);
+            $('#testme').html('Success = ' + data.success + '<br /><img src="' + data.imageurl + '" /><br />FileName=' + data.filename);            
+        }
+
+        function SilverlightFileUploadError(resultMessage) {
+            $('#testme').html(resultMessage);
+        }
+    </script>
+</head>
+<body>
+    <h1>Hello, Silverlight Upload Test</h1>
+    <div id="testme"></div>
+    <div id="silverlightControlHost">
+        <object data="data:application/x-silverlight-2," type="application/x-silverlight-2" width="100%" height="100%">
+		  <param name="source" value="../../ClientBin/BVSoftware.SilverlightFileUpload.xap"/>
+		  <param name="background" value="black" />
+		  <param name="minRuntimeVersion" value="4.0.50826.0" />
+		  <param name="autoUpgrade" value="true" />
+          <param name="initParams" 
+                value="scriptname=WasUploaded,uploadurl=http://www.samplelocalhost6.com/fileuploadhandler/1/test/0"/>
+		  <a href="http://go.microsoft.com/fwlink/?LinkID=149156&v=4.0.50826.0" style="text-decoration:none">
+ 			  <img src="http://go.microsoft.com/fwlink/?LinkId=161376" alt="Get Microsoft Silverlight" style="border-style:none"/>
+		  </a>
+	    </object><iframe id="_sl_historyFrame" style="visibility:hidden;height:0px;width:0px;border:0px"></iframe>
+    </div>
+
+</body>
+</html>

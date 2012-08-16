@@ -333,7 +333,7 @@ namespace MerchantTribeStore
         {
             FindOrders(1);
         }
-        void DateRangePicker1_RangeTypeChanged(EventArgs e)
+        void DateRangePicker1_RangeTypeChanged(object sender, EventArgs e)
         {
             FindOrders(1);
         }

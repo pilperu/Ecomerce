@@ -228,57 +228,57 @@ namespace MerchantTribeStore
             LoadUsers();
         }
 
-        private bool AlreadyPurchased(string uid, System.Collections.Specialized.StringCollection skus)
-        {
-            bool result = false;
+        //private bool AlreadyPurchased(string uid, System.Collections.Specialized.StringCollection skus)
+        //{
+        //    bool result = false;
 
-            SqlConnection conn = new SqlConnection(WebAppSettings.ApplicationConnectionString);
-            string outFilter = " ProductSku=''";
+        //    SqlConnection conn = new SqlConnection(WebAppSettings.ApplicationConnectionString);
+        //    string outFilter = " ProductSku=''";
 
-            if (skus.Count > 0)
-            {
-                outFilter = "";
-                for (int i = 0; i <= skus.Count - 1; i++)
-                {
-                    outFilter += " ProductSku='" + skus[i] + "'";
-                    if (i < skus.Count - 1)
-                    {
-                        outFilter += " OR ";
-                    }
-                }
-            }
-            string cmdText = "Select bvin,UserId from bvc_Order WHERE bvin IN (SELECT OrderBvin FROM bvc_LineItem WHERE " + outFilter + ") AND (IsPlaced=1) AND userID=@userID";
-            SqlCommand cmd = new SqlCommand(cmdText, conn);
-            cmd.Parameters.AddWithValue("@UserID", uid);
-            DataTable dt = new DataTable();
-            SqlDataAdapter adapt = new SqlDataAdapter(cmd);
+        //    if (skus.Count > 0)
+        //    {
+        //        outFilter = "";
+        //        for (int i = 0; i <= skus.Count - 1; i++)
+        //        {
+        //            outFilter += " ProductSku='" + skus[i] + "'";
+        //            if (i < skus.Count - 1)
+        //            {
+        //                outFilter += " OR ";
+        //            }
+        //        }
+        //    }
+        //    string cmdText = "Select bvin,UserId from bvc_Order WHERE bvin IN (SELECT OrderBvin FROM bvc_LineItem WHERE " + outFilter + ") AND (IsPlaced=1) AND userID=@userID";
+        //    SqlCommand cmd = new SqlCommand(cmdText, conn);
+        //    cmd.Parameters.AddWithValue("@UserID", uid);
+        //    DataTable dt = new DataTable();
+        //    SqlDataAdapter adapt = new SqlDataAdapter(cmd);
 
-            try
-            {
-                adapt.Fill(dt);
-                if (dt != null)
-                {
-                    if (dt.Rows.Count > 0)
-                    {
-                        result = true;
-                    }
-                    else
-                    {
-                        result = false;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                EventLog.LogEvent(ex);
-            }
-            finally
-            {
-                conn.Dispose();
-            }
+        //    try
+        //    {
+        //        adapt.Fill(dt);
+        //        if (dt != null)
+        //        {
+        //            if (dt.Rows.Count > 0)
+        //            {
+        //                result = true;
+        //            }
+        //            else
+        //            {
+        //                result = false;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        EventLog.LogEvent(ex);
+        //    }
+        //    finally
+        //    {
+        //        conn.Dispose();
+        //    }
 
-            return result;
-        }
+        //    return result;
+        //}
 
         private string CountPurchases(string userId, string productId, List<OrderSnapshot> orders)
         {

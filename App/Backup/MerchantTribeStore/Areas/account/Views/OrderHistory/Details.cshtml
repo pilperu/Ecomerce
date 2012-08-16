@@ -1,0 +1,13 @@
+﻿@{ 
+      Layout = "~/Areas/account/Views/Shared/_AccountLayout.cshtml";
+}
+
+@if (ViewBag.AcumaticaOrder != null)
+{
+    @Html.Partial("_ViewOrderAcumatica")
+}
+else
+{
+    @Html.Partial("_ViewOrder", (MerchantTribe.Commerce.Orders.Order)ViewBag.Order)
+}
+<a href="@Url.Content("~/account")">&laquo; Return to Order History</a>

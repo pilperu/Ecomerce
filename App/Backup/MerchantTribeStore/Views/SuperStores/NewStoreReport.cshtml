@@ -1,0 +1,49 @@
+﻿@model IEnumerable<MerchantTribeStore.Models.SuperStoreViewModel>
+@using System.Collections.Generic;
+@using MerchantTribe.Commerce.Accounts;
+@{    
+    ViewBag.Title = "New Store Report";
+    Layout = "~/Views/Shared/_SuperLayout.cshtml";
+}
+
+<h1>New Stores in the Last 30 days</h1>
+
+<table class="formtable" width="100%">
+    <tr>
+        <th>Status</th>
+        <th>Store Name</th>
+        <th>Created</th>
+        <th>Email</th>
+    </tr>
+@foreach (var s in Model) {
+    <tr>
+    @if (s.Status == StoreStatus.Active)
+    {
+        <td class=\"formlabel\">Active</td>
+    }
+    else
+    {
+        if (s.DateCancelled.HasValue)
+        {
+            <td class=\"formlabel\">Cancelled<br />
+            @s.DateCancelled.Value.ToLocalTime().ToShortDateString()
+            </td>
+        }
+        else
+        {
+            <td class=\"formlabel\">Deactivated</td>
+        }
+    }    
+    <td class="formlabel"><a href="@s.RootUrl()" target="_blank">@s.StoreName</a></td>
+    <td class="formlabel">@s.DateCreated.ToLocalTime().ToString()</td>
+
+    <td class="formlabel">
+    @foreach (UserAccount u in s.Users)
+    {
+        @Html.Raw(MerchantTribe.Commerce.Utilities.MailServices.MailToLink(u.Email, "BV Commerce Store", ""))
+        <br />
+    }
+    </td>
+    </tr>
+}
+</table>

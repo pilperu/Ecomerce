@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/bvadmin/styles.css")" rel="stylesheet" type="text/css" />    
+    <link href="@Url.Content("~/content/system.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/BVAdmin/StylesPrint.css")" rel="stylesheet" type="text/css" media="print" />    
+    @Html.Raw((string)ViewData["JqueryInclude"])
+    @if (IsSectionDefined("HeadContent"))
+    {
+        @RenderSection("HeadContent", false)
+    }
+</head>
+<body>
+    @if (IsSectionDefined("HeaderContent"))
+    {
+        @RenderSection("HeaderContent", false)
+    }
+    else
+    {
+        <script src="https://platform.twitter.com/widgets.js" type="text/javascript"></script>
+        <div id="header">
+            <div id="branding">
+                <div id="brand">
+                    @Html.Raw((string)ViewData["StoreName"]) - <em>@Html.Raw((string)ViewData["AppVersion"])</em>
+        </div>
+    </div>
+    <div id="mainmenu">
+        @if ((int)ViewData["HideMenu"] != 1) {        
+        <div class="menu">
+            @Html.Raw((string)ViewData["RenderedMenu"])
+        </div>       
+        <div id="gotolinks">
+            <a href="@Url.Content("~/bvadmin/Account.aspx")">My Account</a>&nbsp;&nbsp;
+            <a href="@Url.Content("~/adminaccount/logout")">Log Out</a>&nbsp;&nbsp;
+            <a href="@Url.Content("~/")">Go To Store</a>
+        </div>
+        }
+    </div>
+</div>
+    }
+    <div id="navwrapper">
+        <table class="navtable" border="0" cellspacing="0" cellpadding="0">
+            <tr>
+                <td class="navcol">
+                    @RenderSection("nav", false)
+                </td>
+                <td class="maincol">
+                    <div id="content">
+                        @RenderBody()
+                    </div></td>
+            </tr>
+        </table>
+    </div>
+    @if (IsSectionDefined("FooterContent"))
+    {
+        @RenderSection("FooterContent", false)
+    }
+    else
+    {
+        @Html.Raw(MerchantTribeStore.Helpers.Html.AdminFooter())
+    }
+</body>
+</html>
+

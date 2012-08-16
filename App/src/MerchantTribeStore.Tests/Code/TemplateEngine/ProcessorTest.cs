@@ -80,9 +80,10 @@ namespace MerchantTribeStore.Tests.Code.TemplateEngine
 
             for (long i = 0; i < count; i++)
             {
-                string template = app.ThemeManager().GetSystemTemplate("default.html");
+                string template = app.ThemeManager().GetSystemTemplate("category-grid.html");
                 Processor target = new Processor(app, viewBag, template, tagProvider);
                 var tokens = target.Tokenize();
+                int tokenCount = tokens.Count();
             }
 
             watch.Stop();

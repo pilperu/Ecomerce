@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Products_Edit_Images_Sort.aspx.cs" Inherits="MerchantTribeStore.BVAdmin.Catalog.Products_Edit_Images_Sort" %>
+<asp:Literal ID="litOutput" runat="server"></asp:Literal>

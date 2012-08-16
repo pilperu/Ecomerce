@@ -1,0 +1,81 @@
+﻿@model MerchantTribeStore.Models.EstimateShippingViewModel
+@using MerchantTribe.Commerce.Shipping;
+
+@{
+    ViewBag.Title = "Estimate Shipping";
+    Layout = "~/Views/Shared/_PopupLayout.cshtml";
+}
+
+@section HeadContent
+{
+    <script type="text/javascript">
+        function LoadRegionsWithSelection(regionlist, countryid, selectedregion) {          
+            $.post('@Url.Content("~/estimateshipping/getregions/")' + countryid,
+          { "regionid": selectedregion },
+          function (data) {
+              regionlist.html(data.Regions);
+              $('#TempRegionId').val('');
+          },
+         "json"
+         );
+      }
+
+      // Document Ready Function
+      $(document).ready(function () {
+          $('#CountryId').change(function () {
+              LoadRegionsWithSelection(
+                        $('#RegionId'),
+                        $('#CountryId option:selected').val(),
+                        $('#TempRegionId').val());
+          });
+
+          $('#CountryId').change();
+      });         // End Document Ready
+        
+
+    </script>
+}
+<h1>Estimate Shipping</h1>
+<form action="@Url.Content("~/EstimateShipping")" method="post">
+<table border="0" cellspacing="0" cellpadding="3">
+<tr>
+    <td class="formlabel">Country:</td>
+    <td class="formfield">
+        @Html.DropDownListFor(y => y.CountryId, new SelectList(ViewBag.Countries, "Bvin", "DisplayName"))        
+    </td>
+</tr>
+<tr>
+    <td class="formlabel">State:</td>
+    <td class="formfield">
+        <select id="RegionId" name="RegionId"></select>        
+    </td>
+</tr>
+<tr>
+    <td class="formlabel">Postal Code:</td>
+    <td class="formfield">
+        @Html.EditorFor(y => y.PostalCode)
+        @Html.ValidationMessageFor(y => y.PostalCode)
+    </td>
+</tr>
+<tr>
+    <td class="formlabel">&nbsp;</td>
+    <td class="formfield">
+        <input type="image" value="GetRates" src="@ViewBag.GetRatesButton")" alt="Get Rates" />                    
+    </td>
+</tr>
+</table>
+<input type="hidden" name="TempRegionId" id="TempRegionId" value="@Model.RegionId" />
+</form>
+    @Html.ValidationSummary()
+    @TempData["message"]
+    <ul>
+    @foreach (ShippingRateDisplay rate in Model.Rates)
+    {
+        <li>@rate.RateAndNameForDisplay</li>
+    }
+    </ul>
+<div class="popupcontrols">
+<a href="javascript:window.close();">Close Window</a></div>
+</asp:Content>
+
+

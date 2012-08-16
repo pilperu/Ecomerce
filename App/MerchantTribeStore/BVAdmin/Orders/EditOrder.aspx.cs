@@ -369,7 +369,7 @@ namespace MerchantTribeStore.BVAdmin.Orders
             return result;
         }
 
-        void UserPicker1_UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
+        void UserPicker1_UserSelected(object sender, MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
         {
             this.UserIdField.Value = e.UserAccount.Bvin;
         }

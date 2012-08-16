@@ -9,6 +9,7 @@ using MerchantTribe.Commerce.Content;
 using MerchantTribe.Commerce.Orders;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Web.Logging;
+using StackExchange.Profiling;
 
 namespace MerchantTribe.Commerce
 {
@@ -475,23 +476,46 @@ namespace MerchantTribe.Commerce
         // Product Pricing
         public UserSpecificPrice PriceProduct(string productBvin, string userId, OptionSelectionList selections)
         {
-            Product p = CatalogServices.Products.Find(productBvin);
-            Membership.CustomerAccount customer = MembershipServices.Customers.Find(userId);
-            return PriceProduct(p, customer, selections);
+            Product p = CatalogServices.Products.FindWithCache(productBvin);
+            Membership.CustomerAccount customer = MembershipServices.Customers.Find(userId);            
+            return PriceProduct(p, customer, selections, this.CurrentlyActiveSales);
         }
-        public UserSpecificPrice PriceProduct(Catalog.Product p, Membership.CustomerAccount currentUser, OptionSelectionList selections)
+        public UserSpecificPrice PriceProduct(Catalog.Product p, Membership.CustomerAccount currentUser, OptionSelectionList selections, List<Marketing.Promotion> currentSales)
         {
+            var profiler = MiniProfiler.Current;
+
             if (p == null) return null;
             UserSpecificPrice result = new UserSpecificPrice(p, selections);
-            AdjustProductPriceForUser(result, p, currentUser);
-            ApplySales(result, p, currentUser);
-            CheckForPricesBelowZero(result);
+            using (profiler.Step("Adjust Price for User"))
+            {
+                AdjustProductPriceForUser(result, p, currentUser);
+            }
+            using (profiler.Step("Apply Sales"))
+            {
+                ApplySales(result, p, currentUser, currentSales);
+            }
+            using (profiler.Step("Check for < 0 prices"))
+            {
+                CheckForPricesBelowZero(result);
+            }
 
             return result;
         }
-        private void ApplySales(UserSpecificPrice price, Catalog.Product p, Membership.CustomerAccount currentUser)
+        private List<Marketing.Promotion> _CurrentlyActiveSales = null;
+        public List<Marketing.Promotion> CurrentlyActiveSales
         {
-            List<Marketing.Promotion> sales = MarketingServices.Promotions.FindAllPotentiallyActiveSales(DateTime.UtcNow);
+            get
+            {
+                if (_CurrentlyActiveSales == null)
+                {
+                    _CurrentlyActiveSales = MarketingServices.Promotions.FindAllPotentiallyActiveSales(DateTime.Now);
+                }
+                return _CurrentlyActiveSales;
+            }
+        }
+        private void ApplySales(UserSpecificPrice price, Catalog.Product p, Membership.CustomerAccount currentUser, List<Marketing.Promotion> sales)
+        {
+            if (sales == null) return;
             foreach (Marketing.Promotion promo in sales)
             {
                 promo.ApplyToProduct(this, p, price, currentUser, DateTime.UtcNow);

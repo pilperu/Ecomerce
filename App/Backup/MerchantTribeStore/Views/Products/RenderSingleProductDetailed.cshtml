@@ -1,0 +1,33 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Models.SingleProductViewModel
+
+<div class="record">           
+    <div class="recordimage">
+        <a href="@Model.ProductLink">
+        <img src="@Model.ImageUrl" border="0" alt="@Model.Item.ImageFileSmallAlternateText" /></a>
+    </div>                  
+    <div class="recordsku">
+        <a href="@Model.ProductLink">@Model.Item.Sku</a>
+    </div>
+    <div class="recordname">
+        <a href="@Model.ProductLink">@Model.Item.ProductName</a>
+    </div>
+    <div class="recordshortdescription">
+        @Html.Raw(Model.Item.LongDescription)        
+    </div>
+    <div class="recordprice">
+        <a href="@Model.ProductLink">@Html.Raw(Model.UserPrice.DisplayPrice(true))</a>
+    </div>
+    <div class="recordcontrols">
+        @if (Model.Item.HasOptions() == true)
+        {
+            <a href="@Model.ProductLink"><img src="@Html.Raw(ViewBag.DetailsButton)" alt="View Product" /></a>
+        }
+        else
+        {
+            <a href="@Url.Content("~/cart?quickaddsku=" + HttpUtility.UrlEncode(Model.Item.Sku))"><img src="@Html.Raw(ViewBag.AddToCartButton)" alt="View Product" /></a>
+        }
+    </div>
+</div>

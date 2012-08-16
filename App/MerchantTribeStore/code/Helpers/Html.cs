@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using MerchantTribe.Commerce;
+using System.Text;
 using System.Web.Mvc;
-using System.Text;
-using System.Web.UI;
-using System.IO;
-using System.Text;
+using MerchantTribe.Commerce;
 
 namespace MerchantTribeStore.Helpers
 {

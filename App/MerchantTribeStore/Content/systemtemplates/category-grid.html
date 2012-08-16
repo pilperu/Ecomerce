@@ -1,0 +1,25 @@
+﻿<sys:include part="full-header.html" />
+
+<div id="main-content">
+    <sys:tempmessages />
+    <sys:breadcrumbs />    
+    <div id="categoryleft">
+        <sys:contentcolumn columnid="4" />        
+    </div>    
+    <div id="categorymain">
+        <sys:category-title />
+        <sys:contentcolumn columnid="pre" />                
+        <sys:category-banner />
+        <sys:category-description />        
+        <div id="categorygridtemplate">            
+            <div id="categorygridtemplaterecords">
+                <sys:productsgrid source="category" categoryid="current" rows="3" pagesize="9" showpager="true" />                
+                <div class="clear"></div>
+            </div>
+        </div>        
+        <sys:contentcolumn columnid="post" /> 
+    </div>
+    <div class="clear"></div>            
+</div>
+
+<sys:include part="full-footer.html" />

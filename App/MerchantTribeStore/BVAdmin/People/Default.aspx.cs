@@ -4,7 +4,6 @@ using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Membership;
 using System.Text;
 using System.IO;
-using System.Text;
 
 namespace MerchantTribeStore
 {

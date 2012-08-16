@@ -1,0 +1,170 @@
+Commercial Version of MerchantTribe open-source ecommerce platform.
+
+* This version of MerchantTribe is NOT free. Please read the entire 
+  license carefully.
+
+* MerchantTribe collects performance data about stores using the software.  We 
+  use this data to learn about successful store trends. We never share 
+  individual store information, only broad aggregated data. You may opt-out of 
+  this by turning off analytics in your store.
+
+* If you like MerchantTribe, tell others and share the free version. We need a 
+  large vibrant community of Merchants, Developers and Designers in order to 
+  keep the software innovative and supported.
+
+
+Full End User Licens Agreement Below:
+===========================================================================
+MerchantTribe License Agreement
+
+IMPORTANT-READ CAREFULLY: This End-User License Agreement ("EULA") is a legal 
+agreement between you (either an individual or a single entity) and 
+BV Software LLC for the BV Software product identified above, which includes 
+computer software and may include associated media, printed materials, 
+and "online" or electronic documentation ("Product"). 
+
+An amendment or addendum to this EULA may accompany the Product. YOU AGREE 
+TO BE BOUND BY THE TERMS OF THIS EULA BY INSTALLING, COPYING, OR OTHERWISE 
+USING THE PRODUCT. IF YOU DO NOT AGREE, DO NOT INSTALL, COPY OR USE THE 
+PRODUCT. In addition, by installing, copying, or otherwise using updates 
+that you receive as part of the Product ("UPDATES"), you agree to be bound 
+by the additional license terms that accompany such UPDATES. If you do not 
+agree to the additional license terms that accompany such UPDATES, you may 
+not install, copy, or use such UPDATES. 
+
+1. GRANT OF LICENSE. Provided that you comply with all terms and conditions 
+of this EULA, BV Software LLC grants you: (a) the right to make and use copies 
+of this software and (b) a limited, nonexclusive license.  
+
+2. LICENSE RIGHTS AND LIMITATIONS
+
+  a. You may not rent, lease, or lend the Product. You may not include the 
+     Product as part or whole of a commercial hosting service without prior 
+     written consent.
+  b. You may use the Product for up to 5 web stores on a single web server
+  c. You may use the Product on up to 5 development computers provided they 
+     are not publically accessible on the internet
+  d. You may use the Product on up to 5 test computers provided they are 
+     not publically accessible on the internet
+  e. You may not reverse engineer, decompile, or disassemble the Product, 
+     except and only to the extent that it is expressly permitted by 
+     applicable law notwithstanding this limitation.
+  f. You may not modify, remove, or disable any copy protection or licensing 
+     features of the Product
+  g. Consent To Use Of Data. You agree that BV Software LLC and its 
+     affiliates may collect and use technical information you provide as a 
+     part of support services related to the Product. Furthermore you agree 
+     that BV Software may collect analytics information about the use and 
+     performance of the software unless you explicitly opt-out by turning off 
+     the analytics feature of the software.
+  h. Publicity. You agree that BV Software may use your name and logo in 
+     presentations, marketing materials, customer lists, financial reports 
+     and web site listings of customers. If you wish to use BV Software's 
+     trade names, trademarks, service marks, logos, domain names, and other 
+     distinctive brand features, including the BV Commerce name, logos and 
+     related intellectual property , you may do so only with BV Software's 
+     prior written consent.
+  i. Export Restrictions. You acknowledge that the Product is of U.S. origin.  
+     You agree to comply with all applicable international and national laws 
+     that apply to the Product, including the U.S. Export Administration 
+     Regulations, as well as end-user, end-use and destination restrictions 
+     issued by U.S. and other governments.            
+  j. Separation of COMPONENTS. The Product is licensed as a single product. 
+     Its COMPONENT parts may not be separated for use by more than one user 
+     or for use on more than one computer.
+  k. Termination. Without prejudice to any other rights, BV Software LLC may 
+     cancel this EULA if you do not abide by the terms and conditions of this 
+     EULA, in which case you must destroy all copies of the Product and all 
+     of its component parts.
+  l. Update License Terms. All UPDATES shall be considered part of the Product 
+     and subject to the terms and conditions of this EULA. Additional license 
+     terms may accompany UPDATES (as defined in the first paragraph of this 
+     EULA). By installing, copying, or otherwise using any UPDATE, you agree 
+     to be bound by the terms accompanying each such UPDATE. If you do not 
+     agree to the additional license terms accompanying such UPDATES, do not 
+     install, copy, or otherwise use such UPDATES.
+
+4. DISCLAIMER OF WARRANTIES. The Limited Warranty referenced below is the only 
+express warranty made to you and is provided in lieu of any other express 
+warranties (if any) created by any documentation or packaging. Except for the 
+Limited Warranty and to the maximum extent permitted by applicable law, 
+BV Software LLC and its suppliers provide the Product and support services 
+(if any) AS IS AND WITH ALL FAULTS, and hereby disclaim all other warranties 
+and conditions, either express, implied, or statutory, including, but not 
+limited to, any (if any) implied warranties, duties or conditions of 
+merchantability, of fitness for a particular purpose, of accuracy or 
+completeness of responses, of results, of workmanlike effort, of lack of 
+viruses, and of lack of negligence, all with regard to the Product, and the 
+provision of or failure to provide support services. ALSO, THERE IS NO WARRANTY 
+OR CONDITION OF TITLE, QUIET ENJOYMENT, QUIET POSSESSION, CORRESPONDENCE TO 
+DESCRIPTION OR NON-INFRINGEMENT WITH REGARD TO THE PRODUCT.
+
+5. EXCLUSION OF INCIDENTAL, CONSEQUENTIAL, AND CERTAIN OTHER DAMAGES. TO THE 
+MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL BV SOFTWARE LLC 
+OR ITS SUPPLIERS BE LIABLE FOR ANY SPECIAL, INCIDENTAL, INDIRECT, OR 
+CONSEQUENTIAL DAMAGES WHATSOEVER (INCLUDING, BUT NOT LIMITED TO, DAMAGES FOR 
+LOSS OF PROFITS OR CONFIDENTIAL OR OTHER INFORMATION, FOR BUSINESS INTERRUPTION,
+FOR PERSONAL INJURY, FOR LOSS OF PRIVACY, FOR FAILURE TO MEET ANY DUTY INCLUDING
+OF GOOD FAITH OR OF REASONABLE CARE, FOR NEGLIGENCE, AND FOR ANY OTHER PECUNIARY
+OR OTHER LOSS WHATSOEVER) ARISING OUT OF OR IN ANY WAY RELATED TO THE USE OF 
+OR INABILITY TO USE THE PRODUCT, THE PROVISION OF OR FAILURE TO PROVIDE SUPPORT 
+SERVICES, OR OTHERWISE UNDER OR IN CONNECTION WITH ANY PROVISION OF THIS EULA, 
+EVEN IN THE EVENT OF THE FAULT, TORT (INCLUDING NEGLIGENCE), STRICT LIABILITY, 
+BREACH OF CONTRACT, OR BREACH OF WARRANTY OF BV SOFTWARE LLC OR ANY SUPPLIER, 
+AND EVEN IF BV SOFTWARE LLC OR ANY SUPPLIER HAS BEEN ADVISED OF THE POSSIBILITY 
+OF SUCH DAMAGES. BV SOFTWARE DOES NOT WARRANT THAT THE PRODUCT IS FREE OF 
+VIRUSES OR OTHER HARMFUL COMPONENTS, OR THAT IT WILL BE ACCESSIBLE ON A 
+PERMANENT BASIS OR WITHOUT INTERRUPTION.
+
+6. LIMITATION OF LIABILITY AND REMEDIES. Notwithstanding any damages that 
+you might incur for any reason whatsoever (including, without limitation, 
+all damages referenced above and all direct or general damages), the entire 
+liability of BV Software LLC and any of its suppliers under any provision 
+of this EULA and your exclusive remedy for all of the foregoing (except for 
+any remedy of repair or replacement elected by BV Software LLC with respect 
+to any breach of the Limited Warranty) shall be limited to the greater of 
+the amount actually paid by you for the Product or U.S.$5.00. The foregoing 
+limitations, exclusions, and disclaimers (including Sections 9 and 10 above 
+and as stated in the Limited Warranty) shall apply to the maximum extent 
+permitted by applicable law, even if any remedy fails its essential purpose.
+
+7. ENTIRE AGREEMENT. This EULA (including any addendum or amendment to this EULA
+which is included with the Product) are the entire agreement between you and 
+BV Software LLC relating to the Product and the Support Services (if any) and 
+they supersede all prior or contemporaneous oral or written communications, 
+proposals, and representations with respect to the Product or any other subject
+matter covered by this EULA. To the extent the terms of any BV Software LLC 
+policies or programs for Support Services conflict with the terms of this EULA, 
+the terms of this EULA shall control.
+
+8. The Product is protected by copyright and other intellectual property laws 
+and treaties. BV Software LLC or its suppliers own the title, copyright, and 
+other intellectual property rights in the Product. The Product is licensed, not 
+sold.
+
+MISCELLANEOUS:
+
+If you acquired this Product in the United States, this EULA is governed by the 
+laws of the State of Virginia. 
+
+If this product was acquired outside of the United States, local law may apply. 
+
+Should you have any questions concerning this EULA, or if you desire to contact 
+BV Software LLC for any reason, please write:  BV Software, 9702 Gayton Rd, 
+Suite 241, Richmond, VA 23238. 
+
+
+
+NOTICE file corresponding to section 4 (d) of the Apache License, Version 2.0, 
+in this case for the Apache lot4net distribution
+
+This product includes software developed by the Apache Software Foundation 
+(http://www.apache.org/).
+
+Please read the LICENSE file present in the root directory of this distribution.
+
+The names "log4net" and "Apache Software Foundation" must not be used to endorse
+or promote products derived from this software without prior written permission.
+For written permission, please contact apache@apache.org
+
+

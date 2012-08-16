@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribeStore.Models.SingleProductViewModel
+@if (Model.IsLastItem == true) 
+{
+    <text><div class="record lastrecord"></text>
+}
+else if (Model.IsFirstItem == true)
+{
+  <text><div class="record firstrecord"></text>
+}
+else
+{
+  <text><div class="record"></text>
+}
+  <div class="recordimage">
+  <a href="@Model.ProductLink">
+  <img src="@Model.ImageUrl" border="0" alt="@Model.Item.ImageFileSmallAlternateText" /></a>
+  </div>
+  
+  <div class="recordname">
+  <a href="@Model.ProductLink">@Model.Item.ProductName</a>
+  </div>
+  <div class="recordsku">
+  <a href="@Model.ProductLink">@Model.Item.Sku</a>
+  </div>
+  <div class="recordprice">
+  <a href="@Model.ProductLink">@Html.Raw(Model.UserPrice.DisplayPrice(true))</a>
+  </div>
+</div>
+

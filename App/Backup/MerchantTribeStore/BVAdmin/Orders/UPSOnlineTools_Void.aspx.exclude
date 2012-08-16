@@ -1,0 +1,28 @@
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="false"
+    CodeFile="UPSOnlineTools_Void.aspx.cs" Inherits="MerchantTribeStore.BVAdmin_Orders_UPSOnlineTools_Void"
+    Title="Untitled Page" %>
+
+<%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">    
+    <uc1:MessageBox ID="msg" runat="server" />
+    <h1>
+        UPS<sup>®</sup> Online Tools - Void A Shipment</h1>
+    <br />
+    <table border="0" cellspacing="0" cellpadding="3" width="600">
+        <tr>
+            <td class="BVText">
+                Tracking Number</td>
+            <td class="BVText">
+                <asp:TextBox ID="TrackingNumberField" runat="server" Columns="40">1Z</asp:TextBox></td>
+            <td class="BVText">
+                <asp:ImageButton ID="btnGo" runat="server" 
+                    ImageUrl="~/BVAdmin/images/buttons/Submit.png" AlternateText="Submit Form" 
+                    onclick="btnGo_Click"></asp:ImageButton></td>
+        </tr>
+    </table>
+    <p>
+        <br />
+        &nbsp;<br />
+        <br />
+    </p>
+</asp:Content>

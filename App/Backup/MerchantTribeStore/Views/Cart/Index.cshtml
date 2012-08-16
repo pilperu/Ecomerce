@@ -1,0 +1,167 @@
+﻿@model MerchantTribeStore.Models.CartViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="carttitle">
+    <h1>@Model.DisplayTitle</h1>
+    @Html.Raw((string)TempData["messages"])
+    <div id="cartsubtitle">
+        @if (Model.CartEmpty)
+        {
+            <h3>Your shopping cart is empty! <a href="@Html.Raw(Model.KeepShoppingUrl)">Keep Shopping</a> &raquo;</h3>                 
+        }
+        else
+        {
+            <h3>@Model.CurrentOrder.TotalQuantity.ToString("#") Items in Cart</h3>
+        }
+        
+    </div>
+</div>
+@if (Model.CartEmpty == false)
+{
+    <div id="cartcontainer">
+        &nbsp;@Model.ItemListTitle
+        <table class="cartproductgrid" id="ItemGridView" width="100%">
+            <tr>
+                <th>Product</th>
+                <th>&nbsp;</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th>&nbsp;</th>
+            </tr>
+            @foreach (var item in Model.LineItems)
+            {
+                <tr>
+                    <td class="productimagecolumn">
+                        <div class="cartitemimage">
+                            @if (item.ShowImage)
+                            {
+                                <a href="@item.LinkUrl" title="@item.Item.ProductName">
+                                    <img src="@item.ImageUrl" alt="@item.Item.ProductName" />
+                                </a>
+                            }
+                            else
+                            {
+                                <text>&nbsp;</text>
+                            }
+                        </div>
+                    </td>
+                    <td class="productdetailscolumn">
+                        <div id="cartitemdescription" runat="server" class="cartitemdescription">
+                            <a href="@item.LinkUrl" title="@item.Item.ProductName">
+                                <div class="cartsku">@item.Item.ProductSku</div>
+                                <div class="cartproductname">@item.Item.ProductName</div>
+                                @Html.Raw(item.Item.ProductShortDescription)
+                                @if (item.HasDiscounts)
+                                {
+                                    <div class="discounts">@Html.Raw(item.Item.DiscountDetailsAsHtml())</div>
+                                }
+                            </a>                                                        
+                        </div>
+                    </td>
+                    <td class="productpricecolumn">
+                        <span class="cartproductprice">@item.Item.BasePricePerItem.ToString("C")</span>
+                    </td>
+                    <td class="productquantitycolumn">
+                        <div>
+                            <a href="@item.LinkUrl">@string.Format("{0:#}", item.Item.Quantity)</a>
+                        </div>
+                    </td>
+                    <td class="producttotalcolumn">
+                        @if (item.HasDiscounts)
+                        {
+                            <span class="lineitemnodiscounts">@item.Item.LineTotalWithoutDiscounts.ToString("c")</span> 
+                        }
+                        <span class="totallabel">@item.Item.LineTotal.ToString("c")</span>
+                    </td>
+                    <td class="productdeletecolumn">
+                        <form action="@Url.Content("~/cart/removelineitem")" method="post">
+                        <input type="image" src="@Model.DeleteButtonUrl" alt="Remove This Item" />
+                        <input type="hidden" name="lineitemid" value="@item.Item.Id" />
+                        <input type="hidden" name="orderbvin" value="@Model.CurrentOrder.bvin" />
+                        </form>
+                    </td>
+                </tr>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+            }
+        </table>
+    </div>
+    <div id="cartfooter">
+        <div id="carttotals">                                                    
+            <table border="0" cellspacing="0" cellpadding="3">
+            @if (Model.CurrentOrder.OrderDiscountDetails.Count > 0)
+            {
+                <tr>
+                    <td class="formlabel">Before Discounts:</td>
+                    <td class="formfield">@string.Format("{0:c}", Model.CurrentOrder.TotalOrderBeforeDiscounts)</td>
+                </tr>
+                foreach (var d in Model.CurrentOrder.OrderDiscountDetails)
+                {
+                    <tr>
+                        <td class="formlabel2">@d.Description:</td>
+                        <td class="formfield2">@string.Format("{0:c}", d.Amount)</td>                                        
+                    </tr>
+                }
+                <tr>
+                    <td class="formlabel">Sub Total:</td>
+                    <td class="formfield">@string.Format("{0:c}", Model.CurrentOrder.TotalOrderAfterDiscounts));</td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    <td class="formlabel">Sub Total:</td>
+                    <td class="formfield">@string.Format("{0:c}", Model.CurrentOrder.TotalOrderBeforeDiscounts)</td>
+                </tr>                
+            }
+            </table>                                                                                
+        </div>
+        <div id="EstimateShipping">
+            <a id="GetRatesLink" 
+               onclick="JavaScript:window.open('@Url.Content("~/EstimateShipping")','Images','width=400, height=500, menubar=no, scrollbars=yes, resizable=yes, status=no, toolbar=no');" 
+               style="cursor: pointer;">
+                <img src="@Model.EstimateShippingButtonUrl" alt="Estimate Shipping" />                            
+            </a>
+        </div>
+    </div>
+    <div id="cartactions">
+        <div id="cartactioncontinue">
+            <a href="@Html.Raw(Model.KeepShoppingUrl)" alt="Keep Shopping">
+                <img src="@Model.KeepShoppingButtonUrl" alt="Keep Shopping" /></a>
+        </div>
+        <div id="cartactioncheckout" runat="server">
+            <form action="@Url.Content("~/cart")" method="post">
+            <input type="image" src="@Model.CheckoutButtonUrl" alt="Secure Checkout" />
+            </form>
+            @if (Model.PayPalExpressAvailable)
+            {                
+                <div class="paypalbuffer">- OR - </div>
+                <form action="@Url.Content("~/cart")" method="post" class="paypalexpresscheckoutform">
+                    <input type="image" src="https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif" alt="PayPal Express Checkout" />
+                    <input type="hidden" name="paypalexpress" value="true" />
+                </form>
+            }
+        </div>
+    </div>
+    <div id="cartcoupons">
+        Add a Promotional Code:
+        <form action="@Url.Content("~/cart/addcoupon")" method="post">
+        <input type="text" name="couponcode" size="10" />
+        <input type="image" id="btnAddCoupon" src="@Model.AddCouponButtonUrl" alt="Add Coupon To Cart" />
+        </form>
+        <table>
+        @foreach (var coupon in Model.CurrentOrder.Coupons)
+        {
+            <tr>
+                <td>@coupon.CouponCode.ToUpperInvariant()</td>
+                <td>
+                    <form action="@Url.Content("~/cart/removecoupon")" method="post">
+                        <input type="image" src="@Model.DeleteButtonUrl" alt="Remove Coupon @coupon.CouponCode" />
+                        <input type="hidden" name="couponid" value="@coupon.Id" />
+                    </form>
+                </td>
+            </tr>
+        }
+        </table>
+    </div>
+}

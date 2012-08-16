@@ -443,7 +443,7 @@ namespace MerchantTribeStore.BVAdmin.Marketing
             MyPage.MTApp.MarketingServices.Promotions.Update(p);
             LoadUserIsEditor(q);
         }        
-        void UserPicker1_UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
+        void UserPicker1_UserSelected(object sender, MerchantTribe.Commerce.Controls.UserSelectedEventArgs e)
         {
             Promotion p = GetCurrentPromotion();
             UserIs q = (UserIs)GetCurrentQualification(p);

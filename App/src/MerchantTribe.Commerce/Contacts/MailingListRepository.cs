@@ -173,7 +173,7 @@ namespace MerchantTribe.Commerce.Contacts
             return output;                      
         }
 
-        public new List<MailingListSnapShot> FindAllPublicPaged(int pageNumber, int pageSize)
+        public List<MailingListSnapShot> FindAllPublicPaged(int pageNumber, int pageSize)
         {
 
             if (pageNumber < 1) pageNumber = 1;

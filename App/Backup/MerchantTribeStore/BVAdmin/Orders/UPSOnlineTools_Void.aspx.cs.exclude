@@ -1,0 +1,77 @@
+using System;
+using System.Web;
+using System.Web.UI.WebControls;
+using MerchantTribe.Commerce;
+using MerchantTribe.Commerce.Orders;
+using MerchantTribe.Commerce.Membership;
+using MerchantTribe.Commerce.Utilities;
+using MerchantTribe.Commerce.Shipping;
+using MerchantTribe.Commerce.Payment;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.IO;
+
+partial class BVAdmin_Orders_UPSOnlineTools_Void : BaseAdminPage
+{
+    protected override void OnPreInit(EventArgs e)
+    {
+        base.OnPreInit(e);
+		this.PageTitle = "Ups Online Tools - Void Shipments";
+		this.CurrentTab = AdminTabType.Orders;
+		ValidateCurrentUserHasPermission(SystemPermissions.OrdersView);
+	}
+
+	protected void btnGo_Click(object sender, System.Web.UI.ImageClickEventArgs e)
+	{
+		MerchantTribe.Shipping.Ups.VoidShipmentRequest req = new MerchantTribe.Shipping.Ups.VoidShipmentRequest();
+        req.Settings.UserID = CurrentStore.ShippingUpsUsername;
+        req.Settings.Password = CurrentStore.ShippingUpsPassword;
+        req.Settings.License = CurrentStore.ShippingUpsLicense;
+		req.Settings.ServerUrl = WebAppSettings.ShippingUpsServer;
+		req.ShipmentIdentificationNumber = this.TrackingNumberField.Text.Trim();
+
+		MerchantTribe.Shipping.Ups.VoidShipmentResponse res;
+		res = MerchantTribe.Shipping.Ups.XmlTools.SendVoidShipmentRequest(ref req);
+
+		if (res != null) {
+
+            if (CurrentStore.ShippingUPSWriteXML == true)
+            {
+				this.SaveXmlStringToFile("Void_" + req.ShipmentIdentificationNumber + "_Request.xml", req.XmlRequest);
+				this.SaveXmlStringToFile("Void_" + req.ShipmentIdentificationNumber + "_Response.xml", req.XmlResponse);
+			}
+
+			if (res.Success == true) {
+				this.msg.ShowOk("Shipment " + this.TrackingNumberField.Text.Trim() + " was voided.");
+				this.TrackingNumberField.Text = "1Z";
+			}
+			else {
+				this.msg.ShowWarning("Error " + res.ErrorCode + ": " + res.ErrorMessage);
+			}
+		}
+		else {
+			msg.ShowWarning("Response object was empty");
+		}
+
+	}
+
+	private bool SaveXmlStringToFile(string filename, string data)
+	{
+		bool result = false;
+		string UPSLabelDirectory = Path.Combine(Request.PhysicalApplicationPath, "images\\UPS\\Xml");
+		try {
+			if (Directory.Exists(UPSLabelDirectory) == false) {
+				Directory.CreateDirectory(UPSLabelDirectory);
+			}
+			StreamWriter writer = new StreamWriter(Path.Combine(UPSLabelDirectory, filename), false);
+			writer.Write(data);
+			writer.Flush();
+			writer.Close();
+		}
+		catch (Exception ex) {
+			EventLog.LogEvent(ex);
+		}
+		return result;
+	}
+
+}

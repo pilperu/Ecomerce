@@ -10,7 +10,8 @@ namespace MerchantTribeStore
 
         private MerchantTribe.Commerce.Utilities.DateRange _range = new MerchantTribe.Commerce.Utilities.DateRange();
 
-        public delegate void RangeTypeChangedDelegate(System.EventArgs e);
+        public class RangeTypeChangedEventArgs : EventArgs { }
+        public delegate void RangeTypeChangedDelegate(object sender, RangeTypeChangedEventArgs e);
         public event RangeTypeChangedDelegate RangeTypeChanged;
 
         protected override void OnLoad(EventArgs e)
@@ -34,7 +35,7 @@ namespace MerchantTribeStore
             }
             if (RangeTypeChanged != null)
             {
-                RangeTypeChanged(new EventArgs());
+                RangeTypeChanged(this, new RangeTypeChangedEventArgs());
             }
         }
 

@@ -1,0 +1,221 @@
+﻿@model MerchantTribeStore.Models.StoneEdgeIntegrationModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MerchantTribe Stone Edge Integration</title>
+    <link href="@Url.Content("~/bvadmin/styles.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/content/system.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/BVAdmin/StylesPrint.css")" rel="stylesheet" type="text/css" media="print" />
+    @Html.Raw((string)ViewData["JqueryInclude"])
+</head>
+<body>
+    <div id="wrapper">
+        <div id="content">
+            <h1>MerchantTribe Stone Edge Integration</h1>
+            <p>
+                SetiFunction = @Model.SetiFunction<br />
+                Seti Version: @Model.SetiVersion
+            </p>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Version Request</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="SendVersion" />
+                    Order Manager Version:
+                    <input type="text" name="omversion" value="6.000" />
+                    <input type="submit" value="Submit" />
+               </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Send Sample Error</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="SendSampleError" />
+                    <select name="SampleErrorType">
+                        <option value="0">General</option>
+                        <option value="1">Orders</option>
+                        <option value="2">Products</option>
+                        <option value="3">Customers</option>
+                    </select><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Order Count</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="ordercount" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />
+                    Last Order Date: <input type="text" name="lastDate" value="01-Jan-2011" /><br />
+                    Last Order Number: <input type="text" name="lastorder" value="All" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Get Orders</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="downloadorders" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />
+                    Last Order Date: <input type="text" name="lastDate" value="01-Jan-2011" /><br />
+                    Last Order Number: <input type="text" name="lastorder" value="All" /><br />
+                    Start Number: <input type="text" name="startnum" value="1" /><br />
+                    Batch Size: <input type="text" name="batchsize" value="100" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Product Count</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="getproductscount" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />                    
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Get Products</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="downloadprods" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />                    
+                    Start Number: <input type="text" name="startnum" value="1" /><br />
+                    Batch Size: <input type="text" name="batchsize" value="100" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Get QOH</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="downloadqoh" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />                    
+                    Start Number: <input type="text" name="startnum" value="1" /><br />
+                    Batch Size: <input type="text" name="batchsize" value="100" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>            
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Customer Count</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="getcustomerscount" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password:<input type="password" name="password" value="password" /><br />                    
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Get Customers</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="downloadcustomers" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />
+                    Start Number: <input type="text" name="startnum" value="1" /><br />
+                    Batch Size: <input type="text" name="batchsize" value="100" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Send QOH</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="qohreplace" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />
+                    Count: <input type="text" name="count" value="5" /><br />
+                    Update: <textarea name="update" rows="5" cols="80">sku1~10|sku2~8|sku3~15|sku4~32|sku5~18</textarea><br />
+                    OM Version: <input type="text" name="omversion" value="6.000" /><br />
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Inventory Update</h3>
+                <form action="" method="post">
+                    <input type="hidden" name="SetiFunction" value="invupdate" />
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /><br />
+                    Password: <input type="password" name="password" value="password" /><br />                    
+                    Update: <textarea name="update" rows="5" cols="80">sku1~10</textarea><br />                    
+                    <input type="submit" value="Submit" />
+                </form>
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Order Update (Non-XML)</h3>
+                <form action="" method="post"> 
+                    <input type="hidden" name="setifunction" value="updatestatus" /> 
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /> <br />
+                    Password: <input type="text" name="password" value="password" /><br /> 
+                    Order #: <input type="text" name="ordernumber" value="9001" /><br /> 
+                    Order Status: <input type="text" name="orderstatus" value="Shipped" /> <br />
+                    Ref #: <input type="text" name="refnumber" value="1021" /> <br />
+                    Details: <input type="text" name="orderdetail" value="Date Shipped: 06/1/2015" /> <br />
+                    Track Count: <input type="text" name="trackcount" value="1" /> <br />
+                    Track #:<input type="text" name="tracknum" value="1Z9876543218754187" /> <br />
+                    Track Carrier: <input type="text" name="trackcarrier" value="UPS" /> <br />
+                    Track Pickup Date: <input type="text" name="trackpickupdate" value = "6/1/2015" /> <br />
+                    <input type="submit" value="Submit" /> 
+                </form> 
+            </div>
+            &nbsp;
+            <div class="controlarea1 padded">
+                <h3>Order Update (XML)</h3>
+                <form action="" method="post"> 
+                    <input type="hidden" name="setifunction" value="updatestatus" /> 
+                    Email: <input type="text" name="setiuser" value="demo@bvsoftware.com" /> <br />
+                    Password: <input type="text" name="password" value="password" /><br /> 
+                    Update: <textarea name="update" rows="20" cols="80">&lt;Orders&gt;                        
+    &lt;Order&gt;
+        &lt;OrderNumber&gt;9001&lt;/OrderNumber&gt; 
+        &lt;ReferenceNumber&gt;1021&lt;/ReferenceNumber&gt;
+        &lt;Status&gt;Shipped&lt;/Status&gt; 
+        &lt;Notes&gt;Date Shipped: 6/1/2015&lt;/Notes&gt;
+        &lt;Comments&gt;Entry at rear of building&lt;/Comments&gt; 
+        &lt;ChangeDateTime&gt;01-Jun-2015 13:11:51&lt;/ChangeDateTime&gt; 
+        &lt;Packages&gt;
+            &lt;Package&gt;
+                &lt;PackageID&gt;6012&lt;/PackageID&gt;
+                &lt;TrackingID&gt;1Z9876543218754187&lt;/TrackingID&gt; 
+                &lt;PickupDate&gt;6/1/2015&lt;/PickupDate&gt;
+                &lt;Shipper&gt;UPS&lt;/Shipper&gt;
+                &lt;Method&gt;Ground&lt;/Method&gt;
+            &lt;/Package&gt; 
+        &lt;/Packages&gt;
+        &lt;Items&gt;
+            &lt;Item&gt;
+                &lt;ItemNumber&gt;176&lt;/ItemNumber&gt;
+                &lt;RefNumber&gt;1&lt;/RefNumber&gt; 
+                &lt;Status&gt;Shipped&lt;/Status&gt;
+                &lt;Ordered&gt;1&lt;/Ordered&gt;
+                &lt;Shipped&gt;1&lt;/Shipped&gt;
+                &lt;Needed&gt;0&lt;/Needed&gt; 
+                &lt;Notes&gt;Date Shipped: 6/1/2015&lt;/Notes&gt;
+                &lt;Packages&gt;
+                    &lt;Package&gt;
+                        &lt;PackageID&gt;6012&lt;/PackageID&gt; 
+                        &lt;Quantity&gt;1&lt;/Quantity&gt;
+                    &lt;/Package&gt;
+                &lt;/Packages&gt;
+            &lt;/Item&gt;
+        &lt;/Items&gt;
+    &lt;/Order&gt;
+&lt;/Orders&gt;
+                    </textarea><br />                    
+                    <input type="submit" value="Submit" /> 
+                </form> 
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

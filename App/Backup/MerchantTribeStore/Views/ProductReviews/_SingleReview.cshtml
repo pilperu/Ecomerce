@@ -1,0 +1,16 @@
+﻿@{
+    Layout = null;
+}
+@model MerchantTribe.Commerce.Catalog.ProductReview
+@helper StarsImage(MerchantTribe.Commerce.Catalog.ProductReviewRating rating)
+{
+    var starurl = ViewData["Star" + Model.RatingAsInteger.ToString() + "Url"];
+    var name = Model.RatingAsInteger.ToString() + " stars.";    
+    <img src="@starurl" alt="@name" />    
+}
+          
+<div class="ProductReview">
+    @StarsImage(Model.Rating)<br />
+    <span class="productreviewdescription">@Model.Description</span>
+</div>
+

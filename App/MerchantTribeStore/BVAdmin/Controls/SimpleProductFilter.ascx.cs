@@ -10,10 +10,10 @@ namespace MerchantTribeStore
 
     partial class BVAdmin_Controls_SimpleProductFilter : BVUserControl
     {
-
-        public delegate void FilterChangedDelegate(ProductSearchCriteria criteria, System.EventArgs e);
+        
+        public delegate void FilterChangedDelegate(object sender, System.EventArgs e);
         public event FilterChangedDelegate FilterChanged;
-        public delegate void GoPressedDelegate(ProductSearchCriteria criteria, System.EventArgs e);
+        public delegate void GoPressedDelegate(object sender, System.EventArgs e);
         public event GoPressedDelegate GoPressed;
 
 

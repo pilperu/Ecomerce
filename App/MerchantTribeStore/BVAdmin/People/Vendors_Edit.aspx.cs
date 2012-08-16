@@ -163,7 +163,7 @@ namespace MerchantTribeStore
             MemberList.DataBind();
         }
 
-        protected void UserSelected(MerchantTribe.Commerce.Controls.UserSelectedEventArgs args)
+        protected void UserSelected(object sender, MerchantTribe.Commerce.Controls.UserSelectedEventArgs args)
         {
             if (this.BvinField.Value == string.Empty)
             {

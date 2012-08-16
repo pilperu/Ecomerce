@@ -1,0 +1,68 @@
+﻿@model MerchantTribeStore.Models.CategoryPageViewModel
+@Html.Raw(ViewBag.BreadCrumbsFinal)
+<div id="categoryleft">
+    @Html.Raw(Model.LeftColumn)
+</div>
+<div id="categorymain">
+    @if (Model.LocalCategory.ShowTitle)
+    {
+        <h1>@Model.LocalCategory.Name</h1>
+    }
+    @Html.Raw(Model.PreColumn)
+    @if (ViewBag.ShowBanner == true)
+    {
+        <div id="categorybanner">
+            <img src="@ViewBag.BannerUrl" alt="@Model.LocalCategory.Name" />
+        </div>
+    }    
+    @if (((string)ViewBag.DisplayHtml).Length > 0)
+    {        
+        <div id="categorydescription">
+            @Html.Raw(ViewBag.DisplayHtml)
+        </div>
+    }
+    @if (Model.SubCategories.Count > 0)
+    {
+        <div id="categorygridsubtemplate">
+        @foreach (var subcat in Model.SubCategories)
+        {
+            <div 
+            @if (subcat.IsLastItem == true)
+            {
+                <text> class="record lastrecord"</text>
+            }
+            else if (subcat.IsFirstItem == true)
+            {
+                <text> class="record firstrecord"</text>
+            }
+            else
+            {
+                 <text> class="record"</text>
+            }         
+            >               
+                <div class="recordimage">
+                    <a id="recordimageanchor" runat="server" href="@subcat.LinkUrl">
+                        <img id="recordimageimg" runat="server" src="@subcat.IconUrl" border="0" alt="@subcat.AltText" />
+                    </a>
+                </div>
+                <div class="recordname">
+                    <a id="recordnameanchor" runat="server" href="@subcat.LinkUrl">@subcat.Name</a>
+                </div>
+            </div>
+        }
+        </div>
+    }    
+    <div id="categorygridtemplate">            
+        <div id="categorygridtemplaterecords">
+            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+            @foreach (var item in Model.Products)
+            {
+                @Html.Partial("~/Views/Products/RenderSingleProduct.cshtml", item)
+            }
+            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+            <div class="clear"></div>
+        </div>
+    </div>
+    @Html.Raw(Model.PostColumn)  
+</div>
+<div class="clear"></div>

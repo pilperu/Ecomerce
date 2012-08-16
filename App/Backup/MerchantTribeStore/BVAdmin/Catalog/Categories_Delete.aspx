@@ -1,0 +1,2 @@
+﻿<%@ Page Language="C#" AutoEventWireup="True" Inherits="MerchantTribeStore.BVAdmin_Catalog_Categories_Delete" Codebehind="Categories_Delete.aspx.cs" %>
+<asp:Literal ID="litOutput" runat="server"></asp:Literal>

@@ -264,6 +264,7 @@ namespace MerchantTribeStore.Controllers
 
             return RenderOrders(results);                        
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private ActionResult RenderOrders(List<MerchantTribe.Commerce.Orders.OrderSnapshot> orders)
         {
 
@@ -300,8 +301,7 @@ namespace MerchantTribeStore.Controllers
 
                     xw.WriteEndElement(); // End SetiOrders;
 
-                    xw.WriteEndDocument();
-                    xw.Flush();
+                    xw.WriteEndDocument();                    
                 }                
             }
                             
@@ -618,6 +618,7 @@ namespace MerchantTribeStore.Controllers
             }            
             return RenderProducts(results);
         }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private ActionResult RenderProducts(List<MerchantTribe.Commerce.Catalog.Product> products)
         {
             StringBuilder sb = new StringBuilder();
@@ -758,13 +759,13 @@ namespace MerchantTribeStore.Controllers
 
                     xw.WriteEndElement(); // End SetiProducts;
 
-                    xw.WriteEndDocument();
-                    xw.Flush();
+                    xw.WriteEndDocument();                    
                 }
             }
 
             return Content(sb.ToString(), "application/xml");
-        }        
+        }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private ActionResult RenderQOH(List<MerchantTribe.Commerce.Catalog.Product> products)
         {
             StringBuilder sb = new StringBuilder();
@@ -807,9 +808,7 @@ namespace MerchantTribeStore.Controllers
                     }
 
                     xw.WriteEndElement(); // End SetiProducts;
-
-                    xw.WriteEndDocument();
-                    xw.Flush();
+                    xw.WriteEndDocument();                    
                 }
             }
 
@@ -858,6 +857,8 @@ namespace MerchantTribeStore.Controllers
             var results = this.MTApp.MembershipServices.Customers.FindAllPaged(pageNumber, tempPageSize);
             return RenderCustomers(results);
         }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
         private ActionResult RenderCustomers(List<MerchantTribe.Commerce.Membership.CustomerAccount> customers)
         {
             StringBuilder sb = new StringBuilder();
@@ -957,9 +958,7 @@ namespace MerchantTribeStore.Controllers
                     }
 
                     xw.WriteEndElement(); // End SetiCustomers;
-
-                    xw.WriteEndDocument();
-                    xw.Flush();
+                    xw.WriteEndDocument();                    
                 }
             }
 

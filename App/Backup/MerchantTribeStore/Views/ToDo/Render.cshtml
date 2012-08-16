@@ -1,0 +1,35 @@
+﻿@model MerchantTribe.Commerce.Accounts.ToDoItem
+<div class="dragitem" id="@Html.Raw("item" + Model.Id)">
+ <table width="100%" class="formtable">
+        <tr>        
+            <td class="taskpriority" width="30">A1</td>
+            <td width="30"><form action="/todo/toggle" method="post">
+                @if (Model.IsComplete) {                   
+                    <input type="image" src="@Url.Content("~/images/system/Checked.png")" />
+                   }
+                   else
+                   {
+                   <input type="image" src="@Url.Content("~/images/system/UnChecked.png")" />
+                    }
+                <input type="hidden" name="id" value="@Html.Raw(Model.Id.ToString())" />
+                </form>
+            </td>        
+            <td>       
+                @if (Model.IsComplete) {
+                <h3><strike><span style="font-weight:normal;">@Html.Raw(Model.Title)</span></strike></h3>
+                } else {         
+                <h3>@Html.Raw(Model.Title)</h3>
+                }
+
+                @Html.Raw(Model.Details)
+            </td>
+
+            <td width="30">
+                <a href="#" class="trash" id="@Html.Raw("rem" + Model.Id)"><img src="@Url.Content("~/images/system/trashcan.png")" alt="Delete" /></a>
+            </td>    
+            <td width="30">
+                <a href="#" class="handle"><img src="@Url.Content("~/images/system/draghandle.png")" alt="Move" /></a>
+            </td>
+        </tr>
+        </table>        
+</div> 

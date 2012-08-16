@@ -1,0 +1,34 @@
+﻿@{
+    Layout = null;    
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Permission Error - @ViewBag.Title</title>
+</head>
+<body>
+    
+        <div style="margin-top:50px;margin-left:auto;margin-right:auto;margin-bottom:50px;">
+    <table cellpadding="3" cellspacing="0" border="0">
+        <tr>
+            <td align="left" valign="top" class="errorMessage">
+                You do not have permission to view this page.<br />
+                &nbsp;<br />
+                Try logging in as a different user or contact the site administrator for more details.</td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+                <a href="@Url.Content("~")">Return to the Store</a>                
+            </td>
+        </tr>
+        <tr>
+            <td align="left" valign="top">
+                <a href="@Url.Content("~/login.aspx")">Login as a different user.</a>
+            </td>
+        </tr>
+    </table>
+    </div>    
+</body>
+</html>

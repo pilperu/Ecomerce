@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EECD6A0C-78EE-4753-93B2-76585D421625}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.PaypalWebServices", "src\MerchantTribe.PaypalWebServices\MerchantTribe.PaypalWebServices.csproj", "{40FCF14A-F903-4BF1-B4E0-FC5CB623BDF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore.Tests", "src\MerchantTribeStore.Tests\MerchantTribeStore.Tests.csproj", "{42A2E75B-4DAA-4024-B82F-E5128091C83A}"
@@ -19,11 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.USPo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.CommerceDTO", "src\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj", "{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.SilverlightFileUpload", "src\MerchantTribe.SilverlightFileUpload\MerchantTribe.SilverlightFileUpload.csproj", "{24A4744E-6A96-4DED-B4D9-018C3171C8DA}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7} = {6DDD0B1F-5395-4045-8FD1-3A1893BB7DC7}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.Tests", "src\MerchantTribe.Commerce.Tests\MerchantTribe.Commerce.Tests.csproj", "{90DA5B3D-F044-4FC3-A428-56AC87724D80}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Payment.Tests", "src\MerchantTribe.Payment.Tests\MerchantTribe.Payment.Tests.csproj", "{6E00638C-0C75-4CC7-9E89-F185355F696B}"
@@ -32,9 +29,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.ApiS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.FedEx", "src\MerchantTribe.Shipping.FedEx\MerchantTribe.Shipping.FedEx.csproj", "{9B00258D-45D2-43BD-8178-A6F2AAFF5090}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EECD6A0C-78EE-4753-93B2-76585D421625}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore.Tests.Console", "src\MerchantTribeStore.Tests.Console\MerchantTribeStore.Tests.Console.csproj", "{0369DD59-CE97-41E8-A202-AB451ACC07ED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EB833E64-E859-485A-8C3F-0532A0F77919}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
@@ -450,48 +452,6 @@ Global
 		{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}.Release-Source|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}.Release-Source|Mixed Platforms.Build.0 = Release|Any CPU
 		{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}.Release-Source|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.CoreOnly|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|.NET.ActiveCfg = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Publish|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Hosted|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-HostedStaging|x86.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|.NET.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|Any CPU.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|Any CPU.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|Mixed Platforms.Build.0 = Release|Any CPU
-		{24A4744E-6A96-4DED-B4D9-018C3171C8DA}.Release-Source|x86.ActiveCfg = Release|Any CPU
 		{90DA5B3D-F044-4FC3-A428-56AC87724D80}.CoreOnly|.NET.ActiveCfg = Release-HostedStaging|Any CPU
 		{90DA5B3D-F044-4FC3-A428-56AC87724D80}.CoreOnly|Any CPU.ActiveCfg = Release-HostedStaging|Any CPU
 		{90DA5B3D-F044-4FC3-A428-56AC87724D80}.CoreOnly|Any CPU.Build.0 = Release-HostedStaging|Any CPU

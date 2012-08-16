@@ -1,0 +1,43 @@
+﻿@model MerchantTribeStore.Models.CheckoutViewModel
+@using MerchantTribeStore.Models;           
+<div class="checkout">
+    @Html.Raw((string)TempData["messages"])    
+    <div class="flash-message-warning">The payment information you provided was not able to be processed. Please update your payment information and try again.</div>
+    <h1>Update Payment Information</h1>       
+    
+    <div class="sections">
+        <form action="@Url.Content("~/checkout/paymenterror")" method="post">
+        <div class="section-billing">
+            <h2>
+                Billing Address</h2>
+            <div id="billingwrapper">
+                @Html.Partial("_CheckoutAddress", new CheckoutAddressViewModel() 
+                                                { 
+                                                    Address=Model.CurrentOrder.BillingAddress,
+                                                    Prefix = "billing",
+                                                    TabIndex = 450,
+                                                    ShowPhone = false,
+                                                    Countries = Model.Countries,
+                                                    Violations = Model.Violations
+                                                })
+                <input type="hidden" id="tempbillingregion" value="@Model.CurrentOrder.BillingAddress.RegionBvin" />
+            </div>
+        </div>
+                
+        <div class="section-payment">
+            <h2>Payment Method</h2>
+            @Html.Partial("DisplayPaymentMethods", Model)
+        </div>        
+        <div class="section-actions">
+            <input type="image" id="btnsubmit" alt="Place Order" src="@Model.ButtonCheckoutUrl" tabindex="3001" />
+        </div>
+        </form>
+        <div class="section-actions">
+        <form action="@Url.Content("~/checkout/cancel")" method="post">
+            <input type="image" src="@Model.ButtonCancelUrl" alt="Cancel This Order" />
+        </form>
+        </div>
+    </div>
+    <div class="clear">
+        &nbsp;</div>
+</div>

@@ -1,0 +1,11 @@
+﻿@{ 
+      Layout = "~/Areas/account/Views/Shared/_AccountLayout.cshtml";
+}
+<h1>Download Error</h1>
+&nbsp;
+@Html.Raw((string)TempData["messages"])<br />
+&nbsp;
+<p>
+    <a href="@Url.Content("~/account")">&laquo; Return to Order History</a><br />
+    &nbsp;
+</p>

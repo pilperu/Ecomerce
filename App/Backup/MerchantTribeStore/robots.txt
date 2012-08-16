@@ -1,0 +1,12 @@
+﻿
+User-agent: *
+Disallow: /admin/ 
+Disallow: /bvadmin/ 
+Disallow: /myaccount/
+Disallow: /account/
+Disallow: /cart/
+Disallow: /forgotpassword/
+Disallow: /paypalipn/
+Disallow: /paypalexpresscheckout/
+Disallow: /flexpartjson/
+

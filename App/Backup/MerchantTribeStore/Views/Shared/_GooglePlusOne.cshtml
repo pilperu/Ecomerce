@@ -1,0 +1,53 @@
+﻿@model MerchantTribeStore.Models.GooglePlusOneViewModel
+@using System.Text
+@functions {
+    private string BuildTag()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.Append("<g:plusone");
+        
+        sb.Append(" href=\"" + Model.PageUrl + "\"");
+        switch(Model.Size)
+        {
+            case MerchantTribeStore.Models.GooglePlusOneSize.Large:
+                sb.Append(" size=\"large\"");
+                break;
+            case MerchantTribeStore.Models.GooglePlusOneSize.Medium:
+                sb.Append(" size=\"medium\"");
+                break;
+            case MerchantTribeStore.Models.GooglePlusOneSize.Small:
+                sb.Append(" size=\"small\"");
+                break;
+            case MerchantTribeStore.Models.GooglePlusOneSize.Standard:
+                sb.Append(" size=\"standard\"");
+                break;
+        }
+        switch(Model.CountPosition)
+        {
+            case MerchantTribeStore.Models.GooglePlusOneCountPosition.Bubble:
+                sb.Append(" annotation=\"bubble\"");
+                break;
+            case MerchantTribeStore.Models.GooglePlusOneCountPosition.Inline:
+                sb.Append(" annotation=\"inline\"");
+                break;
+            case MerchantTribeStore.Models.GooglePlusOneCountPosition.None:
+                sb.Append(" annotation=\"none\"");
+                break;
+        }
+        sb.Append("></g:plusone>");        
+        return sb.ToString();
+    }
+}
+<!-- Google Plus One Button -->           
+@Html.Raw(BuildTag())
+    <script type="text/javascript">
+        window.___gcfg = {
+            lang: 'en-US'
+        };
+
+        (function () {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/plusone.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+        })();
+    </script>

@@ -15,7 +15,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             get { return "sys:include"; }
         }
 
-        void ITagHandler.Process(StringBuilder output, 
+        public void Process(StringBuilder output, 
                                  MerchantTribeApplication app, 
                                  dynamic viewBag,
                                  ITagProvider tagProvider, 
@@ -30,9 +30,6 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             proc.RenderForDisplay(output);            
         }
 
-        public Include()
-        {
-        }
 
     }
 }

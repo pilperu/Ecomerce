@@ -36,7 +36,7 @@ namespace MerchantTribeStore
             set { _tabIndex = value; }
         }
 
-        public delegate void UserSelectedDelegate(MerchantTribe.Commerce.Controls.UserSelectedEventArgs e);
+        public delegate void UserSelectedDelegate(object sender, MerchantTribe.Commerce.Controls.UserSelectedEventArgs e);
         public event UserSelectedDelegate UserSelected;
 
         protected override void OnLoad(System.EventArgs e)
@@ -188,7 +188,7 @@ namespace MerchantTribeStore
                     args.UserAccount = u;
                     if (UserSelected != null)
                     {
-                        UserSelected(args);
+                        UserSelected(this, args);
                     }
                 }
                 else

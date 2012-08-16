@@ -314,7 +314,7 @@ namespace MerchantTribe.Commerce.Tests
             prod.SitePrice = 59.99m;
             prod.StoreId = 1;
             
-            Catalog.UserSpecificPrice actualPrice = app.PriceProduct(prod, null, null);
+            Catalog.UserSpecificPrice actualPrice = app.PriceProduct(prod, null, null, app.CurrentlyActiveSales);
 
             Assert.IsNotNull(actualPrice, "Price should not be null");
             Assert.AreEqual(49.99m, actualPrice.PriceWithAdjustments(), "Price should be $49.99");

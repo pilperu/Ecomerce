@@ -1,0 +1,95 @@
+﻿@model IEnumerable<MerchantTribe.Commerce.Accounts.ToDoItem>
+
+@{
+    ViewBag.Title = "To Do List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+@section HeadContent {
+    <script type="text/javascript">
+
+        function RemoveItem(lnk) {
+            var id = $(lnk).attr('id');
+            id = id.replace('rem', '');
+
+            $.post('todo/delete/' + id,
+        {
+            id: id
+        },
+        function () {
+            lnk.parent().parent().parent().parent().parent().slideUp('slow', function () {
+                lnk.parent().parent().parent().parent().parent().remove();
+                LabelPriorities();
+            });
+        }
+     );
+        }
+
+        function LabelPriorities() {
+
+            var priorities = ['A1', 'A2', 'A3',
+                          'B1', 'B2', 'B3',
+                          'C1', 'C2', 'C3',
+                          'D', 'D', 'D',
+                          'F', 'F', 'F',
+                          'G', 'G', 'G',
+                          'H', 'H', 'H',
+                          'Low'];
+            var counter = 0;
+
+            $('.taskpriority').each(function () {
+                $(this).html(priorities[counter]);
+                if (counter < 21) {
+                    counter++;
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+
+            $("#dragitem-list").sortable({
+                placeholder: 'ui-state-highlight',
+                axis: 'y',
+                opacity: '0.75',
+                cursor: 'move',
+                update: function (event, ui) {
+                    var sorted = $(this).sortable('toArray');
+                    sorted += ' ';
+                    $.post('/todo/sort',
+                        { "ids": sorted },
+                        function () { LabelPriorities(); });
+                }
+            });
+
+            $('#dragitem-list').disableSelection();
+
+            $('.trash').click(function () {
+                RemoveItem($(this));
+                return false;
+            });
+
+            LabelPriorities();
+
+            $('#newitemtitle').focus();
+        });            
+    
+    
+
+</script>
+}
+
+<h1>My To Do List (MVC):</h1>
+    @Html.Raw((string)TempData["messages"])&nbsp;<br />
+    <form action="/todo/create" method="post">
+    <div class="editorpanel">    
+    <input type="text" name="title" id="newitemtitle" size="50" />
+    <input type="hidden" name="details" id="newitemdetails" value="" />
+    <input type="submit" value="Add New Item" title="Submit Title" />
+    </div>
+    </form>
+    <div id="dragitem-list">
+          
+    @foreach (var item in Model) {       
+        @Html.Partial("Render", item)
+    }
+    </div>        

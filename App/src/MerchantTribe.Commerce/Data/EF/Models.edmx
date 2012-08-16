@@ -1,90 +1,90 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="EfModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="EfModels.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="EfModelsStoreContainer">
-          <EntitySet Name="ApiKeys" EntityType="EfModels.Store.ApiKeys" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bv_SearchLexicon" EntityType="EfModels.Store.bv_SearchLexicon" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bv_SearchObjects" EntityType="EfModels.Store.bv_SearchObjects" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bv_SearchObjectWords" EntityType="EfModels.Store.bv_SearchObjectWords" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvb_BillingAccounts" EntityType="EfModels.Store.bvb_BillingAccounts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Address" EntityType="EfModels.Store.bvc_Address" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Affiliate" EntityType="EfModels.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_AffiliateReferral" EntityType="EfModels.Store.bvc_AffiliateReferral" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Audit" EntityType="EfModels.Store.bvc_Audit" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_AuthenticationToken" EntityType="EfModels.Store.bvc_AuthenticationToken" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Category" EntityType="EfModels.Store.bvc_Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CategoryXProperty" EntityType="EfModels.Store.bvc_CategoryXProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ContentBlock" EntityType="EfModels.Store.bvc_ContentBlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ContentColumn" EntityType="EfModels.Store.bvc_ContentColumn" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CustomUrl" EntityType="EfModels.Store.bvc_CustomUrl" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_EventLog" EntityType="EfModels.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Fraud" EntityType="EfModels.Store.bvc_Fraud" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_GiftCard" EntityType="EfModels.Store.bvc_GiftCard" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_HtmlTemplates" EntityType="EfModels.Store.bvc_HtmlTemplates" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_LineItem" EntityType="EfModels.Store.bvc_LineItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingList" EntityType="EfModels.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingListMember" EntityType="EfModels.Store.bvc_MailingListMember" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Manufacturer" EntityType="EfModels.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Order" EntityType="EfModels.Store.bvc_Order" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderCoupon" EntityType="EfModels.Store.bvc_OrderCoupon" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderNote" EntityType="EfModels.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderPackage" EntityType="EfModels.Store.bvc_OrderPackage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Policy" EntityType="EfModels.Store.bvc_Policy" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PolicyBlock" EntityType="EfModels.Store.bvc_PolicyBlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PriceGroup" EntityType="EfModels.Store.bvc_PriceGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Product" EntityType="EfModels.Store.bvc_Product" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFile" EntityType="EfModels.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFileXProduct" EntityType="EfModels.Store.bvc_ProductFileXProduct" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFilter" EntityType="EfModels.Store.bvc_ProductFilter" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductImage" EntityType="EfModels.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductInventory" EntityType="EfModels.Store.bvc_ProductInventory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductOptions" EntityType="EfModels.Store.bvc_ProductOptions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductOptionsItems" EntityType="EfModels.Store.bvc_ProductOptionsItems" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductProperty" EntityType="EfModels.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="EfModels.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyValue" EntityType="EfModels.Store.bvc_ProductPropertyValue" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductRelationships" EntityType="EfModels.Store.bvc_ProductRelationships" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductReview" EntityType="EfModels.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductType" EntityType="EfModels.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductTypeXProductProperty" EntityType="EfModels.Store.bvc_ProductTypeXProductProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="EfModels.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXCategory" EntityType="EfModels.Store.bvc_ProductXCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXOption" EntityType="EfModels.Store.bvc_ProductXOption" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Promotions" EntityType="EfModels.Store.bvc_Promotions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RewardsPoints" EntityType="EfModels.Store.bvc_RewardsPoints" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RMA" EntityType="EfModels.Store.bvc_RMA" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RMAItem" EntityType="EfModels.Store.bvc_RMAItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_SearchQuery" EntityType="EfModels.Store.bvc_SearchQuery" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShippingMethod" EntityType="EfModels.Store.bvc_ShippingMethod" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_User" EntityType="EfModels.Store.bvc_User" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserQuestions" EntityType="EfModels.Store.bvc_UserQuestions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserXContact" EntityType="EfModels.Store.bvc_UserXContact" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_USGeoData" EntityType="EfModels.Store.bvc_USGeoData" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Variants" EntityType="EfModels.Store.bvc_Variants" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Vendor" EntityType="EfModels.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ConversationAuthors" EntityType="EfModels.Store.ConversationAuthors" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ConversationGroups" EntityType="EfModels.Store.ConversationGroups" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ConversationMessages" EntityType="EfModels.Store.ConversationMessages" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Conversations" EntityType="EfModels.Store.Conversations" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_AuthTokens" EntityType="EfModels.Store.ecommrc_AuthTokens" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_News" EntityType="EfModels.Store.ecommrc_News" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_OrderTransactions" EntityType="EfModels.Store.ecommrc_OrderTransactions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_ShippingZones" EntityType="EfModels.Store.ecommrc_ShippingZones" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_StoreDomains" EntityType="EfModels.Store.ecommrc_StoreDomains" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_Stores" EntityType="EfModels.Store.ecommrc_Stores" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_StoreSettings" EntityType="EfModels.Store.ecommrc_StoreSettings" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_StoresXUsers" EntityType="EfModels.Store.ecommrc_StoresXUsers" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_Taxes" EntityType="EfModels.Store.ecommrc_Taxes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_TaxSchedules" EntityType="EfModels.Store.ecommrc_TaxSchedules" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ecommrc_UserAccounts" EntityType="EfModels.Store.ecommrc_UserAccounts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="PageVersions" EntityType="EfModels.Store.PageVersions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="QueuedTasks" EntityType="EfModels.Store.QueuedTasks" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ToDoItems" EntityType="EfModels.Store.ToDoItems" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="WishListItems" EntityType="EfModels.Store.WishListItems" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ApiKeys" EntityType="EfModels.Store.ApiKeys" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bv_SearchLexicon" EntityType="EfModels.Store.bv_SearchLexicon" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bv_SearchObjects" EntityType="EfModels.Store.bv_SearchObjects" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bv_SearchObjectWords" EntityType="EfModels.Store.bv_SearchObjectWords" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvb_BillingAccounts" EntityType="EfModels.Store.bvb_BillingAccounts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Address" EntityType="EfModels.Store.bvc_Address" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Affiliate" EntityType="EfModels.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_AffiliateReferral" EntityType="EfModels.Store.bvc_AffiliateReferral" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Audit" EntityType="EfModels.Store.bvc_Audit" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_AuthenticationToken" EntityType="EfModels.Store.bvc_AuthenticationToken" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Category" EntityType="EfModels.Store.bvc_Category" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CategoryXProperty" EntityType="EfModels.Store.bvc_CategoryXProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ContentBlock" EntityType="EfModels.Store.bvc_ContentBlock" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ContentColumn" EntityType="EfModels.Store.bvc_ContentColumn" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CustomUrl" EntityType="EfModels.Store.bvc_CustomUrl" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_EventLog" EntityType="EfModels.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Fraud" EntityType="EfModels.Store.bvc_Fraud" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_GiftCard" EntityType="EfModels.Store.bvc_GiftCard" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_HtmlTemplates" EntityType="EfModels.Store.bvc_HtmlTemplates" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_LineItem" EntityType="EfModels.Store.bvc_LineItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingList" EntityType="EfModels.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingListMember" EntityType="EfModels.Store.bvc_MailingListMember" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Manufacturer" EntityType="EfModels.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Order" EntityType="EfModels.Store.bvc_Order" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderCoupon" EntityType="EfModels.Store.bvc_OrderCoupon" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderNote" EntityType="EfModels.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderPackage" EntityType="EfModels.Store.bvc_OrderPackage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Policy" EntityType="EfModels.Store.bvc_Policy" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PolicyBlock" EntityType="EfModels.Store.bvc_PolicyBlock" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PriceGroup" EntityType="EfModels.Store.bvc_PriceGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Product" EntityType="EfModels.Store.bvc_Product" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFile" EntityType="EfModels.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFileXProduct" EntityType="EfModels.Store.bvc_ProductFileXProduct" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFilter" EntityType="EfModels.Store.bvc_ProductFilter" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductImage" EntityType="EfModels.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductInventory" EntityType="EfModels.Store.bvc_ProductInventory" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductOptions" EntityType="EfModels.Store.bvc_ProductOptions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductOptionsItems" EntityType="EfModels.Store.bvc_ProductOptionsItems" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductProperty" EntityType="EfModels.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="EfModels.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyValue" EntityType="EfModels.Store.bvc_ProductPropertyValue" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductRelationships" EntityType="EfModels.Store.bvc_ProductRelationships" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductReview" EntityType="EfModels.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductType" EntityType="EfModels.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductTypeXProductProperty" EntityType="EfModels.Store.bvc_ProductTypeXProductProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="EfModels.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXCategory" EntityType="EfModels.Store.bvc_ProductXCategory" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXOption" EntityType="EfModels.Store.bvc_ProductXOption" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Promotions" EntityType="EfModels.Store.bvc_Promotions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RewardsPoints" EntityType="EfModels.Store.bvc_RewardsPoints" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RMA" EntityType="EfModels.Store.bvc_RMA" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RMAItem" EntityType="EfModels.Store.bvc_RMAItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_SearchQuery" EntityType="EfModels.Store.bvc_SearchQuery" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShippingMethod" EntityType="EfModels.Store.bvc_ShippingMethod" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_User" EntityType="EfModels.Store.bvc_User" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserQuestions" EntityType="EfModels.Store.bvc_UserQuestions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserXContact" EntityType="EfModels.Store.bvc_UserXContact" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_USGeoData" EntityType="EfModels.Store.bvc_USGeoData" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Variants" EntityType="EfModels.Store.bvc_Variants" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Vendor" EntityType="EfModels.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ConversationAuthors" EntityType="EfModels.Store.ConversationAuthors" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ConversationGroups" EntityType="EfModels.Store.ConversationGroups" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ConversationMessages" EntityType="EfModels.Store.ConversationMessages" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Conversations" EntityType="EfModels.Store.Conversations" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_AuthTokens" EntityType="EfModels.Store.ecommrc_AuthTokens" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_News" EntityType="EfModels.Store.ecommrc_News" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_OrderTransactions" EntityType="EfModels.Store.ecommrc_OrderTransactions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_ShippingZones" EntityType="EfModels.Store.ecommrc_ShippingZones" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_StoreDomains" EntityType="EfModels.Store.ecommrc_StoreDomains" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_Stores" EntityType="EfModels.Store.ecommrc_Stores" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_StoreSettings" EntityType="EfModels.Store.ecommrc_StoreSettings" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_StoresXUsers" EntityType="EfModels.Store.ecommrc_StoresXUsers" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_Taxes" EntityType="EfModels.Store.ecommrc_Taxes" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_TaxSchedules" EntityType="EfModels.Store.ecommrc_TaxSchedules" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ecommrc_UserAccounts" EntityType="EfModels.Store.ecommrc_UserAccounts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="PageVersions" EntityType="EfModels.Store.PageVersions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="QueuedTasks" EntityType="EfModels.Store.QueuedTasks" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="ToDoItems" EntityType="EfModels.Store.ToDoItems" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="WishListItems" EntityType="EfModels.Store.WishListItems" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_bv_SearchObjectWords_bv_SearchLexicon" Association="EfModels.Store.FK_bv_SearchObjectWords_bv_SearchLexicon">
             <End Role="bv_SearchLexicon" EntitySet="bv_SearchLexicon" />
             <End Role="bv_SearchObjectWords" EntitySet="bv_SearchObjectWords" />
@@ -1664,8 +1664,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="EfModels" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="EntityFrameworkDevConnectionString" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="EfModels" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="EntityFrameworkDevConnectionString" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="bv_SearchLexicon" EntityType="EfModels.bv_SearchLexicon" />
           <EntitySet Name="bv_SearchObjects" EntityType="EfModels.bv_SearchObjects" />
           <EntitySet Name="bv_SearchObjectWords" EntityType="EfModels.bv_SearchObjectWords" />
@@ -1908,7 +1908,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Word" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="bv_SearchObjectWords" Relationship="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon" FromRole="bv_SearchLexicon" ToRole="bv_SearchObjectWords" />
         </EntityType>
@@ -1916,7 +1916,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="ObjectType" Nullable="false" />
           <Property Type="String" Name="ObjectId" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
@@ -1941,7 +1941,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="CreditCard" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="BillingZipCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1950,7 +1950,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
           <Property Type="String" Name="NickName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -1980,7 +1980,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="TimeStampUtc" Nullable="false" />
           <Property Type="Int32" Name="SourceModule" Nullable="false" />
           <Property Type="String" Name="ShortName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2040,7 +2040,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="CategoryId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="PropertyId" Nullable="false" />
           <Property Type="Int64" Name="ParentPropertyId" Nullable="false" />
@@ -2113,7 +2113,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="CardNumber" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Amount" Nullable="false" Precision="18" Scale="10" />
@@ -2179,7 +2179,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="SKU" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="ProductName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2276,7 +2276,7 @@
           <Property Type="String" Name="VariantId" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="QuantityOnHand" Nullable="false" />
           <Property Type="Int32" Name="QuantityReserved" Nullable="false" />
-          <Property Type="Int32" Name="QuantityAvailableForSale" annotation:StoreGeneratedPattern="Computed" />
+          <Property Type="Int32" Name="QuantityAvailableForSale" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int32" Name="LowStockPoint" Nullable="false" />
           <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
@@ -2314,7 +2314,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="PropertyName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="DisplayOnSite" Nullable="false" />
@@ -2330,7 +2330,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="PropertyId" Nullable="false" />
           <Property Type="String" Name="ChoiceName" Nullable="false" MaxLength="512" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -2342,7 +2342,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="lastUpdated" Nullable="false" />
           <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="Approved" Nullable="false" />
@@ -2381,7 +2381,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CategoryId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -2393,7 +2393,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="OptionBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
@@ -2405,7 +2405,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="UserId" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Points" Nullable="false" />
           <Property Type="Int32" Name="PointsHeld" Nullable="false" />
@@ -2419,7 +2419,7 @@
           <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="OrderBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Type="Int32" Name="Number" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Number" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="PhoneNumber" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Comments" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -2550,7 +2550,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="TimeStampUtc" Nullable="false" />
           <Property Type="String" Name="Message" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -2582,7 +2582,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Areas" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -2592,7 +2592,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="StoreName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="Status" Nullable="false" />
           <Property Type="DateTime" Name="DateCreated" Nullable="false" />
@@ -2615,7 +2615,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="CountryName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="RegionName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2630,7 +2630,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="ecommrc_Stores" Relationship="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" FromRole="ecommrc_TaxSchedules" ToRole="ecommrc_Stores" />
@@ -2640,7 +2640,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="email" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="password" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="DateCreated" Nullable="false" />
@@ -2654,7 +2654,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="PageId" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="AdminName" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Int64" Name="AvailableScheduleId" Nullable="false" />
@@ -2860,7 +2860,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="RelatedProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -2872,7 +2872,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="DomainName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -2880,7 +2880,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="AccountId" Nullable="false" />
           <Property Type="Boolean" Name="IsComplete" Nullable="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -2891,7 +2891,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Bio" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
@@ -2905,7 +2905,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="Slug" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2926,7 +2926,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="Int64" Name="GroupId" Nullable="false" />
           <Property Type="String" Name="Topic" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2951,7 +2951,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="Boolean" Name="Private" Nullable="false" />
           <Property Type="String" Name="Name" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2962,7 +2962,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="Int64" Name="ListID" Nullable="false" />
           <Property Type="String" Name="EmailAddress" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -2987,7 +2987,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="ApiKey1" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -2995,7 +2995,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Guid" Name="TokenId" Nullable="false" />
           <Property Type="Int64" Name="UserId" Nullable="false" />
           <Property Type="DateTime" Name="Expires" Nullable="false" />
@@ -3017,7 +3017,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="Int64" Name="UserId" Nullable="false" />
           <Property Type="Int32" Name="AccessMode" Nullable="false" />
@@ -3052,7 +3052,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="SettingName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="SettingValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -3074,7 +3074,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ContactId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="UserId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
@@ -3096,7 +3096,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
           <Property Type="String" Name="CouponCode" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="OrderBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
@@ -3109,7 +3109,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="OrderId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="AuditDate" Nullable="false" />
           <Property Type="String" Name="Note" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -3122,7 +3122,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="Description" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Type="Decimal" Name="Width" Nullable="false" Precision="18" Scale="4" />
           <Property Type="Decimal" Name="Height" Nullable="false" Precision="18" Scale="4" />
@@ -3146,7 +3146,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
           <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -3160,7 +3160,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ReferralID" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="Enabled" Nullable="false" />
           <Property Type="String" Name="DisplayName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -3180,7 +3180,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="AffiliateId" Nullable="false" />
           <Property Type="String" Name="referrerurl" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="TimeOfReferralUtc" Nullable="false" />
@@ -3190,7 +3190,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
           <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="VariantId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
@@ -3229,7 +3229,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="Int32" Name="Mode" Nullable="false" />
           <Property Type="DateTime" Name="LastUpdatedUtc" Nullable="false" />
@@ -3245,7 +3245,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="bvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="AffiliateId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="BillingAddress" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -3323,7 +3323,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="FriendlyName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="TaskProcessorName" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -3337,7 +3337,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ProductFileId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="ProductId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="AvailableMinutes" Nullable="false" />
@@ -3362,7 +3362,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ProductTypeBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="PropertyId" Nullable="false" />
           <Property Type="Int32" Name="SortOrder" Nullable="false" />
@@ -3385,7 +3385,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="String" Name="ProductBvin" Nullable="false" MaxLength="36" FixedLength="false" Unicode="false" />
           <Property Type="Int64" Name="PropertyId" Nullable="false" />
           <Property Type="String" Name="PropertyValue" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -3408,7 +3408,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int64" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Type="Int64" Name="StoreId" Nullable="false" />
           <Property Type="String" Name="CustomerId" Nullable="false" MaxLength="36" FixedLength="false" Unicode="true" />
           <Property Type="DateTime" Name="LastUpdated" Nullable="false" />
@@ -3420,7 +3420,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="EfModelsStoreContainer" CdmEntityContainer="EntityFrameworkDevConnectionString">
           <EntitySetMapping Name="bv_SearchLexicon">
             <EntityTypeMapping TypeName="EfModels.bv_SearchLexicon">
@@ -4611,7 +4611,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -4678,74 +4678,74 @@
         <EntityTypeShape EntityType="EfModels.ecommrc_TaxSchedules" Width="1.875" PointX="3" PointY="22.625" Height="1.980286458333353" />
         <EntityTypeShape EntityType="EfModels.ecommrc_UserAccounts" Width="2" PointX="3.25" PointY="1.125" Height="2.7494921870529652" />
         <EntityTypeShape EntityType="EfModels.PageVersion" Width="2.375" PointX="2.75" PointY="28.75" Height="2.5571907552083388" />
-        <AssociationConnector Association="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon" >
+        <AssociationConnector Association="EfModels.FK_bv_SearchObjectWords_bv_SearchLexicon">
           <ConnectorPoint PointX="9.46875" PointY="15.970683593749982" />
           <ConnectorPoint PointX="9.46875" PointY="16.90625" />
           <ConnectorPoint PointX="10.25" PointY="16.90625" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bv_SearchObjectWords_bv_SearchObjects" >
+        <AssociationConnector Association="EfModels.FK_bv_SearchObjectWords_bv_SearchObjects">
           <ConnectorPoint PointX="9.25" PointY="18.023793945312491" />
           <ConnectorPoint PointX="10.25" PointY="18.023793945312491" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ProductXCategory_bvc_Category" >
+        <AssociationConnector Association="EfModels.FK_ProductXCategory_bvc_Category">
           <ConnectorPoint PointX="18.15625" PointY="14.375" />
           <ConnectorPoint PointX="18.15625" PointY="7.4526509318033582" />
           <ConnectorPoint PointX="19" PointY="7.4526509318033582" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_ContentBlock_bvc_ContentColumn" >
+        <AssociationConnector Association="EfModels.FK_bvc_ContentBlock_bvc_ContentColumn">
           <ConnectorPoint PointX="25.25" PointY="14.336293945312491" />
           <ConnectorPoint PointX="26" PointY="14.336293945312491" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_PolicyBlock_bvc_Policy" >
+        <AssociationConnector Association="EfModels.FK_bvc_PolicyBlock_bvc_Policy">
           <ConnectorPoint PointX="25.25" PointY="10.307444661458305" />
           <ConnectorPoint PointX="26" PointY="10.307444661458305" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_ProductInventory_bvc_Product" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductInventory_bvc_Product">
           <ConnectorPoint PointX="15.25" PointY="5.4708968098958053" />
           <ConnectorPoint PointX="16" PointY="5.4708968098958053" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ProductXCategory_bvc_Product" >
+        <AssociationConnector Association="EfModels.FK_ProductXCategory_bvc_Product">
           <ConnectorPoint PointX="15.25" PointY="7.1552968636067291" />
           <ConnectorPoint PointX="19" PointY="7.1552968636067291" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_ProductOptionsItems_bvc_ProductOptions" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductOptionsItems_bvc_ProductOptions">
           <ConnectorPoint PointX="23.25" PointY="6.3747460937499909" />
           <ConnectorPoint PointX="24" PointY="6.3747460937499909" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_ProductPropertyChoice_bvc_ProductProperty" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductPropertyChoice_bvc_ProductProperty">
           <ConnectorPoint PointX="12.75" PointY="22.557444661458305" />
           <ConnectorPoint PointX="13.25" PointY="22.557444661458305" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_ProductXOption_bvc_ProductXOption" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductXOption_bvc_ProductXOption">
           <ConnectorPoint PointX="1.4149038461538464" PointY="3.1148893229166674" />
           <ConnectorPoint PointX="1.4149038461538464" PointY="3.3648893229166674" />
           <ConnectorPoint PointX="1.9730769230769232" PointY="3.3648893229166674" />
           <ConnectorPoint PointX="1.9730769230769232" PointY="3.1148893229166674" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_RMAItem_bvc_RMA" >
+        <AssociationConnector Association="EfModels.FK_bvc_RMAItem_bvc_RMA">
           <ConnectorPoint PointX="20.25" PointY="21.913198242187491" />
           <ConnectorPoint PointX="21" PointY="21.913198242187491" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_OrderTransactions_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_OrderTransactions_ecommrc_Stores">
           <ConnectorPoint PointX="2.25" PointY="9.5862532552083053" />
           <ConnectorPoint PointX="2.625" PointY="9.5862532552083053" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_ShippingZones_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_ShippingZones_ecommrc_Stores">
           <ConnectorPoint PointX="2.25" PointY="12.787543506703468" />
           <ConnectorPoint PointX="4.921875" PointY="12.787543506703468" />
           <ConnectorPoint PointX="4.921875" PointY="13.5" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_Stores">
           <ConnectorPoint PointX="0.59375" PointY="13.662903645833353" />
           <ConnectorPoint PointX="0.59375" PointY="16.09375" />
           <ConnectorPoint PointX="5.25" PointY="16.09375" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_TaxSchedules_ecommrc_Stores">
           <ConnectorPoint PointX="0.62500249999999991" PointY="13.662903645833353" />
           <ConnectorPoint PointX="0.62500249999999991" PointY="23.615143229166677" />
           <ConnectorPoint PointX="3" PointY="23.615143229166677" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_Taxes_ecommrc_TaxSchedules">
           <ConnectorPoint PointX="4.71875" PointY="22.625" />
           <ConnectorPoint PointX="4.71875" PointY="17.2990243098958" />
           <ConnectorPoint PointX="5.25" PointY="17.2990243098958" />
@@ -4757,40 +4757,40 @@
         <EntityTypeShape EntityType="EfModels.ConversationGroup" Width="1.5" PointX="18.75" PointY="16.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="EfModels.ConversationMessage" Width="1.875" PointX="10" PointY="28.75" Height="1.980286458333353" />
         <EntityTypeShape EntityType="EfModels.Conversation" Width="1.5" PointX="21" PointY="16" Height="2.557190755208353" />
-        <AssociationConnector Association="EfModels.FK_Conversations_ConversationGroups" >
+        <AssociationConnector Association="EfModels.FK_Conversations_ConversationGroups">
           <ConnectorPoint PointX="20.25" PointY="17.211293945312491" />
           <ConnectorPoint PointX="21" PointY="17.211293945312491" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.bvc_MailingList" Width="1.5" PointX="18.75" PointY="1.125" Height="2.1725878906249818" />
         <EntityTypeShape EntityType="EfModels.bvc_MailingListMember" Width="2" PointX="21" PointY="1" Height="2.557190755208353" />
-        <AssociationConnector Association="EfModels.FK_bvc_MailingListMember_bvc_MailingList" >
+        <AssociationConnector Association="EfModels.FK_bvc_MailingListMember_bvc_MailingList">
           <ConnectorPoint PointX="20.25" PointY="2.2112939453124909" />
           <ConnectorPoint PointX="21" PointY="2.2112939453124909" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.ApiKey" Width="1.5" PointX="25.625" PointY="27.75" Height="1.5956835937499818" />
         <EntityTypeShape EntityType="EfModels.ecommrc_AuthTokens" Width="2.125" PointX="6" PointY="1.5" Height="1.980286458333353" />
-        <AssociationConnector Association="EfModels.FK_ecommrc_AuthTokens_ecommrc_UserAccounts" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_AuthTokens_ecommrc_UserAccounts">
           <ConnectorPoint PointX="5.25" PointY="2.4901432291666765" />
           <ConnectorPoint PointX="6" PointY="2.4901432291666765" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.ecommrc_StoresXUsers" Width="2.125" PointX="5.5" PointY="10.5" Height="2.1725878906249818" />
-        <AssociationConnector Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_Stores">
           <ConnectorPoint PointX="2.25" PointY="12.012583013406946" />
           <ConnectorPoint PointX="5.5" PointY="12.012583013406946" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_UserAccounts" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_StoresXUsers_ecommrc_UserAccounts">
           <ConnectorPoint PointX="5.03125" PointY="3.8744921870529652" />
           <ConnectorPoint PointX="5.03125" PointY="11.227578136188908" />
           <ConnectorPoint PointX="5.5" PointY="11.227578136188908" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.ecommrc_StoreSettings" Width="2.25" PointX="2.25" PointY="19.875" Height="1.980286458333353" />
-        <AssociationConnector Association="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores" >
+        <AssociationConnector Association="EfModels.FK_ecommrc_StoreSettings_ecommrc_Stores">
           <ConnectorPoint PointX="0.56249750000000009" PointY="13.662903645833353" />
           <ConnectorPoint PointX="0.56249750000000009" PointY="20.865143229166677" />
           <ConnectorPoint PointX="2.25" PointY="20.865143229166677" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.bvc_UserXContact" Width="1.75" PointX="21" PointY="11.5" Height="1.980286458333353" />
-        <AssociationConnector Association="EfModels.FK_bvc_UserXAffiliate_bvc_User" >
+        <AssociationConnector Association="EfModels.FK_bvc_UserXAffiliate_bvc_User">
           <ConnectorPoint PointX="20.25" PointY="12.490143229166677" />
           <ConnectorPoint PointX="21" PointY="12.490143229166677" />
         </AssociationConnector>
@@ -4803,32 +4803,32 @@
         <EntityTypeShape EntityType="EfModels.bvc_LineItem" Width="2.125" PointX="10.75" PointY="1" Height="7.5570279947916248" />
         <EntityTypeShape EntityType="EfModels.bvc_Promotions" Width="2.125" PointX="5.5" PointY="28.75" Height="3.1340950520833246" />
         <EntityTypeShape EntityType="EfModels.bvc_Order" Width="2.25" PointX="8" PointY="4.5" Height="8.1339322916666656" />
-        <AssociationConnector Association="EfModels.FK_bvc_LineItem_bvc_LineItem" >
+        <AssociationConnector Association="EfModels.FK_bvc_LineItem_bvc_LineItem">
           <ConnectorPoint PointX="10.25" PointY="6.5285139973958124" />
           <ConnectorPoint PointX="10.75" PointY="6.5285139973958124" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_OrderCoupon_bvc_Order" >
+        <AssociationConnector Association="EfModels.FK_bvc_OrderCoupon_bvc_Order">
           <ConnectorPoint PointX="10.25" PointY="11.278595377604177" />
           <ConnectorPoint PointX="11" PointY="11.278595377604177" />
         </AssociationConnector>
-        <AssociationConnector Association="EfModels.FK_bvc_OrderNote_bvc_Order" >
+        <AssociationConnector Association="EfModels.FK_bvc_OrderNote_bvc_Order">
           <ConnectorPoint PointX="9.96875" PointY="12.633932291666666" />
           <ConnectorPoint PointX="9.96875" PointY="13.84375" />
           <ConnectorPoint PointX="11" PointY="13.84375" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.QueuedTask" Width="1.875" PointX="29.5" PointY="20.75" Height="2.7494921874999818" />
         <EntityTypeShape EntityType="EfModels.bvc_ProductFileXProduct" Width="1.875" PointX="26" PointY="0.75" Height="2.5571907552083388" />
-        <AssociationConnector Association="EfModels.FK_bvc_ProductFileXProduct_bvc_ProductFile" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductFileXProduct_bvc_ProductFile">
           <ConnectorPoint PointX="25.25" PointY="2.0862939453124909" />
           <ConnectorPoint PointX="26" PointY="2.0862939453124909" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.bvc_ProductTypeXProductProperty" Width="2.5" PointX="8" PointY="20.875" Height="2.1725878906249818" />
-        <AssociationConnector Association="EfModels.FK_ProductTypeProperties_ProductType" >
+        <AssociationConnector Association="EfModels.FK_ProductTypeProperties_ProductType">
           <ConnectorPoint PointX="7.25" PointY="21.961293945312491" />
           <ConnectorPoint PointX="8" PointY="21.961293945312491" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EfModels.bvc_ProductPropertyValue" Width="2.125" PointX="15.75" PointY="10.75" Height="2.1725878906249818" />
-        <AssociationConnector Association="EfModels.FK_bvc_ProductPropertyValue_bvc_Product" >
+        <AssociationConnector Association="EfModels.FK_bvc_ProductPropertyValue_bvc_Product">
           <ConnectorPoint PointX="15.25" PointY="11.571726888020834" />
           <ConnectorPoint PointX="15.75" PointY="11.571726888020834" />
         </AssociationConnector>

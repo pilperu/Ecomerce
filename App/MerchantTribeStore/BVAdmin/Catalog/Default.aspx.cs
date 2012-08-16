@@ -26,17 +26,18 @@ namespace MerchantTribeStore
 
         }
 
-        void SimpleProductFilter_FilterChanged(ProductSearchCriteria criteria, System.EventArgs e)
+        void SimpleProductFilter_FilterChanged(object sender, System.EventArgs e)
         {
-            this.criteria = criteria;
+            this.criteria = (ProductSearchCriteria)sender;
             SaveQuerySettings();
             this.currentPage = 1;
             LoadProducts();
         }
 
-        void SimpleProductFilter_GoPressed(ProductSearchCriteria criteria, System.EventArgs e)
+        void SimpleProductFilter_GoPressed(object sender, System.EventArgs e)
         {
-            this.criteria = criteria;
+
+            this.criteria = (ProductSearchCriteria)sender;
             SaveQuerySettings();
             this.currentPage = 1;
             LoadProducts();

@@ -1,0 +1,59 @@
+﻿#flexedit {position:fixed;
+           top:0px;
+           left:0px;  
+           width:100%;                                      
+           height:65px;
+           background: url('../images/system/flexedit/toolbar.png') repeat-x #ccc;
+           color:#333;
+           margin:0;
+           }
+#site-wrapper {margin-top:65px;}           
+
+.dragpart {}
+.droppart {}
+.droppart-hover {background:#9f9;}
+.droppart-dragging {}
+
+.dragbutton, .flexbuttonright {display:block;width:55px;height:55px;float:left;margin:5px;}
+.flexbuttonright {float:right;}
+
+.colholder { border:dashed 1px #667;border-bottom:0;
+            color:#667;
+            padding:5px;margin:0;            
+            }             
+.colholder strong {font-weight:bold;opacity:1;}
+
+.edittools {position:relative;
+           top:0;left:0;            
+           width:60px;height:40px;
+           z-index:255;color:#fff;
+           margin:0 0 -40px 0px;                                    
+           }    
+.edittools a {text-decoration:none;}                          
+.deletepart {display:inline-block;width:20px;height:20px; background: #f66 url('../images/system/trashcan.png') no-repeat;}              
+.sorthandle {display:inline-block;margin:0 0 0 20px;width:20px;height:20px; background: #f0f0f0 url('../images/system/draghandle.png') no-repeat;}              
+.edithandle {display:block;width:60px;height:20px; background: #333; color:#fff;}
+#flexedit .hidden {display:none;}
+
+.formhover {background:#ff9;/*border:solid 1px #667;*/}
+
+.editplaceholder {padding:10px;border:dashed 2px #666;
+                  border-radius:10px;
+                  -webkit-border-radius:10px;
+                  -moz-border-radius:10px;}
+
+/* Pop Over */
+ .editoroverlay {border-width: 0;margin: 0;padding: 0;background:black none repeat scroll 0 0;display:none;height:2500px;
+  left:0; filter:alpha(opacity=70); opacity: 0.70; top:0; width:100%; z-index:50; display:none; position:fixed; -moz-background-clip: -moz-initial;
+  -moz-background-origin: -moz-initial;-moz-background-inline-policy: -moz-initial;    
+}
+.editormodal{position:absolute;top:0%;z-index:51;display: none;margin:30px 0;width:100%;}
+.editormodal a {margin-left:10px;text-decoration:none;}
+.editormodal a:hover {text-decoration:underline;}
+.editorpopover {background:#000;width:700px;margin:0 auto;padding:10px;-moz-border-radius:30px;-webkit-border-radius:30px;border-radius:30px;}
+.editorpopover a {color:#fff;}
+
+.flexeditarea {padding:10px;
+               background:#000;color:#ccc;
+               }
+

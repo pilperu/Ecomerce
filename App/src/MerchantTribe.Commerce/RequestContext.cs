@@ -84,8 +84,7 @@ namespace MerchantTribe.Commerce
 
             return false;                                      
         }
-
-
+        
         public RequestContext()
         {
             CurrentStore = new Accounts.Store();            

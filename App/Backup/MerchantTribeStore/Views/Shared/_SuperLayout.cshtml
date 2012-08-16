@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/bvadmin/styles.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/BVAdmin/StylesPrint.css")" rel="stylesheet" type="text/css" media="print" />    
+    @Html.Raw((string)ViewData["JqueryInclude"])
+    @RenderSection("HeadContent", false)
+</head>
+<body style="background: url('@Html.Raw((string)ViewData["wallpaper"])') top left;">
+    @if (IsSectionDefined("HeaderContent"))
+    {
+        @RenderSection("HeaderContent", false)
+    }
+    else
+    {
+        @Html.Raw((string)ViewData["headerhtml"])
+
+        <div id="header">
+            <div id="branding">
+                <div id="brand">
+                    @ViewBag.StoreName - <em>@ViewBag.AppVersion</em>
+                </div>
+            </div>
+            <div id="mainmenu">
+                <div class="menu">
+                    @Html.Raw((string)ViewBag.RenderedMenu)
+                </div>
+                <div id="gotolinks">
+                    <a href="@Url.Content("~/adminaccount/logout")">Log Out</a>
+                </div>
+            </div>
+        </div>
+    }
+    <div id="wrapper">
+        <div id="content">
+            @RenderBody()
+        </div>
+    </div>
+    @RenderSection("FooterContent", false)
+</body>
+</html>            

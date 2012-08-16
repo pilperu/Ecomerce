@@ -162,7 +162,7 @@ namespace MerchantTribe.Commerce.Accounts
             return ListPoco(data);            
         }
 
-        public int CountOfAll()
+        public override int CountOfAll()
         {
             return repository.CountOfAll();
         }

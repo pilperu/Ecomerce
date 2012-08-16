@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -1363,6 +1364,7 @@ namespace MerchantTribe.Commerce.Data.EF
         private ObjectSet<WishListItem> _WishListItems;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -1998,6 +2000,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
         #region Function Imports
     
         /// <summary>
@@ -2323,11 +2326,11 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -2356,7 +2359,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2375,7 +2379,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -2400,7 +2404,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -2424,7 +2428,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnApiKey1Changing(value);
                 ReportPropertyChanging("ApiKey1");
-                _ApiKey1 = StructuralObject.SetValidValue(value, false);
+                _ApiKey1 = StructuralObject.SetValidValue(value, false, "ApiKey1");
                 ReportPropertyChanged("ApiKey1");
                 OnApiKey1Changed();
             }
@@ -2434,7 +2438,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnApiKey1Changed();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -2461,7 +2465,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2480,7 +2485,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -2505,7 +2510,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWordChanging(value);
                 ReportPropertyChanging("Word");
-                _Word = StructuralObject.SetValidValue(value, false);
+                _Word = StructuralObject.SetValidValue(value, false, "Word");
                 ReportPropertyChanged("Word");
                 OnWordChanged();
             }
@@ -2515,7 +2520,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnWordChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2541,6 +2546,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2575,7 +2581,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2594,7 +2601,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -2619,7 +2626,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnObjectTypeChanging(value);
                 ReportPropertyChanging("ObjectType");
-                _ObjectType = StructuralObject.SetValidValue(value);
+                _ObjectType = StructuralObject.SetValidValue(value, "ObjectType");
                 ReportPropertyChanged("ObjectType");
                 OnObjectTypeChanged();
             }
@@ -2643,7 +2650,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnObjectIdChanging(value);
                 ReportPropertyChanging("ObjectId");
-                _ObjectId = StructuralObject.SetValidValue(value, false);
+                _ObjectId = StructuralObject.SetValidValue(value, false, "ObjectId");
                 ReportPropertyChanged("ObjectId");
                 OnObjectIdChanged();
             }
@@ -2667,7 +2674,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -2691,7 +2698,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSiteIdChanging(value);
                 ReportPropertyChanging("SiteId");
-                _SiteId = StructuralObject.SetValidValue(value);
+                _SiteId = StructuralObject.SetValidValue(value, "SiteId");
                 ReportPropertyChanged("SiteId");
                 OnSiteIdChanged();
             }
@@ -2715,7 +2722,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastIndexUtcChanging(value);
                 ReportPropertyChanging("LastIndexUtc");
-                _LastIndexUtc = StructuralObject.SetValidValue(value);
+                _LastIndexUtc = StructuralObject.SetValidValue(value, "LastIndexUtc");
                 ReportPropertyChanged("LastIndexUtc");
                 OnLastIndexUtcChanged();
             }
@@ -2725,7 +2732,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnLastIndexUtcChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2751,6 +2758,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2781,7 +2789,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2800,7 +2809,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnSearchObjectIdChanging(value);
                     ReportPropertyChanging("SearchObjectId");
-                    _SearchObjectId = StructuralObject.SetValidValue(value);
+                    _SearchObjectId = StructuralObject.SetValidValue(value, "SearchObjectId");
                     ReportPropertyChanged("SearchObjectId");
                     OnSearchObjectIdChanged();
                 }
@@ -2827,7 +2836,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnWordIdChanging(value);
                     ReportPropertyChanging("WordId");
-                    _WordId = StructuralObject.SetValidValue(value);
+                    _WordId = StructuralObject.SetValidValue(value, "WordId");
                     ReportPropertyChanged("WordId");
                     OnWordIdChanged();
                 }
@@ -2852,7 +2861,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnScoreChanging(value);
                 ReportPropertyChanging("Score");
-                _Score = StructuralObject.SetValidValue(value);
+                _Score = StructuralObject.SetValidValue(value, "Score");
                 ReportPropertyChanged("Score");
                 OnScoreChanged();
             }
@@ -2878,7 +2887,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnSiteIdChanging(value);
                     ReportPropertyChanging("SiteId");
-                    _SiteId = StructuralObject.SetValidValue(value);
+                    _SiteId = StructuralObject.SetValidValue(value, "SiteId");
                     ReportPropertyChanged("SiteId");
                     OnSiteIdChanged();
                 }
@@ -2889,7 +2898,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSiteIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -2969,6 +2978,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -2999,7 +3009,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3018,7 +3029,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -3043,7 +3054,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false);
+                _Email = StructuralObject.SetValidValue(value, false, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -3067,7 +3078,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCreditCardChanging(value);
                 ReportPropertyChanging("CreditCard");
-                _CreditCard = StructuralObject.SetValidValue(value, false);
+                _CreditCard = StructuralObject.SetValidValue(value, false, "CreditCard");
                 ReportPropertyChanged("CreditCard");
                 OnCreditCardChanged();
             }
@@ -3091,7 +3102,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBillingZipCodeChanging(value);
                 ReportPropertyChanging("BillingZipCode");
-                _BillingZipCode = StructuralObject.SetValidValue(value, false);
+                _BillingZipCode = StructuralObject.SetValidValue(value, false, "BillingZipCode");
                 ReportPropertyChanged("BillingZipCode");
                 OnBillingZipCodeChanged();
             }
@@ -3101,7 +3112,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnBillingZipCodeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3174,7 +3185,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3191,7 +3203,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -3217,7 +3229,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -3242,7 +3254,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -3266,7 +3278,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNickNameChanging(value);
                 ReportPropertyChanging("NickName");
-                _NickName = StructuralObject.SetValidValue(value, false);
+                _NickName = StructuralObject.SetValidValue(value, false, "NickName");
                 ReportPropertyChanged("NickName");
                 OnNickNameChanged();
             }
@@ -3290,7 +3302,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -3314,7 +3326,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMiddleInitialChanging(value);
                 ReportPropertyChanging("MiddleInitial");
-                _MiddleInitial = StructuralObject.SetValidValue(value, false);
+                _MiddleInitial = StructuralObject.SetValidValue(value, false, "MiddleInitial");
                 ReportPropertyChanged("MiddleInitial");
                 OnMiddleInitialChanged();
             }
@@ -3338,7 +3350,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -3362,7 +3374,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCompanyChanging(value);
                 ReportPropertyChanging("Company");
-                _Company = StructuralObject.SetValidValue(value, false);
+                _Company = StructuralObject.SetValidValue(value, false, "Company");
                 ReportPropertyChanged("Company");
                 OnCompanyChanged();
             }
@@ -3386,7 +3398,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLine1Changing(value);
                 ReportPropertyChanging("Line1");
-                _Line1 = StructuralObject.SetValidValue(value, false);
+                _Line1 = StructuralObject.SetValidValue(value, false, "Line1");
                 ReportPropertyChanged("Line1");
                 OnLine1Changed();
             }
@@ -3410,7 +3422,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLine2Changing(value);
                 ReportPropertyChanging("Line2");
-                _Line2 = StructuralObject.SetValidValue(value, false);
+                _Line2 = StructuralObject.SetValidValue(value, false, "Line2");
                 ReportPropertyChanged("Line2");
                 OnLine2Changed();
             }
@@ -3434,7 +3446,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLine3Changing(value);
                 ReportPropertyChanging("Line3");
-                _Line3 = StructuralObject.SetValidValue(value, false);
+                _Line3 = StructuralObject.SetValidValue(value, false, "Line3");
                 ReportPropertyChanged("Line3");
                 OnLine3Changed();
             }
@@ -3458,7 +3470,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
+                _City = StructuralObject.SetValidValue(value, false, "City");
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -3482,7 +3494,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRegionBvinChanging(value);
                 ReportPropertyChanging("RegionBvin");
-                _RegionBvin = StructuralObject.SetValidValue(value, false);
+                _RegionBvin = StructuralObject.SetValidValue(value, false, "RegionBvin");
                 ReportPropertyChanged("RegionBvin");
                 OnRegionBvinChanged();
             }
@@ -3506,7 +3518,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRegionNameChanging(value);
                 ReportPropertyChanging("RegionName");
-                _RegionName = StructuralObject.SetValidValue(value, false);
+                _RegionName = StructuralObject.SetValidValue(value, false, "RegionName");
                 ReportPropertyChanged("RegionName");
                 OnRegionNameChanged();
             }
@@ -3530,7 +3542,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPostalCodeChanging(value);
                 ReportPropertyChanging("PostalCode");
-                _PostalCode = StructuralObject.SetValidValue(value, false);
+                _PostalCode = StructuralObject.SetValidValue(value, false, "PostalCode");
                 ReportPropertyChanged("PostalCode");
                 OnPostalCodeChanged();
             }
@@ -3554,7 +3566,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountryBvinChanging(value);
                 ReportPropertyChanging("CountryBvin");
-                _CountryBvin = StructuralObject.SetValidValue(value, false);
+                _CountryBvin = StructuralObject.SetValidValue(value, false, "CountryBvin");
                 ReportPropertyChanged("CountryBvin");
                 OnCountryBvinChanged();
             }
@@ -3578,7 +3590,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountryNameChanging(value);
                 ReportPropertyChanging("CountryName");
-                _CountryName = StructuralObject.SetValidValue(value, false);
+                _CountryName = StructuralObject.SetValidValue(value, false, "CountryName");
                 ReportPropertyChanged("CountryName");
                 OnCountryNameChanged();
             }
@@ -3602,7 +3614,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountyBvinChanging(value);
                 ReportPropertyChanging("CountyBvin");
-                _CountyBvin = StructuralObject.SetValidValue(value, false);
+                _CountyBvin = StructuralObject.SetValidValue(value, false, "CountyBvin");
                 ReportPropertyChanged("CountyBvin");
                 OnCountyBvinChanged();
             }
@@ -3626,7 +3638,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountyNameChanging(value);
                 ReportPropertyChanging("CountyName");
-                _CountyName = StructuralObject.SetValidValue(value, false);
+                _CountyName = StructuralObject.SetValidValue(value, false, "CountyName");
                 ReportPropertyChanged("CountyName");
                 OnCountyNameChanged();
             }
@@ -3650,7 +3662,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, false);
+                _Phone = StructuralObject.SetValidValue(value, false, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -3674,7 +3686,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFaxChanging(value);
                 ReportPropertyChanging("Fax");
-                _Fax = StructuralObject.SetValidValue(value, false);
+                _Fax = StructuralObject.SetValidValue(value, false, "Fax");
                 ReportPropertyChanged("Fax");
                 OnFaxChanged();
             }
@@ -3698,7 +3710,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWebSiteUrlChanging(value);
                 ReportPropertyChanging("WebSiteUrl");
-                _WebSiteUrl = StructuralObject.SetValidValue(value, false);
+                _WebSiteUrl = StructuralObject.SetValidValue(value, false, "WebSiteUrl");
                 ReportPropertyChanged("WebSiteUrl");
                 OnWebSiteUrlChanged();
             }
@@ -3722,7 +3734,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserBvinChanging(value);
                 ReportPropertyChanging("UserBvin");
-                _UserBvin = StructuralObject.SetValidValue(value, false);
+                _UserBvin = StructuralObject.SetValidValue(value, false, "UserBvin");
                 ReportPropertyChanged("UserBvin");
                 OnUserBvinChanged();
             }
@@ -3746,7 +3758,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -3770,7 +3782,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAddressTypeChanging(value);
                 ReportPropertyChanging("AddressType");
-                _AddressType = StructuralObject.SetValidValue(value);
+                _AddressType = StructuralObject.SetValidValue(value, "AddressType");
                 ReportPropertyChanged("AddressType");
                 OnAddressTypeChanged();
             }
@@ -3780,7 +3792,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnAddressTypeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3833,7 +3845,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3852,7 +3865,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -3877,7 +3890,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnReferralIDChanging(value);
                 ReportPropertyChanging("ReferralID");
-                _ReferralID = StructuralObject.SetValidValue(value, false);
+                _ReferralID = StructuralObject.SetValidValue(value, false, "ReferralID");
                 ReportPropertyChanged("ReferralID");
                 OnReferralIDChanged();
             }
@@ -3901,7 +3914,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEnabledChanging(value);
                 ReportPropertyChanging("Enabled");
-                _Enabled = StructuralObject.SetValidValue(value);
+                _Enabled = StructuralObject.SetValidValue(value, "Enabled");
                 ReportPropertyChanged("Enabled");
                 OnEnabledChanged();
             }
@@ -3925,7 +3938,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -3949,7 +3962,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCommissionAmountChanging(value);
                 ReportPropertyChanging("CommissionAmount");
-                _CommissionAmount = StructuralObject.SetValidValue(value);
+                _CommissionAmount = StructuralObject.SetValidValue(value, "CommissionAmount");
                 ReportPropertyChanged("CommissionAmount");
                 OnCommissionAmountChanged();
             }
@@ -3973,7 +3986,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCommissionTypeChanging(value);
                 ReportPropertyChanging("CommissionType");
-                _CommissionType = StructuralObject.SetValidValue(value);
+                _CommissionType = StructuralObject.SetValidValue(value, "CommissionType");
                 ReportPropertyChanged("CommissionType");
                 OnCommissionTypeChanged();
             }
@@ -3997,7 +4010,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnReferralDaysChanging(value);
                 ReportPropertyChanging("ReferralDays");
-                _ReferralDays = StructuralObject.SetValidValue(value);
+                _ReferralDays = StructuralObject.SetValidValue(value, "ReferralDays");
                 ReportPropertyChanged("ReferralDays");
                 OnReferralDaysChanged();
             }
@@ -4021,7 +4034,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxIDChanging(value);
                 ReportPropertyChanging("TaxID");
-                _TaxID = StructuralObject.SetValidValue(value, false);
+                _TaxID = StructuralObject.SetValidValue(value, false, "TaxID");
                 ReportPropertyChanged("TaxID");
                 OnTaxIDChanged();
             }
@@ -4045,7 +4058,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDriversLicenseNumberChanging(value);
                 ReportPropertyChanging("DriversLicenseNumber");
-                _DriversLicenseNumber = StructuralObject.SetValidValue(value, false);
+                _DriversLicenseNumber = StructuralObject.SetValidValue(value, false, "DriversLicenseNumber");
                 ReportPropertyChanged("DriversLicenseNumber");
                 OnDriversLicenseNumberChanged();
             }
@@ -4069,7 +4082,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWebSiteURLChanging(value);
                 ReportPropertyChanging("WebSiteURL");
-                _WebSiteURL = StructuralObject.SetValidValue(value, false);
+                _WebSiteURL = StructuralObject.SetValidValue(value, false, "WebSiteURL");
                 ReportPropertyChanged("WebSiteURL");
                 OnWebSiteURLChanged();
             }
@@ -4093,7 +4106,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStyleSheetChanging(value);
                 ReportPropertyChanging("StyleSheet");
-                _StyleSheet = StructuralObject.SetValidValue(value, false);
+                _StyleSheet = StructuralObject.SetValidValue(value, false, "StyleSheet");
                 ReportPropertyChanged("StyleSheet");
                 OnStyleSheetChanged();
             }
@@ -4117,7 +4130,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNotesChanging(value);
                 ReportPropertyChanging("Notes");
-                _Notes = StructuralObject.SetValidValue(value, false);
+                _Notes = StructuralObject.SetValidValue(value, false, "Notes");
                 ReportPropertyChanged("Notes");
                 OnNotesChanged();
             }
@@ -4141,7 +4154,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -4165,7 +4178,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -4189,7 +4202,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -4199,7 +4212,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -4232,7 +4245,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4251,7 +4265,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -4276,7 +4290,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAffiliateIdChanging(value);
                 ReportPropertyChanging("AffiliateId");
-                _AffiliateId = StructuralObject.SetValidValue(value);
+                _AffiliateId = StructuralObject.SetValidValue(value, "AffiliateId");
                 ReportPropertyChanged("AffiliateId");
                 OnAffiliateIdChanged();
             }
@@ -4300,7 +4314,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnreferrerurlChanging(value);
                 ReportPropertyChanging("referrerurl");
-                _referrerurl = StructuralObject.SetValidValue(value, false);
+                _referrerurl = StructuralObject.SetValidValue(value, false, "referrerurl");
                 ReportPropertyChanged("referrerurl");
                 OnreferrerurlChanged();
             }
@@ -4324,7 +4338,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTimeOfReferralUtcChanging(value);
                 ReportPropertyChanging("TimeOfReferralUtc");
-                _TimeOfReferralUtc = StructuralObject.SetValidValue(value);
+                _TimeOfReferralUtc = StructuralObject.SetValidValue(value, "TimeOfReferralUtc");
                 ReportPropertyChanged("TimeOfReferralUtc");
                 OnTimeOfReferralUtcChanged();
             }
@@ -4348,7 +4362,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -4358,7 +4372,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -4399,7 +4413,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4418,7 +4433,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -4443,7 +4458,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTimeStampUtcChanging(value);
                 ReportPropertyChanging("TimeStampUtc");
-                _TimeStampUtc = StructuralObject.SetValidValue(value);
+                _TimeStampUtc = StructuralObject.SetValidValue(value, "TimeStampUtc");
                 ReportPropertyChanged("TimeStampUtc");
                 OnTimeStampUtcChanged();
             }
@@ -4467,7 +4482,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSourceModuleChanging(value);
                 ReportPropertyChanging("SourceModule");
-                _SourceModule = StructuralObject.SetValidValue(value);
+                _SourceModule = StructuralObject.SetValidValue(value, "SourceModule");
                 ReportPropertyChanged("SourceModule");
                 OnSourceModuleChanged();
             }
@@ -4491,7 +4506,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShortNameChanging(value);
                 ReportPropertyChanging("ShortName");
-                _ShortName = StructuralObject.SetValidValue(value, false);
+                _ShortName = StructuralObject.SetValidValue(value, false, "ShortName");
                 ReportPropertyChanged("ShortName");
                 OnShortNameChanged();
             }
@@ -4515,7 +4530,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -4539,7 +4554,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -4563,7 +4578,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdTextChanging(value);
                 ReportPropertyChanging("UserIdText");
-                _UserIdText = StructuralObject.SetValidValue(value, false);
+                _UserIdText = StructuralObject.SetValidValue(value, false, "UserIdText");
                 ReportPropertyChanged("UserIdText");
                 OnUserIdTextChanged();
             }
@@ -4587,7 +4602,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSeverityChanging(value);
                 ReportPropertyChanging("Severity");
-                _Severity = StructuralObject.SetValidValue(value);
+                _Severity = StructuralObject.SetValidValue(value, "Severity");
                 ReportPropertyChanged("Severity");
                 OnSeverityChanged();
             }
@@ -4611,7 +4626,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -4621,7 +4636,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -4654,7 +4669,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4673,7 +4689,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -4698,7 +4714,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserBvinChanging(value);
                 ReportPropertyChanging("UserBvin");
-                _UserBvin = StructuralObject.SetValidValue(value, false);
+                _UserBvin = StructuralObject.SetValidValue(value, false, "UserBvin");
                 ReportPropertyChanged("UserBvin");
                 OnUserBvinChanged();
             }
@@ -4722,7 +4738,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnExpirationDateChanging(value);
                 ReportPropertyChanging("ExpirationDate");
-                _ExpirationDate = StructuralObject.SetValidValue(value);
+                _ExpirationDate = StructuralObject.SetValidValue(value, "ExpirationDate");
                 ReportPropertyChanged("ExpirationDate");
                 OnExpirationDateChanged();
             }
@@ -4746,7 +4762,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -4770,7 +4786,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -4780,7 +4796,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -4863,7 +4879,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4882,7 +4899,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -4907,7 +4924,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -4931,7 +4948,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -4955,7 +4972,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -4979,7 +4996,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnParentIDChanging(value);
                 ReportPropertyChanging("ParentID");
-                _ParentID = StructuralObject.SetValidValue(value, false);
+                _ParentID = StructuralObject.SetValidValue(value, false, "ParentID");
                 ReportPropertyChanged("ParentID");
                 OnParentIDChanged();
             }
@@ -5003,7 +5020,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -5027,7 +5044,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaTitleChanging(value);
                 ReportPropertyChanging("MetaTitle");
-                _MetaTitle = StructuralObject.SetValidValue(value, false);
+                _MetaTitle = StructuralObject.SetValidValue(value, false, "MetaTitle");
                 ReportPropertyChanged("MetaTitle");
                 OnMetaTitleChanged();
             }
@@ -5051,7 +5068,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaKeywordsChanging(value);
                 ReportPropertyChanging("MetaKeywords");
-                _MetaKeywords = StructuralObject.SetValidValue(value, false);
+                _MetaKeywords = StructuralObject.SetValidValue(value, false, "MetaKeywords");
                 ReportPropertyChanged("MetaKeywords");
                 OnMetaKeywordsChanged();
             }
@@ -5075,7 +5092,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaDescriptionChanging(value);
                 ReportPropertyChanging("MetaDescription");
-                _MetaDescription = StructuralObject.SetValidValue(value, false);
+                _MetaDescription = StructuralObject.SetValidValue(value, false, "MetaDescription");
                 ReportPropertyChanged("MetaDescription");
                 OnMetaDescriptionChanged();
             }
@@ -5099,7 +5116,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnImageURLChanging(value);
                 ReportPropertyChanging("ImageURL");
-                _ImageURL = StructuralObject.SetValidValue(value, false);
+                _ImageURL = StructuralObject.SetValidValue(value, false, "ImageURL");
                 ReportPropertyChanged("ImageURL");
                 OnImageURLChanged();
             }
@@ -5123,7 +5140,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBannerImageURLChanging(value);
                 ReportPropertyChanging("BannerImageURL");
-                _BannerImageURL = StructuralObject.SetValidValue(value, false);
+                _BannerImageURL = StructuralObject.SetValidValue(value, false, "BannerImageURL");
                 ReportPropertyChanged("BannerImageURL");
                 OnBannerImageURLChanged();
             }
@@ -5147,7 +5164,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSourceTypeChanging(value);
                 ReportPropertyChanging("SourceType");
-                _SourceType = StructuralObject.SetValidValue(value);
+                _SourceType = StructuralObject.SetValidValue(value, "SourceType");
                 ReportPropertyChanged("SourceType");
                 OnSourceTypeChanged();
             }
@@ -5171,7 +5188,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplaySortOrderChanging(value);
                 ReportPropertyChanging("DisplaySortOrder");
-                _DisplaySortOrder = StructuralObject.SetValidValue(value);
+                _DisplaySortOrder = StructuralObject.SetValidValue(value, "DisplaySortOrder");
                 ReportPropertyChanged("DisplaySortOrder");
                 OnDisplaySortOrderChanged();
             }
@@ -5195,7 +5212,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLatestProductCountChanging(value);
                 ReportPropertyChanging("LatestProductCount");
-                _LatestProductCount = StructuralObject.SetValidValue(value);
+                _LatestProductCount = StructuralObject.SetValidValue(value, "LatestProductCount");
                 ReportPropertyChanged("LatestProductCount");
                 OnLatestProductCountChanged();
             }
@@ -5219,7 +5236,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPageURLChanging(value);
                 ReportPropertyChanging("CustomPageURL");
-                _CustomPageURL = StructuralObject.SetValidValue(value, false);
+                _CustomPageURL = StructuralObject.SetValidValue(value, false, "CustomPageURL");
                 ReportPropertyChanged("CustomPageURL");
                 OnCustomPageURLChanged();
             }
@@ -5243,7 +5260,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPageNewWindowChanging(value);
                 ReportPropertyChanging("CustomPageNewWindow");
-                _CustomPageNewWindow = StructuralObject.SetValidValue(value);
+                _CustomPageNewWindow = StructuralObject.SetValidValue(value, "CustomPageNewWindow");
                 ReportPropertyChanged("CustomPageNewWindow");
                 OnCustomPageNewWindowChanged();
             }
@@ -5267,7 +5284,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShowInTopMenuChanging(value);
                 ReportPropertyChanging("ShowInTopMenu");
-                _ShowInTopMenu = StructuralObject.SetValidValue(value);
+                _ShowInTopMenu = StructuralObject.SetValidValue(value, "ShowInTopMenu");
                 ReportPropertyChanged("ShowInTopMenu");
                 OnShowInTopMenuChanged();
             }
@@ -5291,7 +5308,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnHiddenChanging(value);
                 ReportPropertyChanging("Hidden");
-                _Hidden = StructuralObject.SetValidValue(value);
+                _Hidden = StructuralObject.SetValidValue(value, "Hidden");
                 ReportPropertyChanged("Hidden");
                 OnHiddenChanged();
             }
@@ -5315,7 +5332,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTemplateNameChanging(value);
                 ReportPropertyChanging("TemplateName");
-                _TemplateName = StructuralObject.SetValidValue(value, false);
+                _TemplateName = StructuralObject.SetValidValue(value, false, "TemplateName");
                 ReportPropertyChanged("TemplateName");
                 OnTemplateNameChanged();
             }
@@ -5339,7 +5356,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPostContentColumnIdChanging(value);
                 ReportPropertyChanging("PostContentColumnId");
-                _PostContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PostContentColumnId = StructuralObject.SetValidValue(value, false, "PostContentColumnId");
                 ReportPropertyChanged("PostContentColumnId");
                 OnPostContentColumnIdChanged();
             }
@@ -5363,7 +5380,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPreContentColumnIdChanging(value);
                 ReportPropertyChanging("PreContentColumnId");
-                _PreContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PreContentColumnId = StructuralObject.SetValidValue(value, false, "PreContentColumnId");
                 ReportPropertyChanged("PreContentColumnId");
                 OnPreContentColumnIdChanged();
             }
@@ -5387,7 +5404,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5411,7 +5428,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRewriteUrlChanging(value);
                 ReportPropertyChanging("RewriteUrl");
-                _RewriteUrl = StructuralObject.SetValidValue(value, false);
+                _RewriteUrl = StructuralObject.SetValidValue(value, false, "RewriteUrl");
                 ReportPropertyChanged("RewriteUrl");
                 OnRewriteUrlChanged();
             }
@@ -5435,7 +5452,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShowTitleChanging(value);
                 ReportPropertyChanging("ShowTitle");
-                _ShowTitle = StructuralObject.SetValidValue(value);
+                _ShowTitle = StructuralObject.SetValidValue(value, "ShowTitle");
                 ReportPropertyChanged("ShowTitle");
                 OnShowTitleChanged();
             }
@@ -5459,7 +5476,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCriteriaChanging(value);
                 ReportPropertyChanging("Criteria");
-                _Criteria = StructuralObject.SetValidValue(value, false);
+                _Criteria = StructuralObject.SetValidValue(value, false, "Criteria");
                 ReportPropertyChanged("Criteria");
                 OnCriteriaChanged();
             }
@@ -5483,7 +5500,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPageIdChanging(value);
                 ReportPropertyChanging("CustomPageId");
-                _CustomPageId = StructuralObject.SetValidValue(value, false);
+                _CustomPageId = StructuralObject.SetValidValue(value, false, "CustomPageId");
                 ReportPropertyChanged("CustomPageId");
                 OnCustomPageIdChanged();
             }
@@ -5507,7 +5524,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPreTransformDescriptionChanging(value);
                 ReportPropertyChanging("PreTransformDescription");
-                _PreTransformDescription = StructuralObject.SetValidValue(value, false);
+                _PreTransformDescription = StructuralObject.SetValidValue(value, false, "PreTransformDescription");
                 ReportPropertyChanged("PreTransformDescription");
                 OnPreTransformDescriptionChanged();
             }
@@ -5531,7 +5548,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnKeywordsChanging(value);
                 ReportPropertyChanging("Keywords");
-                _Keywords = StructuralObject.SetValidValue(value, false);
+                _Keywords = StructuralObject.SetValidValue(value, false, "Keywords");
                 ReportPropertyChanged("Keywords");
                 OnKeywordsChanged();
             }
@@ -5555,7 +5572,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomerChangeableSortOrderChanging(value);
                 ReportPropertyChanging("CustomerChangeableSortOrder");
-                _CustomerChangeableSortOrder = StructuralObject.SetValidValue(value);
+                _CustomerChangeableSortOrder = StructuralObject.SetValidValue(value, "CustomerChangeableSortOrder");
                 ReportPropertyChanged("CustomerChangeableSortOrder");
                 OnCustomerChangeableSortOrderChanged();
             }
@@ -5579,7 +5596,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPageLayoutChanging(value);
                 ReportPropertyChanging("CustomPageLayout");
-                _CustomPageLayout = StructuralObject.SetValidValue(value);
+                _CustomPageLayout = StructuralObject.SetValidValue(value, "CustomPageLayout");
                 ReportPropertyChanged("CustomPageLayout");
                 OnCustomPageLayoutChanged();
             }
@@ -5589,7 +5606,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnCustomPageLayoutChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -5615,6 +5632,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5653,7 +5671,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5672,7 +5691,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -5697,7 +5716,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCategoryIdChanging(value);
                 ReportPropertyChanging("CategoryId");
-                _CategoryId = StructuralObject.SetValidValue(value, false);
+                _CategoryId = StructuralObject.SetValidValue(value, false, "CategoryId");
                 ReportPropertyChanged("CategoryId");
                 OnCategoryIdChanged();
             }
@@ -5721,7 +5740,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyIdChanging(value);
                 ReportPropertyChanging("PropertyId");
-                _PropertyId = StructuralObject.SetValidValue(value);
+                _PropertyId = StructuralObject.SetValidValue(value, "PropertyId");
                 ReportPropertyChanged("PropertyId");
                 OnPropertyIdChanged();
             }
@@ -5745,7 +5764,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnParentPropertyIdChanging(value);
                 ReportPropertyChanging("ParentPropertyId");
-                _ParentPropertyId = StructuralObject.SetValidValue(value);
+                _ParentPropertyId = StructuralObject.SetValidValue(value, "ParentPropertyId");
                 ReportPropertyChanged("ParentPropertyId");
                 OnParentPropertyIdChanged();
             }
@@ -5769,7 +5788,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -5793,7 +5812,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFilterNameChanging(value);
                 ReportPropertyChanging("FilterName");
-                _FilterName = StructuralObject.SetValidValue(value, false);
+                _FilterName = StructuralObject.SetValidValue(value, false, "FilterName");
                 ReportPropertyChanged("FilterName");
                 OnFilterNameChanged();
             }
@@ -5817,7 +5836,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayModeChanging(value);
                 ReportPropertyChanging("DisplayMode");
-                _DisplayMode = StructuralObject.SetValidValue(value);
+                _DisplayMode = StructuralObject.SetValidValue(value, "DisplayMode");
                 ReportPropertyChanged("DisplayMode");
                 OnDisplayModeChanged();
             }
@@ -5841,7 +5860,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -5851,7 +5870,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -5890,7 +5909,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5909,7 +5929,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -5934,7 +5954,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnColumnIDChanging(value);
                 ReportPropertyChanging("ColumnID");
-                _ColumnID = StructuralObject.SetValidValue(value, false);
+                _ColumnID = StructuralObject.SetValidValue(value, false, "ColumnID");
                 ReportPropertyChanged("ColumnID");
                 OnColumnIDChanged();
             }
@@ -5958,7 +5978,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -5982,7 +6002,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnControlNameChanging(value);
                 ReportPropertyChanging("ControlName");
-                _ControlName = StructuralObject.SetValidValue(value, false);
+                _ControlName = StructuralObject.SetValidValue(value, false, "ControlName");
                 ReportPropertyChanged("ControlName");
                 OnControlNameChanged();
             }
@@ -6006,7 +6026,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6030,7 +6050,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -6054,7 +6074,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSerializedSettingsChanging(value);
                 ReportPropertyChanging("SerializedSettings");
-                _SerializedSettings = StructuralObject.SetValidValue(value, false);
+                _SerializedSettings = StructuralObject.SetValidValue(value, false, "SerializedSettings");
                 ReportPropertyChanged("SerializedSettings");
                 OnSerializedSettingsChanged();
             }
@@ -6078,7 +6098,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSerializedListsChanging(value);
                 ReportPropertyChanging("SerializedLists");
-                _SerializedLists = StructuralObject.SetValidValue(value, false);
+                _SerializedLists = StructuralObject.SetValidValue(value, false, "SerializedLists");
                 ReportPropertyChanged("SerializedLists");
                 OnSerializedListsChanged();
             }
@@ -6088,7 +6108,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSerializedListsChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -6130,6 +6150,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6162,7 +6183,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6181,7 +6203,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6206,7 +6228,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -6230,7 +6252,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSystemColumnChanging(value);
                 ReportPropertyChanging("SystemColumn");
-                _SystemColumn = StructuralObject.SetValidValue(value);
+                _SystemColumn = StructuralObject.SetValidValue(value, "SystemColumn");
                 ReportPropertyChanged("SystemColumn");
                 OnSystemColumnChanged();
             }
@@ -6254,7 +6276,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6278,7 +6300,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -6288,7 +6310,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -6314,6 +6336,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6352,7 +6375,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6371,7 +6395,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6396,7 +6420,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRequestedUrlChanging(value);
                 ReportPropertyChanging("RequestedUrl");
-                _RequestedUrl = StructuralObject.SetValidValue(value, false);
+                _RequestedUrl = StructuralObject.SetValidValue(value, false, "RequestedUrl");
                 ReportPropertyChanged("RequestedUrl");
                 OnRequestedUrlChanged();
             }
@@ -6420,7 +6444,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRedirectToUrlChanging(value);
                 ReportPropertyChanging("RedirectToUrl");
-                _RedirectToUrl = StructuralObject.SetValidValue(value, false);
+                _RedirectToUrl = StructuralObject.SetValidValue(value, false, "RedirectToUrl");
                 ReportPropertyChanged("RedirectToUrl");
                 OnRedirectToUrlChanged();
             }
@@ -6444,7 +6468,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsPermanentRedirectChanging(value);
                 ReportPropertyChanging("IsPermanentRedirect");
-                _IsPermanentRedirect = StructuralObject.SetValidValue(value);
+                _IsPermanentRedirect = StructuralObject.SetValidValue(value, "IsPermanentRedirect");
                 ReportPropertyChanged("IsPermanentRedirect");
                 OnIsPermanentRedirectChanged();
             }
@@ -6468,7 +6492,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSystemDataTypeChanging(value);
                 ReportPropertyChanging("SystemDataType");
-                _SystemDataType = StructuralObject.SetValidValue(value);
+                _SystemDataType = StructuralObject.SetValidValue(value, "SystemDataType");
                 ReportPropertyChanged("SystemDataType");
                 OnSystemDataTypeChanged();
             }
@@ -6492,7 +6516,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSystemDataChanging(value);
                 ReportPropertyChanging("SystemData");
-                _SystemData = StructuralObject.SetValidValue(value, false);
+                _SystemData = StructuralObject.SetValidValue(value, false, "SystemData");
                 ReportPropertyChanged("SystemData");
                 OnSystemDataChanged();
             }
@@ -6516,7 +6540,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6540,7 +6564,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -6550,7 +6574,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6587,7 +6611,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6606,7 +6631,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6631,7 +6656,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEventTimeChanging(value);
                 ReportPropertyChanging("EventTime");
-                _EventTime = StructuralObject.SetValidValue(value);
+                _EventTime = StructuralObject.SetValidValue(value, "EventTime");
                 ReportPropertyChanged("EventTime");
                 OnEventTimeChanged();
             }
@@ -6655,7 +6680,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSourceChanging(value);
                 ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, false);
+                _Source = StructuralObject.SetValidValue(value, false, "Source");
                 ReportPropertyChanged("Source");
                 OnSourceChanged();
             }
@@ -6679,7 +6704,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, false);
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -6703,7 +6728,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSeverityChanging(value);
                 ReportPropertyChanging("Severity");
-                _Severity = StructuralObject.SetValidValue(value);
+                _Severity = StructuralObject.SetValidValue(value, "Severity");
                 ReportPropertyChanged("Severity");
                 OnSeverityChanged();
             }
@@ -6727,7 +6752,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6751,7 +6776,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -6761,7 +6786,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6794,7 +6819,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6813,7 +6839,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6838,7 +6864,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRuleTypeChanging(value);
                 ReportPropertyChanging("RuleType");
-                _RuleType = StructuralObject.SetValidValue(value);
+                _RuleType = StructuralObject.SetValidValue(value, "RuleType");
                 ReportPropertyChanged("RuleType");
                 OnRuleTypeChanged();
             }
@@ -6862,7 +6888,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRuleValueChanging(value);
                 ReportPropertyChanging("RuleValue");
-                _RuleValue = StructuralObject.SetValidValue(value, false);
+                _RuleValue = StructuralObject.SetValidValue(value, false, "RuleValue");
                 ReportPropertyChanged("RuleValue");
                 OnRuleValueChanged();
             }
@@ -6886,7 +6912,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6910,7 +6936,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -6920,7 +6946,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6967,7 +6993,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6986,7 +7013,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -7011,7 +7038,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -7035,7 +7062,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCardNumberChanging(value);
                 ReportPropertyChanging("CardNumber");
-                _CardNumber = StructuralObject.SetValidValue(value, false);
+                _CardNumber = StructuralObject.SetValidValue(value, false, "CardNumber");
                 ReportPropertyChanged("CardNumber");
                 OnCardNumberChanged();
             }
@@ -7059,7 +7086,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAmountChanging(value);
                 ReportPropertyChanging("Amount");
-                _Amount = StructuralObject.SetValidValue(value);
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
                 ReportPropertyChanged("Amount");
                 OnAmountChanged();
             }
@@ -7083,7 +7110,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIssueDateUtcChanging(value);
                 ReportPropertyChanging("IssueDateUtc");
-                _IssueDateUtc = StructuralObject.SetValidValue(value);
+                _IssueDateUtc = StructuralObject.SetValidValue(value, "IssueDateUtc");
                 ReportPropertyChanged("IssueDateUtc");
                 OnIssueDateUtcChanged();
             }
@@ -7107,7 +7134,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnExpirationDateUtcChanging(value);
                 ReportPropertyChanging("ExpirationDateUtc");
-                _ExpirationDateUtc = StructuralObject.SetValidValue(value);
+                _ExpirationDateUtc = StructuralObject.SetValidValue(value, "ExpirationDateUtc");
                 ReportPropertyChanged("ExpirationDateUtc");
                 OnExpirationDateUtcChanged();
             }
@@ -7131,7 +7158,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPurchaserEmailChanging(value);
                 ReportPropertyChanging("PurchaserEmail");
-                _PurchaserEmail = StructuralObject.SetValidValue(value, false);
+                _PurchaserEmail = StructuralObject.SetValidValue(value, false, "PurchaserEmail");
                 ReportPropertyChanged("PurchaserEmail");
                 OnPurchaserEmailChanged();
             }
@@ -7155,7 +7182,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRecipientEmailChanging(value);
                 ReportPropertyChanging("RecipientEmail");
-                _RecipientEmail = StructuralObject.SetValidValue(value, false);
+                _RecipientEmail = StructuralObject.SetValidValue(value, false, "RecipientEmail");
                 ReportPropertyChanged("RecipientEmail");
                 OnRecipientEmailChanged();
             }
@@ -7179,7 +7206,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGiftMessageChanging(value);
                 ReportPropertyChanging("GiftMessage");
-                _GiftMessage = StructuralObject.SetValidValue(value, false);
+                _GiftMessage = StructuralObject.SetValidValue(value, false, "GiftMessage");
                 ReportPropertyChanged("GiftMessage");
                 OnGiftMessageChanged();
             }
@@ -7203,7 +7230,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsRedeemedChanging(value);
                 ReportPropertyChanging("IsRedeemed");
-                _IsRedeemed = StructuralObject.SetValidValue(value);
+                _IsRedeemed = StructuralObject.SetValidValue(value, "IsRedeemed");
                 ReportPropertyChanged("IsRedeemed");
                 OnIsRedeemedChanged();
             }
@@ -7227,7 +7254,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRedemptionDateUtcChanging(value);
                 ReportPropertyChanging("RedemptionDateUtc");
-                _RedemptionDateUtc = StructuralObject.SetValidValue(value);
+                _RedemptionDateUtc = StructuralObject.SetValidValue(value, "RedemptionDateUtc");
                 ReportPropertyChanged("RedemptionDateUtc");
                 OnRedemptionDateUtcChanged();
             }
@@ -7251,7 +7278,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRedemptionUserIdChanging(value);
                 ReportPropertyChanging("RedemptionUserId");
-                _RedemptionUserId = StructuralObject.SetValidValue(value, false);
+                _RedemptionUserId = StructuralObject.SetValidValue(value, false, "RedemptionUserId");
                 ReportPropertyChanged("RedemptionUserId");
                 OnRedemptionUserIdChanged();
             }
@@ -7261,7 +7288,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnRedemptionUserIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7302,7 +7329,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7321,7 +7349,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -7346,7 +7374,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -7370,7 +7398,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -7394,7 +7422,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -7418,7 +7446,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFromEmailChanging(value);
                 ReportPropertyChanging("FromEmail");
-                _FromEmail = StructuralObject.SetValidValue(value, false);
+                _FromEmail = StructuralObject.SetValidValue(value, false, "FromEmail");
                 ReportPropertyChanged("FromEmail");
                 OnFromEmailChanged();
             }
@@ -7442,7 +7470,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSubjectChanging(value);
                 ReportPropertyChanging("Subject");
-                _Subject = StructuralObject.SetValidValue(value, false);
+                _Subject = StructuralObject.SetValidValue(value, false, "Subject");
                 ReportPropertyChanged("Subject");
                 OnSubjectChanged();
             }
@@ -7466,7 +7494,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBodyChanging(value);
                 ReportPropertyChanging("Body");
-                _Body = StructuralObject.SetValidValue(value, false);
+                _Body = StructuralObject.SetValidValue(value, false, "Body");
                 ReportPropertyChanged("Body");
                 OnBodyChanged();
             }
@@ -7490,7 +7518,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRepeatingSectionChanging(value);
                 ReportPropertyChanging("RepeatingSection");
-                _RepeatingSection = StructuralObject.SetValidValue(value, false);
+                _RepeatingSection = StructuralObject.SetValidValue(value, false, "RepeatingSection");
                 ReportPropertyChanged("RepeatingSection");
                 OnRepeatingSectionChanged();
             }
@@ -7514,7 +7542,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTemplateTypeChanging(value);
                 ReportPropertyChanging("TemplateType");
-                _TemplateType = StructuralObject.SetValidValue(value);
+                _TemplateType = StructuralObject.SetValidValue(value, "TemplateType");
                 ReportPropertyChanged("TemplateType");
                 OnTemplateTypeChanged();
             }
@@ -7524,7 +7552,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnTemplateTypeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7613,7 +7641,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7632,7 +7661,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -7657,7 +7686,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7681,7 +7710,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -7705,7 +7734,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnVariantIdChanging(value);
                 ReportPropertyChanging("VariantId");
-                _VariantId = StructuralObject.SetValidValue(value, false);
+                _VariantId = StructuralObject.SetValidValue(value, false, "VariantId");
                 ReportPropertyChanged("VariantId");
                 OnVariantIdChanged();
             }
@@ -7729,7 +7758,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -7753,7 +7782,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -7777,7 +7806,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBasePriceChanging(value);
                 ReportPropertyChanging("BasePrice");
-                _BasePrice = StructuralObject.SetValidValue(value);
+                _BasePrice = StructuralObject.SetValidValue(value, "BasePrice");
                 ReportPropertyChanged("BasePrice");
                 OnBasePriceChanged();
             }
@@ -7801,7 +7830,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDiscountDetailsChanging(value);
                 ReportPropertyChanging("DiscountDetails");
-                _DiscountDetails = StructuralObject.SetValidValue(value, false);
+                _DiscountDetails = StructuralObject.SetValidValue(value, false, "DiscountDetails");
                 ReportPropertyChanged("DiscountDetails");
                 OnDiscountDetailsChanged();
             }
@@ -7825,7 +7854,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAdjustedPriceChanging(value);
                 ReportPropertyChanging("AdjustedPrice");
-                _AdjustedPrice = StructuralObject.SetValidValue(value);
+                _AdjustedPrice = StructuralObject.SetValidValue(value, "AdjustedPrice");
                 ReportPropertyChanged("AdjustedPrice");
                 OnAdjustedPriceChanged();
             }
@@ -7849,7 +7878,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingPortionChanging(value);
                 ReportPropertyChanging("ShippingPortion");
-                _ShippingPortion = StructuralObject.SetValidValue(value);
+                _ShippingPortion = StructuralObject.SetValidValue(value, "ShippingPortion");
                 ReportPropertyChanged("ShippingPortion");
                 OnShippingPortionChanged();
             }
@@ -7873,7 +7902,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxPortionChanging(value);
                 ReportPropertyChanging("TaxPortion");
-                _TaxPortion = StructuralObject.SetValidValue(value);
+                _TaxPortion = StructuralObject.SetValidValue(value, "TaxPortion");
                 ReportPropertyChanged("TaxPortion");
                 OnTaxPortionChanged();
             }
@@ -7897,7 +7926,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLineTotalChanging(value);
                 ReportPropertyChanging("LineTotal");
-                _LineTotal = StructuralObject.SetValidValue(value);
+                _LineTotal = StructuralObject.SetValidValue(value, "LineTotal");
                 ReportPropertyChanged("LineTotal");
                 OnLineTotalChanged();
             }
@@ -7921,7 +7950,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -7945,7 +7974,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityReturnedChanging(value);
                 ReportPropertyChanging("QuantityReturned");
-                _QuantityReturned = StructuralObject.SetValidValue(value);
+                _QuantityReturned = StructuralObject.SetValidValue(value, "QuantityReturned");
                 ReportPropertyChanged("QuantityReturned");
                 OnQuantityReturnedChanged();
             }
@@ -7969,7 +7998,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityShippedChanging(value);
                 ReportPropertyChanging("QuantityShipped");
-                _QuantityShipped = StructuralObject.SetValidValue(value);
+                _QuantityShipped = StructuralObject.SetValidValue(value, "QuantityShipped");
                 ReportPropertyChanged("QuantityShipped");
                 OnQuantityShippedChanged();
             }
@@ -7993,7 +8022,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductNameChanging(value);
                 ReportPropertyChanging("ProductName");
-                _ProductName = StructuralObject.SetValidValue(value, false);
+                _ProductName = StructuralObject.SetValidValue(value, false, "ProductName");
                 ReportPropertyChanged("ProductName");
                 OnProductNameChanged();
             }
@@ -8017,7 +8046,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductShortDescriptionChanging(value);
                 ReportPropertyChanging("ProductShortDescription");
-                _ProductShortDescription = StructuralObject.SetValidValue(value, false);
+                _ProductShortDescription = StructuralObject.SetValidValue(value, false, "ProductShortDescription");
                 ReportPropertyChanged("ProductShortDescription");
                 OnProductShortDescriptionChanged();
             }
@@ -8041,7 +8070,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductSkuChanging(value);
                 ReportPropertyChanging("ProductSku");
-                _ProductSku = StructuralObject.SetValidValue(value, false);
+                _ProductSku = StructuralObject.SetValidValue(value, false, "ProductSku");
                 ReportPropertyChanged("ProductSku");
                 OnProductSkuChanged();
             }
@@ -8065,7 +8094,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusCodeChanging(value);
                 ReportPropertyChanging("StatusCode");
-                _StatusCode = StructuralObject.SetValidValue(value, false);
+                _StatusCode = StructuralObject.SetValidValue(value, false, "StatusCode");
                 ReportPropertyChanged("StatusCode");
                 OnStatusCodeChanged();
             }
@@ -8089,7 +8118,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -8113,7 +8142,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSelectionDataChanging(value);
                 ReportPropertyChanging("SelectionData");
-                _SelectionData = StructuralObject.SetValidValue(value, false);
+                _SelectionData = StructuralObject.SetValidValue(value, false, "SelectionData");
                 ReportPropertyChanged("SelectionData");
                 OnSelectionDataChanged();
             }
@@ -8137,7 +8166,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -8161,7 +8190,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingScheduleIdChanging(value);
                 ReportPropertyChanging("ShippingScheduleId");
-                _ShippingScheduleId = StructuralObject.SetValidValue(value);
+                _ShippingScheduleId = StructuralObject.SetValidValue(value, "ShippingScheduleId");
                 ReportPropertyChanged("ShippingScheduleId");
                 OnShippingScheduleIdChanged();
             }
@@ -8185,7 +8214,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxScheduleIdChanging(value);
                 ReportPropertyChanging("TaxScheduleId");
-                _TaxScheduleId = StructuralObject.SetValidValue(value);
+                _TaxScheduleId = StructuralObject.SetValidValue(value, "TaxScheduleId");
                 ReportPropertyChanged("TaxScheduleId");
                 OnTaxScheduleIdChanged();
             }
@@ -8209,7 +8238,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductShippingWeightChanging(value);
                 ReportPropertyChanging("ProductShippingWeight");
-                _ProductShippingWeight = StructuralObject.SetValidValue(value);
+                _ProductShippingWeight = StructuralObject.SetValidValue(value, "ProductShippingWeight");
                 ReportPropertyChanged("ProductShippingWeight");
                 OnProductShippingWeightChanged();
             }
@@ -8233,7 +8262,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductShippingLengthChanging(value);
                 ReportPropertyChanging("ProductShippingLength");
-                _ProductShippingLength = StructuralObject.SetValidValue(value);
+                _ProductShippingLength = StructuralObject.SetValidValue(value, "ProductShippingLength");
                 ReportPropertyChanged("ProductShippingLength");
                 OnProductShippingLengthChanged();
             }
@@ -8257,7 +8286,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductShippingWidthChanging(value);
                 ReportPropertyChanging("ProductShippingWidth");
-                _ProductShippingWidth = StructuralObject.SetValidValue(value);
+                _ProductShippingWidth = StructuralObject.SetValidValue(value, "ProductShippingWidth");
                 ReportPropertyChanged("ProductShippingWidth");
                 OnProductShippingWidthChanged();
             }
@@ -8281,7 +8310,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductShippingHeightChanging(value);
                 ReportPropertyChanging("ProductShippingHeight");
-                _ProductShippingHeight = StructuralObject.SetValidValue(value);
+                _ProductShippingHeight = StructuralObject.SetValidValue(value, "ProductShippingHeight");
                 ReportPropertyChanged("ProductShippingHeight");
                 OnProductShippingHeightChanged();
             }
@@ -8305,7 +8334,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipFromAddressChanging(value);
                 ReportPropertyChanging("ShipFromAddress");
-                _ShipFromAddress = StructuralObject.SetValidValue(value, false);
+                _ShipFromAddress = StructuralObject.SetValidValue(value, false, "ShipFromAddress");
                 ReportPropertyChanged("ShipFromAddress");
                 OnShipFromAddressChanged();
             }
@@ -8329,7 +8358,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipFromModeChanging(value);
                 ReportPropertyChanging("ShipFromMode");
-                _ShipFromMode = StructuralObject.SetValidValue(value);
+                _ShipFromMode = StructuralObject.SetValidValue(value, "ShipFromMode");
                 ReportPropertyChanged("ShipFromMode");
                 OnShipFromModeChanged();
             }
@@ -8353,7 +8382,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipFromNotificationIdChanging(value);
                 ReportPropertyChanging("ShipFromNotificationId");
-                _ShipFromNotificationId = StructuralObject.SetValidValue(value, false);
+                _ShipFromNotificationId = StructuralObject.SetValidValue(value, false, "ShipFromNotificationId");
                 ReportPropertyChanged("ShipFromNotificationId");
                 OnShipFromNotificationIdChanged();
             }
@@ -8377,7 +8406,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipSeparatelyChanging(value);
                 ReportPropertyChanging("ShipSeparately");
-                _ShipSeparately = StructuralObject.SetValidValue(value);
+                _ShipSeparately = StructuralObject.SetValidValue(value, "ShipSeparately");
                 ReportPropertyChanged("ShipSeparately");
                 OnShipSeparatelyChanged();
             }
@@ -8401,7 +8430,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnExtraShipChargeChanging(value);
                 ReportPropertyChanging("ExtraShipCharge");
-                _ExtraShipCharge = StructuralObject.SetValidValue(value);
+                _ExtraShipCharge = StructuralObject.SetValidValue(value, "ExtraShipCharge");
                 ReportPropertyChanged("ExtraShipCharge");
                 OnExtraShipChargeChanged();
             }
@@ -8411,7 +8440,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnExtraShipChargeChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -8453,6 +8482,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8485,7 +8515,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8504,7 +8535,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -8529,7 +8560,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -8553,7 +8584,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPrivateChanging(value);
                 ReportPropertyChanging("Private");
-                _Private = StructuralObject.SetValidValue(value);
+                _Private = StructuralObject.SetValidValue(value, "Private");
                 ReportPropertyChanged("Private");
                 OnPrivateChanged();
             }
@@ -8577,7 +8608,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -8601,7 +8632,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -8611,7 +8642,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnLastUpdatedUtcChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -8637,6 +8668,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8673,7 +8705,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8692,7 +8725,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -8717,7 +8750,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -8741,7 +8774,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnListIDChanging(value);
                 ReportPropertyChanging("ListID");
-                _ListID = StructuralObject.SetValidValue(value);
+                _ListID = StructuralObject.SetValidValue(value, "ListID");
                 ReportPropertyChanged("ListID");
                 OnListIDChanged();
             }
@@ -8765,7 +8798,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -8789,7 +8822,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -8813,7 +8846,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -8837,7 +8870,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -8847,7 +8880,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnLastUpdatedUtcChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -8889,6 +8922,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8925,7 +8959,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8944,7 +8979,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -8969,7 +9004,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -8993,7 +9028,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -9017,7 +9052,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -9041,7 +9076,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDropShipEmailTemplateIdChanging(value);
                 ReportPropertyChanging("DropShipEmailTemplateId");
-                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false);
+                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false, "DropShipEmailTemplateId");
                 ReportPropertyChanged("DropShipEmailTemplateId");
                 OnDropShipEmailTemplateIdChanged();
             }
@@ -9065,7 +9100,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9089,7 +9124,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -9099,7 +9134,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -9190,7 +9225,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9207,7 +9243,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -9233,7 +9269,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -9258,7 +9294,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAffiliateIdChanging(value);
                 ReportPropertyChanging("AffiliateId");
-                _AffiliateId = StructuralObject.SetValidValue(value, false);
+                _AffiliateId = StructuralObject.SetValidValue(value, false, "AffiliateId");
                 ReportPropertyChanged("AffiliateId");
                 OnAffiliateIdChanged();
             }
@@ -9282,7 +9318,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBillingAddressChanging(value);
                 ReportPropertyChanging("BillingAddress");
-                _BillingAddress = StructuralObject.SetValidValue(value, false);
+                _BillingAddress = StructuralObject.SetValidValue(value, false, "BillingAddress");
                 ReportPropertyChanged("BillingAddress");
                 OnBillingAddressChanged();
             }
@@ -9306,7 +9342,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -9330,7 +9366,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFraudScoreChanging(value);
                 ReportPropertyChanging("FraudScore");
-                _FraudScore = StructuralObject.SetValidValue(value);
+                _FraudScore = StructuralObject.SetValidValue(value, "FraudScore");
                 ReportPropertyChanged("FraudScore");
                 OnFraudScoreChanged();
             }
@@ -9354,7 +9390,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGrandTotalChanging(value);
                 ReportPropertyChanging("GrandTotal");
-                _GrandTotal = StructuralObject.SetValidValue(value);
+                _GrandTotal = StructuralObject.SetValidValue(value, "GrandTotal");
                 ReportPropertyChanged("GrandTotal");
                 OnGrandTotalChanged();
             }
@@ -9378,7 +9414,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnHandlingTotalChanging(value);
                 ReportPropertyChanging("HandlingTotal");
-                _HandlingTotal = StructuralObject.SetValidValue(value);
+                _HandlingTotal = StructuralObject.SetValidValue(value, "HandlingTotal");
                 ReportPropertyChanged("HandlingTotal");
                 OnHandlingTotalChanged();
             }
@@ -9402,7 +9438,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnInstructionsChanging(value);
                 ReportPropertyChanging("Instructions");
-                _Instructions = StructuralObject.SetValidValue(value, false);
+                _Instructions = StructuralObject.SetValidValue(value, false, "Instructions");
                 ReportPropertyChanged("Instructions");
                 OnInstructionsChanged();
             }
@@ -9426,7 +9462,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsPlacedChanging(value);
                 ReportPropertyChanging("IsPlaced");
-                _IsPlaced = StructuralObject.SetValidValue(value);
+                _IsPlaced = StructuralObject.SetValidValue(value, "IsPlaced");
                 ReportPropertyChanged("IsPlaced");
                 OnIsPlacedChanged();
             }
@@ -9450,7 +9486,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9474,7 +9510,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderDiscountsChanging(value);
                 ReportPropertyChanging("OrderDiscounts");
-                _OrderDiscounts = StructuralObject.SetValidValue(value);
+                _OrderDiscounts = StructuralObject.SetValidValue(value, "OrderDiscounts");
                 ReportPropertyChanged("OrderDiscounts");
                 OnOrderDiscountsChanged();
             }
@@ -9498,7 +9534,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderDiscountDetailsChanging(value);
                 ReportPropertyChanging("OrderDiscountDetails");
-                _OrderDiscountDetails = StructuralObject.SetValidValue(value, false);
+                _OrderDiscountDetails = StructuralObject.SetValidValue(value, false, "OrderDiscountDetails");
                 ReportPropertyChanged("OrderDiscountDetails");
                 OnOrderDiscountDetailsChanged();
             }
@@ -9522,7 +9558,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderNumberChanging(value);
                 ReportPropertyChanging("OrderNumber");
-                _OrderNumber = StructuralObject.SetValidValue(value, false);
+                _OrderNumber = StructuralObject.SetValidValue(value, false, "OrderNumber");
                 ReportPropertyChanged("OrderNumber");
                 OnOrderNumberChanged();
             }
@@ -9546,7 +9582,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPaymentStatusChanging(value);
                 ReportPropertyChanging("PaymentStatus");
-                _PaymentStatus = StructuralObject.SetValidValue(value);
+                _PaymentStatus = StructuralObject.SetValidValue(value, "PaymentStatus");
                 ReportPropertyChanged("PaymentStatus");
                 OnPaymentStatusChanged();
             }
@@ -9570,7 +9606,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingAddressChanging(value);
                 ReportPropertyChanging("ShippingAddress");
-                _ShippingAddress = StructuralObject.SetValidValue(value, false);
+                _ShippingAddress = StructuralObject.SetValidValue(value, false, "ShippingAddress");
                 ReportPropertyChanged("ShippingAddress");
                 OnShippingAddressChanged();
             }
@@ -9594,7 +9630,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingDiscountsChanging(value);
                 ReportPropertyChanging("ShippingDiscounts");
-                _ShippingDiscounts = StructuralObject.SetValidValue(value);
+                _ShippingDiscounts = StructuralObject.SetValidValue(value, "ShippingDiscounts");
                 ReportPropertyChanged("ShippingDiscounts");
                 OnShippingDiscountsChanged();
             }
@@ -9618,7 +9654,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingMethodIdChanging(value);
                 ReportPropertyChanging("ShippingMethodId");
-                _ShippingMethodId = StructuralObject.SetValidValue(value, false);
+                _ShippingMethodId = StructuralObject.SetValidValue(value, false, "ShippingMethodId");
                 ReportPropertyChanged("ShippingMethodId");
                 OnShippingMethodIdChanged();
             }
@@ -9642,7 +9678,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingMethodDisplayNameChanging(value);
                 ReportPropertyChanging("ShippingMethodDisplayName");
-                _ShippingMethodDisplayName = StructuralObject.SetValidValue(value, false);
+                _ShippingMethodDisplayName = StructuralObject.SetValidValue(value, false, "ShippingMethodDisplayName");
                 ReportPropertyChanged("ShippingMethodDisplayName");
                 OnShippingMethodDisplayNameChanged();
             }
@@ -9666,7 +9702,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -9690,7 +9726,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingProviderServiceCodeChanging(value);
                 ReportPropertyChanging("ShippingProviderServiceCode");
-                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false, "ShippingProviderServiceCode");
                 ReportPropertyChanged("ShippingProviderServiceCode");
                 OnShippingProviderServiceCodeChanged();
             }
@@ -9714,7 +9750,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingStatusChanging(value);
                 ReportPropertyChanging("ShippingStatus");
-                _ShippingStatus = StructuralObject.SetValidValue(value);
+                _ShippingStatus = StructuralObject.SetValidValue(value, "ShippingStatus");
                 ReportPropertyChanged("ShippingStatus");
                 OnShippingStatusChanged();
             }
@@ -9738,7 +9774,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingTotalChanging(value);
                 ReportPropertyChanging("ShippingTotal");
-                _ShippingTotal = StructuralObject.SetValidValue(value);
+                _ShippingTotal = StructuralObject.SetValidValue(value, "ShippingTotal");
                 ReportPropertyChanged("ShippingTotal");
                 OnShippingTotalChanged();
             }
@@ -9762,7 +9798,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSubTotalChanging(value);
                 ReportPropertyChanging("SubTotal");
-                _SubTotal = StructuralObject.SetValidValue(value);
+                _SubTotal = StructuralObject.SetValidValue(value, "SubTotal");
                 ReportPropertyChanged("SubTotal");
                 OnSubTotalChanged();
             }
@@ -9786,7 +9822,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxTotalChanging(value);
                 ReportPropertyChanging("TaxTotal");
-                _TaxTotal = StructuralObject.SetValidValue(value);
+                _TaxTotal = StructuralObject.SetValidValue(value, "TaxTotal");
                 ReportPropertyChanged("TaxTotal");
                 OnTaxTotalChanged();
             }
@@ -9810,7 +9846,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxTotal2Changing(value);
                 ReportPropertyChanging("TaxTotal2");
-                _TaxTotal2 = StructuralObject.SetValidValue(value);
+                _TaxTotal2 = StructuralObject.SetValidValue(value, "TaxTotal2");
                 ReportPropertyChanged("TaxTotal2");
                 OnTaxTotal2Changed();
             }
@@ -9834,7 +9870,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTimeOfOrderChanging(value);
                 ReportPropertyChanging("TimeOfOrder");
-                _TimeOfOrder = StructuralObject.SetValidValue(value);
+                _TimeOfOrder = StructuralObject.SetValidValue(value, "TimeOfOrder");
                 ReportPropertyChanged("TimeOfOrder");
                 OnTimeOfOrderChanged();
             }
@@ -9858,7 +9894,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserEmailChanging(value);
                 ReportPropertyChanging("UserEmail");
-                _UserEmail = StructuralObject.SetValidValue(value, false);
+                _UserEmail = StructuralObject.SetValidValue(value, false, "UserEmail");
                 ReportPropertyChanged("UserEmail");
                 OnUserEmailChanged();
             }
@@ -9882,7 +9918,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -9906,7 +9942,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusCodeChanging(value);
                 ReportPropertyChanging("StatusCode");
-                _StatusCode = StructuralObject.SetValidValue(value, false);
+                _StatusCode = StructuralObject.SetValidValue(value, false, "StatusCode");
                 ReportPropertyChanged("StatusCode");
                 OnStatusCodeChanged();
             }
@@ -9930,7 +9966,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -9954,7 +9990,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnThirdPartyOrderIdChanging(value);
                 ReportPropertyChanging("ThirdPartyOrderId");
-                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false);
+                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false, "ThirdPartyOrderId");
                 ReportPropertyChanged("ThirdPartyOrderId");
                 OnThirdPartyOrderIdChanged();
             }
@@ -9978,7 +10014,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -10002,7 +10038,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingDiscountDetailsChanging(value);
                 ReportPropertyChanging("ShippingDiscountDetails");
-                _ShippingDiscountDetails = StructuralObject.SetValidValue(value, false);
+                _ShippingDiscountDetails = StructuralObject.SetValidValue(value, false, "ShippingDiscountDetails");
                 ReportPropertyChanged("ShippingDiscountDetails");
                 OnShippingDiscountDetailsChanged();
             }
@@ -10012,7 +10048,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnShippingDiscountDetailsChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -10082,6 +10118,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10118,7 +10155,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10137,7 +10175,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -10162,7 +10200,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -10186,7 +10224,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCouponCodeChanging(value);
                 ReportPropertyChanging("CouponCode");
-                _CouponCode = StructuralObject.SetValidValue(value, false);
+                _CouponCode = StructuralObject.SetValidValue(value, false, "CouponCode");
                 ReportPropertyChanged("CouponCode");
                 OnCouponCodeChanged();
             }
@@ -10210,7 +10248,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -10234,7 +10272,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -10258,7 +10296,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -10282,7 +10320,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsUsedChanging(value);
                 ReportPropertyChanging("IsUsed");
-                _IsUsed = StructuralObject.SetValidValue(value);
+                _IsUsed = StructuralObject.SetValidValue(value, "IsUsed");
                 ReportPropertyChanged("IsUsed");
                 OnIsUsedChanged();
             }
@@ -10292,7 +10330,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnIsUsedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -10334,6 +10372,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10370,7 +10409,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10389,7 +10429,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -10414,7 +10454,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderIdChanging(value);
                 ReportPropertyChanging("OrderId");
-                _OrderId = StructuralObject.SetValidValue(value, false);
+                _OrderId = StructuralObject.SetValidValue(value, false, "OrderId");
                 ReportPropertyChanged("OrderId");
                 OnOrderIdChanged();
             }
@@ -10438,7 +10478,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAuditDateChanging(value);
                 ReportPropertyChanging("AuditDate");
-                _AuditDate = StructuralObject.SetValidValue(value);
+                _AuditDate = StructuralObject.SetValidValue(value, "AuditDate");
                 ReportPropertyChanged("AuditDate");
                 OnAuditDateChanged();
             }
@@ -10462,7 +10502,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNoteChanging(value);
                 ReportPropertyChanging("Note");
-                _Note = StructuralObject.SetValidValue(value, false);
+                _Note = StructuralObject.SetValidValue(value, false, "Note");
                 ReportPropertyChanged("Note");
                 OnNoteChanged();
             }
@@ -10486,7 +10526,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsPublicChanging(value);
                 ReportPropertyChanging("IsPublic");
-                _IsPublic = StructuralObject.SetValidValue(value);
+                _IsPublic = StructuralObject.SetValidValue(value, "IsPublic");
                 ReportPropertyChanged("IsPublic");
                 OnIsPublicChanged();
             }
@@ -10510,7 +10550,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -10534,7 +10574,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -10544,7 +10584,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -10586,6 +10626,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10646,7 +10687,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10665,7 +10707,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -10690,7 +10732,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -10714,7 +10756,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWidthChanging(value);
                 ReportPropertyChanging("Width");
-                _Width = StructuralObject.SetValidValue(value);
+                _Width = StructuralObject.SetValidValue(value, "Width");
                 ReportPropertyChanged("Width");
                 OnWidthChanged();
             }
@@ -10738,7 +10780,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnHeightChanging(value);
                 ReportPropertyChanging("Height");
-                _Height = StructuralObject.SetValidValue(value);
+                _Height = StructuralObject.SetValidValue(value, "Height");
                 ReportPropertyChanged("Height");
                 OnHeightChanged();
             }
@@ -10762,7 +10804,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLengthChanging(value);
                 ReportPropertyChanging("Length");
-                _Length = StructuralObject.SetValidValue(value);
+                _Length = StructuralObject.SetValidValue(value, "Length");
                 ReportPropertyChanged("Length");
                 OnLengthChanged();
             }
@@ -10786,7 +10828,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSizeUnitsChanging(value);
                 ReportPropertyChanging("SizeUnits");
-                _SizeUnits = StructuralObject.SetValidValue(value);
+                _SizeUnits = StructuralObject.SetValidValue(value, "SizeUnits");
                 ReportPropertyChanged("SizeUnits");
                 OnSizeUnitsChanged();
             }
@@ -10810,7 +10852,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWeightChanging(value);
                 ReportPropertyChanging("Weight");
-                _Weight = StructuralObject.SetValidValue(value);
+                _Weight = StructuralObject.SetValidValue(value, "Weight");
                 ReportPropertyChanged("Weight");
                 OnWeightChanged();
             }
@@ -10834,7 +10876,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWeightUnitsChanging(value);
                 ReportPropertyChanging("WeightUnits");
-                _WeightUnits = StructuralObject.SetValidValue(value);
+                _WeightUnits = StructuralObject.SetValidValue(value, "WeightUnits");
                 ReportPropertyChanged("WeightUnits");
                 OnWeightUnitsChanged();
             }
@@ -10858,7 +10900,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderIdChanging(value);
                 ReportPropertyChanging("OrderId");
-                _OrderId = StructuralObject.SetValidValue(value, false);
+                _OrderId = StructuralObject.SetValidValue(value, false, "OrderId");
                 ReportPropertyChanged("OrderId");
                 OnOrderIdChanged();
             }
@@ -10882,7 +10924,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -10906,7 +10948,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingProviderServiceCodeChanging(value);
                 ReportPropertyChanging("ShippingProviderServiceCode");
-                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false, "ShippingProviderServiceCode");
                 ReportPropertyChanged("ShippingProviderServiceCode");
                 OnShippingProviderServiceCodeChanged();
             }
@@ -10930,7 +10972,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnHasShippedChanging(value);
                 ReportPropertyChanging("HasShipped");
-                _HasShipped = StructuralObject.SetValidValue(value);
+                _HasShipped = StructuralObject.SetValidValue(value, "HasShipped");
                 ReportPropertyChanged("HasShipped");
                 OnHasShippedChanged();
             }
@@ -10954,7 +10996,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTrackingNumberChanging(value);
                 ReportPropertyChanging("TrackingNumber");
-                _TrackingNumber = StructuralObject.SetValidValue(value, false);
+                _TrackingNumber = StructuralObject.SetValidValue(value, false, "TrackingNumber");
                 ReportPropertyChanged("TrackingNumber");
                 OnTrackingNumberChanged();
             }
@@ -10978,7 +11020,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipDateUtcChanging(value);
                 ReportPropertyChanging("ShipDateUtc");
-                _ShipDateUtc = StructuralObject.SetValidValue(value);
+                _ShipDateUtc = StructuralObject.SetValidValue(value, "ShipDateUtc");
                 ReportPropertyChanged("ShipDateUtc");
                 OnShipDateUtcChanged();
             }
@@ -11002,7 +11044,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEstimatedShippingCostChanging(value);
                 ReportPropertyChanging("EstimatedShippingCost");
-                _EstimatedShippingCost = StructuralObject.SetValidValue(value);
+                _EstimatedShippingCost = StructuralObject.SetValidValue(value, "EstimatedShippingCost");
                 ReportPropertyChanged("EstimatedShippingCost");
                 OnEstimatedShippingCostChanged();
             }
@@ -11026,7 +11068,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnItemsChanging(value);
                 ReportPropertyChanging("Items");
-                _Items = StructuralObject.SetValidValue(value, false);
+                _Items = StructuralObject.SetValidValue(value, false, "Items");
                 ReportPropertyChanged("Items");
                 OnItemsChanged();
             }
@@ -11050,7 +11092,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -11074,7 +11116,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -11098,7 +11140,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -11108,7 +11150,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -11143,7 +11185,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11162,7 +11205,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11187,7 +11230,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -11211,7 +11254,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSystemPolicyChanging(value);
                 ReportPropertyChanging("SystemPolicy");
-                _SystemPolicy = StructuralObject.SetValidValue(value);
+                _SystemPolicy = StructuralObject.SetValidValue(value, "SystemPolicy");
                 ReportPropertyChanged("SystemPolicy");
                 OnSystemPolicyChanged();
             }
@@ -11235,7 +11278,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -11259,7 +11302,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -11283,7 +11326,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPolicyTypeChanging(value);
                 ReportPropertyChanging("PolicyType");
-                _PolicyType = StructuralObject.SetValidValue(value);
+                _PolicyType = StructuralObject.SetValidValue(value, "PolicyType");
                 ReportPropertyChanged("PolicyType");
                 OnPolicyTypeChanged();
             }
@@ -11293,7 +11336,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnPolicyTypeChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -11319,6 +11362,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11357,7 +11401,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11376,7 +11421,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11401,7 +11446,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -11425,7 +11470,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -11449,7 +11494,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -11473,7 +11518,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -11497,7 +11542,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPolicyIDChanging(value);
                 ReportPropertyChanging("PolicyID");
-                _PolicyID = StructuralObject.SetValidValue(value, false);
+                _PolicyID = StructuralObject.SetValidValue(value, false, "PolicyID");
                 ReportPropertyChanged("PolicyID");
                 OnPolicyIDChanged();
             }
@@ -11521,7 +11566,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionPreTransformChanging(value);
                 ReportPropertyChanging("DescriptionPreTransform");
-                _DescriptionPreTransform = StructuralObject.SetValidValue(value, false);
+                _DescriptionPreTransform = StructuralObject.SetValidValue(value, false, "DescriptionPreTransform");
                 ReportPropertyChanged("DescriptionPreTransform");
                 OnDescriptionPreTransformChanged();
             }
@@ -11545,7 +11590,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -11555,7 +11600,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -11597,6 +11642,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11631,7 +11677,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11650,7 +11697,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11675,7 +11722,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -11699,7 +11746,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPricingTypeChanging(value);
                 ReportPropertyChanging("PricingType");
-                _PricingType = StructuralObject.SetValidValue(value);
+                _PricingType = StructuralObject.SetValidValue(value, "PricingType");
                 ReportPropertyChanged("PricingType");
                 OnPricingTypeChanged();
             }
@@ -11723,7 +11770,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAdjustmentAmountChanging(value);
                 ReportPropertyChanging("AdjustmentAmount");
-                _AdjustmentAmount = StructuralObject.SetValidValue(value);
+                _AdjustmentAmount = StructuralObject.SetValidValue(value, "AdjustmentAmount");
                 ReportPropertyChanged("AdjustmentAmount");
                 OnAdjustmentAmountChanged();
             }
@@ -11747,7 +11794,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -11771,7 +11818,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -11781,7 +11828,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -11902,7 +11949,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11919,7 +11967,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -11945,7 +11993,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11970,7 +12018,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSKUChanging(value);
                 ReportPropertyChanging("SKU");
-                _SKU = StructuralObject.SetValidValue(value, false);
+                _SKU = StructuralObject.SetValidValue(value, false, "SKU");
                 ReportPropertyChanged("SKU");
                 OnSKUChanged();
             }
@@ -11994,7 +12042,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductNameChanging(value);
                 ReportPropertyChanging("ProductName");
-                _ProductName = StructuralObject.SetValidValue(value, false);
+                _ProductName = StructuralObject.SetValidValue(value, false, "ProductName");
                 ReportPropertyChanged("ProductName");
                 OnProductNameChanged();
             }
@@ -12018,7 +12066,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductTypeIdChanging(value);
                 ReportPropertyChanging("ProductTypeId");
-                _ProductTypeId = StructuralObject.SetValidValue(value, false);
+                _ProductTypeId = StructuralObject.SetValidValue(value, false, "ProductTypeId");
                 ReportPropertyChanged("ProductTypeId");
                 OnProductTypeIdChanged();
             }
@@ -12042,7 +12090,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnListPriceChanging(value);
                 ReportPropertyChanging("ListPrice");
-                _ListPrice = StructuralObject.SetValidValue(value);
+                _ListPrice = StructuralObject.SetValidValue(value, "ListPrice");
                 ReportPropertyChanged("ListPrice");
                 OnListPriceChanged();
             }
@@ -12066,7 +12114,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSitePriceChanging(value);
                 ReportPropertyChanging("SitePrice");
-                _SitePrice = StructuralObject.SetValidValue(value);
+                _SitePrice = StructuralObject.SetValidValue(value, "SitePrice");
                 ReportPropertyChanged("SitePrice");
                 OnSitePriceChanged();
             }
@@ -12090,7 +12138,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSiteCostChanging(value);
                 ReportPropertyChanging("SiteCost");
-                _SiteCost = StructuralObject.SetValidValue(value);
+                _SiteCost = StructuralObject.SetValidValue(value, "SiteCost");
                 ReportPropertyChanged("SiteCost");
                 OnSiteCostChanged();
             }
@@ -12114,7 +12162,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaKeywordsChanging(value);
                 ReportPropertyChanging("MetaKeywords");
-                _MetaKeywords = StructuralObject.SetValidValue(value, false);
+                _MetaKeywords = StructuralObject.SetValidValue(value, false, "MetaKeywords");
                 ReportPropertyChanged("MetaKeywords");
                 OnMetaKeywordsChanged();
             }
@@ -12138,7 +12186,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaDescriptionChanging(value);
                 ReportPropertyChanging("MetaDescription");
-                _MetaDescription = StructuralObject.SetValidValue(value, false);
+                _MetaDescription = StructuralObject.SetValidValue(value, false, "MetaDescription");
                 ReportPropertyChanged("MetaDescription");
                 OnMetaDescriptionChanged();
             }
@@ -12162,7 +12210,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMetaTitleChanging(value);
                 ReportPropertyChanging("MetaTitle");
-                _MetaTitle = StructuralObject.SetValidValue(value, false);
+                _MetaTitle = StructuralObject.SetValidValue(value, false, "MetaTitle");
                 ReportPropertyChanged("MetaTitle");
                 OnMetaTitleChanged();
             }
@@ -12186,7 +12234,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxExemptChanging(value);
                 ReportPropertyChanging("TaxExempt");
-                _TaxExempt = StructuralObject.SetValidValue(value);
+                _TaxExempt = StructuralObject.SetValidValue(value, "TaxExempt");
                 ReportPropertyChanged("TaxExempt");
                 OnTaxExemptChanged();
             }
@@ -12210,7 +12258,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxClassChanging(value);
                 ReportPropertyChanging("TaxClass");
-                _TaxClass = StructuralObject.SetValidValue(value, false);
+                _TaxClass = StructuralObject.SetValidValue(value, false, "TaxClass");
                 ReportPropertyChanged("TaxClass");
                 OnTaxClassChanged();
             }
@@ -12234,7 +12282,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNonShippingChanging(value);
                 ReportPropertyChanging("NonShipping");
-                _NonShipping = StructuralObject.SetValidValue(value);
+                _NonShipping = StructuralObject.SetValidValue(value, "NonShipping");
                 ReportPropertyChanged("NonShipping");
                 OnNonShippingChanged();
             }
@@ -12258,7 +12306,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShipSeparatelyChanging(value);
                 ReportPropertyChanging("ShipSeparately");
-                _ShipSeparately = StructuralObject.SetValidValue(value);
+                _ShipSeparately = StructuralObject.SetValidValue(value, "ShipSeparately");
                 ReportPropertyChanged("ShipSeparately");
                 OnShipSeparatelyChanged();
             }
@@ -12282,7 +12330,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingModeChanging(value);
                 ReportPropertyChanging("ShippingMode");
-                _ShippingMode = StructuralObject.SetValidValue(value);
+                _ShippingMode = StructuralObject.SetValidValue(value, "ShippingMode");
                 ReportPropertyChanged("ShippingMode");
                 OnShippingModeChanged();
             }
@@ -12306,7 +12354,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingWeightChanging(value);
                 ReportPropertyChanging("ShippingWeight");
-                _ShippingWeight = StructuralObject.SetValidValue(value);
+                _ShippingWeight = StructuralObject.SetValidValue(value, "ShippingWeight");
                 ReportPropertyChanged("ShippingWeight");
                 OnShippingWeightChanged();
             }
@@ -12330,7 +12378,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingLengthChanging(value);
                 ReportPropertyChanging("ShippingLength");
-                _ShippingLength = StructuralObject.SetValidValue(value);
+                _ShippingLength = StructuralObject.SetValidValue(value, "ShippingLength");
                 ReportPropertyChanged("ShippingLength");
                 OnShippingLengthChanged();
             }
@@ -12354,7 +12402,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingWidthChanging(value);
                 ReportPropertyChanging("ShippingWidth");
-                _ShippingWidth = StructuralObject.SetValidValue(value);
+                _ShippingWidth = StructuralObject.SetValidValue(value, "ShippingWidth");
                 ReportPropertyChanged("ShippingWidth");
                 OnShippingWidthChanged();
             }
@@ -12378,7 +12426,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingHeightChanging(value);
                 ReportPropertyChanging("ShippingHeight");
-                _ShippingHeight = StructuralObject.SetValidValue(value);
+                _ShippingHeight = StructuralObject.SetValidValue(value, "ShippingHeight");
                 ReportPropertyChanged("ShippingHeight");
                 OnShippingHeightChanged();
             }
@@ -12402,7 +12450,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -12426,7 +12474,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnImageFileSmallChanging(value);
                 ReportPropertyChanging("ImageFileSmall");
-                _ImageFileSmall = StructuralObject.SetValidValue(value, false);
+                _ImageFileSmall = StructuralObject.SetValidValue(value, false, "ImageFileSmall");
                 ReportPropertyChanged("ImageFileSmall");
                 OnImageFileSmallChanged();
             }
@@ -12450,7 +12498,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnImageFileMediumChanging(value);
                 ReportPropertyChanging("ImageFileMedium");
-                _ImageFileMedium = StructuralObject.SetValidValue(value, false);
+                _ImageFileMedium = StructuralObject.SetValidValue(value, false, "ImageFileMedium");
                 ReportPropertyChanged("ImageFileMedium");
                 OnImageFileMediumChanged();
             }
@@ -12474,7 +12522,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCreationDateChanging(value);
                 ReportPropertyChanging("CreationDate");
-                _CreationDate = StructuralObject.SetValidValue(value);
+                _CreationDate = StructuralObject.SetValidValue(value, "CreationDate");
                 ReportPropertyChanged("CreationDate");
                 OnCreationDateChanged();
             }
@@ -12498,7 +12546,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMinimumQtyChanging(value);
                 ReportPropertyChanging("MinimumQty");
-                _MinimumQty = StructuralObject.SetValidValue(value);
+                _MinimumQty = StructuralObject.SetValidValue(value, "MinimumQty");
                 ReportPropertyChanged("MinimumQty");
                 OnMinimumQtyChanged();
             }
@@ -12522,7 +12570,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, false);
+                _ShortDescription = StructuralObject.SetValidValue(value, false, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -12546,7 +12594,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLongDescriptionChanging(value);
                 ReportPropertyChanging("LongDescription");
-                _LongDescription = StructuralObject.SetValidValue(value, false);
+                _LongDescription = StructuralObject.SetValidValue(value, false, "LongDescription");
                 ReportPropertyChanged("LongDescription");
                 OnLongDescriptionChanged();
             }
@@ -12570,7 +12618,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnManufacturerIDChanging(value);
                 ReportPropertyChanging("ManufacturerID");
-                _ManufacturerID = StructuralObject.SetValidValue(value, false);
+                _ManufacturerID = StructuralObject.SetValidValue(value, false, "ManufacturerID");
                 ReportPropertyChanged("ManufacturerID");
                 OnManufacturerIDChanged();
             }
@@ -12594,7 +12642,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnVendorIDChanging(value);
                 ReportPropertyChanging("VendorID");
-                _VendorID = StructuralObject.SetValidValue(value, false);
+                _VendorID = StructuralObject.SetValidValue(value, false, "VendorID");
                 ReportPropertyChanged("VendorID");
                 OnVendorIDChanged();
             }
@@ -12618,7 +12666,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGiftWrapAllowedChanging(value);
                 ReportPropertyChanging("GiftWrapAllowed");
-                _GiftWrapAllowed = StructuralObject.SetValidValue(value);
+                _GiftWrapAllowed = StructuralObject.SetValidValue(value, "GiftWrapAllowed");
                 ReportPropertyChanged("GiftWrapAllowed");
                 OnGiftWrapAllowedChanged();
             }
@@ -12642,7 +12690,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnExtraShipFeeChanging(value);
                 ReportPropertyChanging("ExtraShipFee");
-                _ExtraShipFee = StructuralObject.SetValidValue(value);
+                _ExtraShipFee = StructuralObject.SetValidValue(value, "ExtraShipFee");
                 ReportPropertyChanged("ExtraShipFee");
                 OnExtraShipFeeChanged();
             }
@@ -12666,7 +12714,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -12690,7 +12738,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnKeywordsChanging(value);
                 ReportPropertyChanging("Keywords");
-                _Keywords = StructuralObject.SetValidValue(value, false);
+                _Keywords = StructuralObject.SetValidValue(value, false, "Keywords");
                 ReportPropertyChanged("Keywords");
                 OnKeywordsChanged();
             }
@@ -12714,7 +12762,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTemplateNameChanging(value);
                 ReportPropertyChanging("TemplateName");
-                _TemplateName = StructuralObject.SetValidValue(value, false);
+                _TemplateName = StructuralObject.SetValidValue(value, false, "TemplateName");
                 ReportPropertyChanged("TemplateName");
                 OnTemplateNameChanged();
             }
@@ -12738,7 +12786,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPreContentColumnIdChanging(value);
                 ReportPropertyChanging("PreContentColumnId");
-                _PreContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PreContentColumnId = StructuralObject.SetValidValue(value, false, "PreContentColumnId");
                 ReportPropertyChanged("PreContentColumnId");
                 OnPreContentColumnIdChanged();
             }
@@ -12762,7 +12810,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPostContentColumnIdChanging(value);
                 ReportPropertyChanging("PostContentColumnId");
-                _PostContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PostContentColumnId = StructuralObject.SetValidValue(value, false, "PostContentColumnId");
                 ReportPropertyChanged("PostContentColumnId");
                 OnPostContentColumnIdChanged();
             }
@@ -12786,7 +12834,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRewriteUrlChanging(value);
                 ReportPropertyChanging("RewriteUrl");
-                _RewriteUrl = StructuralObject.SetValidValue(value, false);
+                _RewriteUrl = StructuralObject.SetValidValue(value, false, "RewriteUrl");
                 ReportPropertyChanged("RewriteUrl");
                 OnRewriteUrlChanged();
             }
@@ -12810,7 +12858,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSitePriceOverrideTextChanging(value);
                 ReportPropertyChanging("SitePriceOverrideText");
-                _SitePriceOverrideText = StructuralObject.SetValidValue(value, false);
+                _SitePriceOverrideText = StructuralObject.SetValidValue(value, false, "SitePriceOverrideText");
                 ReportPropertyChanged("SitePriceOverrideText");
                 OnSitePriceOverrideTextChanged();
             }
@@ -12834,7 +12882,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPreTransformLongDescriptionChanging(value);
                 ReportPropertyChanging("PreTransformLongDescription");
-                _PreTransformLongDescription = StructuralObject.SetValidValue(value, false);
+                _PreTransformLongDescription = StructuralObject.SetValidValue(value, false, "PreTransformLongDescription");
                 ReportPropertyChanged("PreTransformLongDescription");
                 OnPreTransformLongDescriptionChanged();
             }
@@ -12858,7 +12906,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSmallImageAlternateTextChanging(value);
                 ReportPropertyChanging("SmallImageAlternateText");
-                _SmallImageAlternateText = StructuralObject.SetValidValue(value, false);
+                _SmallImageAlternateText = StructuralObject.SetValidValue(value, false, "SmallImageAlternateText");
                 ReportPropertyChanged("SmallImageAlternateText");
                 OnSmallImageAlternateTextChanged();
             }
@@ -12882,7 +12930,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMediumImageAlternateTextChanging(value);
                 ReportPropertyChanging("MediumImageAlternateText");
-                _MediumImageAlternateText = StructuralObject.SetValidValue(value, false);
+                _MediumImageAlternateText = StructuralObject.SetValidValue(value, false, "MediumImageAlternateText");
                 ReportPropertyChanged("MediumImageAlternateText");
                 OnMediumImageAlternateTextChanged();
             }
@@ -12906,7 +12954,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -12930,7 +12978,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGiftWrapPriceChanging(value);
                 ReportPropertyChanging("GiftWrapPrice");
-                _GiftWrapPrice = StructuralObject.SetValidValue(value);
+                _GiftWrapPrice = StructuralObject.SetValidValue(value, "GiftWrapPrice");
                 ReportPropertyChanged("GiftWrapPrice");
                 OnGiftWrapPriceChanged();
             }
@@ -12954,7 +13002,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -12978,7 +13026,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFeaturedChanging(value);
                 ReportPropertyChanging("Featured");
-                _Featured = StructuralObject.SetValidValue(value);
+                _Featured = StructuralObject.SetValidValue(value, "Featured");
                 ReportPropertyChanged("Featured");
                 OnFeaturedChanged();
             }
@@ -13002,7 +13050,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAllowReviewsChanging(value);
                 ReportPropertyChanging("AllowReviews");
-                _AllowReviews = StructuralObject.SetValidValue(value);
+                _AllowReviews = StructuralObject.SetValidValue(value, "AllowReviews");
                 ReportPropertyChanged("AllowReviews");
                 OnAllowReviewsChanged();
             }
@@ -13026,7 +13074,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionTabsChanging(value);
                 ReportPropertyChanging("DescriptionTabs");
-                _DescriptionTabs = StructuralObject.SetValidValue(value, false);
+                _DescriptionTabs = StructuralObject.SetValidValue(value, false, "DescriptionTabs");
                 ReportPropertyChanged("DescriptionTabs");
                 OnDescriptionTabsChanged();
             }
@@ -13050,7 +13098,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOutOfStockModeChanging(value);
                 ReportPropertyChanging("OutOfStockMode");
-                _OutOfStockMode = StructuralObject.SetValidValue(value);
+                _OutOfStockMode = StructuralObject.SetValidValue(value, "OutOfStockMode");
                 ReportPropertyChanged("OutOfStockMode");
                 OnOutOfStockModeChanged();
             }
@@ -13074,7 +13122,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsAvailableForSaleChanging(value);
                 ReportPropertyChanging("IsAvailableForSale");
-                _IsAvailableForSale = StructuralObject.SetValidValue(value);
+                _IsAvailableForSale = StructuralObject.SetValidValue(value, "IsAvailableForSale");
                 ReportPropertyChanged("IsAvailableForSale");
                 OnIsAvailableForSaleChanged();
             }
@@ -13084,7 +13132,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnIsAvailableForSaleChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -13154,6 +13202,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13186,7 +13235,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13205,7 +13255,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13230,7 +13280,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, false);
+                _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -13254,7 +13304,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, false);
+                _ShortDescription = StructuralObject.SetValidValue(value, false, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -13278,7 +13328,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13302,7 +13352,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -13312,7 +13362,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -13338,6 +13388,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13374,7 +13425,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13393,7 +13445,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -13418,7 +13470,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductFileIdChanging(value);
                 ReportPropertyChanging("ProductFileId");
-                _ProductFileId = StructuralObject.SetValidValue(value, false);
+                _ProductFileId = StructuralObject.SetValidValue(value, false, "ProductFileId");
                 ReportPropertyChanged("ProductFileId");
                 OnProductFileIdChanged();
             }
@@ -13442,7 +13494,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -13466,7 +13518,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAvailableMinutesChanging(value);
                 ReportPropertyChanging("AvailableMinutes");
-                _AvailableMinutes = StructuralObject.SetValidValue(value);
+                _AvailableMinutes = StructuralObject.SetValidValue(value, "AvailableMinutes");
                 ReportPropertyChanged("AvailableMinutes");
                 OnAvailableMinutesChanged();
             }
@@ -13490,7 +13542,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMaxDownloadsChanging(value);
                 ReportPropertyChanging("MaxDownloads");
-                _MaxDownloads = StructuralObject.SetValidValue(value);
+                _MaxDownloads = StructuralObject.SetValidValue(value, "MaxDownloads");
                 ReportPropertyChanged("MaxDownloads");
                 OnMaxDownloadsChanged();
             }
@@ -13514,7 +13566,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13538,7 +13590,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -13548,7 +13600,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -13590,6 +13642,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13624,7 +13677,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13643,7 +13697,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13668,7 +13722,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFilterNameChanging(value);
                 ReportPropertyChanging("FilterName");
-                _FilterName = StructuralObject.SetValidValue(value, false);
+                _FilterName = StructuralObject.SetValidValue(value, false, "FilterName");
                 ReportPropertyChanged("FilterName");
                 OnFilterNameChanged();
             }
@@ -13692,7 +13746,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCriteriaChanging(value);
                 ReportPropertyChanging("Criteria");
-                _Criteria = StructuralObject.SetValidValue(value, false);
+                _Criteria = StructuralObject.SetValidValue(value, false, "Criteria");
                 ReportPropertyChanged("Criteria");
                 OnCriteriaChanged();
             }
@@ -13716,7 +13770,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPageChanging(value);
                 ReportPropertyChanging("Page");
-                _Page = StructuralObject.SetValidValue(value, false);
+                _Page = StructuralObject.SetValidValue(value, false, "Page");
                 ReportPropertyChanged("Page");
                 OnPageChanged();
             }
@@ -13740,7 +13794,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13764,7 +13818,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -13774,7 +13828,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -13813,7 +13867,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13832,7 +13887,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13857,7 +13912,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIDChanging(value);
                 ReportPropertyChanging("ProductID");
-                _ProductID = StructuralObject.SetValidValue(value, false);
+                _ProductID = StructuralObject.SetValidValue(value, false, "ProductID");
                 ReportPropertyChanged("ProductID");
                 OnProductIDChanged();
             }
@@ -13881,7 +13936,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, false);
+                _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -13905,7 +13960,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCaptionChanging(value);
                 ReportPropertyChanging("Caption");
-                _Caption = StructuralObject.SetValidValue(value, false);
+                _Caption = StructuralObject.SetValidValue(value, false, "Caption");
                 ReportPropertyChanged("Caption");
                 OnCaptionChanged();
             }
@@ -13929,7 +13984,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAlternateTextChanging(value);
                 ReportPropertyChanging("AlternateText");
-                _AlternateText = StructuralObject.SetValidValue(value, false);
+                _AlternateText = StructuralObject.SetValidValue(value, false, "AlternateText");
                 ReportPropertyChanged("AlternateText");
                 OnAlternateTextChanged();
             }
@@ -13953,7 +14008,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -13977,7 +14032,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -14001,7 +14056,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -14011,7 +14066,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -14050,7 +14105,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14069,7 +14125,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -14094,7 +14150,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -14118,7 +14174,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnVariantIdChanging(value);
                 ReportPropertyChanging("VariantId");
-                _VariantId = StructuralObject.SetValidValue(value, false);
+                _VariantId = StructuralObject.SetValidValue(value, false, "VariantId");
                 ReportPropertyChanged("VariantId");
                 OnVariantIdChanged();
             }
@@ -14142,7 +14198,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityOnHandChanging(value);
                 ReportPropertyChanging("QuantityOnHand");
-                _QuantityOnHand = StructuralObject.SetValidValue(value);
+                _QuantityOnHand = StructuralObject.SetValidValue(value, "QuantityOnHand");
                 ReportPropertyChanged("QuantityOnHand");
                 OnQuantityOnHandChanged();
             }
@@ -14166,7 +14222,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityReservedChanging(value);
                 ReportPropertyChanging("QuantityReserved");
-                _QuantityReserved = StructuralObject.SetValidValue(value);
+                _QuantityReserved = StructuralObject.SetValidValue(value, "QuantityReserved");
                 ReportPropertyChanged("QuantityReserved");
                 OnQuantityReservedChanged();
             }
@@ -14190,7 +14246,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityAvailableForSaleChanging(value);
                 ReportPropertyChanging("QuantityAvailableForSale");
-                _QuantityAvailableForSale = StructuralObject.SetValidValue(value);
+                _QuantityAvailableForSale = StructuralObject.SetValidValue(value, "QuantityAvailableForSale");
                 ReportPropertyChanged("QuantityAvailableForSale");
                 OnQuantityAvailableForSaleChanged();
             }
@@ -14214,7 +14270,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLowStockPointChanging(value);
                 ReportPropertyChanging("LowStockPoint");
-                _LowStockPoint = StructuralObject.SetValidValue(value);
+                _LowStockPoint = StructuralObject.SetValidValue(value, "LowStockPoint");
                 ReportPropertyChanged("LowStockPoint");
                 OnLowStockPointChanged();
             }
@@ -14238,7 +14294,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -14262,7 +14318,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -14272,7 +14328,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -14314,6 +14370,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -14352,7 +14409,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14371,7 +14429,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -14396,7 +14454,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -14420,7 +14478,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOptionTypeChanging(value);
                 ReportPropertyChanging("OptionType");
-                _OptionType = StructuralObject.SetValidValue(value);
+                _OptionType = StructuralObject.SetValidValue(value, "OptionType");
                 ReportPropertyChanged("OptionType");
                 OnOptionTypeChanged();
             }
@@ -14444,7 +14502,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -14468,7 +14526,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameIsHiddenChanging(value);
                 ReportPropertyChanging("NameIsHidden");
-                _NameIsHidden = StructuralObject.SetValidValue(value);
+                _NameIsHidden = StructuralObject.SetValidValue(value, "NameIsHidden");
                 ReportPropertyChanged("NameIsHidden");
                 OnNameIsHiddenChanged();
             }
@@ -14492,7 +14550,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsVariantChanging(value);
                 ReportPropertyChanging("IsVariant");
-                _IsVariant = StructuralObject.SetValidValue(value);
+                _IsVariant = StructuralObject.SetValidValue(value, "IsVariant");
                 ReportPropertyChanged("IsVariant");
                 OnIsVariantChanged();
             }
@@ -14516,7 +14574,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsSharedChanging(value);
                 ReportPropertyChanging("IsShared");
-                _IsShared = StructuralObject.SetValidValue(value);
+                _IsShared = StructuralObject.SetValidValue(value, "IsShared");
                 ReportPropertyChanged("IsShared");
                 OnIsSharedChanged();
             }
@@ -14540,7 +14598,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSettingsChanging(value);
                 ReportPropertyChanging("Settings");
-                _Settings = StructuralObject.SetValidValue(value, false);
+                _Settings = StructuralObject.SetValidValue(value, false, "Settings");
                 ReportPropertyChanged("Settings");
                 OnSettingsChanged();
             }
@@ -14550,7 +14608,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSettingsChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -14576,6 +14634,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -14614,7 +14673,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14633,7 +14693,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -14658,7 +14718,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -14682,7 +14742,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOptionBvinChanging(value);
                 ReportPropertyChanging("OptionBvin");
-                _OptionBvin = StructuralObject.SetValidValue(value, false);
+                _OptionBvin = StructuralObject.SetValidValue(value, false, "OptionBvin");
                 ReportPropertyChanged("OptionBvin");
                 OnOptionBvinChanged();
             }
@@ -14706,7 +14766,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -14730,7 +14790,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPriceAdjustmentChanging(value);
                 ReportPropertyChanging("PriceAdjustment");
-                _PriceAdjustment = StructuralObject.SetValidValue(value);
+                _PriceAdjustment = StructuralObject.SetValidValue(value, "PriceAdjustment");
                 ReportPropertyChanged("PriceAdjustment");
                 OnPriceAdjustmentChanged();
             }
@@ -14754,7 +14814,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnWeightAdjustmentChanging(value);
                 ReportPropertyChanging("WeightAdjustment");
-                _WeightAdjustment = StructuralObject.SetValidValue(value);
+                _WeightAdjustment = StructuralObject.SetValidValue(value, "WeightAdjustment");
                 ReportPropertyChanged("WeightAdjustment");
                 OnWeightAdjustmentChanged();
             }
@@ -14778,7 +14838,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsLabelChanging(value);
                 ReportPropertyChanging("IsLabel");
-                _IsLabel = StructuralObject.SetValidValue(value);
+                _IsLabel = StructuralObject.SetValidValue(value, "IsLabel");
                 ReportPropertyChanged("IsLabel");
                 OnIsLabelChanged();
             }
@@ -14802,7 +14862,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -14812,7 +14872,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -14854,6 +14914,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -14896,7 +14957,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14915,7 +14977,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -14940,7 +15002,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyNameChanging(value);
                 ReportPropertyChanging("PropertyName");
-                _PropertyName = StructuralObject.SetValidValue(value, false);
+                _PropertyName = StructuralObject.SetValidValue(value, false, "PropertyName");
                 ReportPropertyChanged("PropertyName");
                 OnPropertyNameChanged();
             }
@@ -14964,7 +15026,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -14988,7 +15050,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayOnSiteChanging(value);
                 ReportPropertyChanging("DisplayOnSite");
-                _DisplayOnSite = StructuralObject.SetValidValue(value);
+                _DisplayOnSite = StructuralObject.SetValidValue(value, "DisplayOnSite");
                 ReportPropertyChanged("DisplayOnSite");
                 OnDisplayOnSiteChanged();
             }
@@ -15012,7 +15074,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayToDropShipperChanging(value);
                 ReportPropertyChanging("DisplayToDropShipper");
-                _DisplayToDropShipper = StructuralObject.SetValidValue(value);
+                _DisplayToDropShipper = StructuralObject.SetValidValue(value, "DisplayToDropShipper");
                 ReportPropertyChanged("DisplayToDropShipper");
                 OnDisplayToDropShipperChanged();
             }
@@ -15036,7 +15098,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTypeCodeChanging(value);
                 ReportPropertyChanging("TypeCode");
-                _TypeCode = StructuralObject.SetValidValue(value);
+                _TypeCode = StructuralObject.SetValidValue(value, "TypeCode");
                 ReportPropertyChanged("TypeCode");
                 OnTypeCodeChanged();
             }
@@ -15060,7 +15122,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDefaultValueChanging(value);
                 ReportPropertyChanging("DefaultValue");
-                _DefaultValue = StructuralObject.SetValidValue(value, false);
+                _DefaultValue = StructuralObject.SetValidValue(value, false, "DefaultValue");
                 ReportPropertyChanged("DefaultValue");
                 OnDefaultValueChanged();
             }
@@ -15084,7 +15146,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCultureCodeChanging(value);
                 ReportPropertyChanging("CultureCode");
-                _CultureCode = StructuralObject.SetValidValue(value, false);
+                _CultureCode = StructuralObject.SetValidValue(value, false, "CultureCode");
                 ReportPropertyChanged("CultureCode");
                 OnCultureCodeChanged();
             }
@@ -15108,7 +15170,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -15132,7 +15194,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -15142,7 +15204,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -15168,6 +15230,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15202,7 +15265,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15221,7 +15285,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -15246,7 +15310,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyIdChanging(value);
                 ReportPropertyChanging("PropertyId");
-                _PropertyId = StructuralObject.SetValidValue(value);
+                _PropertyId = StructuralObject.SetValidValue(value, "PropertyId");
                 ReportPropertyChanged("PropertyId");
                 OnPropertyIdChanged();
             }
@@ -15270,7 +15334,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnChoiceNameChanging(value);
                 ReportPropertyChanging("ChoiceName");
-                _ChoiceName = StructuralObject.SetValidValue(value, false);
+                _ChoiceName = StructuralObject.SetValidValue(value, false, "ChoiceName");
                 ReportPropertyChanged("ChoiceName");
                 OnChoiceNameChanged();
             }
@@ -15294,7 +15358,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -15318,7 +15382,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -15342,7 +15406,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -15352,7 +15416,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -15394,6 +15458,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15426,7 +15491,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15445,7 +15511,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -15470,7 +15536,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -15494,7 +15560,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyIdChanging(value);
                 ReportPropertyChanging("PropertyId");
-                _PropertyId = StructuralObject.SetValidValue(value);
+                _PropertyId = StructuralObject.SetValidValue(value, "PropertyId");
                 ReportPropertyChanged("PropertyId");
                 OnPropertyIdChanged();
             }
@@ -15518,7 +15584,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyValueChanging(value);
                 ReportPropertyChanging("PropertyValue");
-                _PropertyValue = StructuralObject.SetValidValue(value, false);
+                _PropertyValue = StructuralObject.SetValidValue(value, false, "PropertyValue");
                 ReportPropertyChanged("PropertyValue");
                 OnPropertyValueChanged();
             }
@@ -15542,7 +15608,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -15552,7 +15618,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -15594,6 +15660,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15630,7 +15697,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15649,7 +15717,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -15674,7 +15742,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -15698,7 +15766,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRelatedProductIdChanging(value);
                 ReportPropertyChanging("RelatedProductId");
-                _RelatedProductId = StructuralObject.SetValidValue(value, false);
+                _RelatedProductId = StructuralObject.SetValidValue(value, false, "RelatedProductId");
                 ReportPropertyChanged("RelatedProductId");
                 OnRelatedProductIdChanged();
             }
@@ -15722,7 +15790,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -15746,7 +15814,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMarketingDescriptionChanging(value);
                 ReportPropertyChanging("MarketingDescription");
-                _MarketingDescription = StructuralObject.SetValidValue(value, false);
+                _MarketingDescription = StructuralObject.SetValidValue(value, false, "MarketingDescription");
                 ReportPropertyChanged("MarketingDescription");
                 OnMarketingDescriptionChanged();
             }
@@ -15770,7 +15838,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -15794,7 +15862,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsSubstituteChanging(value);
                 ReportPropertyChanging("IsSubstitute");
-                _IsSubstitute = StructuralObject.SetValidValue(value);
+                _IsSubstitute = StructuralObject.SetValidValue(value, "IsSubstitute");
                 ReportPropertyChanged("IsSubstitute");
                 OnIsSubstituteChanged();
             }
@@ -15804,7 +15872,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnIsSubstituteChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -15849,7 +15917,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15866,7 +15935,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIdChanging(value);
                 ReportPropertyChanging("Id");
-                _Id = StructuralObject.SetValidValue(value);
+                _Id = StructuralObject.SetValidValue(value, "Id");
                 ReportPropertyChanged("Id");
                 OnIdChanged();
             }
@@ -15890,7 +15959,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnlastUpdatedChanging(value);
                 ReportPropertyChanging("lastUpdated");
-                _lastUpdated = StructuralObject.SetValidValue(value);
+                _lastUpdated = StructuralObject.SetValidValue(value, "lastUpdated");
                 ReportPropertyChanged("lastUpdated");
                 OnlastUpdatedChanged();
             }
@@ -15916,7 +15985,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -15941,7 +16010,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnApprovedChanging(value);
                 ReportPropertyChanging("Approved");
-                _Approved = StructuralObject.SetValidValue(value);
+                _Approved = StructuralObject.SetValidValue(value, "Approved");
                 ReportPropertyChanged("Approved");
                 OnApprovedChanged();
             }
@@ -15965,7 +16034,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -15989,7 +16058,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnKarmaChanging(value);
                 ReportPropertyChanging("Karma");
-                _Karma = StructuralObject.SetValidValue(value);
+                _Karma = StructuralObject.SetValidValue(value, "Karma");
                 ReportPropertyChanged("Karma");
                 OnKarmaChanged();
             }
@@ -16013,7 +16082,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnReviewDateChanging(value);
                 ReportPropertyChanging("ReviewDate");
-                _ReviewDate = StructuralObject.SetValidValue(value);
+                _ReviewDate = StructuralObject.SetValidValue(value, "ReviewDate");
                 ReportPropertyChanged("ReviewDate");
                 OnReviewDateChanged();
             }
@@ -16037,7 +16106,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRatingChanging(value);
                 ReportPropertyChanging("Rating");
-                _Rating = StructuralObject.SetValidValue(value);
+                _Rating = StructuralObject.SetValidValue(value, "Rating");
                 ReportPropertyChanged("Rating");
                 OnRatingChanged();
             }
@@ -16061,7 +16130,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIDChanging(value);
                 ReportPropertyChanging("UserID");
-                _UserID = StructuralObject.SetValidValue(value, false);
+                _UserID = StructuralObject.SetValidValue(value, false, "UserID");
                 ReportPropertyChanged("UserID");
                 OnUserIDChanged();
             }
@@ -16085,7 +16154,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -16109,7 +16178,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -16119,7 +16188,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -16152,7 +16221,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16171,7 +16241,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16196,7 +16266,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductTypeNameChanging(value);
                 ReportPropertyChanging("ProductTypeName");
-                _ProductTypeName = StructuralObject.SetValidValue(value, false);
+                _ProductTypeName = StructuralObject.SetValidValue(value, false, "ProductTypeName");
                 ReportPropertyChanged("ProductTypeName");
                 OnProductTypeNameChanged();
             }
@@ -16220,7 +16290,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsPermanentChanging(value);
                 ReportPropertyChanging("IsPermanent");
-                _IsPermanent = StructuralObject.SetValidValue(value);
+                _IsPermanent = StructuralObject.SetValidValue(value, "IsPermanent");
                 ReportPropertyChanged("IsPermanent");
                 OnIsPermanentChanged();
             }
@@ -16244,7 +16314,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16268,7 +16338,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -16278,7 +16348,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16304,6 +16374,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16336,7 +16407,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16355,7 +16427,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -16380,7 +16452,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductTypeBvinChanging(value);
                 ReportPropertyChanging("ProductTypeBvin");
-                _ProductTypeBvin = StructuralObject.SetValidValue(value, false);
+                _ProductTypeBvin = StructuralObject.SetValidValue(value, false, "ProductTypeBvin");
                 ReportPropertyChanged("ProductTypeBvin");
                 OnProductTypeBvinChanged();
             }
@@ -16404,7 +16476,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPropertyIdChanging(value);
                 ReportPropertyChanging("PropertyId");
-                _PropertyId = StructuralObject.SetValidValue(value);
+                _PropertyId = StructuralObject.SetValidValue(value, "PropertyId");
                 ReportPropertyChanged("PropertyId");
                 OnPropertyIdChanged();
             }
@@ -16428,7 +16500,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -16452,7 +16524,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -16462,7 +16534,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16504,6 +16576,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16540,7 +16613,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16559,7 +16633,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16584,7 +16658,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIDChanging(value);
                 ReportPropertyChanging("ProductID");
-                _ProductID = StructuralObject.SetValidValue(value, false);
+                _ProductID = StructuralObject.SetValidValue(value, false, "ProductID");
                 ReportPropertyChanged("ProductID");
                 OnProductIDChanged();
             }
@@ -16608,7 +16682,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQtyChanging(value);
                 ReportPropertyChanging("Qty");
-                _Qty = StructuralObject.SetValidValue(value);
+                _Qty = StructuralObject.SetValidValue(value, "Qty");
                 ReportPropertyChanged("Qty");
                 OnQtyChanged();
             }
@@ -16632,7 +16706,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDiscountTypeChanging(value);
                 ReportPropertyChanging("DiscountType");
-                _DiscountType = StructuralObject.SetValidValue(value);
+                _DiscountType = StructuralObject.SetValidValue(value, "DiscountType");
                 ReportPropertyChanged("DiscountType");
                 OnDiscountTypeChanged();
             }
@@ -16656,7 +16730,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAmountChanging(value);
                 ReportPropertyChanging("Amount");
-                _Amount = StructuralObject.SetValidValue(value);
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
                 ReportPropertyChanged("Amount");
                 OnAmountChanged();
             }
@@ -16680,7 +16754,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16704,7 +16778,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -16714,7 +16788,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -16747,7 +16821,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16766,7 +16841,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -16791,7 +16866,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -16815,7 +16890,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCategoryIdChanging(value);
                 ReportPropertyChanging("CategoryId");
-                _CategoryId = StructuralObject.SetValidValue(value, false);
+                _CategoryId = StructuralObject.SetValidValue(value, false, "CategoryId");
                 ReportPropertyChanged("CategoryId");
                 OnCategoryIdChanged();
             }
@@ -16839,7 +16914,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -16863,7 +16938,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -16873,7 +16948,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16953,6 +17028,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16985,7 +17061,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17004,7 +17081,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -17029,7 +17106,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -17053,7 +17130,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -17077,7 +17154,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOptionBvinChanging(value);
                 ReportPropertyChanging("OptionBvin");
-                _OptionBvin = StructuralObject.SetValidValue(value, false);
+                _OptionBvin = StructuralObject.SetValidValue(value, false, "OptionBvin");
                 ReportPropertyChanged("OptionBvin");
                 OnOptionBvinChanged();
             }
@@ -17101,7 +17178,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -17111,7 +17188,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -17191,6 +17268,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -17235,7 +17313,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17254,7 +17333,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -17279,7 +17358,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -17303,7 +17382,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnModeChanging(value);
                 ReportPropertyChanging("Mode");
-                _Mode = StructuralObject.SetValidValue(value);
+                _Mode = StructuralObject.SetValidValue(value, "Mode");
                 ReportPropertyChanged("Mode");
                 OnModeChanged();
             }
@@ -17327,7 +17406,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedUtcChanging(value);
                 ReportPropertyChanging("LastUpdatedUtc");
-                _LastUpdatedUtc = StructuralObject.SetValidValue(value);
+                _LastUpdatedUtc = StructuralObject.SetValidValue(value, "LastUpdatedUtc");
                 ReportPropertyChanged("LastUpdatedUtc");
                 OnLastUpdatedUtcChanged();
             }
@@ -17351,7 +17430,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -17375,7 +17454,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomerDescriptionChanging(value);
                 ReportPropertyChanging("CustomerDescription");
-                _CustomerDescription = StructuralObject.SetValidValue(value, false);
+                _CustomerDescription = StructuralObject.SetValidValue(value, false, "CustomerDescription");
                 ReportPropertyChanged("CustomerDescription");
                 OnCustomerDescriptionChanged();
             }
@@ -17399,7 +17478,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStartDateUtcChanging(value);
                 ReportPropertyChanging("StartDateUtc");
-                _StartDateUtc = StructuralObject.SetValidValue(value);
+                _StartDateUtc = StructuralObject.SetValidValue(value, "StartDateUtc");
                 ReportPropertyChanged("StartDateUtc");
                 OnStartDateUtcChanged();
             }
@@ -17423,7 +17502,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEndDateUtcChanging(value);
                 ReportPropertyChanging("EndDateUtc");
-                _EndDateUtc = StructuralObject.SetValidValue(value);
+                _EndDateUtc = StructuralObject.SetValidValue(value, "EndDateUtc");
                 ReportPropertyChanged("EndDateUtc");
                 OnEndDateUtcChanged();
             }
@@ -17447,7 +17526,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsEnabledChanging(value);
                 ReportPropertyChanging("IsEnabled");
-                _IsEnabled = StructuralObject.SetValidValue(value);
+                _IsEnabled = StructuralObject.SetValidValue(value, "IsEnabled");
                 ReportPropertyChanged("IsEnabled");
                 OnIsEnabledChanged();
             }
@@ -17471,7 +17550,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQualificationsXmlChanging(value);
                 ReportPropertyChanging("QualificationsXml");
-                _QualificationsXml = StructuralObject.SetValidValue(value, false);
+                _QualificationsXml = StructuralObject.SetValidValue(value, false, "QualificationsXml");
                 ReportPropertyChanged("QualificationsXml");
                 OnQualificationsXmlChanged();
             }
@@ -17495,7 +17574,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnActionsXmlChanging(value);
                 ReportPropertyChanging("ActionsXml");
-                _ActionsXml = StructuralObject.SetValidValue(value, false);
+                _ActionsXml = StructuralObject.SetValidValue(value, false, "ActionsXml");
                 ReportPropertyChanged("ActionsXml");
                 OnActionsXmlChanged();
             }
@@ -17505,7 +17584,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnActionsXmlChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -17540,7 +17619,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17559,7 +17639,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -17584,7 +17664,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -17608,7 +17688,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPointsChanging(value);
                 ReportPropertyChanging("Points");
-                _Points = StructuralObject.SetValidValue(value);
+                _Points = StructuralObject.SetValidValue(value, "Points");
                 ReportPropertyChanged("Points");
                 OnPointsChanged();
             }
@@ -17632,7 +17712,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPointsHeldChanging(value);
                 ReportPropertyChanging("PointsHeld");
-                _PointsHeld = StructuralObject.SetValidValue(value);
+                _PointsHeld = StructuralObject.SetValidValue(value, "PointsHeld");
                 ReportPropertyChanged("PointsHeld");
                 OnPointsHeldChanged();
             }
@@ -17656,7 +17736,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTransactionTimeChanging(value);
                 ReportPropertyChanging("TransactionTime");
-                _TransactionTime = StructuralObject.SetValidValue(value);
+                _TransactionTime = StructuralObject.SetValidValue(value, "TransactionTime");
                 ReportPropertyChanged("TransactionTime");
                 OnTransactionTimeChanged();
             }
@@ -17680,7 +17760,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -17690,7 +17770,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -17735,7 +17815,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17754,7 +17835,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -17779,7 +17860,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -17803,7 +17884,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -17827,7 +17908,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNumberChanging(value);
                 ReportPropertyChanging("Number");
-                _Number = StructuralObject.SetValidValue(value);
+                _Number = StructuralObject.SetValidValue(value, "Number");
                 ReportPropertyChanged("Number");
                 OnNumberChanged();
             }
@@ -17851,7 +17932,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -17875,7 +17956,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPhoneNumberChanging(value);
                 ReportPropertyChanging("PhoneNumber");
-                _PhoneNumber = StructuralObject.SetValidValue(value, false);
+                _PhoneNumber = StructuralObject.SetValidValue(value, false, "PhoneNumber");
                 ReportPropertyChanged("PhoneNumber");
                 OnPhoneNumberChanged();
             }
@@ -17899,7 +17980,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCommentsChanging(value);
                 ReportPropertyChanging("Comments");
-                _Comments = StructuralObject.SetValidValue(value, false);
+                _Comments = StructuralObject.SetValidValue(value, false, "Comments");
                 ReportPropertyChanged("Comments");
                 OnCommentsChanged();
             }
@@ -17923,7 +18004,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -17947,7 +18028,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDateOfReturnChanging(value);
                 ReportPropertyChanging("DateOfReturn");
-                _DateOfReturn = StructuralObject.SetValidValue(value);
+                _DateOfReturn = StructuralObject.SetValidValue(value, "DateOfReturn");
                 ReportPropertyChanged("DateOfReturn");
                 OnDateOfReturnChanged();
             }
@@ -17971,7 +18052,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -17995,7 +18076,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -18005,7 +18086,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -18031,6 +18112,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18079,7 +18161,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18098,7 +18181,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18123,7 +18206,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRMABvinChanging(value);
                 ReportPropertyChanging("RMABvin");
-                _RMABvin = StructuralObject.SetValidValue(value, false);
+                _RMABvin = StructuralObject.SetValidValue(value, false, "RMABvin");
                 ReportPropertyChanged("RMABvin");
                 OnRMABvinChanged();
             }
@@ -18147,7 +18230,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLineItemBvinChanging(value);
                 ReportPropertyChanging("LineItemBvin");
-                _LineItemBvin = StructuralObject.SetValidValue(value, false);
+                _LineItemBvin = StructuralObject.SetValidValue(value, false, "LineItemBvin");
                 ReportPropertyChanged("LineItemBvin");
                 OnLineItemBvinChanged();
             }
@@ -18171,7 +18254,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnItemNameChanging(value);
                 ReportPropertyChanging("ItemName");
-                _ItemName = StructuralObject.SetValidValue(value, false);
+                _ItemName = StructuralObject.SetValidValue(value, false, "ItemName");
                 ReportPropertyChanged("ItemName");
                 OnItemNameChanged();
             }
@@ -18195,7 +18278,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnItemDescriptionChanging(value);
                 ReportPropertyChanging("ItemDescription");
-                _ItemDescription = StructuralObject.SetValidValue(value, false);
+                _ItemDescription = StructuralObject.SetValidValue(value, false, "ItemDescription");
                 ReportPropertyChanged("ItemDescription");
                 OnItemDescriptionChanged();
             }
@@ -18219,7 +18302,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNoteChanging(value);
                 ReportPropertyChanging("Note");
-                _Note = StructuralObject.SetValidValue(value, false);
+                _Note = StructuralObject.SetValidValue(value, false, "Note");
                 ReportPropertyChanged("Note");
                 OnNoteChanged();
             }
@@ -18243,7 +18326,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, false);
+                _Reason = StructuralObject.SetValidValue(value, false, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -18267,7 +18350,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnReplaceChanging(value);
                 ReportPropertyChanging("Replace");
-                _Replace = StructuralObject.SetValidValue(value);
+                _Replace = StructuralObject.SetValidValue(value, "Replace");
                 ReportPropertyChanged("Replace");
                 OnReplaceChanged();
             }
@@ -18291,7 +18374,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -18315,7 +18398,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityReceivedChanging(value);
                 ReportPropertyChanging("QuantityReceived");
-                _QuantityReceived = StructuralObject.SetValidValue(value);
+                _QuantityReceived = StructuralObject.SetValidValue(value, "QuantityReceived");
                 ReportPropertyChanged("QuantityReceived");
                 OnQuantityReceivedChanged();
             }
@@ -18339,7 +18422,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityReturnedToInventoryChanging(value);
                 ReportPropertyChanging("QuantityReturnedToInventory");
-                _QuantityReturnedToInventory = StructuralObject.SetValidValue(value);
+                _QuantityReturnedToInventory = StructuralObject.SetValidValue(value, "QuantityReturnedToInventory");
                 ReportPropertyChanged("QuantityReturnedToInventory");
                 OnQuantityReturnedToInventoryChanged();
             }
@@ -18363,7 +18446,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18387,7 +18470,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -18397,7 +18480,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -18439,6 +18522,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18471,7 +18555,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18490,7 +18575,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18515,7 +18600,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQueryPhraseChanging(value);
                 ReportPropertyChanging("QueryPhrase");
-                _QueryPhrase = StructuralObject.SetValidValue(value, false);
+                _QueryPhrase = StructuralObject.SetValidValue(value, false, "QueryPhrase");
                 ReportPropertyChanged("QueryPhrase");
                 OnQueryPhraseChanged();
             }
@@ -18539,7 +18624,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShopperIdChanging(value);
                 ReportPropertyChanging("ShopperId");
-                _ShopperId = StructuralObject.SetValidValue(value, false);
+                _ShopperId = StructuralObject.SetValidValue(value, false, "ShopperId");
                 ReportPropertyChanged("ShopperId");
                 OnShopperIdChanged();
             }
@@ -18563,7 +18648,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18587,7 +18672,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -18597,7 +18682,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -18638,7 +18723,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18657,7 +18743,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18682,7 +18768,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18706,7 +18792,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAdjustmentChanging(value);
                 ReportPropertyChanging("Adjustment");
-                _Adjustment = StructuralObject.SetValidValue(value);
+                _Adjustment = StructuralObject.SetValidValue(value, "Adjustment");
                 ReportPropertyChanged("Adjustment");
                 OnAdjustmentChanged();
             }
@@ -18730,7 +18816,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAdjustmentTypeChanging(value);
                 ReportPropertyChanging("AdjustmentType");
-                _AdjustmentType = StructuralObject.SetValidValue(value);
+                _AdjustmentType = StructuralObject.SetValidValue(value, "AdjustmentType");
                 ReportPropertyChanged("AdjustmentType");
                 OnAdjustmentTypeChanged();
             }
@@ -18754,7 +18840,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -18778,7 +18864,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -18802,7 +18888,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -18826,7 +18912,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnZoneIdChanging(value);
                 ReportPropertyChanging("ZoneId");
-                _ZoneId = StructuralObject.SetValidValue(value);
+                _ZoneId = StructuralObject.SetValidValue(value, "ZoneId");
                 ReportPropertyChanged("ZoneId");
                 OnZoneIdChanged();
             }
@@ -18850,7 +18936,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSettingsChanging(value);
                 ReportPropertyChanging("Settings");
-                _Settings = StructuralObject.SetValidValue(value, false);
+                _Settings = StructuralObject.SetValidValue(value, false, "Settings");
                 ReportPropertyChanged("Settings");
                 OnSettingsChanged();
             }
@@ -18860,7 +18946,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSettingsChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -18925,7 +19011,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18944,7 +19031,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18969,7 +19056,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false);
+                _Email = StructuralObject.SetValidValue(value, false, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -18993,7 +19080,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -19017,7 +19104,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -19041,7 +19128,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value, false, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -19065,7 +19152,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSaltChanging(value);
                 ReportPropertyChanging("Salt");
-                _Salt = StructuralObject.SetValidValue(value, false);
+                _Salt = StructuralObject.SetValidValue(value, false, "Salt");
                 ReportPropertyChanged("Salt");
                 OnSaltChanged();
             }
@@ -19089,7 +19176,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxExemptChanging(value);
                 ReportPropertyChanging("TaxExempt");
-                _TaxExempt = StructuralObject.SetValidValue(value);
+                _TaxExempt = StructuralObject.SetValidValue(value, "TaxExempt");
                 ReportPropertyChanged("TaxExempt");
                 OnTaxExemptChanged();
             }
@@ -19113,7 +19200,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCreationDateChanging(value);
                 ReportPropertyChanging("CreationDate");
-                _CreationDate = StructuralObject.SetValidValue(value);
+                _CreationDate = StructuralObject.SetValidValue(value, "CreationDate");
                 ReportPropertyChanged("CreationDate");
                 OnCreationDateChanged();
             }
@@ -19137,7 +19224,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastLoginDateChanging(value);
                 ReportPropertyChanging("LastLoginDate");
-                _LastLoginDate = StructuralObject.SetValidValue(value);
+                _LastLoginDate = StructuralObject.SetValidValue(value, "LastLoginDate");
                 ReportPropertyChanged("LastLoginDate");
                 OnLastLoginDateChanged();
             }
@@ -19161,7 +19248,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, false);
+                _Comment = StructuralObject.SetValidValue(value, false, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -19185,7 +19272,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAddressBookChanging(value);
                 ReportPropertyChanging("AddressBook");
-                _AddressBook = StructuralObject.SetValidValue(value, false);
+                _AddressBook = StructuralObject.SetValidValue(value, false, "AddressBook");
                 ReportPropertyChanged("AddressBook");
                 OnAddressBookChanged();
             }
@@ -19209,7 +19296,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -19233,7 +19320,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLockedChanging(value);
                 ReportPropertyChanging("Locked");
-                _Locked = StructuralObject.SetValidValue(value);
+                _Locked = StructuralObject.SetValidValue(value, "Locked");
                 ReportPropertyChanged("Locked");
                 OnLockedChanged();
             }
@@ -19257,7 +19344,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLockedUntilChanging(value);
                 ReportPropertyChanging("LockedUntil");
-                _LockedUntil = StructuralObject.SetValidValue(value);
+                _LockedUntil = StructuralObject.SetValidValue(value, "LockedUntil");
                 ReportPropertyChanged("LockedUntil");
                 OnLockedUntilChanged();
             }
@@ -19281,7 +19368,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFailedLoginCountChanging(value);
                 ReportPropertyChanging("FailedLoginCount");
-                _FailedLoginCount = StructuralObject.SetValidValue(value);
+                _FailedLoginCount = StructuralObject.SetValidValue(value, "FailedLoginCount");
                 ReportPropertyChanged("FailedLoginCount");
                 OnFailedLoginCountChanged();
             }
@@ -19305,7 +19392,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPhonesChanging(value);
                 ReportPropertyChanging("Phones");
-                _Phones = StructuralObject.SetValidValue(value, false);
+                _Phones = StructuralObject.SetValidValue(value, false, "Phones");
                 ReportPropertyChanged("Phones");
                 OnPhonesChanged();
             }
@@ -19329,7 +19416,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPricingGroupChanging(value);
                 ReportPropertyChanging("PricingGroup");
-                _PricingGroup = StructuralObject.SetValidValue(value, false);
+                _PricingGroup = StructuralObject.SetValidValue(value, false, "PricingGroup");
                 ReportPropertyChanged("PricingGroup");
                 OnPricingGroupChanged();
             }
@@ -19353,7 +19440,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomQuestionAnswersChanging(value);
                 ReportPropertyChanging("CustomQuestionAnswers");
-                _CustomQuestionAnswers = StructuralObject.SetValidValue(value, false);
+                _CustomQuestionAnswers = StructuralObject.SetValidValue(value, false, "CustomQuestionAnswers");
                 ReportPropertyChanged("CustomQuestionAnswers");
                 OnCustomQuestionAnswersChanged();
             }
@@ -19377,7 +19464,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -19401,7 +19488,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnShippingAddressChanging(value);
                 ReportPropertyChanging("ShippingAddress");
-                _ShippingAddress = StructuralObject.SetValidValue(value, false);
+                _ShippingAddress = StructuralObject.SetValidValue(value, false, "ShippingAddress");
                 ReportPropertyChanged("ShippingAddress");
                 OnShippingAddressChanged();
             }
@@ -19425,7 +19512,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBillingAddressChanging(value);
                 ReportPropertyChanging("BillingAddress");
-                _BillingAddress = StructuralObject.SetValidValue(value, false);
+                _BillingAddress = StructuralObject.SetValidValue(value, false, "BillingAddress");
                 ReportPropertyChanged("BillingAddress");
                 OnBillingAddressChanged();
             }
@@ -19435,7 +19522,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnBillingAddressChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -19461,6 +19548,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -19497,7 +19585,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19516,7 +19605,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -19541,7 +19630,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuestionNameChanging(value);
                 ReportPropertyChanging("QuestionName");
-                _QuestionName = StructuralObject.SetValidValue(value, false);
+                _QuestionName = StructuralObject.SetValidValue(value, false, "QuestionName");
                 ReportPropertyChanged("QuestionName");
                 OnQuestionNameChanged();
             }
@@ -19565,7 +19654,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuestionTypeChanging(value);
                 ReportPropertyChanging("QuestionType");
-                _QuestionType = StructuralObject.SetValidValue(value);
+                _QuestionType = StructuralObject.SetValidValue(value, "QuestionType");
                 ReportPropertyChanged("QuestionType");
                 OnQuestionTypeChanged();
             }
@@ -19589,7 +19678,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnValuesChanging(value);
                 ReportPropertyChanging("Values");
-                _Values = StructuralObject.SetValidValue(value, false);
+                _Values = StructuralObject.SetValidValue(value, false, "Values");
                 ReportPropertyChanged("Values");
                 OnValuesChanged();
             }
@@ -19613,7 +19702,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -19637,7 +19726,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -19661,7 +19750,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -19671,7 +19760,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -19702,7 +19791,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19721,7 +19811,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -19746,7 +19836,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnContactIdChanging(value);
                 ReportPropertyChanging("ContactId");
-                _ContactId = StructuralObject.SetValidValue(value, false);
+                _ContactId = StructuralObject.SetValidValue(value, false, "ContactId");
                 ReportPropertyChanged("ContactId");
                 OnContactIdChanged();
             }
@@ -19770,7 +19860,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -19794,7 +19884,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -19804,7 +19894,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -19846,6 +19936,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -19882,7 +19973,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19901,7 +19993,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnZipChanging(value);
                     ReportPropertyChanging("Zip");
-                    _Zip = StructuralObject.SetValidValue(value, false);
+                    _Zip = StructuralObject.SetValidValue(value, false, "Zip");
                     ReportPropertyChanged("Zip");
                     OnZipChanged();
                 }
@@ -19926,7 +20018,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLatitudeChanging(value);
                 ReportPropertyChanging("Latitude");
-                _Latitude = StructuralObject.SetValidValue(value);
+                _Latitude = StructuralObject.SetValidValue(value, "Latitude");
                 ReportPropertyChanged("Latitude");
                 OnLatitudeChanged();
             }
@@ -19950,7 +20042,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLongitudeChanging(value);
                 ReportPropertyChanging("Longitude");
-                _Longitude = StructuralObject.SetValidValue(value);
+                _Longitude = StructuralObject.SetValidValue(value, "Longitude");
                 ReportPropertyChanged("Longitude");
                 OnLongitudeChanged();
             }
@@ -19974,7 +20066,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
+                _City = StructuralObject.SetValidValue(value, false, "City");
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -19998,7 +20090,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStateChanging(value);
                 ReportPropertyChanging("State");
-                _State = StructuralObject.SetValidValue(value, false);
+                _State = StructuralObject.SetValidValue(value, false, "State");
                 ReportPropertyChanged("State");
                 OnStateChanged();
             }
@@ -20022,7 +20114,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountyChanging(value);
                 ReportPropertyChanging("County");
-                _County = StructuralObject.SetValidValue(value, false);
+                _County = StructuralObject.SetValidValue(value, false, "County");
                 ReportPropertyChanged("County");
                 OnCountyChanged();
             }
@@ -20046,7 +20138,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnZipTypeChanging(value);
                 ReportPropertyChanging("ZipType");
-                _ZipType = StructuralObject.SetValidValue(value, false);
+                _ZipType = StructuralObject.SetValidValue(value, false, "ZipType");
                 ReportPropertyChanged("ZipType");
                 OnZipTypeChanged();
             }
@@ -20056,7 +20148,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnZipTypeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20091,7 +20183,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20110,7 +20203,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -20135,7 +20228,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -20159,7 +20252,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSkuChanging(value);
                 ReportPropertyChanging("Sku");
-                _Sku = StructuralObject.SetValidValue(value, false);
+                _Sku = StructuralObject.SetValidValue(value, false, "Sku");
                 ReportPropertyChanged("Sku");
                 OnSkuChanged();
             }
@@ -20183,7 +20276,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value);
+                _Price = StructuralObject.SetValidValue(value, "Price");
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }
@@ -20207,7 +20300,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSelectionDataChanging(value);
                 ReportPropertyChanging("SelectionData");
-                _SelectionData = StructuralObject.SetValidValue(value, false);
+                _SelectionData = StructuralObject.SetValidValue(value, false, "SelectionData");
                 ReportPropertyChanged("SelectionData");
                 OnSelectionDataChanged();
             }
@@ -20231,7 +20324,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -20241,7 +20334,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20278,7 +20371,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20297,7 +20391,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -20322,7 +20416,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -20346,7 +20440,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -20370,7 +20464,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -20394,7 +20488,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDropShipEmailTemplateIdChanging(value);
                 ReportPropertyChanging("DropShipEmailTemplateId");
-                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false);
+                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false, "DropShipEmailTemplateId");
                 ReportPropertyChanged("DropShipEmailTemplateId");
                 OnDropShipEmailTemplateIdChanged();
             }
@@ -20418,7 +20512,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20442,7 +20536,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -20452,7 +20546,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStoreIdChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20489,7 +20583,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20508,7 +20603,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -20533,7 +20628,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -20557,7 +20652,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGroupIdChanging(value);
                 ReportPropertyChanging("GroupId");
-                _GroupId = StructuralObject.SetValidValue(value);
+                _GroupId = StructuralObject.SetValidValue(value, "GroupId");
                 ReportPropertyChanged("GroupId");
                 OnGroupIdChanged();
             }
@@ -20581,7 +20676,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTopicChanging(value);
                 ReportPropertyChanging("Topic");
-                _Topic = StructuralObject.SetValidValue(value, false);
+                _Topic = StructuralObject.SetValidValue(value, false, "Topic");
                 ReportPropertyChanged("Topic");
                 OnTopicChanged();
             }
@@ -20605,7 +20700,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -20629,7 +20724,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDateCreatedUtcChanging(value);
                 ReportPropertyChanging("DateCreatedUtc");
-                _DateCreatedUtc = StructuralObject.SetValidValue(value);
+                _DateCreatedUtc = StructuralObject.SetValidValue(value, "DateCreatedUtc");
                 ReportPropertyChanged("DateCreatedUtc");
                 OnDateCreatedUtcChanged();
             }
@@ -20653,7 +20748,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAuthorIdChanging(value);
                 ReportPropertyChanging("AuthorId");
-                _AuthorId = StructuralObject.SetValidValue(value);
+                _AuthorId = StructuralObject.SetValidValue(value, "AuthorId");
                 ReportPropertyChanged("AuthorId");
                 OnAuthorIdChanged();
             }
@@ -20663,7 +20758,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnAuthorIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -20705,6 +20800,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -20743,7 +20839,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20762,7 +20859,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -20787,7 +20884,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -20811,7 +20908,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -20835,7 +20932,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnBioChanging(value);
                 ReportPropertyChanging("Bio");
-                _Bio = StructuralObject.SetValidValue(value, false);
+                _Bio = StructuralObject.SetValidValue(value, false, "Bio");
                 ReportPropertyChanged("Bio");
                 OnBioChanged();
             }
@@ -20859,7 +20956,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAuthenticationTypeChanging(value);
                 ReportPropertyChanging("AuthenticationType");
-                _AuthenticationType = StructuralObject.SetValidValue(value);
+                _AuthenticationType = StructuralObject.SetValidValue(value, "AuthenticationType");
                 ReportPropertyChanged("AuthenticationType");
                 OnAuthenticationTypeChanged();
             }
@@ -20883,7 +20980,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAuthenticationKeyChanging(value);
                 ReportPropertyChanging("AuthenticationKey");
-                _AuthenticationKey = StructuralObject.SetValidValue(value, false);
+                _AuthenticationKey = StructuralObject.SetValidValue(value, false, "AuthenticationKey");
                 ReportPropertyChanged("AuthenticationKey");
                 OnAuthenticationKeyChanged();
             }
@@ -20907,7 +21004,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAccessLevelChanging(value);
                 ReportPropertyChanging("AccessLevel");
-                _AccessLevel = StructuralObject.SetValidValue(value);
+                _AccessLevel = StructuralObject.SetValidValue(value, "AccessLevel");
                 ReportPropertyChanged("AccessLevel");
                 OnAccessLevelChanged();
             }
@@ -20931,7 +21028,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAvatarChanging(value);
                 ReportPropertyChanging("Avatar");
-                _Avatar = StructuralObject.SetValidValue(value, true);
+                _Avatar = StructuralObject.SetValidValue(value, true, "Avatar");
                 ReportPropertyChanged("Avatar");
                 OnAvatarChanged();
             }
@@ -20955,7 +21052,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnVerifiedChanging(value);
                 ReportPropertyChanging("Verified");
-                _Verified = StructuralObject.SetValidValue(value);
+                _Verified = StructuralObject.SetValidValue(value, "Verified");
                 ReportPropertyChanged("Verified");
                 OnVerifiedChanged();
             }
@@ -20965,7 +21062,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnVerifiedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20998,7 +21095,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21017,7 +21115,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -21042,7 +21140,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -21066,7 +21164,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -21090,7 +21188,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSlugChanging(value);
                 ReportPropertyChanging("Slug");
-                _Slug = StructuralObject.SetValidValue(value, false);
+                _Slug = StructuralObject.SetValidValue(value, false, "Slug");
                 ReportPropertyChanged("Slug");
                 OnSlugChanged();
             }
@@ -21114,7 +21212,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -21124,7 +21222,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21150,6 +21248,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21182,7 +21281,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21201,7 +21301,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -21226,7 +21326,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -21250,7 +21350,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnConversationIdChanging(value);
                 ReportPropertyChanging("ConversationId");
-                _ConversationId = StructuralObject.SetValidValue(value);
+                _ConversationId = StructuralObject.SetValidValue(value, "ConversationId");
                 ReportPropertyChanged("ConversationId");
                 OnConversationIdChanged();
             }
@@ -21274,7 +21374,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAuthorIdChanging(value);
                 ReportPropertyChanging("AuthorId");
-                _AuthorId = StructuralObject.SetValidValue(value);
+                _AuthorId = StructuralObject.SetValidValue(value, "AuthorId");
                 ReportPropertyChanged("AuthorId");
                 OnAuthorIdChanged();
             }
@@ -21298,7 +21398,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, false);
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -21308,7 +21408,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnMessageChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -21339,7 +21439,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21358,7 +21459,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -21383,7 +21484,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTokenIdChanging(value);
                 ReportPropertyChanging("TokenId");
-                _TokenId = StructuralObject.SetValidValue(value);
+                _TokenId = StructuralObject.SetValidValue(value, "TokenId");
                 ReportPropertyChanged("TokenId");
                 OnTokenIdChanged();
             }
@@ -21407,7 +21508,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value);
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -21431,7 +21532,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnExpiresChanging(value);
                 ReportPropertyChanging("Expires");
-                _Expires = StructuralObject.SetValidValue(value);
+                _Expires = StructuralObject.SetValidValue(value, "Expires");
                 ReportPropertyChanged("Expires");
                 OnExpiresChanged();
             }
@@ -21441,7 +21542,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnExpiresChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21483,6 +21584,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21511,7 +21613,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21530,7 +21633,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -21555,7 +21658,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTimeStampUtcChanging(value);
                 ReportPropertyChanging("TimeStampUtc");
-                _TimeStampUtc = StructuralObject.SetValidValue(value);
+                _TimeStampUtc = StructuralObject.SetValidValue(value, "TimeStampUtc");
                 ReportPropertyChanged("TimeStampUtc");
                 OnTimeStampUtcChanged();
             }
@@ -21579,7 +21682,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, false);
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -21589,7 +21692,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnMessageChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -21648,7 +21751,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21667,7 +21771,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -21692,7 +21796,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -21716,7 +21820,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderIdChanging(value);
                 ReportPropertyChanging("OrderId");
-                _OrderId = StructuralObject.SetValidValue(value, false);
+                _OrderId = StructuralObject.SetValidValue(value, false, "OrderId");
                 ReportPropertyChanged("OrderId");
                 OnOrderIdChanged();
             }
@@ -21740,7 +21844,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnOrderNumberChanging(value);
                 ReportPropertyChanging("OrderNumber");
-                _OrderNumber = StructuralObject.SetValidValue(value, false);
+                _OrderNumber = StructuralObject.SetValidValue(value, false, "OrderNumber");
                 ReportPropertyChanged("OrderNumber");
                 OnOrderNumberChanged();
             }
@@ -21764,7 +21868,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTimestampChanging(value);
                 ReportPropertyChanging("Timestamp");
-                _Timestamp = StructuralObject.SetValidValue(value);
+                _Timestamp = StructuralObject.SetValidValue(value, "Timestamp");
                 ReportPropertyChanged("Timestamp");
                 OnTimestampChanged();
             }
@@ -21788,7 +21892,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnActionChanging(value);
                 ReportPropertyChanging("Action");
-                _Action = StructuralObject.SetValidValue(value);
+                _Action = StructuralObject.SetValidValue(value, "Action");
                 ReportPropertyChanged("Action");
                 OnActionChanged();
             }
@@ -21812,7 +21916,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAmountChanging(value);
                 ReportPropertyChanging("Amount");
-                _Amount = StructuralObject.SetValidValue(value);
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
                 ReportPropertyChanged("Amount");
                 OnAmountChanged();
             }
@@ -21836,7 +21940,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCreditCardChanging(value);
                 ReportPropertyChanging("CreditCard");
-                _CreditCard = StructuralObject.SetValidValue(value, false);
+                _CreditCard = StructuralObject.SetValidValue(value, false, "CreditCard");
                 ReportPropertyChanged("CreditCard");
                 OnCreditCardChanged();
             }
@@ -21860,7 +21964,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSuccessChanging(value);
                 ReportPropertyChanging("Success");
-                _Success = StructuralObject.SetValidValue(value);
+                _Success = StructuralObject.SetValidValue(value, "Success");
                 ReportPropertyChanged("Success");
                 OnSuccessChanged();
             }
@@ -21884,7 +21988,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnVoidedChanging(value);
                 ReportPropertyChanging("Voided");
-                _Voided = StructuralObject.SetValidValue(value);
+                _Voided = StructuralObject.SetValidValue(value, "Voided");
                 ReportPropertyChanged("Voided");
                 OnVoidedChanged();
             }
@@ -21908,7 +22012,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRefNum1Changing(value);
                 ReportPropertyChanging("RefNum1");
-                _RefNum1 = StructuralObject.SetValidValue(value, false);
+                _RefNum1 = StructuralObject.SetValidValue(value, false, "RefNum1");
                 ReportPropertyChanged("RefNum1");
                 OnRefNum1Changed();
             }
@@ -21932,7 +22036,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRefNum2Changing(value);
                 ReportPropertyChanging("RefNum2");
-                _RefNum2 = StructuralObject.SetValidValue(value, false);
+                _RefNum2 = StructuralObject.SetValidValue(value, false, "RefNum2");
                 ReportPropertyChanged("RefNum2");
                 OnRefNum2Changed();
             }
@@ -21956,7 +22060,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLinkedToTransactionChanging(value);
                 ReportPropertyChanging("LinkedToTransaction");
-                _LinkedToTransaction = StructuralObject.SetValidValue(value, false);
+                _LinkedToTransaction = StructuralObject.SetValidValue(value, false, "LinkedToTransaction");
                 ReportPropertyChanged("LinkedToTransaction");
                 OnLinkedToTransactionChanged();
             }
@@ -21980,7 +22084,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnMessagesChanging(value);
                 ReportPropertyChanging("Messages");
-                _Messages = StructuralObject.SetValidValue(value, false);
+                _Messages = StructuralObject.SetValidValue(value, false, "Messages");
                 ReportPropertyChanged("Messages");
                 OnMessagesChanged();
             }
@@ -22004,7 +22108,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCheckNumberChanging(value);
                 ReportPropertyChanging("CheckNumber");
-                _CheckNumber = StructuralObject.SetValidValue(value, false);
+                _CheckNumber = StructuralObject.SetValidValue(value, false, "CheckNumber");
                 ReportPropertyChanged("CheckNumber");
                 OnCheckNumberChanged();
             }
@@ -22028,7 +22132,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPurchaseOrderNumberChanging(value);
                 ReportPropertyChanging("PurchaseOrderNumber");
-                _PurchaseOrderNumber = StructuralObject.SetValidValue(value, false);
+                _PurchaseOrderNumber = StructuralObject.SetValidValue(value, false, "PurchaseOrderNumber");
                 ReportPropertyChanged("PurchaseOrderNumber");
                 OnPurchaseOrderNumberChanged();
             }
@@ -22052,7 +22156,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnGiftCardNumberChanging(value);
                 ReportPropertyChanging("GiftCardNumber");
-                _GiftCardNumber = StructuralObject.SetValidValue(value, false);
+                _GiftCardNumber = StructuralObject.SetValidValue(value, false, "GiftCardNumber");
                 ReportPropertyChanged("GiftCardNumber");
                 OnGiftCardNumberChanged();
             }
@@ -22076,7 +22180,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCompanyAccountNumberChanging(value);
                 ReportPropertyChanging("CompanyAccountNumber");
-                _CompanyAccountNumber = StructuralObject.SetValidValue(value, false);
+                _CompanyAccountNumber = StructuralObject.SetValidValue(value, false, "CompanyAccountNumber");
                 ReportPropertyChanged("CompanyAccountNumber");
                 OnCompanyAccountNumberChanged();
             }
@@ -22086,7 +22190,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnCompanyAccountNumberChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -22128,6 +22232,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -22158,7 +22263,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22177,7 +22283,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -22202,7 +22308,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -22226,7 +22332,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -22250,7 +22356,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAreasChanging(value);
                 ReportPropertyChanging("Areas");
-                _Areas = StructuralObject.SetValidValue(value, false);
+                _Areas = StructuralObject.SetValidValue(value, false, "Areas");
                 ReportPropertyChanged("Areas");
                 OnAreasChanged();
             }
@@ -22260,7 +22366,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnAreasChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -22302,6 +22408,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -22330,7 +22437,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22349,7 +22457,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -22374,7 +22482,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -22398,7 +22506,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDomainNameChanging(value);
                 ReportPropertyChanging("DomainName");
-                _DomainName = StructuralObject.SetValidValue(value, false);
+                _DomainName = StructuralObject.SetValidValue(value, false, "DomainName");
                 ReportPropertyChanged("DomainName");
                 OnDomainNameChanged();
             }
@@ -22408,7 +22516,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnDomainNameChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -22453,7 +22561,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22472,7 +22581,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -22497,7 +22606,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreNameChanging(value);
                 ReportPropertyChanging("StoreName");
-                _StoreName = StructuralObject.SetValidValue(value, false);
+                _StoreName = StructuralObject.SetValidValue(value, false, "StoreName");
                 ReportPropertyChanged("StoreName");
                 OnStoreNameChanged();
             }
@@ -22521,7 +22630,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -22545,7 +22654,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDateCreatedChanging(value);
                 ReportPropertyChanging("DateCreated");
-                _DateCreated = StructuralObject.SetValidValue(value);
+                _DateCreated = StructuralObject.SetValidValue(value, "DateCreated");
                 ReportPropertyChanged("DateCreated");
                 OnDateCreatedChanged();
             }
@@ -22569,7 +22678,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSubscriptionIdChanging(value);
                 ReportPropertyChanging("SubscriptionId");
-                _SubscriptionId = StructuralObject.SetValidValue(value);
+                _SubscriptionId = StructuralObject.SetValidValue(value, "SubscriptionId");
                 ReportPropertyChanged("SubscriptionId");
                 OnSubscriptionIdChanged();
             }
@@ -22593,7 +22702,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPlanIdChanging(value);
                 ReportPropertyChanging("PlanId");
-                _PlanId = StructuralObject.SetValidValue(value);
+                _PlanId = StructuralObject.SetValidValue(value, "PlanId");
                 ReportPropertyChanged("PlanId");
                 OnPlanIdChanged();
             }
@@ -22617,7 +22726,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomUrlChanging(value);
                 ReportPropertyChanging("CustomUrl");
-                _CustomUrl = StructuralObject.SetValidValue(value, false);
+                _CustomUrl = StructuralObject.SetValidValue(value, false, "CustomUrl");
                 ReportPropertyChanged("CustomUrl");
                 OnCustomUrlChanged();
             }
@@ -22641,7 +22750,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCurrentPlanRateChanging(value);
                 ReportPropertyChanging("CurrentPlanRate");
-                _CurrentPlanRate = StructuralObject.SetValidValue(value);
+                _CurrentPlanRate = StructuralObject.SetValidValue(value, "CurrentPlanRate");
                 ReportPropertyChanged("CurrentPlanRate");
                 OnCurrentPlanRateChanged();
             }
@@ -22665,7 +22774,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCurrentPlanPercentChanging(value);
                 ReportPropertyChanging("CurrentPlanPercent");
-                _CurrentPlanPercent = StructuralObject.SetValidValue(value);
+                _CurrentPlanPercent = StructuralObject.SetValidValue(value, "CurrentPlanPercent");
                 ReportPropertyChanged("CurrentPlanPercent");
                 OnCurrentPlanPercentChanged();
             }
@@ -22689,7 +22798,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCurrentPlanDayOfMonthChanging(value);
                 ReportPropertyChanging("CurrentPlanDayOfMonth");
-                _CurrentPlanDayOfMonth = StructuralObject.SetValidValue(value);
+                _CurrentPlanDayOfMonth = StructuralObject.SetValidValue(value, "CurrentPlanDayOfMonth");
                 ReportPropertyChanged("CurrentPlanDayOfMonth");
                 OnCurrentPlanDayOfMonthChanged();
             }
@@ -22713,7 +22822,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDateCancelledChanging(value);
                 ReportPropertyChanging("DateCancelled");
-                _DateCancelled = StructuralObject.SetValidValue(value);
+                _DateCancelled = StructuralObject.SetValidValue(value, "DateCancelled");
                 ReportPropertyChanged("DateCancelled");
                 OnDateCancelledChanged();
             }
@@ -22737,7 +22846,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStripeCustomerIdChanging(value);
                 ReportPropertyChanging("StripeCustomerId");
-                _StripeCustomerId = StructuralObject.SetValidValue(value, false);
+                _StripeCustomerId = StructuralObject.SetValidValue(value, false, "StripeCustomerId");
                 ReportPropertyChanged("StripeCustomerId");
                 OnStripeCustomerIdChanged();
             }
@@ -22747,7 +22856,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStripeCustomerIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -22883,6 +22992,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -22913,7 +23023,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22932,7 +23043,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -22957,7 +23068,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -22981,7 +23092,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSettingNameChanging(value);
                 ReportPropertyChanging("SettingName");
-                _SettingName = StructuralObject.SetValidValue(value, false);
+                _SettingName = StructuralObject.SetValidValue(value, false, "SettingName");
                 ReportPropertyChanged("SettingName");
                 OnSettingNameChanged();
             }
@@ -23005,7 +23116,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSettingValueChanging(value);
                 ReportPropertyChanging("SettingValue");
-                _SettingValue = StructuralObject.SetValidValue(value, false);
+                _SettingValue = StructuralObject.SetValidValue(value, false, "SettingValue");
                 ReportPropertyChanged("SettingValue");
                 OnSettingValueChanged();
             }
@@ -23015,7 +23126,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSettingValueChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23057,6 +23168,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23087,7 +23199,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23106,7 +23219,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -23131,7 +23244,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -23155,7 +23268,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value);
+                _UserId = StructuralObject.SetValidValue(value, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -23179,7 +23292,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAccessModeChanging(value);
                 ReportPropertyChanging("AccessMode");
-                _AccessMode = StructuralObject.SetValidValue(value);
+                _AccessMode = StructuralObject.SetValidValue(value, "AccessMode");
                 ReportPropertyChanged("AccessMode");
                 OnAccessModeChanged();
             }
@@ -23189,7 +23302,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnAccessModeChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23269,6 +23382,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23307,7 +23421,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23326,7 +23441,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -23351,7 +23466,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -23375,7 +23490,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCountryNameChanging(value);
                 ReportPropertyChanging("CountryName");
-                _CountryName = StructuralObject.SetValidValue(value, false);
+                _CountryName = StructuralObject.SetValidValue(value, false, "CountryName");
                 ReportPropertyChanged("CountryName");
                 OnCountryNameChanged();
             }
@@ -23399,7 +23514,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRegionNameChanging(value);
                 ReportPropertyChanging("RegionName");
-                _RegionName = StructuralObject.SetValidValue(value, false);
+                _RegionName = StructuralObject.SetValidValue(value, false, "RegionName");
                 ReportPropertyChanged("RegionName");
                 OnRegionNameChanged();
             }
@@ -23423,7 +23538,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPostalCodeChanging(value);
                 ReportPropertyChanging("PostalCode");
-                _PostalCode = StructuralObject.SetValidValue(value, false);
+                _PostalCode = StructuralObject.SetValidValue(value, false, "PostalCode");
                 ReportPropertyChanged("PostalCode");
                 OnPostalCodeChanged();
             }
@@ -23447,7 +23562,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaxScheduleIdChanging(value);
                 ReportPropertyChanging("TaxScheduleId");
-                _TaxScheduleId = StructuralObject.SetValidValue(value);
+                _TaxScheduleId = StructuralObject.SetValidValue(value, "TaxScheduleId");
                 ReportPropertyChanged("TaxScheduleId");
                 OnTaxScheduleIdChanged();
             }
@@ -23471,7 +23586,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnRateChanging(value);
                 ReportPropertyChanging("Rate");
-                _Rate = StructuralObject.SetValidValue(value);
+                _Rate = StructuralObject.SetValidValue(value, "Rate");
                 ReportPropertyChanged("Rate");
                 OnRateChanged();
             }
@@ -23495,7 +23610,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnApplyToShippingChanging(value);
                 ReportPropertyChanging("ApplyToShipping");
-                _ApplyToShipping = StructuralObject.SetValidValue(value);
+                _ApplyToShipping = StructuralObject.SetValidValue(value, "ApplyToShipping");
                 ReportPropertyChanged("ApplyToShipping");
                 OnApplyToShippingChanged();
             }
@@ -23505,7 +23620,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnApplyToShippingChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23585,6 +23700,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23613,7 +23729,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23632,7 +23749,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -23657,7 +23774,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -23681,7 +23798,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -23691,7 +23808,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnNameChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23755,6 +23872,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23791,7 +23909,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23810,7 +23929,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -23835,7 +23954,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnemailChanging(value);
                 ReportPropertyChanging("email");
-                _email = StructuralObject.SetValidValue(value, false);
+                _email = StructuralObject.SetValidValue(value, false, "email");
                 ReportPropertyChanged("email");
                 OnemailChanged();
             }
@@ -23859,7 +23978,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnpasswordChanging(value);
                 ReportPropertyChanging("password");
-                _password = StructuralObject.SetValidValue(value, false);
+                _password = StructuralObject.SetValidValue(value, false, "password");
                 ReportPropertyChanged("password");
                 OnpasswordChanged();
             }
@@ -23883,7 +24002,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDateCreatedChanging(value);
                 ReportPropertyChanging("DateCreated");
-                _DateCreated = StructuralObject.SetValidValue(value);
+                _DateCreated = StructuralObject.SetValidValue(value, "DateCreated");
                 ReportPropertyChanged("DateCreated");
                 OnDateCreatedChanged();
             }
@@ -23907,7 +24026,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnstatuscodeChanging(value);
                 ReportPropertyChanging("statuscode");
-                _statuscode = StructuralObject.SetValidValue(value);
+                _statuscode = StructuralObject.SetValidValue(value, "statuscode");
                 ReportPropertyChanged("statuscode");
                 OnstatuscodeChanged();
             }
@@ -23931,7 +24050,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSaltChanging(value);
                 ReportPropertyChanging("Salt");
-                _Salt = StructuralObject.SetValidValue(value, false);
+                _Salt = StructuralObject.SetValidValue(value, false, "Salt");
                 ReportPropertyChanged("Salt");
                 OnSaltChanged();
             }
@@ -23955,7 +24074,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnResetKeyChanging(value);
                 ReportPropertyChanging("ResetKey");
-                _ResetKey = StructuralObject.SetValidValue(value, false);
+                _ResetKey = StructuralObject.SetValidValue(value, false, "ResetKey");
                 ReportPropertyChanged("ResetKey");
                 OnResetKeyChanged();
             }
@@ -23965,7 +24084,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnResetKeyChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -24013,6 +24132,7 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -24053,7 +24173,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24072,7 +24193,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -24097,7 +24218,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPageIdChanging(value);
                 ReportPropertyChanging("PageId");
-                _PageId = StructuralObject.SetValidValue(value, false);
+                _PageId = StructuralObject.SetValidValue(value, false, "PageId");
                 ReportPropertyChanged("PageId");
                 OnPageIdChanged();
             }
@@ -24121,7 +24242,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAdminNameChanging(value);
                 ReportPropertyChanging("AdminName");
-                _AdminName = StructuralObject.SetValidValue(value, false);
+                _AdminName = StructuralObject.SetValidValue(value, false, "AdminName");
                 ReportPropertyChanged("AdminName");
                 OnAdminNameChanged();
             }
@@ -24145,7 +24266,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAvailableScheduleIdChanging(value);
                 ReportPropertyChanging("AvailableScheduleId");
-                _AvailableScheduleId = StructuralObject.SetValidValue(value);
+                _AvailableScheduleId = StructuralObject.SetValidValue(value, "AvailableScheduleId");
                 ReportPropertyChanged("AvailableScheduleId");
                 OnAvailableScheduleIdChanged();
             }
@@ -24169,7 +24290,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAvailableStartDateUtcChanging(value);
                 ReportPropertyChanging("AvailableStartDateUtc");
-                _AvailableStartDateUtc = StructuralObject.SetValidValue(value);
+                _AvailableStartDateUtc = StructuralObject.SetValidValue(value, "AvailableStartDateUtc");
                 ReportPropertyChanged("AvailableStartDateUtc");
                 OnAvailableStartDateUtcChanged();
             }
@@ -24193,7 +24314,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAvailableEndDateUtcChanging(value);
                 ReportPropertyChanging("AvailableEndDateUtc");
-                _AvailableEndDateUtc = StructuralObject.SetValidValue(value);
+                _AvailableEndDateUtc = StructuralObject.SetValidValue(value, "AvailableEndDateUtc");
                 ReportPropertyChanged("AvailableEndDateUtc");
                 OnAvailableEndDateUtcChanged();
             }
@@ -24217,7 +24338,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSerializedContentChanging(value);
                 ReportPropertyChanging("SerializedContent");
-                _SerializedContent = StructuralObject.SetValidValue(value, false);
+                _SerializedContent = StructuralObject.SetValidValue(value, false, "SerializedContent");
                 ReportPropertyChanged("SerializedContent");
                 OnSerializedContentChanged();
             }
@@ -24241,7 +24362,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPublishedStatusChanging(value);
                 ReportPropertyChanging("PublishedStatus");
-                _PublishedStatus = StructuralObject.SetValidValue(value);
+                _PublishedStatus = StructuralObject.SetValidValue(value, "PublishedStatus");
                 ReportPropertyChanged("PublishedStatus");
                 OnPublishedStatusChanged();
             }
@@ -24265,7 +24386,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAreasChanging(value);
                 ReportPropertyChanging("Areas");
-                _Areas = StructuralObject.SetValidValue(value, false);
+                _Areas = StructuralObject.SetValidValue(value, false, "Areas");
                 ReportPropertyChanged("Areas");
                 OnAreasChanged();
             }
@@ -24275,7 +24396,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnAreasChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -24316,7 +24437,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24335,7 +24457,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -24360,7 +24482,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -24384,7 +24506,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnFriendlyNameChanging(value);
                 ReportPropertyChanging("FriendlyName");
-                _FriendlyName = StructuralObject.SetValidValue(value, false);
+                _FriendlyName = StructuralObject.SetValidValue(value, false, "FriendlyName");
                 ReportPropertyChanged("FriendlyName");
                 OnFriendlyNameChanged();
             }
@@ -24408,7 +24530,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaskProcessorNameChanging(value);
                 ReportPropertyChanging("TaskProcessorName");
-                _TaskProcessorName = StructuralObject.SetValidValue(value, false);
+                _TaskProcessorName = StructuralObject.SetValidValue(value, false, "TaskProcessorName");
                 ReportPropertyChanged("TaskProcessorName");
                 OnTaskProcessorNameChanged();
             }
@@ -24432,7 +24554,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTaskProcessorIdChanging(value);
                 ReportPropertyChanging("TaskProcessorId");
-                _TaskProcessorId = StructuralObject.SetValidValue(value);
+                _TaskProcessorId = StructuralObject.SetValidValue(value, "TaskProcessorId");
                 ReportPropertyChanged("TaskProcessorId");
                 OnTaskProcessorIdChanged();
             }
@@ -24456,7 +24578,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnPayloadChanging(value);
                 ReportPropertyChanging("Payload");
-                _Payload = StructuralObject.SetValidValue(value, false);
+                _Payload = StructuralObject.SetValidValue(value, false, "Payload");
                 ReportPropertyChanged("Payload");
                 OnPayloadChanged();
             }
@@ -24480,7 +24602,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -24504,7 +24626,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStatusNotesChanging(value);
                 ReportPropertyChanging("StatusNotes");
-                _StatusNotes = StructuralObject.SetValidValue(value, false);
+                _StatusNotes = StructuralObject.SetValidValue(value, false, "StatusNotes");
                 ReportPropertyChanged("StatusNotes");
                 OnStatusNotesChanged();
             }
@@ -24528,7 +24650,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStartAtUtcChanging(value);
                 ReportPropertyChanging("StartAtUtc");
-                _StartAtUtc = StructuralObject.SetValidValue(value);
+                _StartAtUtc = StructuralObject.SetValidValue(value, "StartAtUtc");
                 ReportPropertyChanged("StartAtUtc");
                 OnStartAtUtcChanged();
             }
@@ -24538,7 +24660,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnStartAtUtcChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -24573,7 +24695,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24592,7 +24715,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -24617,7 +24740,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnAccountIdChanging(value);
                 ReportPropertyChanging("AccountId");
-                _AccountId = StructuralObject.SetValidValue(value);
+                _AccountId = StructuralObject.SetValidValue(value, "AccountId");
                 ReportPropertyChanged("AccountId");
                 OnAccountIdChanged();
             }
@@ -24641,7 +24764,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnIsCompleteChanging(value);
                 ReportPropertyChanging("IsComplete");
-                _IsComplete = StructuralObject.SetValidValue(value);
+                _IsComplete = StructuralObject.SetValidValue(value, "IsComplete");
                 ReportPropertyChanged("IsComplete");
                 OnIsCompleteChanged();
             }
@@ -24665,7 +24788,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -24689,7 +24812,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -24713,7 +24836,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnDetailsChanging(value);
                 ReportPropertyChanging("Details");
-                _Details = StructuralObject.SetValidValue(value, false);
+                _Details = StructuralObject.SetValidValue(value, false, "Details");
                 ReportPropertyChanged("Details");
                 OnDetailsChanged();
             }
@@ -24723,7 +24846,7 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnDetailsChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -24760,7 +24883,8 @@ namespace MerchantTribe.Commerce.Data.EF
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24779,7 +24903,7 @@ namespace MerchantTribe.Commerce.Data.EF
                 {
                     OnIdChanging(value);
                     ReportPropertyChanging("Id");
-                    _Id = StructuralObject.SetValidValue(value);
+                    _Id = StructuralObject.SetValidValue(value, "Id");
                     ReportPropertyChanged("Id");
                     OnIdChanged();
                 }
@@ -24804,7 +24928,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnStoreIdChanging(value);
                 ReportPropertyChanging("StoreId");
-                _StoreId = StructuralObject.SetValidValue(value);
+                _StoreId = StructuralObject.SetValidValue(value, "StoreId");
                 ReportPropertyChanged("StoreId");
                 OnStoreIdChanged();
             }
@@ -24828,7 +24952,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnCustomerIdChanging(value);
                 ReportPropertyChanging("CustomerId");
-                _CustomerId = StructuralObject.SetValidValue(value, false);
+                _CustomerId = StructuralObject.SetValidValue(value, false, "CustomerId");
                 ReportPropertyChanged("CustomerId");
                 OnCustomerIdChanged();
             }
@@ -24852,7 +24976,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -24876,7 +25000,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -24900,7 +25024,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -24924,7 +25048,7 @@ namespace MerchantTribe.Commerce.Data.EF
             {
                 OnSelectionDataChanging(value);
                 ReportPropertyChanging("SelectionData");
-                _SelectionData = StructuralObject.SetValidValue(value, false);
+                _SelectionData = StructuralObject.SetValidValue(value, false, "SelectionData");
                 ReportPropertyChanged("SelectionData");
                 OnSelectionDataChanged();
             }
@@ -24934,9 +25058,9 @@ namespace MerchantTribe.Commerce.Data.EF
         partial void OnSelectionDataChanged();
 
         #endregion
-    
+
     }
 
     #endregion
-    
+
 }

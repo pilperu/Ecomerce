@@ -1,0 +1,22 @@
+﻿@model MerchantTribeStore.Models.CategoryPageViewModel
+<div id="categoryleft">    
+        <form action="@Url.Content("~/search")" method="get">
+            <input type="text" name="q" id="q" value="@ViewBag.q" />
+            <input type="image" src="@ViewBag.GoButtonUrl" value="Go" />        
+        </form>    
+</div>
+<div id="categorymain">
+    <h1>Search | @ViewBag.q</h1>
+    <div id="categorygridtemplate">            
+        <div id="categorygridtemplaterecords">
+            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+            @foreach (var item in Model.Products)
+            {
+                @Html.Partial("~/Views/Products/RenderSingleProduct.cshtml", item)
+            }
+            @Html.Partial("~/Views/Shared/_Pager.cshtml", Model.PagerData)
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<div class="clear"></div>

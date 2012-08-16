@@ -1,0 +1,64 @@
+﻿@{
+    ViewBag.Title = "ProcessSignup";
+    Layout = "~/Areas/signup/Views/Shared/_SignUpLayout.cshtml";
+}
+@section EndOfPage{
+    <!-- Google Code for Hosted Store SignUp Conversion Page -->
+    <script type="text/javascript">
+    <!--
+        var google_conversion_id = 1062989762;
+        var google_conversion_language = "en";
+        var google_conversion_format = "2";
+        var google_conversion_color = "ffffff";
+        var google_conversion_label = "eXreCO64qgEQwt_v-gM";
+        var google_conversion_value = 0;
+        if (0.01) {
+            google_conversion_value = 0.01;
+        }
+    //-->
+    </script>
+    <script type="text/javascript" src="https://www.googleadservices.com/pagead/conversion.js">
+    </script>
+    <noscript>
+    <div style="display:inline;">
+    <img height="1" width="1" style="border-style:none;" alt="" src="https://www.googleadservices.com/pagead/conversion/1062989762/?value=0.01&amp;label=eXreCO64qgEQwt_v-gM&amp;guid=ON&amp;script=0"/>
+    </div>
+    </noscript>
+}
+
+    <div class="col-1">
+        <div class="block registration">
+    <h1 class="c">Registration Complete!</h1>
+
+    <div class="registration-section">
+        <p>Thank you for creating your store.</p>
+    </div>            
+    <div class="registration-section">
+                <div class="registration-form-area">
+                    <fieldset>
+                         <table border="0" cellspacing="0" cellpadding="3">
+                        <tr>
+                            <td class="r vt">Username:</td>
+                            <td>@ViewBag.CompleteEmail</td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">Store Address:</td>
+                            <td><a href="@Html.Raw((string)ViewBag.RootUrl)">@ViewBag.RootUrl</a></td>
+                        </tr>
+                        <tr>
+                            <td class="r vt">Store Admin Address:</td>
+                            <td><a href="@Html.Raw((string)ViewBag.RootUrlSecure)bvadmin">@(ViewBag.RootUrlSecure)bvadmin</a></td>
+                        </tr>
+                        </table>                       
+                    </fieldset>
+                </div>
+   </div>
+   <div class="registration-section">
+        <div class="registration-form-area">
+            <h2><a href="@Html.Raw((string)ViewBag.LoginUrl)">Next Step &raquo; Choose a Theme</a></h2>        
+        </div>
+   </div>       
+    &nbsp;<br />
+    <p class="clear">&nbsp;</p>
+    </div>
+</div>

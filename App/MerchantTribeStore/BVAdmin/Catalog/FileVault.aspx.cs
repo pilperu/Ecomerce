@@ -82,6 +82,8 @@ namespace MerchantTribeStore
             {
                 if (!fileName.ToLower().EndsWith(".config"))
                 {
+                    bool ReadWasSuccess = false;
+
                     ProductFile file = new ProductFile();
                     file.FileName = System.IO.Path.GetFileName(fileName);
                     file.ShortDescription = file.FileName;
@@ -89,33 +91,17 @@ namespace MerchantTribeStore
                     {
                         try
                         {
-                            System.IO.FileStream fileStream = new System.IO.FileStream(fileName, FileMode.Open);
-                            try
-                            {
+                            using (System.IO.FileStream fileStream = new FileStream(fileName, FileMode.Open))
+                            {                                                                
                                 if (ProductFile.SaveFile(MTApp.CurrentStore.Id, file.Bvin, file.FileName, fileStream))
                                 {
-                                    fileStream.Close();
-                                    try
-                                    {
-                                        File.Delete(fileName);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        errorOccurred = true;
-                                        EventLog.LogEvent(ex);
-                                    }
-                                }
+                                    ReadWasSuccess = true;                                
+                                }                                                             
                             }
-                            finally
-                            {
-                                try
-                                {
-                                    fileStream.Close();
-                                }
-                                catch
-                                {
 
-                                }
+                            if (ReadWasSuccess == true)
+                            {
+                                File.Delete(fileName);
                             }
                         }
                         catch (Exception ex)

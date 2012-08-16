@@ -1,0 +1,99 @@
+﻿@model MerchantTribeStore.Areas.account.Models.SignInViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using MerchantTribeStore.Models
+@using MerchantTribeStore.Areas.account.Models
+<div class="loginpage">
+    @Html.Raw(ViewBag.BreadCrumbsFinal)
+    <h1>
+        <span>@ViewBag.Title</span></h1>
+    @Html.Raw((string)TempData["messages"])
+    <div class="sidebysidea">
+        <h2>
+            Current User Login</h2>
+        <form action="@Url.Content("~/signin")" method="post">
+        <table id="CurrentUserTable" cellspacing="0" cellpadding="3">
+            <tr>
+                <td class="formlabel">
+                    Email:
+                </td>
+                <td class="formfield">
+                    <input type="text" class="forminput required logincontroltemailfield"
+                                            name="email" value="@Model.Email" tabindex="1" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                    Password:
+                </td>
+                <td class="formfield">
+                    <input type="password" class="forminput required" 
+                          title="Enter Your Password" tabindex="2" name="password" value="@Model.Password">
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                    &nbsp;
+                </td>
+                <td class="formfield">
+                    <input type="image" alt="Login" src="@ViewBag.LoginButtonUrl" tabindex="4" />
+                    <input type="hidden" name="mode" value="@Model.Mode" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formlabel">
+                </td>
+                <td>
+                    <a href="@Url.Content("~/account/forgotpassword/" + @Model.Email)" tabindex="5" class="BVSmallText forgot">
+                        Forgot Your Password? Click Here.</a>
+                </td>
+            </tr>
+        </table>
+        </form>        
+    </div>
+    <div class="sidebysideb">
+        @if (ViewBag.IsPrivateStore)
+        {
+            @ViewBag.PrivateStoreMessage
+        }
+        else
+        {        
+            <h2>
+                New Users Create Account</h2>
+            <form action="@Url.Content("~/account/authentication/createaccount")" method="post">
+              <table id="NewUserTable" runat="server" border="0" cellspacing="0" cellpadding="3">
+                  <tr>
+                      <td class="formlabel">Email:</td>
+                      <td class="formfield">
+                        <input type="text" class="forminput required logincontroltemailfield"
+                           name="email" value="@Model.Email" tabindex="2001" />                                                                              
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="formlabel">Password:</td>
+                      <td class="formfield"><input type="password" class="forminput required" 
+                          title="Enter Your Password" tabindex="2002" name="password" value="@Model.Password">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td class="formlabel">Confirm Password:</td>
+                      <td class="formfield"><input type="password" class="forminput required" 
+                          title="Confirm Password" tabindex="2003" name="passwordconfirm" value="@Model.PasswordConfirm">
+                      </td>
+                  </tr>
+                  <tr>
+                      <td>
+                          &nbsp;
+                      </td>
+                      <td class="formfield">
+                            <input type="image" alt="Login" src="@ViewBag.CreateButtonUrl" tabindex="2004" />                          
+                      </td>
+                  </tr>
+              </table>
+            </form>
+        }
+    </div>
+    <div class="clear">
+    </div>
+</div>

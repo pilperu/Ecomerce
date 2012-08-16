@@ -1,0 +1,32 @@
+<%@ Page Language="C#" MasterPageFile="~/BVAdmin/BVAdmin.master" AutoEventWireup="false"
+    CodeFile="UPSOnlineTools_RecoverLabel.aspx.cs" Inherits="MerchantTribeStore.BVAdmin_Orders_UPSOnlineTools_RecoverLabel"
+    Title="UPS Online Tools" %>
+
+<%@ Register Src="../Controls/MessageBox.ascx" TagName="MessageBox" TagPrefix="uc1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="Server">    
+    <uc1:MessageBox ID="MessageBox" runat="Server" />
+    <h1>
+        UPS<sup>®</sup> Online Tools - Recover A Label</h1>
+    <table cellspacing="0" cellpadding="3" width="600" border="0">
+        <tr>
+            <td class="BVText">
+                Tracking Number</td>
+            <td class="BVText">
+                <asp:TextBox ID="TextBox1" runat="server" Columns="40">1Z</asp:TextBox></td>
+            <td class="BVText">
+                <asp:ImageButton ID="btnSearch" runat="server" 
+                    ImageUrl="~/BVAdmin/Images/Buttons/Search.png" onclick="btnSearch_Click">
+                </asp:ImageButton></td>
+        </tr>
+        <tr>
+            <td valign="middle" align="center" colspan="3">
+                &nbsp;<br />
+                &nbsp;<br />
+                <asp:HyperLink ID="lnkView" Visible="False" runat="server" ImageUrl="~/BVAdmin/images/buttons/ViewPrintlabel.png"
+                    Target="_blank">View/Print Label</asp:HyperLink><br />
+                &nbsp;<br />
+                &nbsp;<br />
+            </td>
+        </tr>
+    </table>
+</asp:Content>
