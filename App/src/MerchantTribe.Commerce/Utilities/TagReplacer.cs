@@ -7,40 +7,48 @@ using StackExchange.Profiling;
 
 namespace MerchantTribe.Commerce.Utilities
 {
-    ////TODO: Get rid of this slow pig!!, TagHandlers and templates take care of this now.
-    //public class TagReplacer
-    //{
-    //    public static string ReplaceContentTags(string source, MerchantTribeApplication app, string itemCount, bool isSecureRequest)            
-    //    {
-    //        var profiler = MiniProfiler.Current;
-    //        using (profiler.Step("Tag Replacer"))
-    //        {
-    //            Accounts.Store currentStore = app.CurrentStore;
-    //            string currentUserId = app.CurrentCustomerId;
+    //TODO: Get rid of this slow pig!!, TagHandlers and templates take care of this now.
+    public class TagReplacer
+    {
+        public static string ReplaceContentTags(string source, MerchantTribeApplication app, string itemCount)
+        {
+            var profiler = MiniProfiler.Current;
+            using (profiler.Step("Tag Replacer"))
+            {
+                if (source.Contains("{{"))
+                {
 
-    //            string output = source;
+                    bool isSecureRequest = app.IsCurrentRequestSecure();
+                    Accounts.Store currentStore = app.CurrentStore;
+                    string currentUserId = app.CurrentCustomerId;
 
-    //            RouteCollection r = System.Web.Routing.RouteTable.Routes;
-    //            //VirtualPathData homeLink = r.GetVirtualPath(requestContext.RoutingContext, "homepage", new RouteValueDictionary());
+                    string output = source;
 
-    //            output = output.Replace("{{homelink}}", app.StoreUrl(isSecureRequest, false));
-    //            output = output.Replace("{{logo}}", HtmlRendering.Logo(app, isSecureRequest));
-    //            output = output.Replace("{{logotext}}", HtmlRendering.LogoText(app));
-    //            output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app));
-    //            output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(app, itemCount));
-    //            output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
-    //            output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));
-    //            output = output.Replace("{{searchform}}", HtmlRendering.SearchForm(app));
-    //            output = output.Replace("{{assets}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForStoreTheme(app, currentStore.Settings.ThemeId, isSecureRequest) + "assets/");
-    //            output = output.Replace("{{img}}", MerchantTribe.Commerce.Storage.DiskStorage.StoreAssetUrl(app, string.Empty, isSecureRequest));
-    //            output = output.Replace("{{storeassets}}", MerchantTribe.Commerce.Storage.DiskStorage.StoreAssetUrl(app, string.Empty, isSecureRequest));
-    //            output = output.Replace("{{sitefiles}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForSingleStore(app, isSecureRequest));
+                    RouteCollection r = System.Web.Routing.RouteTable.Routes;
 
-    //            output = output.Replace("{{storeaddress}}", app.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString());
+                    output = output.Replace("{{homelink}}", app.StoreUrl(isSecureRequest, false));
+                    output = output.Replace("{{logo}}", HtmlRendering.Logo(app, isSecureRequest));
+                    output = output.Replace("{{logotext}}", HtmlRendering.LogoText(app));
+                    output = output.Replace("{{headermenu}}", HtmlRendering.HeaderMenu(app));
+                    output = output.Replace("{{cartlink}}", HtmlRendering.CartLink(app, itemCount));
+                    output = output.Replace("{{copyright}}", "<span class=\"copyright\">Copyright &copy;" + DateTime.Now.Year.ToString() + "</span>");
+                    output = output.Replace("{{headerlinks}}", HtmlRendering.HeaderLinks(app, currentUserId));
+                    output = output.Replace("{{searchform}}", HtmlRendering.SearchForm(app));
+                    output = output.Replace("{{assets}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForStoreTheme(app, currentStore.Settings.ThemeId, isSecureRequest) + "assets/");
+                    output = output.Replace("{{img}}", MerchantTribe.Commerce.Storage.DiskStorage.StoreAssetUrl(app, string.Empty, isSecureRequest));
+                    output = output.Replace("{{storeassets}}", MerchantTribe.Commerce.Storage.DiskStorage.StoreAssetUrl(app, string.Empty, isSecureRequest));
+                    output = output.Replace("{{sitefiles}}", MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForSingleStore(app, isSecureRequest));
 
-    //            return output;
-    //        }
-    //    }
+                    output = output.Replace("{{storeaddress}}", app.ContactServices.Addresses.FindStoreContactAddress().ToHtmlString());
 
-    //}
+                    return output;
+                }
+                else
+                {
+                    return source;
+                }
+            }
+        }
+
+    }
 }

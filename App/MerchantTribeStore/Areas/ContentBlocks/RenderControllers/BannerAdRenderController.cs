@@ -22,10 +22,8 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
                 model.CssId = block.BaseSettings.GetSettingOrEmpty("cssid");
                 model.CssClass = block.BaseSettings.GetSettingOrEmpty("cssclass");
                 model.LinkUrl = block.BaseSettings.GetSettingOrEmpty("linkurl");
-                model.ImageUrl = model.ImageUrl; // TagReplacer.ReplaceContentTags(model.ImageUrl,
-                                                 //               app,
-                                                 //               "",
-                                                 //               app.IsCurrentRequestSecure());
+                model.ImageUrl = TagReplacer.ReplaceContentTags(model.ImageUrl,app,"");
+                //model.ImageUrl;  
             }
             return RenderModel(model);            
         }

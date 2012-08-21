@@ -16,10 +16,7 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             {
                 result = block.BaseSettings.GetSettingOrEmpty("HtmlData");
             }
-            //result = TagReplacer.ReplaceContentTags(result,
-            //                                        app,
-            //                                        "",
-            //                                        app.IsCurrentRequestSecure());
+            result = TagReplacer.ReplaceContentTags(result,app,"");
             return result;
         }
     }
