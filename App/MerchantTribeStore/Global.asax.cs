@@ -222,7 +222,10 @@ namespace MerchantTribeStore
 
         void Application_BeginRequest(object sender, EventArgs e)
         {
-            MiniProfiler.Start();
+            if (ProfilerEnabled == true)
+            {
+                MiniProfiler.Start();
+            }
 
             CleanUpDomains();
             System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo(MerchantTribe.Commerce.WebAppSettings.SiteCultureCode);
@@ -231,7 +234,10 @@ namespace MerchantTribeStore
 
         void Application_EndRequest()
         {
-            MiniProfiler.Stop();
+            if (ProfilerEnabled == true)
+            {
+                MiniProfiler.Stop();
+            }
         }
 
         public override string GetVaryByCustomString(HttpContext context, string custom)
@@ -273,6 +279,20 @@ namespace MerchantTribeStore
             //{
             //    Response.RedirectPermanent(destination);
             //}            
+        }
+
+        private bool ProfilerEnabled
+        {
+            get
+            {
+                string profileSetting = System.Configuration.ConfigurationManager.AppSettings["EnableProfiler"];
+                if (profileSetting == null) return false;
+                if (profileSetting == "1" || profileSetting == "true")
+                {
+                    return true;
+                }
+                return false;
+            }
         }
     }
 }
