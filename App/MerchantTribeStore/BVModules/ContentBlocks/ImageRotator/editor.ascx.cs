@@ -7,7 +7,10 @@ using System.Web.UI.WebControls;
 using System.IO;
 using MerchantTribe.Commerce;
 using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Storage;
 using System.Text;
+using MerchantTribeStore.Areas.ContentBlocks.RenderControllers;
+using MerchantTribeStore.Areas.ContentBlocks.Models;
 
 namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
 {
@@ -29,13 +32,15 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
 
 
                 this.WidthField.Text = b.BaseSettings.GetIntegerSetting("Width").ToString();
-                if ((this.WidthField.Text.Trim() == String.Empty) || (this.WidthField.Text == "0"))
+                if ((this.WidthField.Text.Trim() == String.Empty) || (this.WidthField.Text == "0")
+                    || (this.WidthField.Text.Trim() == "-1"))
                 {
                     this.WidthField.Text = "220";
                 }
 
                 this.HeighField.Text = b.BaseSettings.GetIntegerSetting("Height").ToString();
-                if ((this.HeighField.Text.Trim() == String.Empty) || (this.HeighField.Text == "0"))
+                if ((this.HeighField.Text.Trim() == String.Empty) || (this.HeighField.Text == "0")
+                    || (this.WidthField.Text.Trim() == "-1"))
                 {
                     this.HeighField.Text = "220";
                 }
@@ -43,7 +48,6 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
                 int seconds = b.BaseSettings.GetIntegerSetting("Pause");
                 if (seconds < 0) seconds = 3;
                 this.PauseField.Text = seconds.ToString();
-
 
             }
 
@@ -76,7 +80,7 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
 
             sb.Append("var w;");
             sb.Append("function popUpWindow(parameters) {");
-            sb.Append("w = window.open('../ImageBrowser.aspx' + parameters, null, 'height=480, width=640');");
+            sb.Append("w = window.open('" + Page.ResolveUrl("~/bvadmin/filebrowser") + "' + parameters, null, 'height=480, width=640');");
             sb.Append("}");
 
             sb.Append("function closePopup() {");
@@ -85,8 +89,11 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
 
             sb.Append("function SetImage(fileName) {");
             sb.Append("document.getElementById('");
-            sb.Append(this.ImageUrlField.ClientID);
-            sb.Append("').value = '~/' + fileName;");
+
+            string baseUrl = "~/images/sites/" + MyPage.MTApp.CurrentStore.Id.ToString() + "/";
+            
+            sb.Append(this.ImageUrlField.ClientID);            
+            sb.Append("').value = '" + baseUrl + "' + fileName;");
             sb.Append("w.close();");
             sb.Append("}");
 
@@ -103,10 +110,12 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
 
             int width = 0;
             int.TryParse(this.WidthField.Text.Trim(),out width);
+            if (width < 0) width = 220;
             b.BaseSettings.SetIntegerSetting("Width", width);
 
             int height = 0;
             int.TryParse(this.HeighField.Text.Trim(), out height);
+            if (height < 0) height = 220;
             b.BaseSettings.SetIntegerSetting("Height", height);
 
             int pause = 0;
@@ -215,6 +224,57 @@ namespace MerchantTribeStore.BVModules.ContentBlocks.ImageRotator
             b.Lists.MoveItemUp(bvin, "Images");
             this.MyPage.MTApp.ContentServices.Columns.UpdateBlock(b);
             LoadItems(b);    
+        }
+
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType != DataControlRowType.DataRow) return;
+            
+                ContentBlockSettingListItem c = (ContentBlockSettingListItem)e.Row.DataItem;
+                if (c == null) return;
+                
+                PlaceHolder ph = (PlaceHolder)e.Row.FindControl("phImagePreview");
+                if (ph == null) return;
+
+                ImageRotatorImageViewModel img = new ImageRotatorImageViewModel();
+                img.ImageUrl = ResolveSpecialUrl(c.Setting1);
+                img.Url = c.Setting2;
+                if (img.Url.StartsWith("~"))
+                {
+                    img.Url = Page.ResolveUrl(img.Url);
+                }
+                img.NewWindow = (c.Setting3 == "1");
+                img.Caption = c.Setting4;
+                
+                StringBuilder sb = new StringBuilder();                
+                ImageRotatorRenderController.RenderSingleImage(sb, img, 75, 75);
+                ph.Controls.Add(new LiteralControl(sb.ToString()));
+                                            
+        }
+
+        private string ResolveSpecialUrl(string raw)
+        {
+            // full url
+            string tester = raw.Trim().ToLowerInvariant();
+            if (tester.StartsWith("http:") || tester.StartsWith("https:")
+                || tester.StartsWith("//")) return raw;
+
+            // tag replaced url {{img}} or {{assets}
+            if (tester.StartsWith("{{"))
+            {
+                return MerchantTribe.Commerce.Utilities.TagReplacer.ReplaceContentTags(raw, MyPage.MTApp, "");
+            }
+
+            // app relative url
+            if (tester.StartsWith("~"))
+            {
+                return Page.ResolveUrl(raw);
+            }
+
+            // old style theme asset
+            return MerchantTribe.Commerce.Storage.DiskStorage.AssetUrl(
+                MyPage.MTApp, MyPage.MTApp.CurrentStore.Settings.ThemeId,
+                raw, MyPage.MTApp.IsCurrentRequestSecure());
         }
     }
 

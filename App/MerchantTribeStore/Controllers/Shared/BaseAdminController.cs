@@ -37,6 +37,7 @@ namespace MerchantTribeStore.Controllers.Shared
             ViewData["StoreName"] = MTApp.CurrentStore.Settings.FriendlyName;
             ViewData["RenderedMenu"] = Helpers.Html.RenderMenu(this.SelectedTab, MTApp);
             ViewData["HideMenu"] = 0;
+
         }
 
         public void ValidateAdminLogin()

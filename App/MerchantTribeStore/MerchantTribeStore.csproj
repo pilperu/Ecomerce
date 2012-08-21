@@ -873,8 +873,6 @@
     <Content Include="Scripts\newsfeed.js" />
     <Content Include="Scripts\receipt.js" />
     <Content Include="Scripts\checkoutpaymenterror.js" />
-    <Content Include="ClientBin\BVSoftware.SilverlightFileUpload.xap" />
-    <Content Include="ClientBin\MerchantTribe.SilverlightFileUpload.xap" />
     <Content Include="content\themes\common.css" />
     <Content Include="content\themes\commonupdates.css" />
     <Content Include="content\themes\theme-bv-craftystore\buttons\Go.png" />
@@ -993,7 +991,6 @@
     <Content Include="Images\System\AdminBackground.png" />
     <Content Include="Images\System\AdminMenuBarBackground.png" />
     <Content Include="Images\System\AdminMenuBarBackgroundOn.png" />
-    <Content Include="Scripts\fileuploader\Test.html" />
     <Content Include="Scripts\Checkout.js" />
     <Content Include="content\admin\images\AdminHeaderBackground.png" />
     <Content Include="content\admin\images\cside.png" />
@@ -2224,7 +2221,6 @@
     <Content Include="Scripts\tinymce\utils\mctabs.js" />
     <Content Include="Scripts\tinymce\utils\validate.js" />
     <Content Include="Scripts\togglebox.js" />
-    <Content Include="Scripts\Silverlight.js" />
     <Content Include="Scripts\tabs.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -2282,6 +2278,7 @@
     <Compile Include="Areas\AdminCatalog\AdminCatalogAreaRegistration.cs" />
     <Compile Include="Areas\AdminCatalog\Controllers\CategoriesCustomController.cs" />
     <Compile Include="Areas\AdminContent\AdminContentAreaRegistration.cs" />
+    <Compile Include="Areas\AdminContent\Controllers\FileBrowserController.cs" />
     <Compile Include="Areas\AdminContent\Controllers\FileManagerController.cs" />
     <Compile Include="Areas\AdminContent\Models\FileManagerViewModel.cs" />
     <Compile Include="Areas\ContentBlocks\ContentBlocksAreaRegistration.cs" />
@@ -4499,7 +4496,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\AdminCatalog\Models\" />
     <Folder Include="Areas\AdminCatalog\Views\Shared\" />
-    <Folder Include="Areas\AdminContent\Views\Shared\" />
     <Folder Include="aspnet_client\system_web\4_0_30128\" />
     <Folder Include="content\themes\theme-bv-simpleblue\assets\" />
     <Folder Include="content\themes\theme-bv-simplegray\assets\" />
@@ -4541,6 +4537,8 @@
     <Content Include="Areas\AdminContent\Views\Web.config" />
     <Content Include="Areas\AdminContent\Views\FileManager\Index.cshtml" />
     <Content Include="Areas\account\Views\OrderHistory\DownloadFileError.cshtml" />
+    <Content Include="Areas\AdminContent\Views\FileBrowser\Index.cshtml" />
+    <Content Include="Areas\AdminContent\Views\Shared\_PopupLayout.cshtml" />
     <None Include="BVAdmin\Orders\RMA.aspx.cs.exclude" />
     <None Include="BVAdmin\Orders\RMA.aspx.exclude" />
     <None Include="BVAdmin\Orders\RMADetail.aspx.cs.exclude" />

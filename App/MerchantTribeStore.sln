@@ -25,11 +25,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.Test
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Payment.Tests", "src\MerchantTribe.Payment.Tests\MerchantTribe.Payment.Tests.csproj", "{6E00638C-0C75-4CC7-9E89-F185355F696B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Commerce.ApiSample", "src\MerchantTribe.Commerce.ApiSample\MerchantTribe.Commerce.ApiSample.csproj", "{B5DDC02D-27DB-4D93-8BF2-5BA9854CB54A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribe.Shipping.FedEx", "src\MerchantTribe.Shipping.FedEx\MerchantTribe.Shipping.FedEx.csproj", "{9B00258D-45D2-43BD-8178-A6F2AAFF5090}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerchantTribeStore.Tests.Console", "src\MerchantTribeStore.Tests.Console\MerchantTribeStore.Tests.Console.csproj", "{0369DD59-CE97-41E8-A202-AB451ACC07ED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{EB833E64-E859-485A-8C3F-0532A0F77919}"
 	ProjectSection(SolutionItems) = preProject

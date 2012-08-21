@@ -71,7 +71,6 @@ namespace MerchantTribeStore.Controllers
                 editorModel.IsEditMode = true;
                 string editCSS = "<link href=\"" + Url.Content("~/content/flexedit.css") + "\" rel=\"stylesheet\" type=\"text/css\" />";
                 string editJS = "<script type=\"text/javascript\" src=\"" + Url.Content("~/content/FlexEdit.js") + "\"></script>";                
-                editJS += "<script type=\"text/javascript\" src=\"" + Url.Content("~/scripts/Silverlight.js") + "\"></script>";                              
 
                 // Inject CSS and JS into head section of page
                 ViewData["AdditionalMetaTags"] += "\n" + editCSS + "\n" + editJS;

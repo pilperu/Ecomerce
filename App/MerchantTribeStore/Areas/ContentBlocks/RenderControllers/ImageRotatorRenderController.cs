@@ -47,6 +47,18 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             return RenderModel(model);
         }
 
+        public static void RenderSingleImage(StringBuilder sb, ImageRotatorImageViewModel img, int height, int width)
+        {                        
+            sb.Append("<a href=\"" + img.Url + "\" ");
+            if (img.NewWindow == true)
+            { sb.Append(" target=\"_blank\""); }
+            sb.Append(">");
+            sb.Append("<div style=\"height:" + height + "px;overflow:hidden\">");
+            sb.Append("<img src=\"" + img.ImageUrl + "\" alt=\"" + HttpUtility.HtmlEncode(img.Caption) + "\" width=\"" + width + "\" />");
+            sb.Append("</div>");
+            sb.Append("</a>");            
+        }
+
         private string RenderModel(ImageRotatorViewModel model)
         {
             StringBuilder sb = new StringBuilder();
@@ -55,18 +67,16 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             {
                 sb.Append("<div class=\"" + model.CssClass + "\">\n");
                 sb.Append("<ul id=\"" + model.CssId + "\" class=\"imagerotatorlist\" style=\"height:" + model.Height + "px;width:" + model.Width + "px;\">");
+                
                 for (int i = 0; i < model.Images.Count; i++)
                 {
                     var img = model.Images[i];
                     sb.Append("<li ");
                     if (i == 0)
                     { sb.Append("class=\"show\""); }
-                    sb.Append("><a href=\"" + img.Url + "\" ");
-                    if (img.NewWindow == true)
-                    { sb.Append(" target=\"_blank\""); }
                     sb.Append(">");
-                    sb.Append("<img src=\"" + img.ImageUrl + "\" alt=\"" + HttpUtility.HtmlEncode(img.Caption) + "\" />");
-                    sb.Append("</a></li>");
+                    RenderSingleImage(sb, img, model.Height, model.Width);
+                    sb.Append("</li>");
                 }
                 sb.Append("</ul>\n");
                 sb.Append("</div>");
@@ -106,9 +116,26 @@ namespace MerchantTribeStore.Areas.ContentBlocks.RenderControllers
             return sb.ToString();
         }
 
-        private string ResolveUrl(string raw, MerchantTribeApplication app)
+        private static string ResolveUrl(string raw, MerchantTribeApplication app)
         {
-            if (raw.Trim().ToLowerInvariant().StartsWith("http")) return raw;
+            // full url
+            string tester = raw.Trim().ToLowerInvariant();
+            if (tester.StartsWith("http:") || tester.StartsWith("https:")
+                || tester.StartsWith("//")) return raw;
+
+            // tag replaced url {{img}} or {{assets}
+            if (tester.StartsWith("{{"))
+            {
+                return TagReplacer.ReplaceContentTags(raw, app, "");   
+            }
+
+            // app relative url
+            if (tester.StartsWith("~"))
+            {
+                return app.CurrentRequestContext.UrlHelper.Content(raw);
+            }
+            
+            // old style theme asset
             return MerchantTribe.Commerce.Storage.DiskStorage.AssetUrl(
                 app, app.CurrentStore.Settings.ThemeId,
                 raw, app.IsCurrentRequestSecure());

@@ -14,6 +14,9 @@ namespace MerchantTribeStore.Areas.AdminContent
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
+            context.MapRoute("FileBrowser", "bvadmin/filebrowser/{action}/{id}",
+                            new { controller = "FileBrowser", action = "Index", id= UrlParameter.Optional }
+                            );
             context.MapRoute("ContentFileManager", "bvadmin/content/filemanager/{action}/{id}",
                            new { controller = "FileManager", action = "Index", id = UrlParameter.Optional }
                            );

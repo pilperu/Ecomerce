@@ -26,7 +26,7 @@ namespace MerchantTribe.Commerce.Storage
             string u = BaseUrl(app, isSecure) + "images/sites/";
             return u;
         }
-        internal static string BaseUrlForSingleStore(MerchantTribeApplication app, bool isSecure)
+        public static string BaseUrlForSingleStore(MerchantTribeApplication app, bool isSecure)
         {
             return BaseUrlForSites(app, isSecure) + app.CurrentStore.Id.ToString() + "/";
         }

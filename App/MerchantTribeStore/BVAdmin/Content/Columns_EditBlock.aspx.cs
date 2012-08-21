@@ -72,6 +72,7 @@ namespace MerchantTribeStore
                 {
                     editor.BlockId = b.Bvin;
                     this.TitleLabel.Text = "Edit Block - " + b.ControlName;
+                    editor.MyPage.MTApp = MTApp;                    
                     this.phEditor.Controls.Add(editor);
                 }
             }

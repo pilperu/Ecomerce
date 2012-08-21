@@ -35,12 +35,17 @@
 <asp:Panel ID="pnlMain" runat="server" DefaultButton="btnOkay">    
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
                     CellPadding="3" GridLines="None" DataKeyNames="Id" Width="400px" 
-                    onrowcancelingedit="GridView1_RowCancelingEdit" 
+                    onrowcancelingedit="GridView1_RowCancelingEdit"  
+                    OnRowDataBound="GridView1_RowDataBound"                                        
                     onrowdeleting="GridView1_RowDeleting" onrowediting="GridView1_RowEditing" 
                     onrowupdating="GridView1_RowUpdating">
                     <Columns>
-                        <asp:ImageField DataImageUrlField="Setting1" HeaderText="Image" NullDisplayText="No Image">
-                        </asp:ImageField>
+                        <asp:TemplateField HeaderText="Image">
+                            <ItemTemplate>
+                                <asp:PlaceHolder ID="phImagePreview" runat="server"></asp:PlaceHolder>                                
+                            </ItemTemplate>                            
+                        </asp:TemplateField>
+
                         <asp:TemplateField>
                 <ItemTemplate>
                     <asp:ImageButton id="btnUp" runat="server" CommandName="Update" ImageUrl="~/BVAdmin/Images/buttons/up.png" AlternateText="Move Up" ></asp:ImageButton><br />
