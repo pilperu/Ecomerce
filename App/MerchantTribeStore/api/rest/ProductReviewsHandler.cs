@@ -45,7 +45,6 @@ namespace MerchantTribeStore.api.rest
                 }
                 else
                 {
-                    response.Content = new List<ProductReviewDTO>();
                     foreach (ProductReview r in items)
                     {
                         response.Content.Add(r.ToDto());
