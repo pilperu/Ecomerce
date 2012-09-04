@@ -32,6 +32,7 @@ namespace MerchantTribeStore
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 LoadZones();
                 LoadData();
                 LoadLevels();
@@ -73,6 +74,14 @@ namespace MerchantTribeStore
                 this.lstZones.ClearSelection();
                 this.lstZones.Items.FindByValue(ShippingMethod.ZoneId.ToString()).Selected = true;
             }
+
+            // Select Hightlights
+            string highlight = ShippingMethod.Settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void LoadLevels()
@@ -91,6 +100,9 @@ namespace MerchantTribeStore
             ShippingMethod.AdjustmentType = (ShippingMethodAdjustmentType)int.Parse(AdjustmentDropDownList.SelectedValue);
             ShippingMethod.Adjustment = decimal.Parse(AdjustmentTextBox.Text, System.Globalization.NumberStyles.Currency);
             ShippingMethod.ZoneId = long.Parse(this.lstZones.SelectedItem.Value);
+
+            ShippingMethod.Settings["highlight"] = this.lstHighlights.SelectedValue;
+            
         }
 
         protected void btnNew_Click(object sender, System.Web.UI.ImageClickEventArgs e)

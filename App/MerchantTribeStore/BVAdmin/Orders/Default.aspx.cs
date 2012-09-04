@@ -198,15 +198,22 @@ namespace MerchantTribeStore
         public void RenderSingleOrder(OrderSnapshot o, StringBuilder sb, bool altRow, TimeZoneInfo timezone)
         {
             string url = ResolveUrl("~/bvadmin/orders/ViewOrder.aspx?id=" + o.bvin);
-
+                        
             if (altRow)
             {
-                sb.Append("<tr class=\"alternaterow\">");
+                sb.Append("<tr class=\"alternaterow\" ");
             }
             else
             {
-                sb.Append("<tr class=\"row\">");
+                sb.Append("<tr class=\"row\" ");
             }
+            string highlight = this.MTApp.OrderServices.FindHightlightColorForOrder(o);
+            if (highlight.Length > 0)
+            {
+                sb.Append(" style=\"background:url('../images/highlights/" + highlight + ".png')\"");
+            }
+            sb.Append(">");
+
             sb.Append("<td><input class=\"pickercheck\" type=\"checkbox\" id=\"check" + o.bvin + "\" /></td>");
 
             sb.Append("<td><a href=\"" + url + "\">" + o.OrderNumber + "</a></td>");

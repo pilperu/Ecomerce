@@ -10,6 +10,10 @@
                 <asp:TextBox ID="NameField" runat="server" Width="300"></asp:TextBox></td>
         </tr>
         <tr>
+            <td class="formlabel">Highlight Color:</td>
+            <td class="formfield"><asp:DropDownList id="lstHighlights" runat="server"></asp:DropDownList></td>
+        </tr>
+        <tr>
             <td class="formlabel">Per Order Charge:</td>
             <td class="formfield">                
                 <asp:TextBox ID="AmountField" runat="server" Width="100px"></asp:TextBox></td>

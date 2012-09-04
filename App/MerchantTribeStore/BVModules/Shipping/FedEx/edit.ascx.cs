@@ -36,6 +36,7 @@ namespace MerchantTribeStore
             base.OnLoad(e);            
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 PopulateLists();
                 LoadData();
                 LoadZones();
@@ -142,7 +143,13 @@ namespace MerchantTribeStore
 
             this.chkDiagnostics.Checked = MyPage.MTApp.CurrentStore.Settings.ShippingFedExDiagnostics;
 
-            
+            // Select Hightlights
+            string highlight = Settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void SaveData()
@@ -157,6 +164,7 @@ namespace MerchantTribeStore
             Settings.Merge(ShippingMethod.Settings);
             Settings.ServiceCode = int.Parse(this.lstServiceCode.SelectedValue);
             Settings.Packaging = int.Parse(this.lstPackaging.SelectedValue);
+            Settings["highlight"] = this.lstHighlights.SelectedValue;
             ShippingMethod.Settings.Merge(Settings);
 
             // Globals

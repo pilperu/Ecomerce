@@ -40,6 +40,15 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
         protected global::System.Web.UI.WebControls.TextBox NameField;
         
         /// <summary>
+        /// lstHighlights control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList lstHighlights;
+        
+        /// <summary>
         /// lstZones control.
         /// </summary>
         /// <remarks>

@@ -13,6 +13,10 @@
          <tr>
             <td class="formlabel">Name:</td>
             <td class="formfield"><asp:TextBox ID="NameField" runat="server" /></td>
+        </tr>
+        <tr>
+            <td class="formlabel">Highlight Color:</td>
+            <td class="formfield"><asp:DropDownList id="lstHighlights" runat="server"></asp:DropDownList></td>
         </tr>    
         <tr>
             <td class="formlabel">

@@ -29,6 +29,7 @@ namespace MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 LoadZones();
                 LoadData();
             }
@@ -74,6 +75,14 @@ namespace MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula
                 this.lstZones.ClearSelection();
                 this.lstZones.Items.FindByValue(ShippingMethod.ZoneId.ToString()).Selected = true;
             }
+
+            // Select Hightlights
+            string highlight = Settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void SaveData()
@@ -92,6 +101,7 @@ namespace MerchantTribeStore.BVModules.Shipping.Rate_Per_Weight_Formula
             Settings.BaseWeight = baseWeight;
             Settings.MinWeight = minWeight;
             Settings.MaxWeight = maxWeight;
+            Settings["highlight"] = this.lstHighlights.SelectedValue;
 
             ShippingMethod.Settings.Merge(Settings);
 

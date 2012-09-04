@@ -29,6 +29,7 @@ namespace MerchantTribeStore
             base.OnLoad(e);
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 LoadZones();
                 LoadData();
             }
@@ -62,6 +63,14 @@ namespace MerchantTribeStore
                 this.lstZones.ClearSelection();
                 this.lstZones.Items.FindByValue(ShippingMethod.ZoneId.ToString()).Selected = true;
             }
+
+            // Select Hightlights
+            string highlight = Settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void SaveData()
@@ -70,6 +79,7 @@ namespace MerchantTribeStore
             FlatRatePerItemSettings Settings = new FlatRatePerItemSettings();
             Settings.Merge(ShippingMethod.Settings);
             Settings.Amount = amount;
+            Settings["highlight"] = this.lstHighlights.SelectedValue;
             ShippingMethod.Settings.Merge(Settings);
 
             ShippingMethod.Name = this.NameField.Text.Trim();

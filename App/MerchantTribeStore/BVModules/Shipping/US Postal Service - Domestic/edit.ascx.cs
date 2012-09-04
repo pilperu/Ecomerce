@@ -34,6 +34,7 @@ namespace MerchantTribeStore
             base.OnLoad(e);            
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 LoadZones();
                 LoadServiceCodes();                
                 LoadData();
@@ -108,6 +109,14 @@ namespace MerchantTribeStore
                 lstPackageType.ClearSelection();
                 lstPackageType.Items.FindByValue(matchPackage).Selected = true;
             }
+
+            // Select Hightlights
+            string highlight = settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void SaveData()
@@ -136,7 +145,8 @@ namespace MerchantTribeStore
                     }
                 }
             Settings.ServiceCodeFilter = filter;
-            
+            Settings["highlight"] = this.lstHighlights.SelectedValue;
+
             // Package
             string packageCode = this.lstPackageType.SelectedItem.Value;
             int packageCodeInt = -1;

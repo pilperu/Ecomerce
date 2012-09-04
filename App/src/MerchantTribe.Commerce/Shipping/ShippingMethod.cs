@@ -64,7 +64,8 @@ namespace MerchantTribe.Commerce.Shipping
         }
         public ServiceSettings Settings
         {
-            get { return _Settings; }
+            get { if (_Settings == null) _Settings = new ServiceSettings();
+                    return _Settings; }
             set { _Settings = value; }
         }
         public long StoreId { get; set; }

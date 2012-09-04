@@ -34,6 +34,7 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
             base.OnLoad(e);            
             if (!Page.IsPostBack)
             {
+                this.AddHighlightColors(this.lstHighlights);
                 LoadZones();
                 LoadServiceCodes();                
                 LoadData();
@@ -59,6 +60,8 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
 
         private void LoadData()
         {
+            
+            
             this.NameField.Text = ShippingMethod.Name;
             if (this.NameField.Text == string.Empty)
             {
@@ -100,7 +103,15 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
                         break;
                     }
                 }
-            }            
+            }
+
+            // Select Hightlights
+            string highlight = settings.GetSettingOrEmpty("highlight");
+            if (this.lstHighlights.Items.FindByText(highlight) != null)
+            {
+                this.lstHighlights.ClearSelection();
+                this.lstHighlights.Items.FindByText(highlight).Selected = true;
+            }
         }
 
         private void SaveData()
@@ -128,7 +139,9 @@ namespace MerchantTribeStore.BVModules.Shipping.US_Postal_Service___Internationa
                     }
                 }
             Settings.ServiceCodeFilter = filter;
-                        
+
+            Settings["highlight"] = this.lstHighlights.SelectedValue;
+
             ShippingMethod.Settings.Merge(Settings);
 
             MyPage.MTApp.UpdateCurrentStore();
