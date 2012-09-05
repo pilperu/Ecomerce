@@ -42,6 +42,11 @@
                 &nbsp;
                 <div id="newsfeed">
                 <ul>
+                    <li><strong>Sept 4, 2012</strong><br />
+                        New template system in place for all category and custom pages. You can now upload your own HTML files as templates under Content->File Manager in the /Themes/(theme name)/Templates folder and they will be available.<br />
+                        &nbsp;<br />
+                        Added the ability to highlight specific orders by selecting highlight colors on shipping methods. Edit your shipping methods to select colors.
+                    </li>
                     <li><strong>July 24</strong><br />Version 1.4: Added several updates including Stripe payment processor. Visit Stripe.com to sign up.</li>
                 </ul>
                 </div>

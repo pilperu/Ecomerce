@@ -476,7 +476,7 @@ namespace MerchantTribe.Commerce.Orders
             if (o.ShippingMethodId.Trim().Length < 1) return result;
             var m = ShippingMethods.Find(o.ShippingMethodId.Trim());
             if (m == null) return result;
-            string highlight = m.Settings["highlight"];
+            string highlight = m.Settings.GetSettingOrEmpty("highlight");
             if (highlight.Trim().Length > 0) return highlight;
             return result;
         }
