@@ -37,8 +37,18 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 columns = tag.GetSafeAttributeAsInteger("columns");
                 if (columns < 1) columns = 3;
 
-                model.PagerData.CurrentPage = tag.GetSafeAttributeAsInteger("page");
-                if (model.PagerData.CurrentPage < 1) model.PagerData.CurrentPage = GetPageFromRequest(app);
+                if (tag.GetSafeAttribute("page") == "all")
+                {
+                    model.PagerData.CurrentPage = WebAppSettings.ViewAllPagesConstant;
+                }
+                else
+                {
+                    model.PagerData.CurrentPage = tag.GetSafeAttributeAsInteger("page");
+                }
+                if (model.PagerData.CurrentPage < 1 && model.PagerData.CurrentPage != WebAppSettings.ViewAllPagesConstant)
+                {
+                    model.PagerData.CurrentPage = GetPageFromRequest(app);
+                }
 
                 model.PagerData.TotalItems = 0;
 
@@ -85,11 +95,20 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             int totalItems = 0;
                             using (profiler.Step("Get the Products"))
                             {
+                                
+                                // View All Support
+                                if (model.PagerData.CurrentPage == WebAppSettings.ViewAllPagesConstant)
+                                {
+                                    model.PagerData.CurrentPage = 1;
+                                    model.PagerData.PageSize = 250; // int.MaxValue; - Use a reasonable limit here instead of max int.
+                                }
+                                
                                 model.Items = app.CatalogServices.FindProductForCategoryWithSort(
                                                        categoryId,
                                                        CategorySortOrder.ManualOrder,
                                                        false,
                                                        model.PagerData.CurrentPage, model.PagerData.PageSize, ref totalItems);
+                                
                                 model.PagerData.TotalItems = totalItems;
                             }
                             using (profiler.Step("Build the Pager Urls"))
@@ -117,7 +136,10 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             if (app.CurrentRequestContext.RoutingContext.HttpContext.Request == null) return result;
             if (app.CurrentRequestContext.RoutingContext.HttpContext.Request.QueryString["page"] != null)
             {
-                int.TryParse(app.CurrentRequestContext.RoutingContext.HttpContext.Request.QueryString["page"], out result);
+                string val = app.CurrentRequestContext.RoutingContext.HttpContext.Request.QueryString["page"];
+                if (val == "all") return WebAppSettings.ViewAllPagesConstant;
+
+                int.TryParse(val, out result);
             }
             if (result < 1) result = 1;
             return result;
@@ -128,29 +150,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             dynamic viewBag,
                             ProductListViewModel model,
                             bool showPagers, int columns);
-        //{
-        //    var profiler = MiniProfiler.Current;
-        //    using (profiler.Step("Rendering Grid..."))
-        //    {
-        //        var preppedItems = PrepProducts(model.Items, columns, app);
-        //        var pagerRenderer = new code.TemplateEngine.TagHandlers.Pager();
-        //        var productRenderer = new code.TemplateEngine.TagHandlers.SingleProduct();
-
-        //        if (showPagers == true)
-        //        {
-        //            pagerRenderer.Render(sb, model.PagerData);
-        //        }
-        //        foreach (var item in preppedItems)
-        //        {
-        //            productRenderer.RenderModel(sb, item, app);
-        //        }
-        //        if (showPagers == true)
-        //        {
-        //            pagerRenderer.Render(sb, model.PagerData);
-        //        }
-        //    }
-        //}
-
+     
         protected List<SingleProductViewModel> PrepProducts(List<Product> products, int columns, MerchantTribeApplication app)
         {
             var profiler = MiniProfiler.Current;

@@ -57,6 +57,21 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
 
                     }
                     break;
+                case "carttotal":
+                     href = app.CurrentStore.RootUrl() + "cart";
+                    if (innerContents == string.Empty)
+                    {                        
+                        string subTotal = "$0.00";
+
+                        if (SessionManager.CurrentUserHasCart(app.CurrentStore))
+                        {
+                            subTotal = SessionManager.GetCookieString(WebAppSettings.CookieNameCartSubTotal(app.CurrentStore.Id), app.CurrentStore);
+                            if (subTotal.Trim().Length < 1) subTotal = "$0.00";
+                        }
+
+                        innerContents = "<span>" + subTotal + "</span>";
+                    }
+                    break;
                 case "category":
                     Category cat = app.CatalogServices.Categories.Find(sysid);
                     href = app.CurrentStore.RootUrl() + cat.RewriteUrl;

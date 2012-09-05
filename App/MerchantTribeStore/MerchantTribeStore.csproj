@@ -4387,6 +4387,7 @@
     <Compile Include="code\TemplateEngine\TagHandlers\MetaTags.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="code\TemplateEngine\TagHandlers\MiniPager.cs" />
     <Compile Include="code\TemplateEngine\TagHandlers\PageMenu.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -4461,6 +4462,7 @@
     <Compile Include="Models\FaceBookLikeModel.cs" />
     <Compile Include="Models\FlexPageEditorViewModel.cs" />
     <Compile Include="Models\GooglePlusOneViewModel.cs" />
+    <Compile Include="Models\MiniPagerViewModel.cs" />
     <Compile Include="Models\PagerViewModel.cs" />
     <Compile Include="Models\ProductListViewModel.cs" />
     <Compile Include="Models\ProductPageViewModel.cs" />

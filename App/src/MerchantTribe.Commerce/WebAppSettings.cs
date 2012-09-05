@@ -56,6 +56,8 @@ namespace MerchantTribe.Commerce
 
         public const string GuestPasswordQueryStringName = "guest";
 
+        public const int ViewAllPagesConstant = -1618;
+
         public static string StoreKey
         {
             get

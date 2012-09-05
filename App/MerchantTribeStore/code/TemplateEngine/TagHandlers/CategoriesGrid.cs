@@ -107,6 +107,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                             sb.Append("</div>");
                         sb.Append("</div>");
                     }
+                    sb.Append("<div class=\"clear\"></div>");
                     sb.Append("</div>");
                 }    
             }
