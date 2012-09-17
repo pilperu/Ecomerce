@@ -11,6 +11,9 @@ using MerchantTribe.Commerce.Catalog;
 using MerchantTribe.Commerce.Membership;
 using MerchantTribe.Commerce.Contacts;
 using MerchantTribe.Commerce.Content;
+using MerchantTribe.Commerce.Utilities;
+
+using System.Linq;
 
 namespace MerchantTribeStore
 {
@@ -230,7 +233,16 @@ namespace MerchantTribeStore
                     }
 
                     LoadImagePreview(p);
+                    if (string.IsNullOrEmpty(p.ImageFileSmallAlternateText))
+                    {
+                        p.ImageFileSmallAlternateText = p.ProductName + " " + p.Sku;
+                    }
                     this.SmallImageAlternateTextField.Text = p.ImageFileSmallAlternateText;
+                    if (string.IsNullOrEmpty(p.ImageFileMediumAlternateText))
+                    {
+                        p.ImageFileMediumAlternateText = p.ProductName + " " + p.Sku;
+                    }
+                    this.MediumImageAlternateTextField.Text = p.ImageFileMediumAlternateText;
 
                     if (this.lstProductType.Items.FindByValue(p.ProductTypeId) != null)
                     {
@@ -295,6 +307,10 @@ namespace MerchantTribeStore
         private void LoadImagePreview(Product p)
         {
             this.imgPreviewSmall.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlSmall(MTApp, p.Bvin, p.ImageFileSmall, true);
+            this.ImageSmallUrlField.Text = p.ImageFileSmall;
+
+            this.imgPreviewMedium.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, p.Bvin, p.ImageFileMedium, true);
+            this.ImageMediumUrlField.Text = p.ImageFileMedium;
         }
       
         private void CancelClick()
@@ -434,6 +450,8 @@ namespace MerchantTribeStore
                     //p.TemplateName = Me.lstTemplateName.SelectedValue
                     //End If
 
+					p.ImageFileSmall = this.ImageSmallUrlField.Text.Trim();
+					p.ImageFileMedium = this.ImageMediumUrlField.Text.Trim();
 
                     if (string.IsNullOrEmpty(this.SmallImageAlternateTextField.Text))
                     {
@@ -443,6 +461,16 @@ namespace MerchantTribeStore
                     {
                         p.ImageFileSmallAlternateText = this.SmallImageAlternateTextField.Text;
                     }
+                    if (string.IsNullOrEmpty(this.MediumImageAlternateTextField.Text))
+                    {
+                        p.ImageFileMediumAlternateText = p.ProductName + " " + p.Sku;
+                    }
+                    else
+                    {
+                        p.ImageFileMediumAlternateText = this.MediumImageAlternateTextField.Text;
+                    }
+
+                    
 
                     p.PreContentColumnId = this.PreContentColumnIdField.SelectedValue;
                     p.PostContentColumnId = this.PostContentColumnIdField.SelectedValue;
@@ -572,6 +600,7 @@ namespace MerchantTribeStore
                     if ((MerchantTribe.Commerce.Storage.DiskStorage.UploadProductImage(MTApp.CurrentStore.Id, p.Bvin, this.imgupload.PostedFile)))
                     {
                         p.ImageFileSmall = fileName + ext;
+						p.ImageFileMedium = fileName + ext;
                     }
                 }
                 else

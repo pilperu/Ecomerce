@@ -38,7 +38,7 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload imgupload;
-        
+         protected global::System.Web.UI.WebControls.TextBox ImageSmallUrlField;
         /// <summary>
         /// SmallImageAlternateTextField control.
         /// </summary>
@@ -47,6 +47,33 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox SmallImageAlternateTextField;
+        
+        /// <summary>
+        /// imgPreviewMedium control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPreviewMedium;
+        
+        /// <summary>
+        /// ImageMediumUrlField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ImageMediumUrlField;
+        
+        /// <summary>
+        /// MediumImageAlternateTextField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox MediumImageAlternateTextField;
         
         /// <summary>
         /// lnkViewInStore control.

@@ -49,14 +49,25 @@ $(document).ready(function () {
         
         <h1>Edit Product</h1>
     <div class="rf center">        
-        <div class="controlarea1" style="margin: 0 0 10px 0;">
-            <asp:Image ID="imgPreviewSmall" runat="server" ImageUrl="../images/NoImageAvailable.gif" CssClass="ProdImagePreview">
-            </asp:Image><br />
-            <asp:FileUpload ID="imgupload" runat="server" ClientIDMode="Static" Columns="40" />            
+	Upload Picture: <asp:FileUpload ID="imgupload" runat="server" ClientIDMode="Static" Columns="40" />            
             <br />
+	    <h2>Small Image</h2>
+        <div class="controlarea1" style="margin: 0 0 10px 0;">		
+        <asp:Image ID="imgPreviewSmall" runat="server" ImageUrl="../images/NoImageAvailable.gif" CssClass="ProdImagePreview">
+            </asp:Image><br />
+			<asp:TextBox ID="ImageSmallUrlField" runat="server" Columns="25" CssClass="FormInput" Width="220px"></asp:TextBox><br />            
             Picture Description:
             <asp:TextBox ID="SmallImageAlternateTextField" runat="server" Columns="25" CssClass="FormInput" Width="220px" TabIndex="6601"></asp:TextBox>
-        </div>        
+        </div>
+        <h2>Medium Image</h2>
+        <div class="controlarea1" style="margin: 0 0 10px 0;">
+            <asp:Image ID="imgPreviewMedium" runat="server" ImageUrl="../images/NoImageAvailable.gif" CssClass="ProdImagePreview">
+            </asp:Image><br />
+            <asp:TextBox ID="ImageMediumUrlField" runat="server" Columns="25" CssClass="FormInput" Width="220px"></asp:TextBox><br />
+            Picture Description:
+            <asp:TextBox ID="MediumImageAlternateTextField" runat="server" Columns="25" CssClass="FormInput" Width="220px" TabIndex="6601"></asp:TextBox>
+        </div>
+                                
         <asp:HyperLink ID="lnkViewInStore" runat="server" Target="_blank" NavigateUrl="" ImageUrl="~/BVAdmin/Images/Buttons/ViewInStore.png"></asp:HyperLink>                                
         <br />&nbsp;<br />&nbsp;<br />
         <asp:HyperLink ID="lnkClone" runat="server" class="btn" NavigateUrl=""><b>Clone This Product</b></asp:HyperLink>

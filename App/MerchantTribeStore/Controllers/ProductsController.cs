@@ -140,8 +140,15 @@ namespace MerchantTribeStore.Controllers
 
             CheckForBackOrder(model);
 
-            model.MainImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, model.LocalProduct.Bvin, model.LocalProduct.ImageFileSmall, Request.IsSecureConnection);
-            model.MainImageAltText = model.LocalProduct.ImageFileSmallAlternateText;
+            // Allow custom image names instead of the auto-generated ones
+            string imageName = model.LocalProduct.ImageFileMedium;
+            if (imageName.Trim().Length < 3)
+            {
+                imageName = model.LocalProduct.ImageFileSmall;
+            }
+            model.MainImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, model.LocalProduct.Bvin, imageName, Request.IsSecureConnection);
+            model.MainImageAltText = model.LocalProduct.ImageFileMediumAlternateText;
+            if (model.MainImageAltText.Trim().Length < 1) model.MainImageAltText = model.LocalProduct.ImageFileSmallAlternateText;
             model.PreRenderedTypeValues = model.LocalProduct.GetTypeProperties(this.MTApp);
 
             // Prices                        
@@ -586,7 +593,11 @@ namespace MerchantTribeStore.Controllers
 
                 result.Price = MerchantTribe.Commerce.Utilities.HtmlRendering.UserSpecificPriceForDisplay(price);
                 result.Sku = price.Sku;
-                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, p.Bvin, p.ImageFileSmall, false);
+
+                string imageName = p.ImageFileMedium;
+                if (imageName.Trim().Length < 3) imageName = p.ImageFileSmall;
+                result.ImageUrl = MerchantTribe.Commerce.Storage.DiskStorage.ProductImageUrlMedium(MTApp, p.Bvin, imageName, false);
+                
                 result.IsValid = price.IsValid;
                 if (result.IsValid)
                 {

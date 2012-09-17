@@ -265,8 +265,18 @@ namespace MerchantTribe.Commerce.Storage
             }
 
             string u = BaseUrlForSingleStore(app, isSecure);
-            u += "products/" + productId + "/medium/";
-            u += productImage;
+
+            if (productImage.Contains('/'))
+            {
+                // We have a user specified path or file name so don't 
+                // automatically append the product BVIN to the name
+                u += productImage.TrimStart('/');
+            }
+            else
+            {
+                u += "products/" + productId + "/medium/";
+                u += productImage;
+            }
 
             if (productImage.Trim().Length < 1)
             {
@@ -283,8 +293,18 @@ namespace MerchantTribe.Commerce.Storage
             }
 
             string u = BaseUrlForSingleStore(app, isSecure);
-            u += "products/" + productId + "/small/";
-            u += productImage;
+
+            if (productImage.Contains('/'))
+            {
+                // We have a user specified path or file name so don't 
+                // automatically append the product BVIN to the name
+                u += productImage.TrimStart('/');
+            }
+            else
+            {
+                u += "products/" + productId + "/small/";
+                u += productImage;
+            }
 
             if (productImage.Trim().Length < 1)
             {
