@@ -112,26 +112,30 @@ namespace MerchantTribeStore.Controllers
 
 
             // Page Title
+            ViewBag.Title = model.LocalProduct.MetaTitle.Trim();
             if (model.LocalProduct.MetaTitle.Trim().Length > 0)
-            {
+            {                
                 ViewBag.Title = model.LocalProduct.MetaTitle;
             }
             else
-            {
+            {             
                 ViewBag.Title = model.LocalProduct.ProductName;
             }
 
             // Meta Keywords
+            ViewBag.MetaKeywords = model.LocalProduct.MetaKeywords.Trim();
             if (model.LocalProduct.MetaKeywords.Trim().Length > 0)
-            {
+            {             
                 ViewBag.MetaKeywords = model.LocalProduct.MetaKeywords;
             }
 
             // Meta Description
+            ViewBag.MetaDescription = model.LocalProduct.MetaDescription.Trim();
             if (model.LocalProduct.MetaDescription.Trim().Length > 0)
-            {
+            {             
                 ViewBag.MetaDescription = model.LocalProduct.MetaDescription;
             }
+            
 
             ViewBag.RelatedItemsTitle = SiteTerms.GetTerm(SiteTermIds.RelatedItems);
             ViewBag.AddToCartButtonUrl = MTApp.ThemeManager().ButtonUrl("addtocart", Request.IsSecureConnection);
@@ -186,7 +190,7 @@ namespace MerchantTribeStore.Controllers
                 sb.Append("<meta property=\"fb:admins\" content=\"" + ViewBag.FaceBookAdmins + "\" />");
                 sb.Append("<meta property=\"fb:app_id\" content=\"" + ViewBag.FaceBookAppId + "\" />");
             }
-            ViewData["PassedAnalyticsTop"] += sb.ToString();
+            ViewData["AnalyticsTop"] += sb.ToString();
 
             StringBuilder sbb = new StringBuilder();
             sbb.Append("<div id=\"fb-root\"></div>");
@@ -198,7 +202,7 @@ namespace MerchantTribeStore.Controllers
             sbb.Append("fjs.parentNode.insertBefore(js, fjs);");
             sbb.Append("} (document, 'script', 'facebook-jssdk'));</script>");
 
-            ViewData["PassedAnalyticsBottom"] += sbb.ToString();
+            ViewData["AnalyticsBottom"] += sbb.ToString();
 
             // Bread Crumbs
             var breadRender = new code.TemplateEngine.TagHandlers.BreadCrumbs();
@@ -209,6 +213,9 @@ namespace MerchantTribeStore.Controllers
             model.PreColumn = columnRender.RenderColumnToString(model.LocalProduct.PreContentColumnId, MTApp, ViewBag);
             model.PostColumn = columnRender.RenderColumnToString(model.LocalProduct.PostContentColumnId, MTApp, ViewBag);
 
+        
+
+            MTApp.CurrentRequestContext.CurrentProduct = model.LocalProduct;
             return model;
         }
         private Product ParseProductFromSlug(string slug)

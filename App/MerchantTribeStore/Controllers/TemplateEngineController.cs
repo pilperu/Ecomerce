@@ -11,19 +11,11 @@ namespace MerchantTribeStore.Controllers
     public class TemplateEngineController : Shared.BaseStoreController
     {
         [ChildActionOnly]
-        public ActionResult FullHeader(string AnalyticsTop, string AnalyticsBottom, string AdditionalMetaTags, string metaTitle = "")
+        public ActionResult FullHeader(dynamic currentViewBag)
         {
-            if (String.IsNullOrEmpty(ViewBag.Title))
-            {
-                ViewBag.Title = metaTitle;
-            }
-
-            ViewData["analyticstop"] = AnalyticsTop;
-            ViewData["analyticsbottom"] = AnalyticsBottom;
-            ViewData["AdditionalMetaTags"] += AdditionalMetaTags;
 
             string template = this.MTApp.ThemeManager().GetTemplatePartFromCurrentTheme("full-header.html");            
-            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
+            Processor p = new Processor(this.MTApp, currentViewBag, template, new TagProvider());
 
             StringBuilder output = new StringBuilder();
             p.RenderForDisplay(output);
@@ -31,14 +23,10 @@ namespace MerchantTribeStore.Controllers
         }
 
         [ChildActionOnly]
-        public ActionResult FullFooter(string AnalyticsTop, string AnalyticsBottom, string AdditionalMetaTags)
+        public ActionResult FullFooter(dynamic currentViewBag)
         {            
-            ViewData["analyticstop"] = AnalyticsTop;
-            ViewData["analyticsbottom"] = AnalyticsBottom;
-            ViewData["AdditionalMetaTags"] += AdditionalMetaTags;
-
             string template = this.MTApp.ThemeManager().GetTemplatePartFromCurrentTheme("full-footer.html");
-            Processor p = new Processor(this.MTApp, this.ViewBag, template, new TagProvider());
+            Processor p = new Processor(this.MTApp, currentViewBag, template, new TagProvider());
 
             StringBuilder output = new StringBuilder();
             p.RenderForDisplay(output);

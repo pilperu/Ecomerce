@@ -1,10 +1,6 @@
 ﻿@using MerchantTribeStore
 @Html.Action("FullHeader", "TemplateEngine", new 
-{ Area="",
-  AnalyticsTop=ViewData["PassedAnalyticsTop"], 
-  AnalyticsBottom=ViewData["PassedAnalyticsBottom"], 
-  AdditionalMetaTags=ViewData["PassedAdditionalMetaTags"],
-  metaTitle = ViewBag.Title
+{ Area="", currentViewBag = this.ViewBag
 })
     <div id="main-content">
         @RenderBody()
@@ -12,8 +8,5 @@
 
 @Html.Action("FullFooter", "TemplateEngine", new
 {
-    Area = "",
-    AnalyticsTop = ViewData["PassedAnalyticsTop"],
-    AnalyticsBottom = ViewData["PassedAnalyticsBottom"],
-    AdditionalMetaTags = ViewData["PassedAdditionalMetaTags"]
+    Area = "", currentViewBag = this.ViewBag    
 })        
