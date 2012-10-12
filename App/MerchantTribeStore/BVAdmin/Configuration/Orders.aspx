@@ -6,6 +6,15 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
+    <h1>Products</h1>
+        <table border="0" cellspacing="0" cellpadding="3" width="100%">
+        <tr>
+            <td class="formlabel">Show Product Swatches:</td>
+            <td class="formfield">
+                <asp:Checkbox ID="chkSwatches" runat="server" /> show color swatches for choices named &quot;Color&quot;?
+            </td>
+        </tr>
+    </table>
     <h1>
         Orders</h1>         
          <asp:Label id="lblError" runat="server" CssClass="errormessage"></asp:Label>

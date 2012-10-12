@@ -37,6 +37,7 @@ namespace MerchantTribeStore.Models
         public string PostColumn { get; set; }
         public string PreColumn { get; set; }
         public string BreadCrumbsFinal { get; set; }
+        public string SwatchHtml { get; set; }
 
         public ProductPageViewModel()
         {
@@ -60,6 +61,7 @@ namespace MerchantTribeStore.Models
             this.PreColumn = string.Empty;
             this.PostColumn = string.Empty;
             this.BreadCrumbsFinal = string.Empty;
+            this.SwatchHtml = string.Empty;
         }
     }
 }

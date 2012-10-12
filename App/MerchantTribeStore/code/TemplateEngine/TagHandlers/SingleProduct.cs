@@ -77,6 +77,7 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             sb.Append("<div class=\"recordprice\">");
             sb.Append("<a href=\"" + model.ProductLink + "\">" + model.UserPrice.DisplayPrice(true) + "</a>");
             sb.Append("</div>");
+            sb.Append(model.SwatchDisplay);
             sb.Append("</div>");
         }
         public string RenderModelToString(SingleProductViewModel model, MerchantTribeApplication app)

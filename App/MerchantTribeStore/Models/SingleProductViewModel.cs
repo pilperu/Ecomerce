@@ -19,6 +19,7 @@ namespace MerchantTribeStore.Models
         public UserSpecificPrice UserPrice { get; set; }
         public string ImageUrl { get; set; }
         public string ProductLink { get; set; }
+        public string SwatchDisplay { get; set; }
 
         public SingleProductViewModel()
         {
@@ -28,6 +29,7 @@ namespace MerchantTribeStore.Models
             UserPrice = null;
             ImageUrl = string.Empty;
             ProductLink = string.Empty;
+            SwatchDisplay = string.Empty;
         }
 
         public SingleProductViewModel(Product p, MerchantTribeApplication mtapp)
@@ -55,6 +57,7 @@ namespace MerchantTribeStore.Models
                                                 mtapp.CurrentRequestContext.RoutingContext,
                                                 string.Empty);
             }
+            this.SwatchDisplay = MerchantTribe.Commerce.Utilities.ImageHelper.GenerateSwatchHtmlForProduct(p, mtapp);
         }
         
     }

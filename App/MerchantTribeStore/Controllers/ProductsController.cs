@@ -213,6 +213,7 @@ namespace MerchantTribeStore.Controllers
             model.PreColumn = columnRender.RenderColumnToString(model.LocalProduct.PreContentColumnId, MTApp, ViewBag);
             model.PostColumn = columnRender.RenderColumnToString(model.LocalProduct.PostContentColumnId, MTApp, ViewBag);
 
+            model.SwatchHtml = MerchantTribe.Commerce.Utilities.ImageHelper.GenerateSwatchHtmlForProduct(model.LocalProduct, this.MTApp);
         
 
             MTApp.CurrentRequestContext.CurrentProduct = model.LocalProduct;

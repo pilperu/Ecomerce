@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Web;
+using System.Text;
 
 namespace MerchantTribe.Commerce.Utilities
 {	
@@ -168,7 +169,7 @@ namespace MerchantTribe.Commerce.Utilities
 
 				// Compression Code
 				ImageCodecInfo myCodec = GetEncoderInfo("image/jpeg");
-				Encoder myEncoder = Encoder.Quality;
+				System.Drawing.Imaging.Encoder myEncoder = System.Drawing.Imaging.Encoder.Quality;
 				EncoderParameters myEncoderParams = new EncoderParameters(1);
 				EncoderParameter myParam = new EncoderParameter(myEncoder, quality);
 				myEncoderParams.Param[0] = myParam;
@@ -210,6 +211,96 @@ namespace MerchantTribe.Commerce.Utilities
 			}			
 		}
 
+        public static string GenerateSwatchHtmlForProduct(Catalog.Product p, MerchantTribeApplication app)
+        {
+            string result = string.Empty;
+
+            if (app.CurrentStore.Settings.ProductEnableSwatches == false) return result;
+
+            if (p.Options.Count > 0)
+            {
+                bool found = false;
+
+                string swatchBase = MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForSingleStore(app, app.IsCurrentRequestSecure());
+                swatchBase += "swatches";
+
+                string swatchPhysicalBase = MerchantTribe.Commerce.Storage.DiskStorage.BaseStorePhysicalPath(app.CurrentStore.Id);
+                swatchPhysicalBase += "swatches\\";
+
+                StringBuilder sb = new StringBuilder();
+                sb.Append("<div class=\"productswatches\">");
+                foreach (var opt in p.Options)
+                {
+                    if (opt.Name.Trim().ToUpperInvariant() == "COLOR" ||
+                        opt.Name.Trim().ToUpperInvariant() == "COLOR:")
+                    {
+                        found = true;
+                        foreach (var oi in opt.Items)
+                        {
+                            if (oi.IsLabel) continue;
+
+                            string prefix = CleanSwatchName(oi.Name);
+
+                            if (File.Exists(swatchPhysicalBase + prefix + ".png"))
+                            {
+                                sb.Append("<img width=\"18\" height=\"18\" src=\"" + swatchBase + "/" + prefix + ".png\" border=\"0\" alt=\"" + prefix + "\" />");
+                            }
+                            else
+                            {
+                                sb.Append("<img width=\"18\" height=\"18\" src=\"" + swatchBase + "/" + prefix + ".gif\" border=\"0\" alt=\"" + prefix + "\" />");
+                            }
+                        }
+                    }
+                }
+                sb.Append("</div>");
+
+                if (found == true)
+                {
+                    result = sb.ToString();
+                }
+            }
+
+            return result;
+        }
+
+        private static string CleanSwatchName(string source)
+        {
+            string result = source.Replace(" ", "_");
+
+            result = result.Replace("/", "");
+            result = result.Replace("\"", "");
+            result = result.Replace("//", "");
+            result = result.Replace(":", "");
+            result = result.Replace(";", "");
+            result = result.Replace("'", "");
+            result = result.Replace("!", "");
+            result = result.Replace("~", "");
+            result = result.Replace("@", "");
+            result = result.Replace("#", "");
+            result = result.Replace("$", "");
+            result = result.Replace("%", "");
+            result = result.Replace("^", "");
+            result = result.Replace("&", "");
+            result = result.Replace("*", "");
+            result = result.Replace("(", "");
+            result = result.Replace(")", "");
+            result = result.Replace("[", "");
+            result = result.Replace("]", "");
+            result = result.Replace("{", "");
+            result = result.Replace("}", "");
+            result = result.Replace("|", "");
+            result = result.Replace("-", "");
+            result = result.Replace("+", "");
+            result = result.Replace("<", "");
+            result = result.Replace(">", "");
+            result = result.Replace(".", "");
+            result = result.Replace(",", "");
+            result = result.Replace("?", "");
+            result = result.Replace("=", "");
+            result = result.Replace("`", "");
+
+            return result;
+        }
 	}
 
 }

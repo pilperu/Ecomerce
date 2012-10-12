@@ -590,7 +590,11 @@ namespace MerchantTribe.Commerce.Accounts
             return result;
         }
 
-        
+        public bool ProductEnableSwatches
+        {
+            get { return GetPropBool("ProductEnableSwatches"); }
+            set { SetProp("ProductEnableSwatches", value); }
+        }
 
         // Reviews
         public int ProductReviewCount

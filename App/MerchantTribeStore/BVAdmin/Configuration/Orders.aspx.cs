@@ -37,6 +37,7 @@ namespace MerchantTribeStore
 
             if (!Page.IsPostBack)
             {
+                this.chkSwatches.Checked = MTApp.CurrentStore.Settings.ProductEnableSwatches;
                 this.OrderLimiteQuantityField.Text = MTApp.CurrentStore.Settings.MaxItemsPerOrder.ToString();
                 this.OrderLimitWeightField.Text = MTApp.CurrentStore.Settings.MaxWeightPerOrder.ToString();
                 this.OrderLimitErrorMessage.Text = MTApp.CurrentStore.Settings.MaxOrderMessage;
@@ -63,6 +64,7 @@ namespace MerchantTribeStore
 
         private bool Save()
         {
+            MTApp.CurrentStore.Settings.ProductEnableSwatches = this.chkSwatches.Checked;
             MTApp.CurrentStore.Settings.MaxItemsPerOrder = int.Parse(this.OrderLimiteQuantityField.Text.Trim());
             MTApp.CurrentStore.Settings.MaxWeightPerOrder = decimal.Parse(this.OrderLimitWeightField.Text.Trim());
             MTApp.CurrentStore.Settings.MaxOrderMessage = this.OrderLimitErrorMessage.Text.Trim();
