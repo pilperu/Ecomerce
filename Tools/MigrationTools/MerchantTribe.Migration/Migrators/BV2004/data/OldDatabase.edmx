@@ -1,46 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="shipped_2004Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="shipped_2004Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="shipped_2004ModelStoreContainer">
-          <EntitySet Name="bvc_Affiliate" EntityType="shipped_2004Model.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Category" EntityType="shipped_2004Model.Store.bvc_Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ComponentSetting" EntityType="shipped_2004Model.Store.bvc_ComponentSetting" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Country" EntityType="shipped_2004Model.Store.bvc_Country" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CustomPage" EntityType="shipped_2004Model.Store.bvc_CustomPage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Discount" EntityType="shipped_2004Model.Store.bvc_Discount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_DiscountProduct" EntityType="shipped_2004Model.Store.bvc_DiscountProduct" store:Type="Tables" store:Schema="dbo" store:Name="bvc_DiscountProduct">
+          <EntitySet Name="bvc_Affiliate" EntityType="shipped_2004Model.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Category" EntityType="shipped_2004Model.Store.bvc_Category" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ComponentSetting" EntityType="shipped_2004Model.Store.bvc_ComponentSetting" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Country" EntityType="shipped_2004Model.Store.bvc_Country" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CustomPage" EntityType="shipped_2004Model.Store.bvc_CustomPage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Discount" EntityType="shipped_2004Model.Store.bvc_Discount" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_DiscountProduct" EntityType="shipped_2004Model.Store.bvc_DiscountProduct" store:Type="Tables" store:Schema="dbo" store:Name="bvc_DiscountProduct" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_DiscountProduct].[DiscountID] AS [DiscountID], 
       [bvc_DiscountProduct].[ProductID] AS [ProductID]
       FROM [dbo].[bvc_DiscountProduct] AS [bvc_DiscountProduct]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_DownloadKey" EntityType="shipped_2004Model.Store.bvc_DownloadKey" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_EventLog" EntityType="shipped_2004Model.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_FraudCheckDomain" EntityType="shipped_2004Model.Store.bvc_FraudCheckDomain" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_FraudCheckEmail" EntityType="shipped_2004Model.Store.bvc_FraudCheckEmail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_FraudCheckIP" EntityType="shipped_2004Model.Store.bvc_FraudCheckIP" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_GiftCertificate" EntityType="shipped_2004Model.Store.bvc_GiftCertificate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_HomepageBlock" EntityType="shipped_2004Model.Store.bvc_HomepageBlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_HomepageBlockItem" EntityType="shipped_2004Model.Store.bvc_HomepageBlockItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingList" EntityType="shipped_2004Model.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingListMember" EntityType="shipped_2004Model.Store.bvc_MailingListMember" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MailingListMember">
+          <EntitySet Name="bvc_DownloadKey" EntityType="shipped_2004Model.Store.bvc_DownloadKey" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_EventLog" EntityType="shipped_2004Model.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_FraudCheckDomain" EntityType="shipped_2004Model.Store.bvc_FraudCheckDomain" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_FraudCheckEmail" EntityType="shipped_2004Model.Store.bvc_FraudCheckEmail" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_FraudCheckIP" EntityType="shipped_2004Model.Store.bvc_FraudCheckIP" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_GiftCertificate" EntityType="shipped_2004Model.Store.bvc_GiftCertificate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_HomepageBlock" EntityType="shipped_2004Model.Store.bvc_HomepageBlock" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_HomepageBlockItem" EntityType="shipped_2004Model.Store.bvc_HomepageBlockItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingList" EntityType="shipped_2004Model.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingListMember" EntityType="shipped_2004Model.Store.bvc_MailingListMember" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MailingListMember" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_MailingListMember].[ListID] AS [ListID], 
       [bvc_MailingListMember].[EmailAddress] AS [EmailAddress]
       FROM [dbo].[bvc_MailingListMember] AS [bvc_MailingListMember]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_Manufacturer" EntityType="shipped_2004Model.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MerchantFeedProducts" EntityType="shipped_2004Model.Store.bvc_MerchantFeedProducts" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MerchantFeedProducts">
+          <EntitySet Name="bvc_Manufacturer" EntityType="shipped_2004Model.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MerchantFeedProducts" EntityType="shipped_2004Model.Store.bvc_MerchantFeedProducts" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MerchantFeedProducts" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_MerchantFeedProducts].[ID] AS [ID], 
       [bvc_MerchantFeedProducts].[FroogleFeed] AS [FroogleFeed]
       FROM [dbo].[bvc_MerchantFeedProducts] AS [bvc_MerchantFeedProducts]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_MerchantFeeds" EntityType="shipped_2004Model.Store.bvc_MerchantFeeds" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MerchantFeeds">
+          <EntitySet Name="bvc_MerchantFeeds" EntityType="shipped_2004Model.Store.bvc_MerchantFeeds" store:Type="Tables" store:Schema="dbo" store:Name="bvc_MerchantFeeds" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_MerchantFeeds].[FeedName] AS [FeedName], 
       [bvc_MerchantFeeds].[FileName] AS [FileName], 
@@ -49,34 +49,34 @@
       [bvc_MerchantFeeds].[Password] AS [Password]
       FROM [dbo].[bvc_MerchantFeeds] AS [bvc_MerchantFeeds]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_Order" EntityType="shipped_2004Model.Store.bvc_Order" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderCoupon" EntityType="shipped_2004Model.Store.bvc_OrderCoupon" store:Type="Tables" store:Schema="dbo" store:Name="bvc_OrderCoupon">
+          <EntitySet Name="bvc_Order" EntityType="shipped_2004Model.Store.bvc_Order" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderCoupon" EntityType="shipped_2004Model.Store.bvc_OrderCoupon" store:Type="Tables" store:Schema="dbo" store:Name="bvc_OrderCoupon" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_OrderCoupon].[OrderID] AS [OrderID], 
       [bvc_OrderCoupon].[CouponCode] AS [CouponCode]
       FROM [dbo].[bvc_OrderCoupon] AS [bvc_OrderCoupon]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_OrderItem" EntityType="shipped_2004Model.Store.bvc_OrderItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderItemStatus" EntityType="shipped_2004Model.Store.bvc_OrderItemStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderNote" EntityType="shipped_2004Model.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderPayment" EntityType="shipped_2004Model.Store.bvc_OrderPayment" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderStatus" EntityType="shipped_2004Model.Store.bvc_OrderStatus" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Package" EntityType="shipped_2004Model.Store.bvc_Package" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PackageXOrder" EntityType="shipped_2004Model.Store.bvc_PackageXOrder" store:Type="Tables" store:Schema="dbo" store:Name="bvc_PackageXOrder">
+          <EntitySet Name="bvc_OrderItem" EntityType="shipped_2004Model.Store.bvc_OrderItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderItemStatus" EntityType="shipped_2004Model.Store.bvc_OrderItemStatus" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderNote" EntityType="shipped_2004Model.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderPayment" EntityType="shipped_2004Model.Store.bvc_OrderPayment" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderStatus" EntityType="shipped_2004Model.Store.bvc_OrderStatus" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Package" EntityType="shipped_2004Model.Store.bvc_Package" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PackageXOrder" EntityType="shipped_2004Model.Store.bvc_PackageXOrder" store:Type="Tables" store:Schema="dbo" store:Name="bvc_PackageXOrder" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_PackageXOrder].[PackageID] AS [PackageID], 
       [bvc_PackageXOrder].[OrderID] AS [OrderID]
       FROM [dbo].[bvc_PackageXOrder] AS [bvc_PackageXOrder]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_PaymentCard" EntityType="shipped_2004Model.Store.bvc_PaymentCard" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Policy" EntityType="shipped_2004Model.Store.bvc_Policy" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PricingLevel" EntityType="shipped_2004Model.Store.bvc_PricingLevel" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Product" EntityType="shipped_2004Model.Store.bvc_Product" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoices" EntityType="shipped_2004Model.Store.bvc_ProductChoices" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoices_Item" EntityType="shipped_2004Model.Store.bvc_ProductChoices_Item" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFile" EntityType="shipped_2004Model.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductImage" EntityType="shipped_2004Model.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductInventory" EntityType="shipped_2004Model.Store.bvc_ProductInventory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductInventory">
+          <EntitySet Name="bvc_PaymentCard" EntityType="shipped_2004Model.Store.bvc_PaymentCard" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Policy" EntityType="shipped_2004Model.Store.bvc_Policy" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PricingLevel" EntityType="shipped_2004Model.Store.bvc_PricingLevel" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Product" EntityType="shipped_2004Model.Store.bvc_Product" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoices" EntityType="shipped_2004Model.Store.bvc_ProductChoices" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoices_Item" EntityType="shipped_2004Model.Store.bvc_ProductChoices_Item" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFile" EntityType="shipped_2004Model.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductImage" EntityType="shipped_2004Model.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductInventory" EntityType="shipped_2004Model.Store.bvc_ProductInventory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductInventory" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ProductInventory].[ProductID] AS [ProductID], 
       [bvc_ProductInventory].[InventoryKey] AS [InventoryKey], 
@@ -84,88 +84,88 @@
       [bvc_ProductInventory].[SKU] AS [SKU]
       FROM [dbo].[bvc_ProductInventory] AS [bvc_ProductInventory]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_ProductProperty" EntityType="shipped_2004Model.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="shipped_2004Model.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyValue" EntityType="shipped_2004Model.Store.bvc_ProductPropertyValue" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductPropertyValue">
+          <EntitySet Name="bvc_ProductProperty" EntityType="shipped_2004Model.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="shipped_2004Model.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyValue" EntityType="shipped_2004Model.Store.bvc_ProductPropertyValue" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductPropertyValue" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ProductPropertyValue].[ProductID] AS [ProductID], 
       [bvc_ProductPropertyValue].[PropertyID] AS [PropertyID], 
       [bvc_ProductPropertyValue].[PropertyValue] AS [PropertyValue]
       FROM [dbo].[bvc_ProductPropertyValue] AS [bvc_ProductPropertyValue]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_ProductReview" EntityType="shipped_2004Model.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductType" EntityType="shipped_2004Model.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductTypeProperty" EntityType="shipped_2004Model.Store.bvc_ProductTypeProperty" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductTypeProperty">
+          <EntitySet Name="bvc_ProductReview" EntityType="shipped_2004Model.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductType" EntityType="shipped_2004Model.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductTypeProperty" EntityType="shipped_2004Model.Store.bvc_ProductTypeProperty" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductTypeProperty" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ProductTypeProperty].[ProductTypeID] AS [ProductTypeID], 
       [bvc_ProductTypeProperty].[ProductPropertyID] AS [ProductPropertyID], 
       [bvc_ProductTypeProperty].[SortOrder] AS [SortOrder]
       FROM [dbo].[bvc_ProductTypeProperty] AS [bvc_ProductTypeProperty]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="shipped_2004Model.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXCategory" EntityType="shipped_2004Model.Store.bvc_ProductXCategory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductXCategory">
+          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="shipped_2004Model.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXCategory" EntityType="shipped_2004Model.Store.bvc_ProductXCategory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductXCategory" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ProductXCategory].[ProductID] AS [ProductID], 
       [bvc_ProductXCategory].[CategoryID] AS [CategoryID]
       FROM [dbo].[bvc_ProductXCategory] AS [bvc_ProductXCategory]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_ProductXProductChoices" EntityType="shipped_2004Model.Store.bvc_ProductXProductChoices" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductXProductChoices">
+          <EntitySet Name="bvc_ProductXProductChoices" EntityType="shipped_2004Model.Store.bvc_ProductXProductChoices" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ProductXProductChoices" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ProductXProductChoices].[ProductID] AS [ProductID], 
       [bvc_ProductXProductChoices].[ProductChoiceID] AS [ProductChoiceID], 
       [bvc_ProductXProductChoices].[SortOrder] AS [SortOrder]
       FROM [dbo].[bvc_ProductXProductChoices] AS [bvc_ProductXProductChoices]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_Referral" EntityType="shipped_2004Model.Store.bvc_Referral" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Region" EntityType="shipped_2004Model.Store.bvc_Region" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Role" EntityType="shipped_2004Model.Store.bvc_Role" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RoleXRolePermission" EntityType="shipped_2004Model.Store.bvc_RoleXRolePermission" store:Type="Tables" store:Schema="dbo" store:Name="bvc_RoleXRolePermission">
+          <EntitySet Name="bvc_Referral" EntityType="shipped_2004Model.Store.bvc_Referral" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Region" EntityType="shipped_2004Model.Store.bvc_Region" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Role" EntityType="shipped_2004Model.Store.bvc_Role" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RoleXRolePermission" EntityType="shipped_2004Model.Store.bvc_RoleXRolePermission" store:Type="Tables" store:Schema="dbo" store:Name="bvc_RoleXRolePermission" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_RoleXRolePermission].[RoleName] AS [RoleName], 
       [bvc_RoleXRolePermission].[PermissionID] AS [PermissionID]
       FROM [dbo].[bvc_RoleXRolePermission] AS [bvc_RoleXRolePermission]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_Sale" EntityType="shipped_2004Model.Store.bvc_Sale" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_SaleXCategory" EntityType="shipped_2004Model.Store.bvc_SaleXCategory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_SaleXCategory">
+          <EntitySet Name="bvc_Sale" EntityType="shipped_2004Model.Store.bvc_Sale" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_SaleXCategory" EntityType="shipped_2004Model.Store.bvc_SaleXCategory" store:Type="Tables" store:Schema="dbo" store:Name="bvc_SaleXCategory" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_SaleXCategory].[SaleID] AS [SaleID], 
       [bvc_SaleXCategory].[CategoryID] AS [CategoryID]
       FROM [dbo].[bvc_SaleXCategory] AS [bvc_SaleXCategory]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_SaleXProduct" EntityType="shipped_2004Model.Store.bvc_SaleXProduct" store:Type="Tables" store:Schema="dbo" store:Name="bvc_SaleXProduct">
+          <EntitySet Name="bvc_SaleXProduct" EntityType="shipped_2004Model.Store.bvc_SaleXProduct" store:Type="Tables" store:Schema="dbo" store:Name="bvc_SaleXProduct" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_SaleXProduct].[SaleID] AS [SaleID], 
       [bvc_SaleXProduct].[ProductID] AS [ProductID]
       FROM [dbo].[bvc_SaleXProduct] AS [bvc_SaleXProduct]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_SecurityToken" EntityType="shipped_2004Model.Store.bvc_SecurityToken" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShipMethod" EntityType="shipped_2004Model.Store.bvc_ShipMethod" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShipMethodTable" EntityType="shipped_2004Model.Store.bvc_ShipMethodTable" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShipMethodXCountry" EntityType="shipped_2004Model.Store.bvc_ShipMethodXCountry" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ShipMethodXCountry">
+          <EntitySet Name="bvc_SecurityToken" EntityType="shipped_2004Model.Store.bvc_SecurityToken" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShipMethod" EntityType="shipped_2004Model.Store.bvc_ShipMethod" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShipMethodTable" EntityType="shipped_2004Model.Store.bvc_ShipMethodTable" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShipMethodXCountry" EntityType="shipped_2004Model.Store.bvc_ShipMethodXCountry" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ShipMethodXCountry" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ShipMethodXCountry].[ShipMethodID] AS [ShipMethodID], 
       [bvc_ShipMethodXCountry].[CountryCode] AS [CountryCode]
       FROM [dbo].[bvc_ShipMethodXCountry] AS [bvc_ShipMethodXCountry]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_ShipMethodXRegion" EntityType="shipped_2004Model.Store.bvc_ShipMethodXRegion" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ShipMethodXRegion">
+          <EntitySet Name="bvc_ShipMethodXRegion" EntityType="shipped_2004Model.Store.bvc_ShipMethodXRegion" store:Type="Tables" store:Schema="dbo" store:Name="bvc_ShipMethodXRegion" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_ShipMethodXRegion].[ShipMethodID] AS [ShipMethodID], 
       [bvc_ShipMethodXRegion].[RegionID] AS [RegionID]
       FROM [dbo].[bvc_ShipMethodXRegion] AS [bvc_ShipMethodXRegion]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_SiteTerm" EntityType="shipped_2004Model.Store.bvc_SiteTerm" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Tax" EntityType="shipped_2004Model.Store.bvc_Tax" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_TaxClass" EntityType="shipped_2004Model.Store.bvc_TaxClass" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_User" EntityType="shipped_2004Model.Store.bvc_User" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserXRole" EntityType="shipped_2004Model.Store.bvc_UserXRole" store:Type="Tables" store:Schema="dbo" store:Name="bvc_UserXRole">
+          <EntitySet Name="bvc_SiteTerm" EntityType="shipped_2004Model.Store.bvc_SiteTerm" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Tax" EntityType="shipped_2004Model.Store.bvc_Tax" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_TaxClass" EntityType="shipped_2004Model.Store.bvc_TaxClass" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_User" EntityType="shipped_2004Model.Store.bvc_User" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserXRole" EntityType="shipped_2004Model.Store.bvc_UserXRole" store:Type="Tables" store:Schema="dbo" store:Name="bvc_UserXRole" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_UserXRole].[UserID] AS [UserID], 
       [bvc_UserXRole].[RoleName] AS [RoleName]
       FROM [dbo].[bvc_UserXRole] AS [bvc_UserXRole]</DefiningQuery>
           </EntitySet>
-          <EntitySet Name="bvc_Vendor" EntityType="shipped_2004Model.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_WebAppSetting" EntityType="shipped_2004Model.Store.bvc_WebAppSetting" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_WishList" EntityType="shipped_2004Model.Store.bvc_WishList" store:Type="Tables" store:Schema="dbo" store:Name="bvc_WishList">
+          <EntitySet Name="bvc_Vendor" EntityType="shipped_2004Model.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_WebAppSetting" EntityType="shipped_2004Model.Store.bvc_WebAppSetting" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_WishList" EntityType="shipped_2004Model.Store.bvc_WishList" store:Type="Tables" store:Schema="dbo" store:Name="bvc_WishList" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator">
             <DefiningQuery>SELECT 
       [bvc_WishList].[UserID] AS [UserID], 
       [bvc_WishList].[ProductID] AS [ProductID]
@@ -1684,8 +1684,8 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="shipped_2004Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="bvc2004Entities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="shipped_2004Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="bvc2004Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="bvc_Affiliate" EntityType="shipped_2004Model.bvc_Affiliate" />
           <EntitySet Name="bvc_Category" EntityType="shipped_2004Model.bvc_Category" />
           <EntitySet Name="bvc_ComponentSetting" EntityType="shipped_2004Model.bvc_ComponentSetting" />
@@ -1885,7 +1885,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="CommissionAmount" Type="Double" Nullable="false" />
           <Property Name="CommissionType" Type="Int32" Nullable="false" />
@@ -1901,7 +1901,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ParentID" Type="Int32" Nullable="false" />
@@ -1961,7 +1961,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Content" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
           <Property Name="MenuName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -1972,7 +1972,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="StartDate" Type="DateTime" Nullable="false" />
           <Property Name="EndDate" Type="DateTime" Nullable="false" />
           <Property Name="ApplyTo" Type="Int32" Nullable="false" />
@@ -2001,7 +2001,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="EventTime" Type="DateTime" Nullable="false" />
           <Property Name="Source" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="2000" Unicode="false" FixedLength="false" />
@@ -2037,7 +2037,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ColumnNumber" Type="Int32" Nullable="false" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <Property Name="BlockType" Type="Int32" Nullable="false" />
@@ -2048,7 +2048,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
           <Property Name="ItemContent" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="BlockID" Type="Int32" Nullable="false" />
@@ -2058,7 +2058,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Private" Type="Int32" Nullable="false" />
           <NavigationProperty Name="bvc_MailingListMember" Relationship="shipped_2004Model.FK_MailingListMembers_MailingList" FromRole="bvc_MailingList" ToRole="bvc_MailingListMember" />
@@ -2076,7 +2076,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -2103,7 +2103,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CompletedOrderID" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -2144,7 +2144,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
@@ -2192,7 +2192,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="OrderID" Type="Int32" Nullable="false" />
           <Property Name="AuditDate" Type="DateTime" Nullable="false" />
           <Property Name="Note" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -2202,7 +2202,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="AuditDate" Type="DateTime" Nullable="false" />
           <Property Name="PaymentType" Type="Int32" Nullable="false" />
           <Property Name="Amount" Type="Double" Nullable="false" />
@@ -2233,7 +2233,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DeclaredValue" Type="Double" Nullable="false" />
           <Property Name="Length" Type="Double" Nullable="false" />
           <Property Name="Width" Type="Double" Nullable="false" />
@@ -2255,7 +2255,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Active" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="Code" Type="String" MaxLength="1" Unicode="true" FixedLength="false" />
@@ -2264,7 +2264,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
@@ -2335,7 +2335,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <Property Name="TypeCode" Type="Int32" Nullable="false" />
@@ -2351,7 +2351,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ChoiceID" Type="Int32" Nullable="false" />
           <Property Name="DisplayText" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="DisplayValue" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -2381,7 +2381,7 @@
           <Key>
             <PropertyRef Name="ImageID" />
           </Key>
-          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="FileName" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
           <Property Name="Caption" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
@@ -2403,7 +2403,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PropertyName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <Property Name="DisplayOnSite" Type="Int32" Nullable="false" />
@@ -2419,7 +2419,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="PropertyID" Type="Int32" Nullable="false" />
           <Property Name="ChoiceName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <Property Name="SortOrder" Type="Int32" Nullable="false" />
@@ -2441,7 +2441,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ReviewDate" Type="DateTime" Nullable="false" />
@@ -2455,7 +2455,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductTypeName" Type="String" Nullable="false" MaxLength="512" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="bvc_Product" Relationship="shipped_2004Model.FK_product_ProductType" FromRole="bvc_ProductType" ToRole="bvc_Product" />
           <NavigationProperty Name="bvc_ProductTypeProperty" Relationship="shipped_2004Model.FK_ProductTypeProperties_ProductType" FromRole="bvc_ProductType" ToRole="bvc_ProductTypeProperty" />
@@ -2476,7 +2476,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductID" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
@@ -2498,7 +2498,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="AffID" Type="Int32" Nullable="false" />
           <Property Name="ReferrerURL" Type="String" Nullable="false" MaxLength="1000" Unicode="true" FixedLength="false" />
           <Property Name="TimeOfReferral" Type="DateTime" Nullable="false" />
@@ -2508,7 +2508,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="Abbreviation" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -2536,7 +2536,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="SaleType" Type="Int32" Nullable="false" />
           <Property Name="DiscountType" Type="Int32" Nullable="false" />
           <Property Name="AllowSaleBelowCost" Type="Int32" Nullable="false" />
@@ -2559,7 +2559,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="Type" Type="Int32" Nullable="false" />
           <Property Name="Adjustment" Type="Double" Nullable="false" />
@@ -2572,7 +2572,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="MethodID" Type="Int32" Nullable="false" />
           <Property Name="Total" Type="Double" Nullable="false" />
           <Property Name="Charge" Type="Double" Nullable="false" />
@@ -2589,7 +2589,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="RegionCode" Type="Int32" Nullable="false" />
           <Property Name="PostalCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -2600,14 +2600,14 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="bvc_User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
@@ -2629,7 +2629,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="EmailAddress" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="Address" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -2981,7 +2981,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="shipped_2004ModelStoreContainer" CdmEntityContainer="bvc2004Entities">
           <EntitySetMapping Name="bvc_Affiliate"><EntityTypeMapping TypeName="shipped_2004Model.bvc_Affiliate"><MappingFragment StoreEntitySet="bvc_Affiliate">
             <ScalarProperty Name="ID" ColumnName="ID" />
@@ -3564,7 +3564,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />

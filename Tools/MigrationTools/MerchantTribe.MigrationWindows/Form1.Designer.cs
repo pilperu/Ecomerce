@@ -32,6 +32,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblVersion = new System.Windows.Forms.Label();
+            this.btnReIndex = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -48,7 +49,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(12, 196);
+            this.button2.Location = new System.Drawing.Point(12, 268);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(470, 41);
             this.button2.TabIndex = 1;
@@ -69,20 +70,32 @@
             // lblVersion
             // 
             this.lblVersion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblVersion.Location = new System.Drawing.Point(249, 253);
+            this.lblVersion.Location = new System.Drawing.Point(249, 320);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(233, 13);
             this.lblVersion.TabIndex = 3;
             this.lblVersion.Text = "Version 6.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // btnReIndex
+            // 
+            this.btnReIndex.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReIndex.Location = new System.Drawing.Point(12, 187);
+            this.btnReIndex.Name = "btnReIndex";
+            this.btnReIndex.Size = new System.Drawing.Size(470, 41);
+            this.btnReIndex.TabIndex = 4;
+            this.btnReIndex.Text = "Re-Index Products for Search";
+            this.btnReIndex.UseVisualStyleBackColor = true;
+            this.btnReIndex.Click += new System.EventHandler(this.btnReIndex_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(494, 275);
+            this.ClientSize = new System.Drawing.Size(494, 342);
             this.ControlBox = false;
+            this.Controls.Add(this.btnReIndex);
             this.Controls.Add(this.lblVersion);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button2);
@@ -103,6 +116,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblVersion;
+        private System.Windows.Forms.Button btnReIndex;
     }
 }
 

@@ -17,8 +17,38 @@ namespace MerchantTribe.Migration
             _Settings = settings;
         }
 
+        public void ReIndex()
+        {
+            wl("Starting Re-Indexing at " + DateTime.UtcNow.ToString());
+            wl("=====================================================");
+
+            if (_Settings == null)
+            {
+                wl("Settings file can not be null");
+                return;
+            }
+            DumpReIndexSettings();
+
+            IMigrator migrator = new Migrators.Reindex.Migrator(); 
+            
+            if (migrator != null)
+            {
+                migrator.ProgressReport += new ProgressReportDelegate(migrator_ProgressReport);
+                migrator.Migrate(_Settings);
+            }
+
+            wl("Ending Re-Indexing at " + DateTime.UtcNow.ToString());
+            wl("--EXIT--");
+        }
+
         public void StartMigration()
         {
+            if (_Settings.SourceType == MigrationSourceType.ReIndexOnly)
+            {
+                ReIndex();
+                return;
+            }
+
             wl("Starting Migration at " + DateTime.UtcNow.ToString());
             wl("=====================================================");
             
@@ -95,6 +125,19 @@ namespace MerchantTribe.Migration
             wl("Single SKU       = " + _Settings.SingleSkuImport);
             wl("Use Metric Units = " + _Settings.UseMetricUnits);
             wl("");
+            wl("--------------------------------------------------");
+        }
+
+        private void DumpReIndexSettings()
+        {
+
+            wl("--------------------------------------------------");
+            wl("");
+            wl("Current ReIndex Settings");
+            wl("");
+            wl("--------------------------------------------------");
+            wl("Sending To       = " + _Settings.DestinationServiceRootUrl);
+            wl("API Key          = *********");
             wl("--------------------------------------------------");
         }
         private void wl(string message)

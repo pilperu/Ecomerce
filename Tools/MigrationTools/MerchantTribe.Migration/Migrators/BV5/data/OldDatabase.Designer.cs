@@ -8,12 +8,13 @@
 //------------------------------------------------------------------------------
 
 using System;
+using System.ComponentModel;
+using System.Data.EntityClient;
 using System.Data.Objects;
 using System.Data.Objects.DataClasses;
-using System.Data.EntityClient;
-using System.ComponentModel;
-using System.Xml.Serialization;
+using System.Linq;
 using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 [assembly: EdmSchemaAttribute()]
 #region EDM Relationship Metadata
@@ -1429,6 +1430,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         private ObjectSet<bvc_WishList> _bvc_WishList;
 
         #endregion
+
         #region AddTo Methods
     
         /// <summary>
@@ -2096,11 +2098,11 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
-    
 
     #endregion
-    
+
     #region Entities
     
     /// <summary>
@@ -2169,7 +2171,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2186,7 +2189,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -2212,7 +2215,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnBvinChanging(value);
                     ReportPropertyChanging("Bvin");
-                    _Bvin = StructuralObject.SetValidValue(value, false);
+                    _Bvin = StructuralObject.SetValidValue(value, false, "Bvin");
                     ReportPropertyChanged("Bvin");
                     OnBvinChanged();
                 }
@@ -2237,7 +2240,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -2261,7 +2264,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNickNameChanging(value);
                 ReportPropertyChanging("NickName");
-                _NickName = StructuralObject.SetValidValue(value, false);
+                _NickName = StructuralObject.SetValidValue(value, false, "NickName");
                 ReportPropertyChanged("NickName");
                 OnNickNameChanged();
             }
@@ -2285,7 +2288,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -2309,7 +2312,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMiddleInitialChanging(value);
                 ReportPropertyChanging("MiddleInitial");
-                _MiddleInitial = StructuralObject.SetValidValue(value, false);
+                _MiddleInitial = StructuralObject.SetValidValue(value, false, "MiddleInitial");
                 ReportPropertyChanged("MiddleInitial");
                 OnMiddleInitialChanged();
             }
@@ -2333,7 +2336,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -2357,7 +2360,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCompanyChanging(value);
                 ReportPropertyChanging("Company");
-                _Company = StructuralObject.SetValidValue(value, false);
+                _Company = StructuralObject.SetValidValue(value, false, "Company");
                 ReportPropertyChanged("Company");
                 OnCompanyChanged();
             }
@@ -2381,7 +2384,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLine1Changing(value);
                 ReportPropertyChanging("Line1");
-                _Line1 = StructuralObject.SetValidValue(value, false);
+                _Line1 = StructuralObject.SetValidValue(value, false, "Line1");
                 ReportPropertyChanged("Line1");
                 OnLine1Changed();
             }
@@ -2405,7 +2408,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLine2Changing(value);
                 ReportPropertyChanging("Line2");
-                _Line2 = StructuralObject.SetValidValue(value, false);
+                _Line2 = StructuralObject.SetValidValue(value, false, "Line2");
                 ReportPropertyChanged("Line2");
                 OnLine2Changed();
             }
@@ -2429,7 +2432,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLine3Changing(value);
                 ReportPropertyChanging("Line3");
-                _Line3 = StructuralObject.SetValidValue(value, false);
+                _Line3 = StructuralObject.SetValidValue(value, false, "Line3");
                 ReportPropertyChanged("Line3");
                 OnLine3Changed();
             }
@@ -2453,7 +2456,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
+                _City = StructuralObject.SetValidValue(value, false, "City");
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -2477,7 +2480,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRegionBvinChanging(value);
                 ReportPropertyChanging("RegionBvin");
-                _RegionBvin = StructuralObject.SetValidValue(value, false);
+                _RegionBvin = StructuralObject.SetValidValue(value, false, "RegionBvin");
                 ReportPropertyChanged("RegionBvin");
                 OnRegionBvinChanged();
             }
@@ -2501,7 +2504,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRegionNameChanging(value);
                 ReportPropertyChanging("RegionName");
-                _RegionName = StructuralObject.SetValidValue(value, false);
+                _RegionName = StructuralObject.SetValidValue(value, false, "RegionName");
                 ReportPropertyChanged("RegionName");
                 OnRegionNameChanged();
             }
@@ -2525,7 +2528,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPostalCodeChanging(value);
                 ReportPropertyChanging("PostalCode");
-                _PostalCode = StructuralObject.SetValidValue(value, false);
+                _PostalCode = StructuralObject.SetValidValue(value, false, "PostalCode");
                 ReportPropertyChanged("PostalCode");
                 OnPostalCodeChanged();
             }
@@ -2549,7 +2552,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountryBvinChanging(value);
                 ReportPropertyChanging("CountryBvin");
-                _CountryBvin = StructuralObject.SetValidValue(value, false);
+                _CountryBvin = StructuralObject.SetValidValue(value, false, "CountryBvin");
                 ReportPropertyChanged("CountryBvin");
                 OnCountryBvinChanged();
             }
@@ -2573,7 +2576,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountryNameChanging(value);
                 ReportPropertyChanging("CountryName");
-                _CountryName = StructuralObject.SetValidValue(value, false);
+                _CountryName = StructuralObject.SetValidValue(value, false, "CountryName");
                 ReportPropertyChanged("CountryName");
                 OnCountryNameChanged();
             }
@@ -2597,7 +2600,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountyBvinChanging(value);
                 ReportPropertyChanging("CountyBvin");
-                _CountyBvin = StructuralObject.SetValidValue(value, false);
+                _CountyBvin = StructuralObject.SetValidValue(value, false, "CountyBvin");
                 ReportPropertyChanged("CountyBvin");
                 OnCountyBvinChanged();
             }
@@ -2621,7 +2624,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountyNameChanging(value);
                 ReportPropertyChanging("CountyName");
-                _CountyName = StructuralObject.SetValidValue(value, false);
+                _CountyName = StructuralObject.SetValidValue(value, false, "CountyName");
                 ReportPropertyChanged("CountyName");
                 OnCountyNameChanged();
             }
@@ -2645,7 +2648,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPhoneChanging(value);
                 ReportPropertyChanging("Phone");
-                _Phone = StructuralObject.SetValidValue(value, false);
+                _Phone = StructuralObject.SetValidValue(value, false, "Phone");
                 ReportPropertyChanged("Phone");
                 OnPhoneChanged();
             }
@@ -2669,7 +2672,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFaxChanging(value);
                 ReportPropertyChanging("Fax");
-                _Fax = StructuralObject.SetValidValue(value, false);
+                _Fax = StructuralObject.SetValidValue(value, false, "Fax");
                 ReportPropertyChanged("Fax");
                 OnFaxChanged();
             }
@@ -2693,7 +2696,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWebSiteUrlChanging(value);
                 ReportPropertyChanging("WebSiteUrl");
-                _WebSiteUrl = StructuralObject.SetValidValue(value, false);
+                _WebSiteUrl = StructuralObject.SetValidValue(value, false, "WebSiteUrl");
                 ReportPropertyChanged("WebSiteUrl");
                 OnWebSiteUrlChanged();
             }
@@ -2717,7 +2720,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserBvinChanging(value);
                 ReportPropertyChanging("UserBvin");
-                _UserBvin = StructuralObject.SetValidValue(value, false);
+                _UserBvin = StructuralObject.SetValidValue(value, false, "UserBvin");
                 ReportPropertyChanged("UserBvin");
                 OnUserBvinChanged();
             }
@@ -2727,7 +2730,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnUserBvinChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -2778,7 +2781,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -2797,7 +2801,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -2822,7 +2826,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReferralIDChanging(value);
                 ReportPropertyChanging("ReferralID");
-                _ReferralID = StructuralObject.SetValidValue(value, false);
+                _ReferralID = StructuralObject.SetValidValue(value, false, "ReferralID");
                 ReportPropertyChanged("ReferralID");
                 OnReferralIDChanged();
             }
@@ -2846,7 +2850,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEnabledChanging(value);
                 ReportPropertyChanging("Enabled");
-                _Enabled = StructuralObject.SetValidValue(value);
+                _Enabled = StructuralObject.SetValidValue(value, "Enabled");
                 ReportPropertyChanged("Enabled");
                 OnEnabledChanged();
             }
@@ -2870,7 +2874,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -2894,7 +2898,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCommissionAmountChanging(value);
                 ReportPropertyChanging("CommissionAmount");
-                _CommissionAmount = StructuralObject.SetValidValue(value);
+                _CommissionAmount = StructuralObject.SetValidValue(value, "CommissionAmount");
                 ReportPropertyChanged("CommissionAmount");
                 OnCommissionAmountChanged();
             }
@@ -2918,7 +2922,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCommissionTypeChanging(value);
                 ReportPropertyChanging("CommissionType");
-                _CommissionType = StructuralObject.SetValidValue(value);
+                _CommissionType = StructuralObject.SetValidValue(value, "CommissionType");
                 ReportPropertyChanged("CommissionType");
                 OnCommissionTypeChanged();
             }
@@ -2942,7 +2946,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReferralDaysChanging(value);
                 ReportPropertyChanging("ReferralDays");
-                _ReferralDays = StructuralObject.SetValidValue(value);
+                _ReferralDays = StructuralObject.SetValidValue(value, "ReferralDays");
                 ReportPropertyChanged("ReferralDays");
                 OnReferralDaysChanged();
             }
@@ -2966,7 +2970,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxIDChanging(value);
                 ReportPropertyChanging("TaxID");
-                _TaxID = StructuralObject.SetValidValue(value, false);
+                _TaxID = StructuralObject.SetValidValue(value, false, "TaxID");
                 ReportPropertyChanged("TaxID");
                 OnTaxIDChanged();
             }
@@ -2990,7 +2994,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDriversLicenseNumberChanging(value);
                 ReportPropertyChanging("DriversLicenseNumber");
-                _DriversLicenseNumber = StructuralObject.SetValidValue(value, false);
+                _DriversLicenseNumber = StructuralObject.SetValidValue(value, false, "DriversLicenseNumber");
                 ReportPropertyChanged("DriversLicenseNumber");
                 OnDriversLicenseNumberChanged();
             }
@@ -3014,7 +3018,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWebSiteURLChanging(value);
                 ReportPropertyChanging("WebSiteURL");
-                _WebSiteURL = StructuralObject.SetValidValue(value, false);
+                _WebSiteURL = StructuralObject.SetValidValue(value, false, "WebSiteURL");
                 ReportPropertyChanged("WebSiteURL");
                 OnWebSiteURLChanged();
             }
@@ -3038,7 +3042,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStyleSheetChanging(value);
                 ReportPropertyChanging("StyleSheet");
-                _StyleSheet = StructuralObject.SetValidValue(value, false);
+                _StyleSheet = StructuralObject.SetValidValue(value, false, "StyleSheet");
                 ReportPropertyChanged("StyleSheet");
                 OnStyleSheetChanged();
             }
@@ -3062,7 +3066,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNotesChanging(value);
                 ReportPropertyChanging("Notes");
-                _Notes = StructuralObject.SetValidValue(value, false);
+                _Notes = StructuralObject.SetValidValue(value, false, "Notes");
                 ReportPropertyChanged("Notes");
                 OnNotesChanged();
             }
@@ -3086,7 +3090,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -3110,7 +3114,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -3120,7 +3124,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnAddressChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3155,7 +3159,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3174,7 +3179,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -3199,7 +3204,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionNameChanging(value);
                 ReportPropertyChanging("QuestionName");
-                _QuestionName = StructuralObject.SetValidValue(value, false);
+                _QuestionName = StructuralObject.SetValidValue(value, false, "QuestionName");
                 ReportPropertyChanged("QuestionName");
                 OnQuestionNameChanged();
             }
@@ -3223,7 +3228,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionTypeChanging(value);
                 ReportPropertyChanging("QuestionType");
-                _QuestionType = StructuralObject.SetValidValue(value);
+                _QuestionType = StructuralObject.SetValidValue(value, "QuestionType");
                 ReportPropertyChanged("QuestionType");
                 OnQuestionTypeChanged();
             }
@@ -3247,7 +3252,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnValuesChanging(value);
                 ReportPropertyChanging("Values");
-                _Values = StructuralObject.SetValidValue(value, false);
+                _Values = StructuralObject.SetValidValue(value, false, "Values");
                 ReportPropertyChanged("Values");
                 OnValuesChanged();
             }
@@ -3271,7 +3276,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -3295,7 +3300,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -3305,7 +3310,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3336,7 +3341,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3355,7 +3361,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnidChanging(value);
                     ReportPropertyChanging("id");
-                    _id = StructuralObject.SetValidValue(value, false);
+                    _id = StructuralObject.SetValidValue(value, false, "id");
                     ReportPropertyChanged("id");
                     OnidChanged();
                 }
@@ -3380,7 +3386,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnaffidChanging(value);
                 ReportPropertyChanging("affid");
-                _affid = StructuralObject.SetValidValue(value, false);
+                _affid = StructuralObject.SetValidValue(value, false, "affid");
                 ReportPropertyChanged("affid");
                 OnaffidChanged();
             }
@@ -3404,7 +3410,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnreferrerurlChanging(value);
                 ReportPropertyChanging("referrerurl");
-                _referrerurl = StructuralObject.SetValidValue(value, false);
+                _referrerurl = StructuralObject.SetValidValue(value, false, "referrerurl");
                 ReportPropertyChanged("referrerurl");
                 OnreferrerurlChanged();
             }
@@ -3428,7 +3434,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTimeOfReferralChanging(value);
                 ReportPropertyChanging("TimeOfReferral");
-                _TimeOfReferral = StructuralObject.SetValidValue(value);
+                _TimeOfReferral = StructuralObject.SetValidValue(value, "TimeOfReferral");
                 ReportPropertyChanged("TimeOfReferral");
                 OnTimeOfReferralChanged();
             }
@@ -3438,7 +3444,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnTimeOfReferralChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3469,7 +3475,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3488,7 +3495,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -3513,7 +3520,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserBvinChanging(value);
                 ReportPropertyChanging("UserBvin");
-                _UserBvin = StructuralObject.SetValidValue(value, false);
+                _UserBvin = StructuralObject.SetValidValue(value, false, "UserBvin");
                 ReportPropertyChanged("UserBvin");
                 OnUserBvinChanged();
             }
@@ -3537,7 +3544,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnExpirationDateChanging(value);
                 ReportPropertyChanging("ExpirationDate");
-                _ExpirationDate = StructuralObject.SetValidValue(value);
+                _ExpirationDate = StructuralObject.SetValidValue(value, "ExpirationDate");
                 ReportPropertyChanged("ExpirationDate");
                 OnExpirationDateChanged();
             }
@@ -3561,7 +3568,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -3571,7 +3578,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -3654,7 +3661,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -3673,7 +3681,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -3698,7 +3706,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -3722,7 +3730,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -3746,7 +3754,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnParentIDChanging(value);
                 ReportPropertyChanging("ParentID");
-                _ParentID = StructuralObject.SetValidValue(value, false);
+                _ParentID = StructuralObject.SetValidValue(value, false, "ParentID");
                 ReportPropertyChanged("ParentID");
                 OnParentIDChanged();
             }
@@ -3770,7 +3778,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -3794,7 +3802,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaTitleChanging(value);
                 ReportPropertyChanging("MetaTitle");
-                _MetaTitle = StructuralObject.SetValidValue(value, false);
+                _MetaTitle = StructuralObject.SetValidValue(value, false, "MetaTitle");
                 ReportPropertyChanged("MetaTitle");
                 OnMetaTitleChanged();
             }
@@ -3818,7 +3826,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaKeywordsChanging(value);
                 ReportPropertyChanging("MetaKeywords");
-                _MetaKeywords = StructuralObject.SetValidValue(value, false);
+                _MetaKeywords = StructuralObject.SetValidValue(value, false, "MetaKeywords");
                 ReportPropertyChanged("MetaKeywords");
                 OnMetaKeywordsChanged();
             }
@@ -3842,7 +3850,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaDescriptionChanging(value);
                 ReportPropertyChanging("MetaDescription");
-                _MetaDescription = StructuralObject.SetValidValue(value, false);
+                _MetaDescription = StructuralObject.SetValidValue(value, false, "MetaDescription");
                 ReportPropertyChanged("MetaDescription");
                 OnMetaDescriptionChanged();
             }
@@ -3866,7 +3874,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnImageURLChanging(value);
                 ReportPropertyChanging("ImageURL");
-                _ImageURL = StructuralObject.SetValidValue(value, false);
+                _ImageURL = StructuralObject.SetValidValue(value, false, "ImageURL");
                 ReportPropertyChanged("ImageURL");
                 OnImageURLChanged();
             }
@@ -3890,7 +3898,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBannerImageURLChanging(value);
                 ReportPropertyChanging("BannerImageURL");
-                _BannerImageURL = StructuralObject.SetValidValue(value, false);
+                _BannerImageURL = StructuralObject.SetValidValue(value, false, "BannerImageURL");
                 ReportPropertyChanged("BannerImageURL");
                 OnBannerImageURLChanged();
             }
@@ -3914,7 +3922,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSourceTypeChanging(value);
                 ReportPropertyChanging("SourceType");
-                _SourceType = StructuralObject.SetValidValue(value);
+                _SourceType = StructuralObject.SetValidValue(value, "SourceType");
                 ReportPropertyChanged("SourceType");
                 OnSourceTypeChanged();
             }
@@ -3938,7 +3946,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplaySortOrderChanging(value);
                 ReportPropertyChanging("DisplaySortOrder");
-                _DisplaySortOrder = StructuralObject.SetValidValue(value);
+                _DisplaySortOrder = StructuralObject.SetValidValue(value, "DisplaySortOrder");
                 ReportPropertyChanged("DisplaySortOrder");
                 OnDisplaySortOrderChanged();
             }
@@ -3962,7 +3970,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLatestProductCountChanging(value);
                 ReportPropertyChanging("LatestProductCount");
-                _LatestProductCount = StructuralObject.SetValidValue(value);
+                _LatestProductCount = StructuralObject.SetValidValue(value, "LatestProductCount");
                 ReportPropertyChanged("LatestProductCount");
                 OnLatestProductCountChanged();
             }
@@ -3986,7 +3994,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPageURLChanging(value);
                 ReportPropertyChanging("CustomPageURL");
-                _CustomPageURL = StructuralObject.SetValidValue(value, false);
+                _CustomPageURL = StructuralObject.SetValidValue(value, false, "CustomPageURL");
                 ReportPropertyChanged("CustomPageURL");
                 OnCustomPageURLChanged();
             }
@@ -4010,7 +4018,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPageNewWindowChanging(value);
                 ReportPropertyChanging("CustomPageNewWindow");
-                _CustomPageNewWindow = StructuralObject.SetValidValue(value);
+                _CustomPageNewWindow = StructuralObject.SetValidValue(value, "CustomPageNewWindow");
                 ReportPropertyChanged("CustomPageNewWindow");
                 OnCustomPageNewWindowChanged();
             }
@@ -4034,7 +4042,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMenuOffImageURLChanging(value);
                 ReportPropertyChanging("MenuOffImageURL");
-                _MenuOffImageURL = StructuralObject.SetValidValue(value, false);
+                _MenuOffImageURL = StructuralObject.SetValidValue(value, false, "MenuOffImageURL");
                 ReportPropertyChanged("MenuOffImageURL");
                 OnMenuOffImageURLChanged();
             }
@@ -4058,7 +4066,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMenuOnImageURLChanging(value);
                 ReportPropertyChanging("MenuOnImageURL");
-                _MenuOnImageURL = StructuralObject.SetValidValue(value, false);
+                _MenuOnImageURL = StructuralObject.SetValidValue(value, false, "MenuOnImageURL");
                 ReportPropertyChanged("MenuOnImageURL");
                 OnMenuOnImageURLChanged();
             }
@@ -4082,7 +4090,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShowInTopMenuChanging(value);
                 ReportPropertyChanging("ShowInTopMenu");
-                _ShowInTopMenu = StructuralObject.SetValidValue(value);
+                _ShowInTopMenu = StructuralObject.SetValidValue(value, "ShowInTopMenu");
                 ReportPropertyChanged("ShowInTopMenu");
                 OnShowInTopMenuChanged();
             }
@@ -4106,7 +4114,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnHiddenChanging(value);
                 ReportPropertyChanging("Hidden");
-                _Hidden = StructuralObject.SetValidValue(value);
+                _Hidden = StructuralObject.SetValidValue(value, "Hidden");
                 ReportPropertyChanged("Hidden");
                 OnHiddenChanged();
             }
@@ -4130,7 +4138,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTemplateNameChanging(value);
                 ReportPropertyChanging("TemplateName");
-                _TemplateName = StructuralObject.SetValidValue(value, false);
+                _TemplateName = StructuralObject.SetValidValue(value, false, "TemplateName");
                 ReportPropertyChanged("TemplateName");
                 OnTemplateNameChanged();
             }
@@ -4154,7 +4162,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPostContentColumnIdChanging(value);
                 ReportPropertyChanging("PostContentColumnId");
-                _PostContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PostContentColumnId = StructuralObject.SetValidValue(value, false, "PostContentColumnId");
                 ReportPropertyChanged("PostContentColumnId");
                 OnPostContentColumnIdChanged();
             }
@@ -4178,7 +4186,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPreContentColumnIdChanging(value);
                 ReportPropertyChanging("PreContentColumnId");
-                _PreContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PreContentColumnId = StructuralObject.SetValidValue(value, false, "PreContentColumnId");
                 ReportPropertyChanged("PreContentColumnId");
                 OnPreContentColumnIdChanged();
             }
@@ -4202,7 +4210,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -4226,7 +4234,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRewriteUrlChanging(value);
                 ReportPropertyChanging("RewriteUrl");
-                _RewriteUrl = StructuralObject.SetValidValue(value, false);
+                _RewriteUrl = StructuralObject.SetValidValue(value, false, "RewriteUrl");
                 ReportPropertyChanged("RewriteUrl");
                 OnRewriteUrlChanged();
             }
@@ -4250,7 +4258,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShowTitleChanging(value);
                 ReportPropertyChanging("ShowTitle");
-                _ShowTitle = StructuralObject.SetValidValue(value);
+                _ShowTitle = StructuralObject.SetValidValue(value, "ShowTitle");
                 ReportPropertyChanged("ShowTitle");
                 OnShowTitleChanged();
             }
@@ -4274,7 +4282,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCriteriaChanging(value);
                 ReportPropertyChanging("Criteria");
-                _Criteria = StructuralObject.SetValidValue(value, false);
+                _Criteria = StructuralObject.SetValidValue(value, false, "Criteria");
                 ReportPropertyChanged("Criteria");
                 OnCriteriaChanged();
             }
@@ -4298,7 +4306,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPageIdChanging(value);
                 ReportPropertyChanging("CustomPageId");
-                _CustomPageId = StructuralObject.SetValidValue(value, false);
+                _CustomPageId = StructuralObject.SetValidValue(value, false, "CustomPageId");
                 ReportPropertyChanged("CustomPageId");
                 OnCustomPageIdChanged();
             }
@@ -4322,7 +4330,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPreTransformDescriptionChanging(value);
                 ReportPropertyChanging("PreTransformDescription");
-                _PreTransformDescription = StructuralObject.SetValidValue(value, false);
+                _PreTransformDescription = StructuralObject.SetValidValue(value, false, "PreTransformDescription");
                 ReportPropertyChanged("PreTransformDescription");
                 OnPreTransformDescriptionChanged();
             }
@@ -4346,7 +4354,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnKeywordsChanging(value);
                 ReportPropertyChanging("Keywords");
-                _Keywords = StructuralObject.SetValidValue(value, false);
+                _Keywords = StructuralObject.SetValidValue(value, false, "Keywords");
                 ReportPropertyChanged("Keywords");
                 OnKeywordsChanged();
             }
@@ -4370,7 +4378,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomerChangeableSortOrderChanging(value);
                 ReportPropertyChanging("CustomerChangeableSortOrder");
-                _CustomerChangeableSortOrder = StructuralObject.SetValidValue(value);
+                _CustomerChangeableSortOrder = StructuralObject.SetValidValue(value, "CustomerChangeableSortOrder");
                 ReportPropertyChanged("CustomerChangeableSortOrder");
                 OnCustomerChangeableSortOrderChanged();
             }
@@ -4380,7 +4388,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnCustomerChangeableSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -4406,6 +4414,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -4440,7 +4449,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4459,7 +4469,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnComponentIDChanging(value);
                     ReportPropertyChanging("ComponentID");
-                    _ComponentID = StructuralObject.SetValidValue(value, false);
+                    _ComponentID = StructuralObject.SetValidValue(value, false, "ComponentID");
                     ReportPropertyChanged("ComponentID");
                     OnComponentIDChanged();
                 }
@@ -4486,7 +4496,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnSettingNameChanging(value);
                     ReportPropertyChanging("SettingName");
-                    _SettingName = StructuralObject.SetValidValue(value, false);
+                    _SettingName = StructuralObject.SetValidValue(value, false, "SettingName");
                     ReportPropertyChanged("SettingName");
                     OnSettingNameChanged();
                 }
@@ -4511,7 +4521,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSettingValueChanging(value);
                 ReportPropertyChanging("SettingValue");
-                _SettingValue = StructuralObject.SetValidValue(value, false);
+                _SettingValue = StructuralObject.SetValidValue(value, false, "SettingValue");
                 ReportPropertyChanged("SettingValue");
                 OnSettingValueChanged();
             }
@@ -4535,7 +4545,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDeveloperIdChanging(value);
                 ReportPropertyChanging("DeveloperId");
-                _DeveloperId = StructuralObject.SetValidValue(value, false);
+                _DeveloperId = StructuralObject.SetValidValue(value, false, "DeveloperId");
                 ReportPropertyChanged("DeveloperId");
                 OnDeveloperIdChanged();
             }
@@ -4559,7 +4569,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnComponentTypeChanging(value);
                 ReportPropertyChanging("ComponentType");
-                _ComponentType = StructuralObject.SetValidValue(value, false);
+                _ComponentType = StructuralObject.SetValidValue(value, false, "ComponentType");
                 ReportPropertyChanged("ComponentType");
                 OnComponentTypeChanged();
             }
@@ -4583,7 +4593,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnComponentSubTypeChanging(value);
                 ReportPropertyChanging("ComponentSubType");
-                _ComponentSubType = StructuralObject.SetValidValue(value, false);
+                _ComponentSubType = StructuralObject.SetValidValue(value, false, "ComponentSubType");
                 ReportPropertyChanged("ComponentSubType");
                 OnComponentSubTypeChanged();
             }
@@ -4593,7 +4603,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnComponentSubTypeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -4652,7 +4662,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -4671,7 +4682,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -4696,7 +4707,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -4720,7 +4731,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnComponentIDChanging(value);
                 ReportPropertyChanging("ComponentID");
-                _ComponentID = StructuralObject.SetValidValue(value, false);
+                _ComponentID = StructuralObject.SetValidValue(value, false, "ComponentID");
                 ReportPropertyChanged("ComponentID");
                 OnComponentIDChanged();
             }
@@ -4744,7 +4755,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDeveloperIdChanging(value);
                 ReportPropertyChanging("DeveloperId");
-                _DeveloperId = StructuralObject.SetValidValue(value, false);
+                _DeveloperId = StructuralObject.SetValidValue(value, false, "DeveloperId");
                 ReportPropertyChanged("DeveloperId");
                 OnDeveloperIdChanged();
             }
@@ -4768,7 +4779,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnComponentTypeChanging(value);
                 ReportPropertyChanging("ComponentType");
-                _ComponentType = StructuralObject.SetValidValue(value, false);
+                _ComponentType = StructuralObject.SetValidValue(value, false, "ComponentType");
                 ReportPropertyChanged("ComponentType");
                 OnComponentTypeChanged();
             }
@@ -4792,7 +4803,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnComponentSubTypeChanging(value);
                 ReportPropertyChanging("ComponentSubType");
-                _ComponentSubType = StructuralObject.SetValidValue(value, false);
+                _ComponentSubType = StructuralObject.SetValidValue(value, false, "ComponentSubType");
                 ReportPropertyChanged("ComponentSubType");
                 OnComponentSubTypeChanged();
             }
@@ -4816,7 +4827,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnListNameChanging(value);
                 ReportPropertyChanging("ListName");
-                _ListName = StructuralObject.SetValidValue(value, false);
+                _ListName = StructuralObject.SetValidValue(value, false, "ListName");
                 ReportPropertyChanged("ListName");
                 OnListNameChanged();
             }
@@ -4840,7 +4851,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting1Changing(value);
                 ReportPropertyChanging("Setting1");
-                _Setting1 = StructuralObject.SetValidValue(value, false);
+                _Setting1 = StructuralObject.SetValidValue(value, false, "Setting1");
                 ReportPropertyChanged("Setting1");
                 OnSetting1Changed();
             }
@@ -4864,7 +4875,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting2Changing(value);
                 ReportPropertyChanging("Setting2");
-                _Setting2 = StructuralObject.SetValidValue(value, false);
+                _Setting2 = StructuralObject.SetValidValue(value, false, "Setting2");
                 ReportPropertyChanged("Setting2");
                 OnSetting2Changed();
             }
@@ -4888,7 +4899,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting3Changing(value);
                 ReportPropertyChanging("Setting3");
-                _Setting3 = StructuralObject.SetValidValue(value, false);
+                _Setting3 = StructuralObject.SetValidValue(value, false, "Setting3");
                 ReportPropertyChanged("Setting3");
                 OnSetting3Changed();
             }
@@ -4912,7 +4923,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting4Changing(value);
                 ReportPropertyChanging("Setting4");
-                _Setting4 = StructuralObject.SetValidValue(value, false);
+                _Setting4 = StructuralObject.SetValidValue(value, false, "Setting4");
                 ReportPropertyChanged("Setting4");
                 OnSetting4Changed();
             }
@@ -4936,7 +4947,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting5Changing(value);
                 ReportPropertyChanging("Setting5");
-                _Setting5 = StructuralObject.SetValidValue(value, false);
+                _Setting5 = StructuralObject.SetValidValue(value, false, "Setting5");
                 ReportPropertyChanged("Setting5");
                 OnSetting5Changed();
             }
@@ -4960,7 +4971,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting6Changing(value);
                 ReportPropertyChanging("Setting6");
-                _Setting6 = StructuralObject.SetValidValue(value, false);
+                _Setting6 = StructuralObject.SetValidValue(value, false, "Setting6");
                 ReportPropertyChanged("Setting6");
                 OnSetting6Changed();
             }
@@ -4984,7 +4995,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting7Changing(value);
                 ReportPropertyChanging("Setting7");
-                _Setting7 = StructuralObject.SetValidValue(value, false);
+                _Setting7 = StructuralObject.SetValidValue(value, false, "Setting7");
                 ReportPropertyChanged("Setting7");
                 OnSetting7Changed();
             }
@@ -5008,7 +5019,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting8Changing(value);
                 ReportPropertyChanging("Setting8");
-                _Setting8 = StructuralObject.SetValidValue(value, false);
+                _Setting8 = StructuralObject.SetValidValue(value, false, "Setting8");
                 ReportPropertyChanged("Setting8");
                 OnSetting8Changed();
             }
@@ -5032,7 +5043,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting9Changing(value);
                 ReportPropertyChanging("Setting9");
-                _Setting9 = StructuralObject.SetValidValue(value, false);
+                _Setting9 = StructuralObject.SetValidValue(value, false, "Setting9");
                 ReportPropertyChanged("Setting9");
                 OnSetting9Changed();
             }
@@ -5056,7 +5067,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSetting10Changing(value);
                 ReportPropertyChanging("Setting10");
-                _Setting10 = StructuralObject.SetValidValue(value, false);
+                _Setting10 = StructuralObject.SetValidValue(value, false, "Setting10");
                 ReportPropertyChanged("Setting10");
                 OnSetting10Changed();
             }
@@ -5080,7 +5091,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5090,7 +5101,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -5125,7 +5136,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5144,7 +5156,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -5169,7 +5181,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionNameChanging(value);
                 ReportPropertyChanging("QuestionName");
-                _QuestionName = StructuralObject.SetValidValue(value, false);
+                _QuestionName = StructuralObject.SetValidValue(value, false, "QuestionName");
                 ReportPropertyChanged("QuestionName");
                 OnQuestionNameChanged();
             }
@@ -5193,7 +5205,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionTypeChanging(value);
                 ReportPropertyChanging("QuestionType");
-                _QuestionType = StructuralObject.SetValidValue(value);
+                _QuestionType = StructuralObject.SetValidValue(value, "QuestionType");
                 ReportPropertyChanged("QuestionType");
                 OnQuestionTypeChanged();
             }
@@ -5217,7 +5229,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnValuesChanging(value);
                 ReportPropertyChanging("Values");
-                _Values = StructuralObject.SetValidValue(value, false);
+                _Values = StructuralObject.SetValidValue(value, false, "Values");
                 ReportPropertyChanged("Values");
                 OnValuesChanged();
             }
@@ -5241,7 +5253,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -5265,7 +5277,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5275,7 +5287,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -5308,7 +5320,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5327,7 +5340,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -5352,7 +5365,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnColumnIDChanging(value);
                 ReportPropertyChanging("ColumnID");
-                _ColumnID = StructuralObject.SetValidValue(value, false);
+                _ColumnID = StructuralObject.SetValidValue(value, false, "ColumnID");
                 ReportPropertyChanged("ColumnID");
                 OnColumnIDChanged();
             }
@@ -5376,7 +5389,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -5400,7 +5413,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnControlNameChanging(value);
                 ReportPropertyChanging("ControlName");
-                _ControlName = StructuralObject.SetValidValue(value, false);
+                _ControlName = StructuralObject.SetValidValue(value, false, "ControlName");
                 ReportPropertyChanged("ControlName");
                 OnControlNameChanged();
             }
@@ -5424,7 +5437,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5434,7 +5447,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -5476,6 +5489,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5506,7 +5520,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5525,7 +5540,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -5550,7 +5565,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -5574,7 +5589,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemColumnChanging(value);
                 ReportPropertyChanging("SystemColumn");
-                _SystemColumn = StructuralObject.SetValidValue(value);
+                _SystemColumn = StructuralObject.SetValidValue(value, "SystemColumn");
                 ReportPropertyChanged("SystemColumn");
                 OnSystemColumnChanged();
             }
@@ -5598,7 +5613,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5608,7 +5623,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -5634,6 +5649,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5674,7 +5690,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5693,7 +5710,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -5718,7 +5735,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCultureCodeChanging(value);
                 ReportPropertyChanging("CultureCode");
-                _CultureCode = StructuralObject.SetValidValue(value, false);
+                _CultureCode = StructuralObject.SetValidValue(value, false, "CultureCode");
                 ReportPropertyChanged("CultureCode");
                 OnCultureCodeChanged();
             }
@@ -5742,7 +5759,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -5766,7 +5783,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnActiveChanging(value);
                 ReportPropertyChanging("Active");
-                _Active = StructuralObject.SetValidValue(value);
+                _Active = StructuralObject.SetValidValue(value, "Active");
                 ReportPropertyChanged("Active");
                 OnActiveChanged();
             }
@@ -5790,7 +5807,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnISOCodeChanging(value);
                 ReportPropertyChanging("ISOCode");
-                _ISOCode = StructuralObject.SetValidValue(value, false);
+                _ISOCode = StructuralObject.SetValidValue(value, false, "ISOCode");
                 ReportPropertyChanged("ISOCode");
                 OnISOCodeChanged();
             }
@@ -5814,7 +5831,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnISOAlpha3Changing(value);
                 ReportPropertyChanging("ISOAlpha3");
-                _ISOAlpha3 = StructuralObject.SetValidValue(value, false);
+                _ISOAlpha3 = StructuralObject.SetValidValue(value, false, "ISOAlpha3");
                 ReportPropertyChanged("ISOAlpha3");
                 OnISOAlpha3Changed();
             }
@@ -5838,7 +5855,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnISONumericChanging(value);
                 ReportPropertyChanging("ISONumeric");
-                _ISONumeric = StructuralObject.SetValidValue(value, false);
+                _ISONumeric = StructuralObject.SetValidValue(value, false, "ISONumeric");
                 ReportPropertyChanged("ISONumeric");
                 OnISONumericChanged();
             }
@@ -5862,7 +5879,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPostalCodeValidationRegexChanging(value);
                 ReportPropertyChanging("PostalCodeValidationRegex");
-                _PostalCodeValidationRegex = StructuralObject.SetValidValue(value, false);
+                _PostalCodeValidationRegex = StructuralObject.SetValidValue(value, false, "PostalCodeValidationRegex");
                 ReportPropertyChanged("PostalCodeValidationRegex");
                 OnPostalCodeValidationRegexChanged();
             }
@@ -5886,7 +5903,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -5896,7 +5913,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -5944,6 +5961,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -5974,7 +5992,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -5993,7 +6012,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6018,7 +6037,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -6042,7 +6061,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRegionIDChanging(value);
                 ReportPropertyChanging("RegionID");
-                _RegionID = StructuralObject.SetValidValue(value, false);
+                _RegionID = StructuralObject.SetValidValue(value, false, "RegionID");
                 ReportPropertyChanged("RegionID");
                 OnRegionIDChanged();
             }
@@ -6066,7 +6085,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6076,7 +6095,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -6118,6 +6137,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6146,7 +6166,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6165,7 +6186,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnCodeChanging(value);
                     ReportPropertyChanging("Code");
-                    _Code = StructuralObject.SetValidValue(value, false);
+                    _Code = StructuralObject.SetValidValue(value, false, "Code");
                     ReportPropertyChanged("Code");
                     OnCodeChanged();
                 }
@@ -6190,7 +6211,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLongNameChanging(value);
                 ReportPropertyChanging("LongName");
-                _LongName = StructuralObject.SetValidValue(value, false);
+                _LongName = StructuralObject.SetValidValue(value, false, "LongName");
                 ReportPropertyChanged("LongName");
                 OnLongNameChanged();
             }
@@ -6214,7 +6235,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnActiveChanging(value);
                 ReportPropertyChanging("Active");
-                _Active = StructuralObject.SetValidValue(value);
+                _Active = StructuralObject.SetValidValue(value, "Active");
                 ReportPropertyChanged("Active");
                 OnActiveChanged();
             }
@@ -6224,7 +6245,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnActiveChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6267,7 +6288,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6286,7 +6308,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6311,7 +6333,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -6335,7 +6357,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnContentChanging(value);
                 ReportPropertyChanging("Content");
-                _Content = StructuralObject.SetValidValue(value, false);
+                _Content = StructuralObject.SetValidValue(value, false, "Content");
                 ReportPropertyChanged("Content");
                 OnContentChanged();
             }
@@ -6359,7 +6381,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMenuNameChanging(value);
                 ReportPropertyChanging("MenuName");
-                _MenuName = StructuralObject.SetValidValue(value, false);
+                _MenuName = StructuralObject.SetValidValue(value, false, "MenuName");
                 ReportPropertyChanged("MenuName");
                 OnMenuNameChanged();
             }
@@ -6383,7 +6405,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShowInTopMenuChanging(value);
                 ReportPropertyChanging("ShowInTopMenu");
-                _ShowInTopMenu = StructuralObject.SetValidValue(value);
+                _ShowInTopMenu = StructuralObject.SetValidValue(value, "ShowInTopMenu");
                 ReportPropertyChanged("ShowInTopMenu");
                 OnShowInTopMenuChanged();
             }
@@ -6407,7 +6429,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShowInBottomMenuChanging(value);
                 ReportPropertyChanging("ShowInBottomMenu");
-                _ShowInBottomMenu = StructuralObject.SetValidValue(value);
+                _ShowInBottomMenu = StructuralObject.SetValidValue(value, "ShowInBottomMenu");
                 ReportPropertyChanged("ShowInBottomMenu");
                 OnShowInBottomMenuChanged();
             }
@@ -6431,7 +6453,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6455,7 +6477,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPreTransformContentChanging(value);
                 ReportPropertyChanging("PreTransformContent");
-                _PreTransformContent = StructuralObject.SetValidValue(value, false);
+                _PreTransformContent = StructuralObject.SetValidValue(value, false, "PreTransformContent");
                 ReportPropertyChanged("PreTransformContent");
                 OnPreTransformContentChanged();
             }
@@ -6479,7 +6501,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaDescriptionChanging(value);
                 ReportPropertyChanging("MetaDescription");
-                _MetaDescription = StructuralObject.SetValidValue(value, false);
+                _MetaDescription = StructuralObject.SetValidValue(value, false, "MetaDescription");
                 ReportPropertyChanged("MetaDescription");
                 OnMetaDescriptionChanged();
             }
@@ -6503,7 +6525,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaKeywordsChanging(value);
                 ReportPropertyChanging("MetaKeywords");
-                _MetaKeywords = StructuralObject.SetValidValue(value, false);
+                _MetaKeywords = StructuralObject.SetValidValue(value, false, "MetaKeywords");
                 ReportPropertyChanged("MetaKeywords");
                 OnMetaKeywordsChanged();
             }
@@ -6513,7 +6535,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnMetaKeywordsChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6548,7 +6570,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6567,7 +6590,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6592,7 +6615,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRequestedUrlChanging(value);
                 ReportPropertyChanging("RequestedUrl");
-                _RequestedUrl = StructuralObject.SetValidValue(value, false);
+                _RequestedUrl = StructuralObject.SetValidValue(value, false, "RequestedUrl");
                 ReportPropertyChanged("RequestedUrl");
                 OnRequestedUrlChanged();
             }
@@ -6616,7 +6639,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRedirectToUrlChanging(value);
                 ReportPropertyChanging("RedirectToUrl");
-                _RedirectToUrl = StructuralObject.SetValidValue(value, false);
+                _RedirectToUrl = StructuralObject.SetValidValue(value, false, "RedirectToUrl");
                 ReportPropertyChanged("RedirectToUrl");
                 OnRedirectToUrlChanged();
             }
@@ -6640,7 +6663,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemUrlChanging(value);
                 ReportPropertyChanging("SystemUrl");
-                _SystemUrl = StructuralObject.SetValidValue(value);
+                _SystemUrl = StructuralObject.SetValidValue(value, "SystemUrl");
                 ReportPropertyChanged("SystemUrl");
                 OnSystemUrlChanged();
             }
@@ -6664,7 +6687,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemDataChanging(value);
                 ReportPropertyChanging("SystemData");
-                _SystemData = StructuralObject.SetValidValue(value, false);
+                _SystemData = StructuralObject.SetValidValue(value, false, "SystemData");
                 ReportPropertyChanged("SystemData");
                 OnSystemDataChanged();
             }
@@ -6688,7 +6711,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6698,7 +6721,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -6731,7 +6754,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6750,7 +6774,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnBvinChanging(value);
                     ReportPropertyChanging("Bvin");
-                    _Bvin = StructuralObject.SetValidValue(value, false);
+                    _Bvin = StructuralObject.SetValidValue(value, false, "Bvin");
                     ReportPropertyChanged("Bvin");
                     OnBvinChanged();
                 }
@@ -6775,7 +6799,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -6799,7 +6823,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTimeOfRequestChanging(value);
                 ReportPropertyChanging("TimeOfRequest");
-                _TimeOfRequest = StructuralObject.SetValidValue(value);
+                _TimeOfRequest = StructuralObject.SetValidValue(value, "TimeOfRequest");
                 ReportPropertyChanged("TimeOfRequest");
                 OnTimeOfRequestChanged();
             }
@@ -6823,7 +6847,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProcessedChanging(value);
                 ReportPropertyChanging("Processed");
-                _Processed = StructuralObject.SetValidValue(value);
+                _Processed = StructuralObject.SetValidValue(value, "Processed");
                 ReportPropertyChanged("Processed");
                 OnProcessedChanged();
             }
@@ -6847,7 +6871,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -6857,7 +6881,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -6899,6 +6923,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -6945,7 +6970,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -6964,7 +6990,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -6989,7 +7015,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBodyChanging(value);
                 ReportPropertyChanging("Body");
-                _Body = StructuralObject.SetValidValue(value, false);
+                _Body = StructuralObject.SetValidValue(value, false, "Body");
                 ReportPropertyChanged("Body");
                 OnBodyChanged();
             }
@@ -7013,7 +7039,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBodyPlainTextChanging(value);
                 ReportPropertyChanging("BodyPlainText");
-                _BodyPlainText = StructuralObject.SetValidValue(value, false);
+                _BodyPlainText = StructuralObject.SetValidValue(value, false, "BodyPlainText");
                 ReportPropertyChanged("BodyPlainText");
                 OnBodyPlainTextChanged();
             }
@@ -7037,7 +7063,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -7061,7 +7087,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFromChanging(value);
                 ReportPropertyChanging("From");
-                _From = StructuralObject.SetValidValue(value, false);
+                _From = StructuralObject.SetValidValue(value, false, "From");
                 ReportPropertyChanged("From");
                 OnFromChanged();
             }
@@ -7085,7 +7111,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRepeatingSectionChanging(value);
                 ReportPropertyChanging("RepeatingSection");
-                _RepeatingSection = StructuralObject.SetValidValue(value, false);
+                _RepeatingSection = StructuralObject.SetValidValue(value, false, "RepeatingSection");
                 ReportPropertyChanged("RepeatingSection");
                 OnRepeatingSectionChanged();
             }
@@ -7109,7 +7135,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRepeatingSectionPlainTextChanging(value);
                 ReportPropertyChanging("RepeatingSectionPlainText");
-                _RepeatingSectionPlainText = StructuralObject.SetValidValue(value, false);
+                _RepeatingSectionPlainText = StructuralObject.SetValidValue(value, false, "RepeatingSectionPlainText");
                 ReportPropertyChanged("RepeatingSectionPlainText");
                 OnRepeatingSectionPlainTextChanged();
             }
@@ -7133,7 +7159,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSendInPlainTextChanging(value);
                 ReportPropertyChanging("SendInPlainText");
-                _SendInPlainText = StructuralObject.SetValidValue(value);
+                _SendInPlainText = StructuralObject.SetValidValue(value, "SendInPlainText");
                 ReportPropertyChanged("SendInPlainText");
                 OnSendInPlainTextChanged();
             }
@@ -7157,7 +7183,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSubjectChanging(value);
                 ReportPropertyChanging("Subject");
-                _Subject = StructuralObject.SetValidValue(value, false);
+                _Subject = StructuralObject.SetValidValue(value, false, "Subject");
                 ReportPropertyChanged("Subject");
                 OnSubjectChanged();
             }
@@ -7181,7 +7207,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7205,7 +7231,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBodyPreTransformChanging(value);
                 ReportPropertyChanging("BodyPreTransform");
-                _BodyPreTransform = StructuralObject.SetValidValue(value, false);
+                _BodyPreTransform = StructuralObject.SetValidValue(value, false, "BodyPreTransform");
                 ReportPropertyChanged("BodyPreTransform");
                 OnBodyPreTransformChanged();
             }
@@ -7229,7 +7255,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRepeatingSectionPreTransformChanging(value);
                 ReportPropertyChanging("RepeatingSectionPreTransform");
-                _RepeatingSectionPreTransform = StructuralObject.SetValidValue(value, false);
+                _RepeatingSectionPreTransform = StructuralObject.SetValidValue(value, false, "RepeatingSectionPreTransform");
                 ReportPropertyChanged("RepeatingSectionPreTransform");
                 OnRepeatingSectionPreTransformChanged();
             }
@@ -7239,7 +7265,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnRepeatingSectionPreTransformChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7274,7 +7300,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7293,7 +7320,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -7318,7 +7345,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEventTimeChanging(value);
                 ReportPropertyChanging("EventTime");
-                _EventTime = StructuralObject.SetValidValue(value);
+                _EventTime = StructuralObject.SetValidValue(value, "EventTime");
                 ReportPropertyChanged("EventTime");
                 OnEventTimeChanged();
             }
@@ -7342,7 +7369,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSourceChanging(value);
                 ReportPropertyChanging("Source");
-                _Source = StructuralObject.SetValidValue(value, false);
+                _Source = StructuralObject.SetValidValue(value, false, "Source");
                 ReportPropertyChanged("Source");
                 OnSourceChanged();
             }
@@ -7366,7 +7393,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMessageChanging(value);
                 ReportPropertyChanging("Message");
-                _Message = StructuralObject.SetValidValue(value, false);
+                _Message = StructuralObject.SetValidValue(value, false, "Message");
                 ReportPropertyChanged("Message");
                 OnMessageChanged();
             }
@@ -7390,7 +7417,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSeverityChanging(value);
                 ReportPropertyChanging("Severity");
-                _Severity = StructuralObject.SetValidValue(value);
+                _Severity = StructuralObject.SetValidValue(value, "Severity");
                 ReportPropertyChanged("Severity");
                 OnSeverityChanged();
             }
@@ -7414,7 +7441,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7424,7 +7451,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7455,7 +7482,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7474,7 +7502,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -7499,7 +7527,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRuleTypeChanging(value);
                 ReportPropertyChanging("RuleType");
-                _RuleType = StructuralObject.SetValidValue(value);
+                _RuleType = StructuralObject.SetValidValue(value, "RuleType");
                 ReportPropertyChanged("RuleType");
                 OnRuleTypeChanged();
             }
@@ -7523,7 +7551,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRuleValueChanging(value);
                 ReportPropertyChanging("RuleValue");
-                _RuleValue = StructuralObject.SetValidValue(value, false);
+                _RuleValue = StructuralObject.SetValidValue(value, false, "RuleValue");
                 ReportPropertyChanged("RuleValue");
                 OnRuleValueChanged();
             }
@@ -7547,7 +7575,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7557,7 +7585,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7596,7 +7624,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7615,7 +7644,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnBvinChanging(value);
                     ReportPropertyChanging("Bvin");
-                    _Bvin = StructuralObject.SetValidValue(value, false);
+                    _Bvin = StructuralObject.SetValidValue(value, false, "Bvin");
                     ReportPropertyChanged("Bvin");
                     OnBvinChanged();
                 }
@@ -7640,7 +7669,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLineItemIdChanging(value);
                 ReportPropertyChanging("LineItemId");
-                _LineItemId = StructuralObject.SetValidValue(value, false);
+                _LineItemId = StructuralObject.SetValidValue(value, false, "LineItemId");
                 ReportPropertyChanged("LineItemId");
                 OnLineItemIdChanged();
             }
@@ -7664,7 +7693,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCertificateCodeChanging(value);
                 ReportPropertyChanging("CertificateCode");
-                _CertificateCode = StructuralObject.SetValidValue(value, false);
+                _CertificateCode = StructuralObject.SetValidValue(value, false, "CertificateCode");
                 ReportPropertyChanged("CertificateCode");
                 OnCertificateCodeChanged();
             }
@@ -7688,7 +7717,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDateIssuedChanging(value);
                 ReportPropertyChanging("DateIssued");
-                _DateIssued = StructuralObject.SetValidValue(value);
+                _DateIssued = StructuralObject.SetValidValue(value, "DateIssued");
                 ReportPropertyChanged("DateIssued");
                 OnDateIssuedChanged();
             }
@@ -7712,7 +7741,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOriginalAmountChanging(value);
                 ReportPropertyChanging("OriginalAmount");
-                _OriginalAmount = StructuralObject.SetValidValue(value);
+                _OriginalAmount = StructuralObject.SetValidValue(value, "OriginalAmount");
                 ReportPropertyChanged("OriginalAmount");
                 OnOriginalAmountChanged();
             }
@@ -7736,7 +7765,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCurrentAmountChanging(value);
                 ReportPropertyChanging("CurrentAmount");
-                _CurrentAmount = StructuralObject.SetValidValue(value);
+                _CurrentAmount = StructuralObject.SetValidValue(value, "CurrentAmount");
                 ReportPropertyChanged("CurrentAmount");
                 OnCurrentAmountChanged();
             }
@@ -7760,7 +7789,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAssociatedProductIdChanging(value);
                 ReportPropertyChanging("AssociatedProductId");
-                _AssociatedProductId = StructuralObject.SetValidValue(value, false);
+                _AssociatedProductId = StructuralObject.SetValidValue(value, false, "AssociatedProductId");
                 ReportPropertyChanged("AssociatedProductId");
                 OnAssociatedProductIdChanged();
             }
@@ -7784,7 +7813,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7794,7 +7823,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -7835,7 +7864,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -7854,7 +7884,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -7879,7 +7909,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -7903,7 +7933,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGroupBvinChanging(value);
                 ReportPropertyChanging("GroupBvin");
-                _GroupBvin = StructuralObject.SetValidValue(value, false);
+                _GroupBvin = StructuralObject.SetValidValue(value, false, "GroupBvin");
                 ReportPropertyChanged("GroupBvin");
                 OnGroupBvinChanged();
             }
@@ -7927,7 +7957,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -7951,7 +7981,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -7975,7 +8005,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -7999,7 +8029,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -8023,7 +8053,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPriceChanging(value);
                 ReportPropertyChanging("Price");
-                _Price = StructuralObject.SetValidValue(value);
+                _Price = StructuralObject.SetValidValue(value, "Price");
                 ReportPropertyChanged("Price");
                 OnPriceChanged();
             }
@@ -8047,7 +8077,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWeightChanging(value);
                 ReportPropertyChanging("Weight");
-                _Weight = StructuralObject.SetValidValue(value);
+                _Weight = StructuralObject.SetValidValue(value, "Weight");
                 ReportPropertyChanged("Weight");
                 OnWeightChanged();
             }
@@ -8057,7 +8087,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnWeightChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -8099,6 +8129,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8133,7 +8164,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8152,7 +8184,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -8177,7 +8209,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -8201,7 +8233,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -8225,7 +8257,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -8249,7 +8281,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGroupTypeChanging(value);
                 ReportPropertyChanging("GroupType");
-                _GroupType = StructuralObject.SetValidValue(value);
+                _GroupType = StructuralObject.SetValidValue(value, "GroupType");
                 ReportPropertyChanged("GroupType");
                 OnGroupTypeChanged();
             }
@@ -8273,7 +8305,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -8283,7 +8315,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -8347,6 +8379,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -8413,7 +8446,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -8430,7 +8464,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -8456,7 +8490,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -8481,7 +8515,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -8505,7 +8539,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -8529,7 +8563,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -8553,7 +8587,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -8577,7 +8611,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBasePriceChanging(value);
                 ReportPropertyChanging("BasePrice");
-                _BasePrice = StructuralObject.SetValidValue(value);
+                _BasePrice = StructuralObject.SetValidValue(value, "BasePrice");
                 ReportPropertyChanged("BasePrice");
                 OnBasePriceChanged();
             }
@@ -8601,7 +8635,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDiscountsChanging(value);
                 ReportPropertyChanging("Discounts");
-                _Discounts = StructuralObject.SetValidValue(value);
+                _Discounts = StructuralObject.SetValidValue(value, "Discounts");
                 ReportPropertyChanged("Discounts");
                 OnDiscountsChanged();
             }
@@ -8625,7 +8659,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdjustedPriceChanging(value);
                 ReportPropertyChanging("AdjustedPrice");
-                _AdjustedPrice = StructuralObject.SetValidValue(value);
+                _AdjustedPrice = StructuralObject.SetValidValue(value, "AdjustedPrice");
                 ReportPropertyChanged("AdjustedPrice");
                 OnAdjustedPriceChanged();
             }
@@ -8649,7 +8683,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingPortionChanging(value);
                 ReportPropertyChanging("ShippingPortion");
-                _ShippingPortion = StructuralObject.SetValidValue(value);
+                _ShippingPortion = StructuralObject.SetValidValue(value, "ShippingPortion");
                 ReportPropertyChanged("ShippingPortion");
                 OnShippingPortionChanged();
             }
@@ -8673,7 +8707,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxPortionChanging(value);
                 ReportPropertyChanging("TaxPortion");
-                _TaxPortion = StructuralObject.SetValidValue(value);
+                _TaxPortion = StructuralObject.SetValidValue(value, "TaxPortion");
                 ReportPropertyChanged("TaxPortion");
                 OnTaxPortionChanged();
             }
@@ -8697,7 +8731,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLineTotalChanging(value);
                 ReportPropertyChanging("LineTotal");
-                _LineTotal = StructuralObject.SetValidValue(value);
+                _LineTotal = StructuralObject.SetValidValue(value, "LineTotal");
                 ReportPropertyChanged("LineTotal");
                 OnLineTotalChanged();
             }
@@ -8721,7 +8755,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -8745,7 +8779,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityReturnedChanging(value);
                 ReportPropertyChanging("QuantityReturned");
-                _QuantityReturned = StructuralObject.SetValidValue(value);
+                _QuantityReturned = StructuralObject.SetValidValue(value, "QuantityReturned");
                 ReportPropertyChanged("QuantityReturned");
                 OnQuantityReturnedChanged();
             }
@@ -8769,7 +8803,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityShippedChanging(value);
                 ReportPropertyChanging("QuantityShipped");
-                _QuantityShipped = StructuralObject.SetValidValue(value);
+                _QuantityShipped = StructuralObject.SetValidValue(value, "QuantityShipped");
                 ReportPropertyChanged("QuantityShipped");
                 OnQuantityShippedChanged();
             }
@@ -8793,7 +8827,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductNameChanging(value);
                 ReportPropertyChanging("ProductName");
-                _ProductName = StructuralObject.SetValidValue(value, false);
+                _ProductName = StructuralObject.SetValidValue(value, false, "ProductName");
                 ReportPropertyChanged("ProductName");
                 OnProductNameChanged();
             }
@@ -8817,7 +8851,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductShortDescriptionChanging(value);
                 ReportPropertyChanging("ProductShortDescription");
-                _ProductShortDescription = StructuralObject.SetValidValue(value, false);
+                _ProductShortDescription = StructuralObject.SetValidValue(value, false, "ProductShortDescription");
                 ReportPropertyChanged("ProductShortDescription");
                 OnProductShortDescriptionChanged();
             }
@@ -8841,7 +8875,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductSkuChanging(value);
                 ReportPropertyChanging("ProductSku");
-                _ProductSku = StructuralObject.SetValidValue(value, false);
+                _ProductSku = StructuralObject.SetValidValue(value, false, "ProductSku");
                 ReportPropertyChanged("ProductSku");
                 OnProductSkuChanged();
             }
@@ -8865,7 +8899,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusCodeChanging(value);
                 ReportPropertyChanging("StatusCode");
-                _StatusCode = StructuralObject.SetValidValue(value, false);
+                _StatusCode = StructuralObject.SetValidValue(value, false, "StatusCode");
                 ReportPropertyChanged("StatusCode");
                 OnStatusCodeChanged();
             }
@@ -8889,7 +8923,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -8913,7 +8947,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdditionalDiscountChanging(value);
                 ReportPropertyChanging("AdditionalDiscount");
-                _AdditionalDiscount = StructuralObject.SetValidValue(value);
+                _AdditionalDiscount = StructuralObject.SetValidValue(value, "AdditionalDiscount");
                 ReportPropertyChanged("AdditionalDiscount");
                 OnAdditionalDiscountChanged();
             }
@@ -8937,7 +8971,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdminPriceChanging(value);
                 ReportPropertyChanging("AdminPrice");
-                _AdminPrice = StructuralObject.SetValidValue(value);
+                _AdminPrice = StructuralObject.SetValidValue(value, "AdminPrice");
                 ReportPropertyChanged("AdminPrice");
                 OnAdminPriceChanged();
             }
@@ -8947,7 +8981,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnAdminPriceChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -9033,6 +9067,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9075,7 +9110,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9094,7 +9130,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -9119,7 +9155,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLineItemBvinChanging(value);
                 ReportPropertyChanging("LineItemBvin");
-                _LineItemBvin = StructuralObject.SetValidValue(value, false);
+                _LineItemBvin = StructuralObject.SetValidValue(value, false, "LineItemBvin");
                 ReportPropertyChanged("LineItemBvin");
                 OnLineItemBvinChanged();
             }
@@ -9143,7 +9179,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputBvinChanging(value);
                 ReportPropertyChanging("InputBvin");
-                _InputBvin = StructuralObject.SetValidValue(value, false);
+                _InputBvin = StructuralObject.SetValidValue(value, false, "InputBvin");
                 ReportPropertyChanged("InputBvin");
                 OnInputBvinChanged();
             }
@@ -9167,7 +9203,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputNameChanging(value);
                 ReportPropertyChanging("InputName");
-                _InputName = StructuralObject.SetValidValue(value, false);
+                _InputName = StructuralObject.SetValidValue(value, false, "InputName");
                 ReportPropertyChanged("InputName");
                 OnInputNameChanged();
             }
@@ -9191,7 +9227,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputValueChanging(value);
                 ReportPropertyChanging("InputValue");
-                _InputValue = StructuralObject.SetValidValue(value, false);
+                _InputValue = StructuralObject.SetValidValue(value, false, "InputValue");
                 ReportPropertyChanged("InputValue");
                 OnInputValueChanged();
             }
@@ -9215,7 +9251,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputDisplayValueChanging(value);
                 ReportPropertyChanging("InputDisplayValue");
-                _InputDisplayValue = StructuralObject.SetValidValue(value, false);
+                _InputDisplayValue = StructuralObject.SetValidValue(value, false, "InputDisplayValue");
                 ReportPropertyChanged("InputDisplayValue");
                 OnInputDisplayValueChanged();
             }
@@ -9239,7 +9275,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputAdminDisplayValueChanging(value);
                 ReportPropertyChanging("InputAdminDisplayValue");
-                _InputAdminDisplayValue = StructuralObject.SetValidValue(value, false);
+                _InputAdminDisplayValue = StructuralObject.SetValidValue(value, false, "InputAdminDisplayValue");
                 ReportPropertyChanged("InputAdminDisplayValue");
                 OnInputAdminDisplayValueChanged();
             }
@@ -9263,7 +9299,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayToCustomerChanging(value);
                 ReportPropertyChanging("DisplayToCustomer");
-                _DisplayToCustomer = StructuralObject.SetValidValue(value);
+                _DisplayToCustomer = StructuralObject.SetValidValue(value, "DisplayToCustomer");
                 ReportPropertyChanged("DisplayToCustomer");
                 OnDisplayToCustomerChanged();
             }
@@ -9287,7 +9323,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -9311,7 +9347,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9321,7 +9357,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -9363,6 +9399,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9401,7 +9438,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9420,7 +9458,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -9445,7 +9483,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLineItemBvinChanging(value);
                 ReportPropertyChanging("LineItemBvin");
-                _LineItemBvin = StructuralObject.SetValidValue(value, false);
+                _LineItemBvin = StructuralObject.SetValidValue(value, false, "LineItemBvin");
                 ReportPropertyChanged("LineItemBvin");
                 OnLineItemBvinChanged();
             }
@@ -9469,7 +9507,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnModifierBvinChanging(value);
                 ReportPropertyChanging("ModifierBvin");
-                _ModifierBvin = StructuralObject.SetValidValue(value, false);
+                _ModifierBvin = StructuralObject.SetValidValue(value, false, "ModifierBvin");
                 ReportPropertyChanged("ModifierBvin");
                 OnModifierBvinChanged();
             }
@@ -9493,7 +9531,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnModifierNameChanging(value);
                 ReportPropertyChanging("ModifierName");
-                _ModifierName = StructuralObject.SetValidValue(value, false);
+                _ModifierName = StructuralObject.SetValidValue(value, false, "ModifierName");
                 ReportPropertyChanged("ModifierName");
                 OnModifierNameChanged();
             }
@@ -9517,7 +9555,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnModifierValueChanging(value);
                 ReportPropertyChanging("ModifierValue");
-                _ModifierValue = StructuralObject.SetValidValue(value, false);
+                _ModifierValue = StructuralObject.SetValidValue(value, false, "ModifierValue");
                 ReportPropertyChanged("ModifierValue");
                 OnModifierValueChanged();
             }
@@ -9541,7 +9579,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayToCustomerChanging(value);
                 ReportPropertyChanging("DisplayToCustomer");
-                _DisplayToCustomer = StructuralObject.SetValidValue(value);
+                _DisplayToCustomer = StructuralObject.SetValidValue(value, "DisplayToCustomer");
                 ReportPropertyChanged("DisplayToCustomer");
                 OnDisplayToCustomerChanged();
             }
@@ -9565,7 +9603,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -9589,7 +9627,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9599,7 +9637,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -9641,6 +9679,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9673,7 +9712,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9692,7 +9732,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -9717,7 +9757,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemCodeChanging(value);
                 ReportPropertyChanging("SystemCode");
-                _SystemCode = StructuralObject.SetValidValue(value);
+                _SystemCode = StructuralObject.SetValidValue(value, "SystemCode");
                 ReportPropertyChanged("SystemCode");
                 OnSystemCodeChanged();
             }
@@ -9741,7 +9781,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -9765,7 +9805,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -9789,7 +9829,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9799,7 +9839,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -9830,7 +9870,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -9849,7 +9890,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -9874,7 +9915,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -9898,7 +9939,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPrivateChanging(value);
                 ReportPropertyChanging("Private");
-                _Private = StructuralObject.SetValidValue(value);
+                _Private = StructuralObject.SetValidValue(value, "Private");
                 ReportPropertyChanged("Private");
                 OnPrivateChanged();
             }
@@ -9922,7 +9963,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -9932,7 +9973,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -9958,6 +9999,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -9992,7 +10034,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10011,7 +10054,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -10036,7 +10079,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnListIDChanging(value);
                 ReportPropertyChanging("ListID");
-                _ListID = StructuralObject.SetValidValue(value, false);
+                _ListID = StructuralObject.SetValidValue(value, false, "ListID");
                 ReportPropertyChanged("ListID");
                 OnListIDChanged();
             }
@@ -10060,7 +10103,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -10084,7 +10127,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -10108,7 +10151,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -10132,7 +10175,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -10142,7 +10185,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -10184,6 +10227,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -10218,7 +10262,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10237,7 +10282,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -10262,7 +10307,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -10286,7 +10331,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -10310,7 +10355,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -10334,7 +10379,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDropShipEmailTemplateIdChanging(value);
                 ReportPropertyChanging("DropShipEmailTemplateId");
-                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false);
+                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false, "DropShipEmailTemplateId");
                 ReportPropertyChanged("DropShipEmailTemplateId");
                 OnDropShipEmailTemplateIdChanged();
             }
@@ -10358,7 +10403,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -10368,7 +10413,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -10457,7 +10502,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -10474,7 +10520,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -10500,7 +10546,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnBvinChanging(value);
                     ReportPropertyChanging("Bvin");
-                    _Bvin = StructuralObject.SetValidValue(value, false);
+                    _Bvin = StructuralObject.SetValidValue(value, false, "Bvin");
                     ReportPropertyChanged("Bvin");
                     OnBvinChanged();
                 }
@@ -10525,7 +10571,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAffiliateIdChanging(value);
                 ReportPropertyChanging("AffiliateId");
-                _AffiliateId = StructuralObject.SetValidValue(value, false);
+                _AffiliateId = StructuralObject.SetValidValue(value, false, "AffiliateId");
                 ReportPropertyChanged("AffiliateId");
                 OnAffiliateIdChanged();
             }
@@ -10549,7 +10595,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBillingAddressChanging(value);
                 ReportPropertyChanging("BillingAddress");
-                _BillingAddress = StructuralObject.SetValidValue(value, false);
+                _BillingAddress = StructuralObject.SetValidValue(value, false, "BillingAddress");
                 ReportPropertyChanged("BillingAddress");
                 OnBillingAddressChanged();
             }
@@ -10573,7 +10619,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -10597,7 +10643,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFraudScoreChanging(value);
                 ReportPropertyChanging("FraudScore");
-                _FraudScore = StructuralObject.SetValidValue(value);
+                _FraudScore = StructuralObject.SetValidValue(value, "FraudScore");
                 ReportPropertyChanged("FraudScore");
                 OnFraudScoreChanged();
             }
@@ -10621,7 +10667,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGrandTotalChanging(value);
                 ReportPropertyChanging("GrandTotal");
-                _GrandTotal = StructuralObject.SetValidValue(value);
+                _GrandTotal = StructuralObject.SetValidValue(value, "GrandTotal");
                 ReportPropertyChanged("GrandTotal");
                 OnGrandTotalChanged();
             }
@@ -10645,7 +10691,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnHandlingTotalChanging(value);
                 ReportPropertyChanging("HandlingTotal");
-                _HandlingTotal = StructuralObject.SetValidValue(value);
+                _HandlingTotal = StructuralObject.SetValidValue(value, "HandlingTotal");
                 ReportPropertyChanged("HandlingTotal");
                 OnHandlingTotalChanged();
             }
@@ -10669,7 +10715,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInstructionsChanging(value);
                 ReportPropertyChanging("Instructions");
-                _Instructions = StructuralObject.SetValidValue(value, false);
+                _Instructions = StructuralObject.SetValidValue(value, false, "Instructions");
                 ReportPropertyChanged("Instructions");
                 OnInstructionsChanged();
             }
@@ -10693,7 +10739,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnIsPlacedChanging(value);
                 ReportPropertyChanging("IsPlaced");
-                _IsPlaced = StructuralObject.SetValidValue(value);
+                _IsPlaced = StructuralObject.SetValidValue(value, "IsPlaced");
                 ReportPropertyChanged("IsPlaced");
                 OnIsPlacedChanged();
             }
@@ -10717,7 +10763,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -10741,7 +10787,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderDiscountsChanging(value);
                 ReportPropertyChanging("OrderDiscounts");
-                _OrderDiscounts = StructuralObject.SetValidValue(value);
+                _OrderDiscounts = StructuralObject.SetValidValue(value, "OrderDiscounts");
                 ReportPropertyChanged("OrderDiscounts");
                 OnOrderDiscountsChanged();
             }
@@ -10765,7 +10811,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderNumberChanging(value);
                 ReportPropertyChanging("OrderNumber");
-                _OrderNumber = StructuralObject.SetValidValue(value, false);
+                _OrderNumber = StructuralObject.SetValidValue(value, false, "OrderNumber");
                 ReportPropertyChanged("OrderNumber");
                 OnOrderNumberChanged();
             }
@@ -10789,7 +10835,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPaymentStatusChanging(value);
                 ReportPropertyChanging("PaymentStatus");
-                _PaymentStatus = StructuralObject.SetValidValue(value);
+                _PaymentStatus = StructuralObject.SetValidValue(value, "PaymentStatus");
                 ReportPropertyChanged("PaymentStatus");
                 OnPaymentStatusChanged();
             }
@@ -10813,7 +10859,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingAddressChanging(value);
                 ReportPropertyChanging("ShippingAddress");
-                _ShippingAddress = StructuralObject.SetValidValue(value, false);
+                _ShippingAddress = StructuralObject.SetValidValue(value, false, "ShippingAddress");
                 ReportPropertyChanged("ShippingAddress");
                 OnShippingAddressChanged();
             }
@@ -10837,7 +10883,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingDiscountsChanging(value);
                 ReportPropertyChanging("ShippingDiscounts");
-                _ShippingDiscounts = StructuralObject.SetValidValue(value);
+                _ShippingDiscounts = StructuralObject.SetValidValue(value, "ShippingDiscounts");
                 ReportPropertyChanged("ShippingDiscounts");
                 OnShippingDiscountsChanged();
             }
@@ -10861,7 +10907,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingMethodIdChanging(value);
                 ReportPropertyChanging("ShippingMethodId");
-                _ShippingMethodId = StructuralObject.SetValidValue(value, false);
+                _ShippingMethodId = StructuralObject.SetValidValue(value, false, "ShippingMethodId");
                 ReportPropertyChanged("ShippingMethodId");
                 OnShippingMethodIdChanged();
             }
@@ -10885,7 +10931,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingMethodDisplayNameChanging(value);
                 ReportPropertyChanging("ShippingMethodDisplayName");
-                _ShippingMethodDisplayName = StructuralObject.SetValidValue(value, false);
+                _ShippingMethodDisplayName = StructuralObject.SetValidValue(value, false, "ShippingMethodDisplayName");
                 ReportPropertyChanged("ShippingMethodDisplayName");
                 OnShippingMethodDisplayNameChanged();
             }
@@ -10909,7 +10955,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -10933,7 +10979,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingProviderServiceCodeChanging(value);
                 ReportPropertyChanging("ShippingProviderServiceCode");
-                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false, "ShippingProviderServiceCode");
                 ReportPropertyChanged("ShippingProviderServiceCode");
                 OnShippingProviderServiceCodeChanged();
             }
@@ -10957,7 +11003,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingStatusChanging(value);
                 ReportPropertyChanging("ShippingStatus");
-                _ShippingStatus = StructuralObject.SetValidValue(value);
+                _ShippingStatus = StructuralObject.SetValidValue(value, "ShippingStatus");
                 ReportPropertyChanged("ShippingStatus");
                 OnShippingStatusChanged();
             }
@@ -10981,7 +11027,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingTotalChanging(value);
                 ReportPropertyChanging("ShippingTotal");
-                _ShippingTotal = StructuralObject.SetValidValue(value);
+                _ShippingTotal = StructuralObject.SetValidValue(value, "ShippingTotal");
                 ReportPropertyChanged("ShippingTotal");
                 OnShippingTotalChanged();
             }
@@ -11005,7 +11051,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSubTotalChanging(value);
                 ReportPropertyChanging("SubTotal");
-                _SubTotal = StructuralObject.SetValidValue(value);
+                _SubTotal = StructuralObject.SetValidValue(value, "SubTotal");
                 ReportPropertyChanged("SubTotal");
                 OnSubTotalChanged();
             }
@@ -11029,7 +11075,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxTotalChanging(value);
                 ReportPropertyChanging("TaxTotal");
-                _TaxTotal = StructuralObject.SetValidValue(value);
+                _TaxTotal = StructuralObject.SetValidValue(value, "TaxTotal");
                 ReportPropertyChanged("TaxTotal");
                 OnTaxTotalChanged();
             }
@@ -11053,7 +11099,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxTotal2Changing(value);
                 ReportPropertyChanging("TaxTotal2");
-                _TaxTotal2 = StructuralObject.SetValidValue(value);
+                _TaxTotal2 = StructuralObject.SetValidValue(value, "TaxTotal2");
                 ReportPropertyChanged("TaxTotal2");
                 OnTaxTotal2Changed();
             }
@@ -11077,7 +11123,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTimeOfOrderChanging(value);
                 ReportPropertyChanging("TimeOfOrder");
-                _TimeOfOrder = StructuralObject.SetValidValue(value);
+                _TimeOfOrder = StructuralObject.SetValidValue(value, "TimeOfOrder");
                 ReportPropertyChanged("TimeOfOrder");
                 OnTimeOfOrderChanged();
             }
@@ -11101,7 +11147,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserEmailChanging(value);
                 ReportPropertyChanging("UserEmail");
-                _UserEmail = StructuralObject.SetValidValue(value, false);
+                _UserEmail = StructuralObject.SetValidValue(value, false, "UserEmail");
                 ReportPropertyChanged("UserEmail");
                 OnUserEmailChanged();
             }
@@ -11125,7 +11171,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -11149,7 +11195,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusCodeChanging(value);
                 ReportPropertyChanging("StatusCode");
-                _StatusCode = StructuralObject.SetValidValue(value, false);
+                _StatusCode = StructuralObject.SetValidValue(value, false, "StatusCode");
                 ReportPropertyChanged("StatusCode");
                 OnStatusCodeChanged();
             }
@@ -11173,7 +11219,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -11197,7 +11243,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGiftCertificatesChanging(value);
                 ReportPropertyChanging("GiftCertificates");
-                _GiftCertificates = StructuralObject.SetValidValue(value, false);
+                _GiftCertificates = StructuralObject.SetValidValue(value, false, "GiftCertificates");
                 ReportPropertyChanged("GiftCertificates");
                 OnGiftCertificatesChanged();
             }
@@ -11221,7 +11267,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastProductAddedChanging(value);
                 ReportPropertyChanging("LastProductAdded");
-                _LastProductAdded = StructuralObject.SetValidValue(value, false);
+                _LastProductAdded = StructuralObject.SetValidValue(value, false, "LastProductAdded");
                 ReportPropertyChanged("LastProductAdded");
                 OnLastProductAddedChanged();
             }
@@ -11245,7 +11291,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnThirdPartyOrderIdChanging(value);
                 ReportPropertyChanging("ThirdPartyOrderId");
-                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false);
+                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false, "ThirdPartyOrderId");
                 ReportPropertyChanged("ThirdPartyOrderId");
                 OnThirdPartyOrderIdChanged();
             }
@@ -11255,7 +11301,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnThirdPartyOrderIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -11369,6 +11415,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11399,7 +11446,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11418,7 +11466,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11443,7 +11491,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -11467,7 +11515,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCouponCodeChanging(value);
                 ReportPropertyChanging("CouponCode");
-                _CouponCode = StructuralObject.SetValidValue(value, false);
+                _CouponCode = StructuralObject.SetValidValue(value, false, "CouponCode");
                 ReportPropertyChanged("CouponCode");
                 OnCouponCodeChanged();
             }
@@ -11491,7 +11539,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -11501,7 +11549,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnOrderBvinChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -11543,6 +11591,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11577,7 +11626,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11596,7 +11646,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11621,7 +11671,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderIdChanging(value);
                 ReportPropertyChanging("OrderId");
-                _OrderId = StructuralObject.SetValidValue(value, false);
+                _OrderId = StructuralObject.SetValidValue(value, false, "OrderId");
                 ReportPropertyChanged("OrderId");
                 OnOrderIdChanged();
             }
@@ -11645,7 +11695,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAuditDateChanging(value);
                 ReportPropertyChanging("AuditDate");
-                _AuditDate = StructuralObject.SetValidValue(value);
+                _AuditDate = StructuralObject.SetValidValue(value, "AuditDate");
                 ReportPropertyChanged("AuditDate");
                 OnAuditDateChanged();
             }
@@ -11669,7 +11719,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNoteChanging(value);
                 ReportPropertyChanging("Note");
-                _Note = StructuralObject.SetValidValue(value, false);
+                _Note = StructuralObject.SetValidValue(value, false, "Note");
                 ReportPropertyChanged("Note");
                 OnNoteChanged();
             }
@@ -11693,7 +11743,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNoteTypeChanging(value);
                 ReportPropertyChanging("NoteType");
-                _NoteType = StructuralObject.SetValidValue(value);
+                _NoteType = StructuralObject.SetValidValue(value, "NoteType");
                 ReportPropertyChanged("NoteType");
                 OnNoteTypeChanged();
             }
@@ -11717,7 +11767,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -11727,7 +11777,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -11769,6 +11819,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -11829,7 +11880,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -11848,7 +11900,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -11873,7 +11925,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -11897,7 +11949,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWidthChanging(value);
                 ReportPropertyChanging("Width");
-                _Width = StructuralObject.SetValidValue(value);
+                _Width = StructuralObject.SetValidValue(value, "Width");
                 ReportPropertyChanged("Width");
                 OnWidthChanged();
             }
@@ -11921,7 +11973,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnHeightChanging(value);
                 ReportPropertyChanging("Height");
-                _Height = StructuralObject.SetValidValue(value);
+                _Height = StructuralObject.SetValidValue(value, "Height");
                 ReportPropertyChanged("Height");
                 OnHeightChanged();
             }
@@ -11945,7 +11997,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLengthChanging(value);
                 ReportPropertyChanging("Length");
-                _Length = StructuralObject.SetValidValue(value);
+                _Length = StructuralObject.SetValidValue(value, "Length");
                 ReportPropertyChanged("Length");
                 OnLengthChanged();
             }
@@ -11969,7 +12021,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSizeUnitsChanging(value);
                 ReportPropertyChanging("SizeUnits");
-                _SizeUnits = StructuralObject.SetValidValue(value);
+                _SizeUnits = StructuralObject.SetValidValue(value, "SizeUnits");
                 ReportPropertyChanged("SizeUnits");
                 OnSizeUnitsChanged();
             }
@@ -11993,7 +12045,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWeightChanging(value);
                 ReportPropertyChanging("Weight");
-                _Weight = StructuralObject.SetValidValue(value);
+                _Weight = StructuralObject.SetValidValue(value, "Weight");
                 ReportPropertyChanged("Weight");
                 OnWeightChanged();
             }
@@ -12017,7 +12069,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWeightUnitsChanging(value);
                 ReportPropertyChanging("WeightUnits");
-                _WeightUnits = StructuralObject.SetValidValue(value);
+                _WeightUnits = StructuralObject.SetValidValue(value, "WeightUnits");
                 ReportPropertyChanged("WeightUnits");
                 OnWeightUnitsChanged();
             }
@@ -12041,7 +12093,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderIdChanging(value);
                 ReportPropertyChanging("OrderId");
-                _OrderId = StructuralObject.SetValidValue(value, false);
+                _OrderId = StructuralObject.SetValidValue(value, false, "OrderId");
                 ReportPropertyChanged("OrderId");
                 OnOrderIdChanged();
             }
@@ -12065,7 +12117,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -12089,7 +12141,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingProviderServiceCodeChanging(value);
                 ReportPropertyChanging("ShippingProviderServiceCode");
-                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderServiceCode = StructuralObject.SetValidValue(value, false, "ShippingProviderServiceCode");
                 ReportPropertyChanged("ShippingProviderServiceCode");
                 OnShippingProviderServiceCodeChanged();
             }
@@ -12113,7 +12165,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnHasShippedChanging(value);
                 ReportPropertyChanging("HasShipped");
-                _HasShipped = StructuralObject.SetValidValue(value);
+                _HasShipped = StructuralObject.SetValidValue(value, "HasShipped");
                 ReportPropertyChanged("HasShipped");
                 OnHasShippedChanged();
             }
@@ -12137,7 +12189,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTrackingNumberChanging(value);
                 ReportPropertyChanging("TrackingNumber");
-                _TrackingNumber = StructuralObject.SetValidValue(value, false);
+                _TrackingNumber = StructuralObject.SetValidValue(value, false, "TrackingNumber");
                 ReportPropertyChanged("TrackingNumber");
                 OnTrackingNumberChanged();
             }
@@ -12161,7 +12213,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShipDateChanging(value);
                 ReportPropertyChanging("ShipDate");
-                _ShipDate = StructuralObject.SetValidValue(value);
+                _ShipDate = StructuralObject.SetValidValue(value, "ShipDate");
                 ReportPropertyChanged("ShipDate");
                 OnShipDateChanged();
             }
@@ -12185,7 +12237,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTimeInTransitChanging(value);
                 ReportPropertyChanging("TimeInTransit");
-                _TimeInTransit = StructuralObject.SetValidValue(value);
+                _TimeInTransit = StructuralObject.SetValidValue(value, "TimeInTransit");
                 ReportPropertyChanged("TimeInTransit");
                 OnTimeInTransitChanged();
             }
@@ -12209,7 +12261,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEstimatedShippingCostChanging(value);
                 ReportPropertyChanging("EstimatedShippingCost");
-                _EstimatedShippingCost = StructuralObject.SetValidValue(value);
+                _EstimatedShippingCost = StructuralObject.SetValidValue(value, "EstimatedShippingCost");
                 ReportPropertyChanged("EstimatedShippingCost");
                 OnEstimatedShippingCostChanged();
             }
@@ -12233,7 +12285,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnItemsChanging(value);
                 ReportPropertyChanging("Items");
-                _Items = StructuralObject.SetValidValue(value, false);
+                _Items = StructuralObject.SetValidValue(value, false, "Items");
                 ReportPropertyChanged("Items");
                 OnItemsChanged();
             }
@@ -12257,7 +12309,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -12281,7 +12333,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -12291,7 +12343,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnCustomPropertiesChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -12362,7 +12414,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -12381,7 +12434,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -12406,7 +12459,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnlastUpdatedChanging(value);
                 ReportPropertyChanging("lastUpdated");
-                _lastUpdated = StructuralObject.SetValidValue(value);
+                _lastUpdated = StructuralObject.SetValidValue(value, "lastUpdated");
                 ReportPropertyChanged("lastUpdated");
                 OnlastUpdatedChanged();
             }
@@ -12430,7 +12483,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAmountAuthorizedChanging(value);
                 ReportPropertyChanging("AmountAuthorized");
-                _AmountAuthorized = StructuralObject.SetValidValue(value);
+                _AmountAuthorized = StructuralObject.SetValidValue(value, "AmountAuthorized");
                 ReportPropertyChanged("AmountAuthorized");
                 OnAmountAuthorizedChanged();
             }
@@ -12454,7 +12507,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAmountChargedChanging(value);
                 ReportPropertyChanging("AmountCharged");
-                _AmountCharged = StructuralObject.SetValidValue(value);
+                _AmountCharged = StructuralObject.SetValidValue(value, "AmountCharged");
                 ReportPropertyChanged("AmountCharged");
                 OnAmountChargedChanged();
             }
@@ -12478,7 +12531,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAmountRefundedChanging(value);
                 ReportPropertyChanging("AmountRefunded");
-                _AmountRefunded = StructuralObject.SetValidValue(value);
+                _AmountRefunded = StructuralObject.SetValidValue(value, "AmountRefunded");
                 ReportPropertyChanged("AmountRefunded");
                 OnAmountRefundedChanged();
             }
@@ -12502,7 +12555,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnauditDateChanging(value);
                 ReportPropertyChanging("auditDate");
-                _auditDate = StructuralObject.SetValidValue(value);
+                _auditDate = StructuralObject.SetValidValue(value, "auditDate");
                 ReportPropertyChanged("auditDate");
                 OnauditDateChanged();
             }
@@ -12526,7 +12579,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncheckNumberChanging(value);
                 ReportPropertyChanging("checkNumber");
-                _checkNumber = StructuralObject.SetValidValue(value, false);
+                _checkNumber = StructuralObject.SetValidValue(value, false, "checkNumber");
                 ReportPropertyChanged("checkNumber");
                 OncheckNumberChanged();
             }
@@ -12550,7 +12603,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncreditCardExpMonthChanging(value);
                 ReportPropertyChanging("creditCardExpMonth");
-                _creditCardExpMonth = StructuralObject.SetValidValue(value);
+                _creditCardExpMonth = StructuralObject.SetValidValue(value, "creditCardExpMonth");
                 ReportPropertyChanged("creditCardExpMonth");
                 OncreditCardExpMonthChanged();
             }
@@ -12574,7 +12627,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncreditCardExpYearChanging(value);
                 ReportPropertyChanging("creditCardExpYear");
-                _creditCardExpYear = StructuralObject.SetValidValue(value);
+                _creditCardExpYear = StructuralObject.SetValidValue(value, "creditCardExpYear");
                 ReportPropertyChanged("creditCardExpYear");
                 OncreditCardExpYearChanged();
             }
@@ -12598,7 +12651,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncreditCardHolderChanging(value);
                 ReportPropertyChanging("creditCardHolder");
-                _creditCardHolder = StructuralObject.SetValidValue(value, false);
+                _creditCardHolder = StructuralObject.SetValidValue(value, false, "creditCardHolder");
                 ReportPropertyChanged("creditCardHolder");
                 OncreditCardHolderChanged();
             }
@@ -12622,7 +12675,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncreditCardNumberChanging(value);
                 ReportPropertyChanging("creditCardNumber");
-                _creditCardNumber = StructuralObject.SetValidValue(value, false);
+                _creditCardNumber = StructuralObject.SetValidValue(value, false, "creditCardNumber");
                 ReportPropertyChanged("creditCardNumber");
                 OncreditCardNumberChanged();
             }
@@ -12646,7 +12699,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OncreditCardTypeChanging(value);
                 ReportPropertyChanging("creditCardType");
-                _creditCardType = StructuralObject.SetValidValue(value, false);
+                _creditCardType = StructuralObject.SetValidValue(value, false, "creditCardType");
                 ReportPropertyChanged("creditCardType");
                 OncreditCardTypeChanged();
             }
@@ -12670,7 +12723,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OngiftCertificateNumberChanging(value);
                 ReportPropertyChanging("giftCertificateNumber");
-                _giftCertificateNumber = StructuralObject.SetValidValue(value, false);
+                _giftCertificateNumber = StructuralObject.SetValidValue(value, false, "giftCertificateNumber");
                 ReportPropertyChanged("giftCertificateNumber");
                 OngiftCertificateNumberChanged();
             }
@@ -12694,7 +12747,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnnoteChanging(value);
                 ReportPropertyChanging("note");
-                _note = StructuralObject.SetValidValue(value, false);
+                _note = StructuralObject.SetValidValue(value, false, "note");
                 ReportPropertyChanged("note");
                 OnnoteChanged();
             }
@@ -12718,7 +12771,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnorderIDChanging(value);
                 ReportPropertyChanging("orderID");
-                _orderID = StructuralObject.SetValidValue(value, false);
+                _orderID = StructuralObject.SetValidValue(value, false, "orderID");
                 ReportPropertyChanged("orderID");
                 OnorderIDChanged();
             }
@@ -12742,7 +12795,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnpaymentMethodIdChanging(value);
                 ReportPropertyChanging("paymentMethodId");
-                _paymentMethodId = StructuralObject.SetValidValue(value, false);
+                _paymentMethodId = StructuralObject.SetValidValue(value, false, "paymentMethodId");
                 ReportPropertyChanged("paymentMethodId");
                 OnpaymentMethodIdChanged();
             }
@@ -12766,7 +12819,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPaymentMethodNameChanging(value);
                 ReportPropertyChanging("PaymentMethodName");
-                _PaymentMethodName = StructuralObject.SetValidValue(value, false);
+                _PaymentMethodName = StructuralObject.SetValidValue(value, false, "PaymentMethodName");
                 ReportPropertyChanged("PaymentMethodName");
                 OnPaymentMethodNameChanged();
             }
@@ -12790,7 +12843,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnpurchaseOrderNumberChanging(value);
                 ReportPropertyChanging("purchaseOrderNumber");
-                _purchaseOrderNumber = StructuralObject.SetValidValue(value, false);
+                _purchaseOrderNumber = StructuralObject.SetValidValue(value, false, "purchaseOrderNumber");
                 ReportPropertyChanged("purchaseOrderNumber");
                 OnpurchaseOrderNumberChanged();
             }
@@ -12814,7 +12867,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OntransactionReferenceNumberChanging(value);
                 ReportPropertyChanging("transactionReferenceNumber");
-                _transactionReferenceNumber = StructuralObject.SetValidValue(value, false);
+                _transactionReferenceNumber = StructuralObject.SetValidValue(value, false, "transactionReferenceNumber");
                 ReportPropertyChanged("transactionReferenceNumber");
                 OntransactionReferenceNumberChanged();
             }
@@ -12838,7 +12891,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OntransactionResponseCodeChanging(value);
                 ReportPropertyChanging("transactionResponseCode");
-                _transactionResponseCode = StructuralObject.SetValidValue(value, false);
+                _transactionResponseCode = StructuralObject.SetValidValue(value, false, "transactionResponseCode");
                 ReportPropertyChanged("transactionResponseCode");
                 OntransactionResponseCodeChanged();
             }
@@ -12862,7 +12915,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -12886,7 +12939,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, false);
+                _CustomProperties = StructuralObject.SetValidValue(value, false, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -12910,7 +12963,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnThirdPartyOrderIdChanging(value);
                 ReportPropertyChanging("ThirdPartyOrderId");
-                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false);
+                _ThirdPartyOrderId = StructuralObject.SetValidValue(value, false, "ThirdPartyOrderId");
                 ReportPropertyChanged("ThirdPartyOrderId");
                 OnThirdPartyOrderIdChanged();
             }
@@ -12934,7 +12987,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnThirdPartyTransIdChanging(value);
                 ReportPropertyChanging("ThirdPartyTransId");
-                _ThirdPartyTransId = StructuralObject.SetValidValue(value, false);
+                _ThirdPartyTransId = StructuralObject.SetValidValue(value, false, "ThirdPartyTransId");
                 ReportPropertyChanged("ThirdPartyTransId");
                 OnThirdPartyTransIdChanged();
             }
@@ -12944,7 +12997,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnThirdPartyTransIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -12986,6 +13039,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13018,7 +13072,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13037,7 +13092,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13062,7 +13117,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemCodeChanging(value);
                 ReportPropertyChanging("SystemCode");
-                _SystemCode = StructuralObject.SetValidValue(value);
+                _SystemCode = StructuralObject.SetValidValue(value, "SystemCode");
                 ReportPropertyChanged("SystemCode");
                 OnSystemCodeChanged();
             }
@@ -13086,7 +13141,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusNameChanging(value);
                 ReportPropertyChanging("StatusName");
-                _StatusName = StructuralObject.SetValidValue(value, false);
+                _StatusName = StructuralObject.SetValidValue(value, false, "StatusName");
                 ReportPropertyChanged("StatusName");
                 OnStatusNameChanged();
             }
@@ -13110,7 +13165,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -13134,7 +13189,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13144,7 +13199,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -13175,7 +13230,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13194,7 +13250,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13219,7 +13275,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTitleChanging(value);
                 ReportPropertyChanging("Title");
-                _Title = StructuralObject.SetValidValue(value, false);
+                _Title = StructuralObject.SetValidValue(value, false, "Title");
                 ReportPropertyChanged("Title");
                 OnTitleChanged();
             }
@@ -13243,7 +13299,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemPolicyChanging(value);
                 ReportPropertyChanging("SystemPolicy");
-                _SystemPolicy = StructuralObject.SetValidValue(value);
+                _SystemPolicy = StructuralObject.SetValidValue(value, "SystemPolicy");
                 ReportPropertyChanged("SystemPolicy");
                 OnSystemPolicyChanged();
             }
@@ -13267,7 +13323,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13277,7 +13333,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -13303,6 +13359,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13339,7 +13396,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13358,7 +13416,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13383,7 +13441,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -13407,7 +13465,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -13431,7 +13489,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -13455,7 +13513,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13479,7 +13537,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPolicyIDChanging(value);
                 ReportPropertyChanging("PolicyID");
-                _PolicyID = StructuralObject.SetValidValue(value, false);
+                _PolicyID = StructuralObject.SetValidValue(value, false, "PolicyID");
                 ReportPropertyChanged("PolicyID");
                 OnPolicyIDChanged();
             }
@@ -13503,7 +13561,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionPreTransformChanging(value);
                 ReportPropertyChanging("DescriptionPreTransform");
-                _DescriptionPreTransform = StructuralObject.SetValidValue(value, false);
+                _DescriptionPreTransform = StructuralObject.SetValidValue(value, false, "DescriptionPreTransform");
                 ReportPropertyChanged("DescriptionPreTransform");
                 OnDescriptionPreTransformChanged();
             }
@@ -13513,7 +13571,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnDescriptionPreTransformChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -13555,6 +13613,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -13587,7 +13646,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13606,7 +13666,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13631,7 +13691,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -13655,7 +13715,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPricingTypeChanging(value);
                 ReportPropertyChanging("PricingType");
-                _PricingType = StructuralObject.SetValidValue(value);
+                _PricingType = StructuralObject.SetValidValue(value, "PricingType");
                 ReportPropertyChanged("PricingType");
                 OnPricingTypeChanged();
             }
@@ -13679,7 +13739,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdjustmentAmountChanging(value);
                 ReportPropertyChanging("AdjustmentAmount");
-                _AdjustmentAmount = StructuralObject.SetValidValue(value);
+                _AdjustmentAmount = StructuralObject.SetValidValue(value, "AdjustmentAmount");
                 ReportPropertyChanged("AdjustmentAmount");
                 OnAdjustmentAmountChanged();
             }
@@ -13703,7 +13763,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13713,7 +13773,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -13748,7 +13808,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -13767,7 +13828,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -13792,7 +13853,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBodyChanging(value);
                 ReportPropertyChanging("Body");
-                _Body = StructuralObject.SetValidValue(value, false);
+                _Body = StructuralObject.SetValidValue(value, false, "Body");
                 ReportPropertyChanged("Body");
                 OnBodyChanged();
             }
@@ -13816,7 +13877,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -13840,7 +13901,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRepeatingSectionChanging(value);
                 ReportPropertyChanging("RepeatingSection");
-                _RepeatingSection = StructuralObject.SetValidValue(value, false);
+                _RepeatingSection = StructuralObject.SetValidValue(value, false, "RepeatingSection");
                 ReportPropertyChanged("RepeatingSection");
                 OnRepeatingSectionChanged();
             }
@@ -13864,7 +13925,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemTemplateChanging(value);
                 ReportPropertyChanging("SystemTemplate");
-                _SystemTemplate = StructuralObject.SetValidValue(value);
+                _SystemTemplate = StructuralObject.SetValidValue(value, "SystemTemplate");
                 ReportPropertyChanged("SystemTemplate");
                 OnSystemTemplateChanged();
             }
@@ -13888,7 +13949,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -13898,7 +13959,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -14015,7 +14076,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -14032,7 +14094,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -14058,7 +14120,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -14083,7 +14145,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSKUChanging(value);
                 ReportPropertyChanging("SKU");
-                _SKU = StructuralObject.SetValidValue(value, false);
+                _SKU = StructuralObject.SetValidValue(value, false, "SKU");
                 ReportPropertyChanged("SKU");
                 OnSKUChanged();
             }
@@ -14107,7 +14169,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductNameChanging(value);
                 ReportPropertyChanging("ProductName");
-                _ProductName = StructuralObject.SetValidValue(value, false);
+                _ProductName = StructuralObject.SetValidValue(value, false, "ProductName");
                 ReportPropertyChanged("ProductName");
                 OnProductNameChanged();
             }
@@ -14131,7 +14193,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductTypeIdChanging(value);
                 ReportPropertyChanging("ProductTypeId");
-                _ProductTypeId = StructuralObject.SetValidValue(value, false);
+                _ProductTypeId = StructuralObject.SetValidValue(value, false, "ProductTypeId");
                 ReportPropertyChanged("ProductTypeId");
                 OnProductTypeIdChanged();
             }
@@ -14155,7 +14217,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnListPriceChanging(value);
                 ReportPropertyChanging("ListPrice");
-                _ListPrice = StructuralObject.SetValidValue(value);
+                _ListPrice = StructuralObject.SetValidValue(value, "ListPrice");
                 ReportPropertyChanged("ListPrice");
                 OnListPriceChanged();
             }
@@ -14179,7 +14241,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSitePriceChanging(value);
                 ReportPropertyChanging("SitePrice");
-                _SitePrice = StructuralObject.SetValidValue(value);
+                _SitePrice = StructuralObject.SetValidValue(value, "SitePrice");
                 ReportPropertyChanged("SitePrice");
                 OnSitePriceChanged();
             }
@@ -14203,7 +14265,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSiteCostChanging(value);
                 ReportPropertyChanging("SiteCost");
-                _SiteCost = StructuralObject.SetValidValue(value);
+                _SiteCost = StructuralObject.SetValidValue(value, "SiteCost");
                 ReportPropertyChanged("SiteCost");
                 OnSiteCostChanged();
             }
@@ -14227,7 +14289,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaKeywordsChanging(value);
                 ReportPropertyChanging("MetaKeywords");
-                _MetaKeywords = StructuralObject.SetValidValue(value, false);
+                _MetaKeywords = StructuralObject.SetValidValue(value, false, "MetaKeywords");
                 ReportPropertyChanged("MetaKeywords");
                 OnMetaKeywordsChanged();
             }
@@ -14251,7 +14313,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaDescriptionChanging(value);
                 ReportPropertyChanging("MetaDescription");
-                _MetaDescription = StructuralObject.SetValidValue(value, false);
+                _MetaDescription = StructuralObject.SetValidValue(value, false, "MetaDescription");
                 ReportPropertyChanged("MetaDescription");
                 OnMetaDescriptionChanged();
             }
@@ -14275,7 +14337,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMetaTitleChanging(value);
                 ReportPropertyChanging("MetaTitle");
-                _MetaTitle = StructuralObject.SetValidValue(value, false);
+                _MetaTitle = StructuralObject.SetValidValue(value, false, "MetaTitle");
                 ReportPropertyChanged("MetaTitle");
                 OnMetaTitleChanged();
             }
@@ -14299,7 +14361,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxExemptChanging(value);
                 ReportPropertyChanging("TaxExempt");
-                _TaxExempt = StructuralObject.SetValidValue(value);
+                _TaxExempt = StructuralObject.SetValidValue(value, "TaxExempt");
                 ReportPropertyChanged("TaxExempt");
                 OnTaxExemptChanged();
             }
@@ -14323,7 +14385,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxClassChanging(value);
                 ReportPropertyChanging("TaxClass");
-                _TaxClass = StructuralObject.SetValidValue(value, false);
+                _TaxClass = StructuralObject.SetValidValue(value, false, "TaxClass");
                 ReportPropertyChanged("TaxClass");
                 OnTaxClassChanged();
             }
@@ -14347,7 +14409,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNonShippingChanging(value);
                 ReportPropertyChanging("NonShipping");
-                _NonShipping = StructuralObject.SetValidValue(value);
+                _NonShipping = StructuralObject.SetValidValue(value, "NonShipping");
                 ReportPropertyChanged("NonShipping");
                 OnNonShippingChanged();
             }
@@ -14371,7 +14433,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShipSeparatelyChanging(value);
                 ReportPropertyChanging("ShipSeparately");
-                _ShipSeparately = StructuralObject.SetValidValue(value);
+                _ShipSeparately = StructuralObject.SetValidValue(value, "ShipSeparately");
                 ReportPropertyChanged("ShipSeparately");
                 OnShipSeparatelyChanged();
             }
@@ -14395,7 +14457,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingModeChanging(value);
                 ReportPropertyChanging("ShippingMode");
-                _ShippingMode = StructuralObject.SetValidValue(value);
+                _ShippingMode = StructuralObject.SetValidValue(value, "ShippingMode");
                 ReportPropertyChanged("ShippingMode");
                 OnShippingModeChanged();
             }
@@ -14419,7 +14481,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingWeightChanging(value);
                 ReportPropertyChanging("ShippingWeight");
-                _ShippingWeight = StructuralObject.SetValidValue(value);
+                _ShippingWeight = StructuralObject.SetValidValue(value, "ShippingWeight");
                 ReportPropertyChanged("ShippingWeight");
                 OnShippingWeightChanged();
             }
@@ -14443,7 +14505,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingLengthChanging(value);
                 ReportPropertyChanging("ShippingLength");
-                _ShippingLength = StructuralObject.SetValidValue(value);
+                _ShippingLength = StructuralObject.SetValidValue(value, "ShippingLength");
                 ReportPropertyChanged("ShippingLength");
                 OnShippingLengthChanged();
             }
@@ -14467,7 +14529,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingWidthChanging(value);
                 ReportPropertyChanging("ShippingWidth");
-                _ShippingWidth = StructuralObject.SetValidValue(value);
+                _ShippingWidth = StructuralObject.SetValidValue(value, "ShippingWidth");
                 ReportPropertyChanged("ShippingWidth");
                 OnShippingWidthChanged();
             }
@@ -14491,7 +14553,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingHeightChanging(value);
                 ReportPropertyChanging("ShippingHeight");
-                _ShippingHeight = StructuralObject.SetValidValue(value);
+                _ShippingHeight = StructuralObject.SetValidValue(value, "ShippingHeight");
                 ReportPropertyChanged("ShippingHeight");
                 OnShippingHeightChanged();
             }
@@ -14515,7 +14577,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -14539,7 +14601,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnImageFileSmallChanging(value);
                 ReportPropertyChanging("ImageFileSmall");
-                _ImageFileSmall = StructuralObject.SetValidValue(value, false);
+                _ImageFileSmall = StructuralObject.SetValidValue(value, false, "ImageFileSmall");
                 ReportPropertyChanged("ImageFileSmall");
                 OnImageFileSmallChanged();
             }
@@ -14563,7 +14625,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnImageFileMediumChanging(value);
                 ReportPropertyChanging("ImageFileMedium");
-                _ImageFileMedium = StructuralObject.SetValidValue(value, false);
+                _ImageFileMedium = StructuralObject.SetValidValue(value, false, "ImageFileMedium");
                 ReportPropertyChanged("ImageFileMedium");
                 OnImageFileMediumChanged();
             }
@@ -14587,7 +14649,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCreationDateChanging(value);
                 ReportPropertyChanging("CreationDate");
-                _CreationDate = StructuralObject.SetValidValue(value);
+                _CreationDate = StructuralObject.SetValidValue(value, "CreationDate");
                 ReportPropertyChanged("CreationDate");
                 OnCreationDateChanged();
             }
@@ -14611,7 +14673,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMinimumQtyChanging(value);
                 ReportPropertyChanging("MinimumQty");
-                _MinimumQty = StructuralObject.SetValidValue(value);
+                _MinimumQty = StructuralObject.SetValidValue(value, "MinimumQty");
                 ReportPropertyChanged("MinimumQty");
                 OnMinimumQtyChanged();
             }
@@ -14635,7 +14697,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnParentIDChanging(value);
                 ReportPropertyChanging("ParentID");
-                _ParentID = StructuralObject.SetValidValue(value, false);
+                _ParentID = StructuralObject.SetValidValue(value, false, "ParentID");
                 ReportPropertyChanged("ParentID");
                 OnParentIDChanged();
             }
@@ -14659,7 +14721,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnVariantDisplayModeChanging(value);
                 ReportPropertyChanging("VariantDisplayMode");
-                _VariantDisplayMode = StructuralObject.SetValidValue(value);
+                _VariantDisplayMode = StructuralObject.SetValidValue(value, "VariantDisplayMode");
                 ReportPropertyChanged("VariantDisplayMode");
                 OnVariantDisplayModeChanged();
             }
@@ -14683,7 +14745,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, false);
+                _ShortDescription = StructuralObject.SetValidValue(value, false, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -14707,7 +14769,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLongDescriptionChanging(value);
                 ReportPropertyChanging("LongDescription");
-                _LongDescription = StructuralObject.SetValidValue(value, false);
+                _LongDescription = StructuralObject.SetValidValue(value, false, "LongDescription");
                 ReportPropertyChanged("LongDescription");
                 OnLongDescriptionChanged();
             }
@@ -14731,7 +14793,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnManufacturerIDChanging(value);
                 ReportPropertyChanging("ManufacturerID");
-                _ManufacturerID = StructuralObject.SetValidValue(value, false);
+                _ManufacturerID = StructuralObject.SetValidValue(value, false, "ManufacturerID");
                 ReportPropertyChanged("ManufacturerID");
                 OnManufacturerIDChanged();
             }
@@ -14755,7 +14817,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnVendorIDChanging(value);
                 ReportPropertyChanging("VendorID");
-                _VendorID = StructuralObject.SetValidValue(value, false);
+                _VendorID = StructuralObject.SetValidValue(value, false, "VendorID");
                 ReportPropertyChanged("VendorID");
                 OnVendorIDChanged();
             }
@@ -14779,7 +14841,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGiftWrapAllowedChanging(value);
                 ReportPropertyChanging("GiftWrapAllowed");
-                _GiftWrapAllowed = StructuralObject.SetValidValue(value);
+                _GiftWrapAllowed = StructuralObject.SetValidValue(value, "GiftWrapAllowed");
                 ReportPropertyChanged("GiftWrapAllowed");
                 OnGiftWrapAllowedChanged();
             }
@@ -14803,7 +14865,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnExtraShipFeeChanging(value);
                 ReportPropertyChanging("ExtraShipFee");
-                _ExtraShipFee = StructuralObject.SetValidValue(value);
+                _ExtraShipFee = StructuralObject.SetValidValue(value, "ExtraShipFee");
                 ReportPropertyChanged("ExtraShipFee");
                 OnExtraShipFeeChanged();
             }
@@ -14827,7 +14889,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -14851,7 +14913,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnKeywordsChanging(value);
                 ReportPropertyChanging("Keywords");
-                _Keywords = StructuralObject.SetValidValue(value, false);
+                _Keywords = StructuralObject.SetValidValue(value, false, "Keywords");
                 ReportPropertyChanged("Keywords");
                 OnKeywordsChanged();
             }
@@ -14875,7 +14937,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTemplateNameChanging(value);
                 ReportPropertyChanging("TemplateName");
-                _TemplateName = StructuralObject.SetValidValue(value, false);
+                _TemplateName = StructuralObject.SetValidValue(value, false, "TemplateName");
                 ReportPropertyChanged("TemplateName");
                 OnTemplateNameChanged();
             }
@@ -14899,7 +14961,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPreContentColumnIdChanging(value);
                 ReportPropertyChanging("PreContentColumnId");
-                _PreContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PreContentColumnId = StructuralObject.SetValidValue(value, false, "PreContentColumnId");
                 ReportPropertyChanged("PreContentColumnId");
                 OnPreContentColumnIdChanged();
             }
@@ -14923,7 +14985,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPostContentColumnIdChanging(value);
                 ReportPropertyChanging("PostContentColumnId");
-                _PostContentColumnId = StructuralObject.SetValidValue(value, false);
+                _PostContentColumnId = StructuralObject.SetValidValue(value, false, "PostContentColumnId");
                 ReportPropertyChanged("PostContentColumnId");
                 OnPostContentColumnIdChanged();
             }
@@ -14947,7 +15009,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRewriteUrlChanging(value);
                 ReportPropertyChanging("RewriteUrl");
-                _RewriteUrl = StructuralObject.SetValidValue(value, false);
+                _RewriteUrl = StructuralObject.SetValidValue(value, false, "RewriteUrl");
                 ReportPropertyChanged("RewriteUrl");
                 OnRewriteUrlChanged();
             }
@@ -14971,7 +15033,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSitePriceOverrideTextChanging(value);
                 ReportPropertyChanging("SitePriceOverrideText");
-                _SitePriceOverrideText = StructuralObject.SetValidValue(value, false);
+                _SitePriceOverrideText = StructuralObject.SetValidValue(value, false, "SitePriceOverrideText");
                 ReportPropertyChanged("SitePriceOverrideText");
                 OnSitePriceOverrideTextChanged();
             }
@@ -14995,7 +15057,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSpecialProductTypeChanging(value);
                 ReportPropertyChanging("SpecialProductType");
-                _SpecialProductType = StructuralObject.SetValidValue(value);
+                _SpecialProductType = StructuralObject.SetValidValue(value, "SpecialProductType");
                 ReportPropertyChanged("SpecialProductType");
                 OnSpecialProductTypeChanged();
             }
@@ -15019,7 +15081,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnGiftCertificateCodePatternChanging(value);
                 ReportPropertyChanging("GiftCertificateCodePattern");
-                _GiftCertificateCodePattern = StructuralObject.SetValidValue(value, false);
+                _GiftCertificateCodePattern = StructuralObject.SetValidValue(value, false, "GiftCertificateCodePattern");
                 ReportPropertyChanged("GiftCertificateCodePattern");
                 OnGiftCertificateCodePatternChanged();
             }
@@ -15043,7 +15105,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPreTransformLongDescriptionChanging(value);
                 ReportPropertyChanging("PreTransformLongDescription");
-                _PreTransformLongDescription = StructuralObject.SetValidValue(value, false);
+                _PreTransformLongDescription = StructuralObject.SetValidValue(value, false, "PreTransformLongDescription");
                 ReportPropertyChanged("PreTransformLongDescription");
                 OnPreTransformLongDescriptionChanged();
             }
@@ -15067,7 +15129,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTrackInventoryChanging(value);
                 ReportPropertyChanging("TrackInventory");
-                _TrackInventory = StructuralObject.SetValidValue(value);
+                _TrackInventory = StructuralObject.SetValidValue(value, "TrackInventory");
                 ReportPropertyChanged("TrackInventory");
                 OnTrackInventoryChanged();
             }
@@ -15091,7 +15153,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSmallImageAlternateTextChanging(value);
                 ReportPropertyChanging("SmallImageAlternateText");
-                _SmallImageAlternateText = StructuralObject.SetValidValue(value, false);
+                _SmallImageAlternateText = StructuralObject.SetValidValue(value, false, "SmallImageAlternateText");
                 ReportPropertyChanged("SmallImageAlternateText");
                 OnSmallImageAlternateTextChanged();
             }
@@ -15115,7 +15177,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMediumImageAlternateTextChanging(value);
                 ReportPropertyChanging("MediumImageAlternateText");
-                _MediumImageAlternateText = StructuralObject.SetValidValue(value, false);
+                _MediumImageAlternateText = StructuralObject.SetValidValue(value, false, "MediumImageAlternateText");
                 ReportPropertyChanged("MediumImageAlternateText");
                 OnMediumImageAlternateTextChanged();
             }
@@ -15139,7 +15201,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOutOfStockModeChanging(value);
                 ReportPropertyChanging("OutOfStockMode");
-                _OutOfStockMode = StructuralObject.SetValidValue(value);
+                _OutOfStockMode = StructuralObject.SetValidValue(value, "OutOfStockMode");
                 ReportPropertyChanged("OutOfStockMode");
                 OnOutOfStockModeChanged();
             }
@@ -15163,7 +15225,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomPropertiesChanging(value);
                 ReportPropertyChanging("CustomProperties");
-                _CustomProperties = StructuralObject.SetValidValue(value, true);
+                _CustomProperties = StructuralObject.SetValidValue(value, true, "CustomProperties");
                 ReportPropertyChanged("CustomProperties");
                 OnCustomPropertiesChanged();
             }
@@ -15173,7 +15235,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnCustomPropertiesChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -15287,6 +15349,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15323,7 +15386,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15342,7 +15406,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -15367,7 +15431,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceIdChanging(value);
                 ReportPropertyChanging("ChoiceId");
-                _ChoiceId = StructuralObject.SetValidValue(value, false);
+                _ChoiceId = StructuralObject.SetValidValue(value, false, "ChoiceId");
                 ReportPropertyChanged("ChoiceId");
                 OnChoiceIdChanged();
             }
@@ -15391,7 +15455,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceOptionIdChanging(value);
                 ReportPropertyChanging("ChoiceOptionId");
-                _ChoiceOptionId = StructuralObject.SetValidValue(value, false);
+                _ChoiceOptionId = StructuralObject.SetValidValue(value, false, "ChoiceOptionId");
                 ReportPropertyChanged("ChoiceOptionId");
                 OnChoiceOptionIdChanged();
             }
@@ -15415,7 +15479,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -15439,7 +15503,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnParentProductIdChanging(value);
                 ReportPropertyChanging("ParentProductId");
-                _ParentProductId = StructuralObject.SetValidValue(value, false);
+                _ParentProductId = StructuralObject.SetValidValue(value, false, "ParentProductId");
                 ReportPropertyChanged("ParentProductId");
                 OnParentProductIdChanged();
             }
@@ -15463,7 +15527,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAvailableChanging(value);
                 ReportPropertyChanging("Available");
-                _Available = StructuralObject.SetValidValue(value);
+                _Available = StructuralObject.SetValidValue(value, "Available");
                 ReportPropertyChanged("Available");
                 OnAvailableChanged();
             }
@@ -15487,7 +15551,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -15497,7 +15561,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -15577,6 +15641,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -15607,7 +15672,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15626,7 +15692,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -15653,7 +15719,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnChoiceInputIdChanging(value);
                     ReportPropertyChanging("ChoiceInputId");
-                    _ChoiceInputId = StructuralObject.SetValidValue(value, false);
+                    _ChoiceInputId = StructuralObject.SetValidValue(value, false, "ChoiceInputId");
                     ReportPropertyChanged("ChoiceInputId");
                     OnChoiceInputIdChanged();
                 }
@@ -15680,7 +15746,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnOrderChanging(value);
                     ReportPropertyChanging("Order");
-                    _Order = StructuralObject.SetValidValue(value);
+                    _Order = StructuralObject.SetValidValue(value, "Order");
                     ReportPropertyChanged("Order");
                     OnOrderChanged();
                 }
@@ -15705,7 +15771,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -15715,7 +15781,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -15752,7 +15818,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15771,7 +15838,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -15796,7 +15863,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductChoiceIdChanging(value);
                 ReportPropertyChanging("ProductChoiceId");
-                _ProductChoiceId = StructuralObject.SetValidValue(value, false);
+                _ProductChoiceId = StructuralObject.SetValidValue(value, false, "ProductChoiceId");
                 ReportPropertyChanged("ProductChoiceId");
                 OnProductChoiceIdChanged();
             }
@@ -15820,7 +15887,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductChoiceNameChanging(value);
                 ReportPropertyChanging("ProductChoiceName");
-                _ProductChoiceName = StructuralObject.SetValidValue(value, false);
+                _ProductChoiceName = StructuralObject.SetValidValue(value, false, "ProductChoiceName");
                 ReportPropertyChanged("ProductChoiceName");
                 OnProductChoiceNameChanged();
             }
@@ -15844,7 +15911,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -15868,7 +15935,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDefaultChanging(value);
                 ReportPropertyChanging("Default");
-                _Default = StructuralObject.SetValidValue(value);
+                _Default = StructuralObject.SetValidValue(value, "Default");
                 ReportPropertyChanged("Default");
                 OnDefaultChanged();
             }
@@ -15892,7 +15959,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNullChanging(value);
                 ReportPropertyChanging("Null");
-                _Null = StructuralObject.SetValidValue(value);
+                _Null = StructuralObject.SetValidValue(value, "Null");
                 ReportPropertyChanged("Null");
                 OnNullChanged();
             }
@@ -15916,7 +15983,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -15926,7 +15993,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -15963,7 +16030,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -15982,7 +16050,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16007,7 +16075,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceNameChanging(value);
                 ReportPropertyChanging("ChoiceName");
-                _ChoiceName = StructuralObject.SetValidValue(value, false);
+                _ChoiceName = StructuralObject.SetValidValue(value, false, "ChoiceName");
                 ReportPropertyChanged("ChoiceName");
                 OnChoiceNameChanged();
             }
@@ -16031,7 +16099,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceDisplayNameChanging(value);
                 ReportPropertyChanging("ChoiceDisplayName");
-                _ChoiceDisplayName = StructuralObject.SetValidValue(value, false);
+                _ChoiceDisplayName = StructuralObject.SetValidValue(value, false, "ChoiceDisplayName");
                 ReportPropertyChanged("ChoiceDisplayName");
                 OnChoiceDisplayNameChanged();
             }
@@ -16055,7 +16123,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -16079,7 +16147,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSharedChoiceChanging(value);
                 ReportPropertyChanging("SharedChoice");
-                _SharedChoice = StructuralObject.SetValidValue(value);
+                _SharedChoice = StructuralObject.SetValidValue(value, "SharedChoice");
                 ReportPropertyChanged("SharedChoice");
                 OnSharedChoiceChanged();
             }
@@ -16103,7 +16171,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceTypeChanging(value);
                 ReportPropertyChanging("ChoiceType");
-                _ChoiceType = StructuralObject.SetValidValue(value, false);
+                _ChoiceType = StructuralObject.SetValidValue(value, false, "ChoiceType");
                 ReportPropertyChanged("ChoiceType");
                 OnChoiceTypeChanged();
             }
@@ -16127,7 +16195,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16137,7 +16205,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16163,6 +16231,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16197,7 +16266,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16216,7 +16286,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16241,7 +16311,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -16265,7 +16335,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCrossSellBvinChanging(value);
                 ReportPropertyChanging("CrossSellBvin");
-                _CrossSellBvin = StructuralObject.SetValidValue(value, false);
+                _CrossSellBvin = StructuralObject.SetValidValue(value, false, "CrossSellBvin");
                 ReportPropertyChanged("CrossSellBvin");
                 OnCrossSellBvinChanged();
             }
@@ -16289,7 +16359,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -16313,7 +16383,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionOverrideChanging(value);
                 ReportPropertyChanging("DescriptionOverride");
-                _DescriptionOverride = StructuralObject.SetValidValue(value, false);
+                _DescriptionOverride = StructuralObject.SetValidValue(value, false, "DescriptionOverride");
                 ReportPropertyChanged("DescriptionOverride");
                 OnDescriptionOverrideChanged();
             }
@@ -16337,7 +16407,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16347,7 +16417,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -16378,7 +16448,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16397,7 +16468,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16422,7 +16493,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, false);
+                _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -16446,7 +16517,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShortDescriptionChanging(value);
                 ReportPropertyChanging("ShortDescription");
-                _ShortDescription = StructuralObject.SetValidValue(value, false);
+                _ShortDescription = StructuralObject.SetValidValue(value, false, "ShortDescription");
                 ReportPropertyChanged("ShortDescription");
                 OnShortDescriptionChanged();
             }
@@ -16470,7 +16541,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16480,7 +16551,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16506,6 +16577,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16538,7 +16610,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16557,7 +16630,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductFileIdChanging(value);
                     ReportPropertyChanging("ProductFileId");
-                    _ProductFileId = StructuralObject.SetValidValue(value, false);
+                    _ProductFileId = StructuralObject.SetValidValue(value, false, "ProductFileId");
                     ReportPropertyChanged("ProductFileId");
                     OnProductFileIdChanged();
                 }
@@ -16584,7 +16657,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -16609,7 +16682,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAvailableMinutesChanging(value);
                 ReportPropertyChanging("AvailableMinutes");
-                _AvailableMinutes = StructuralObject.SetValidValue(value);
+                _AvailableMinutes = StructuralObject.SetValidValue(value, "AvailableMinutes");
                 ReportPropertyChanged("AvailableMinutes");
                 OnAvailableMinutesChanged();
             }
@@ -16633,7 +16706,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnMaxDownloadsChanging(value);
                 ReportPropertyChanging("MaxDownloads");
-                _MaxDownloads = StructuralObject.SetValidValue(value);
+                _MaxDownloads = StructuralObject.SetValidValue(value, "MaxDownloads");
                 ReportPropertyChanged("MaxDownloads");
                 OnMaxDownloadsChanged();
             }
@@ -16657,7 +16730,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16667,7 +16740,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -16709,6 +16782,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -16741,7 +16815,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16760,7 +16835,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16785,7 +16860,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFilterNameChanging(value);
                 ReportPropertyChanging("FilterName");
-                _FilterName = StructuralObject.SetValidValue(value, false);
+                _FilterName = StructuralObject.SetValidValue(value, false, "FilterName");
                 ReportPropertyChanged("FilterName");
                 OnFilterNameChanged();
             }
@@ -16809,7 +16884,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCriteriaChanging(value);
                 ReportPropertyChanging("Criteria");
-                _Criteria = StructuralObject.SetValidValue(value, false);
+                _Criteria = StructuralObject.SetValidValue(value, false, "Criteria");
                 ReportPropertyChanged("Criteria");
                 OnCriteriaChanged();
             }
@@ -16833,7 +16908,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPageChanging(value);
                 ReportPropertyChanging("Page");
-                _Page = StructuralObject.SetValidValue(value, false);
+                _Page = StructuralObject.SetValidValue(value, false, "Page");
                 ReportPropertyChanged("Page");
                 OnPageChanged();
             }
@@ -16857,7 +16932,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -16867,7 +16942,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -16904,7 +16979,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -16923,7 +16999,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -16948,7 +17024,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIDChanging(value);
                 ReportPropertyChanging("ProductID");
-                _ProductID = StructuralObject.SetValidValue(value, false);
+                _ProductID = StructuralObject.SetValidValue(value, false, "ProductID");
                 ReportPropertyChanged("ProductID");
                 OnProductIDChanged();
             }
@@ -16972,7 +17048,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFileNameChanging(value);
                 ReportPropertyChanging("FileName");
-                _FileName = StructuralObject.SetValidValue(value, false);
+                _FileName = StructuralObject.SetValidValue(value, false, "FileName");
                 ReportPropertyChanged("FileName");
                 OnFileNameChanged();
             }
@@ -16996,7 +17072,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCaptionChanging(value);
                 ReportPropertyChanging("Caption");
-                _Caption = StructuralObject.SetValidValue(value, false);
+                _Caption = StructuralObject.SetValidValue(value, false, "Caption");
                 ReportPropertyChanged("Caption");
                 OnCaptionChanged();
             }
@@ -17020,7 +17096,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAlternateTextChanging(value);
                 ReportPropertyChanging("AlternateText");
-                _AlternateText = StructuralObject.SetValidValue(value, false);
+                _AlternateText = StructuralObject.SetValidValue(value, false, "AlternateText");
                 ReportPropertyChanged("AlternateText");
                 OnAlternateTextChanged();
             }
@@ -17044,7 +17120,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -17068,7 +17144,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -17078,7 +17154,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -17117,7 +17193,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17136,7 +17213,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -17161,7 +17238,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputNameChanging(value);
                 ReportPropertyChanging("InputName");
-                _InputName = StructuralObject.SetValidValue(value, false);
+                _InputName = StructuralObject.SetValidValue(value, false, "InputName");
                 ReportPropertyChanged("InputName");
                 OnInputNameChanged();
             }
@@ -17185,7 +17262,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputDisplayNameChanging(value);
                 ReportPropertyChanging("InputDisplayName");
-                _InputDisplayName = StructuralObject.SetValidValue(value, false);
+                _InputDisplayName = StructuralObject.SetValidValue(value, false, "InputDisplayName");
                 ReportPropertyChanged("InputDisplayName");
                 OnInputDisplayNameChanged();
             }
@@ -17209,7 +17286,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -17233,7 +17310,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSharedInputChanging(value);
                 ReportPropertyChanging("SharedInput");
-                _SharedInput = StructuralObject.SetValidValue(value);
+                _SharedInput = StructuralObject.SetValidValue(value, "SharedInput");
                 ReportPropertyChanged("SharedInput");
                 OnSharedInputChanged();
             }
@@ -17257,7 +17334,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputTypeChanging(value);
                 ReportPropertyChanging("InputType");
-                _InputType = StructuralObject.SetValidValue(value, false);
+                _InputType = StructuralObject.SetValidValue(value, false, "InputType");
                 ReportPropertyChanged("InputType");
                 OnInputTypeChanged();
             }
@@ -17281,7 +17358,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDefaultValueChanging(value);
                 ReportPropertyChanging("DefaultValue");
-                _DefaultValue = StructuralObject.SetValidValue(value, false);
+                _DefaultValue = StructuralObject.SetValidValue(value, false, "DefaultValue");
                 ReportPropertyChanged("DefaultValue");
                 OnDefaultValueChanged();
             }
@@ -17305,7 +17382,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -17315,7 +17392,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -17356,7 +17433,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17375,7 +17453,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -17400,7 +17478,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -17424,7 +17502,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityAvailableChanging(value);
                 ReportPropertyChanging("QuantityAvailable");
-                _QuantityAvailable = StructuralObject.SetValidValue(value);
+                _QuantityAvailable = StructuralObject.SetValidValue(value, "QuantityAvailable");
                 ReportPropertyChanged("QuantityAvailable");
                 OnQuantityAvailableChanged();
             }
@@ -17448,7 +17526,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityOutOfStockPointChanging(value);
                 ReportPropertyChanging("QuantityOutOfStockPoint");
-                _QuantityOutOfStockPoint = StructuralObject.SetValidValue(value);
+                _QuantityOutOfStockPoint = StructuralObject.SetValidValue(value, "QuantityOutOfStockPoint");
                 ReportPropertyChanged("QuantityOutOfStockPoint");
                 OnQuantityOutOfStockPointChanged();
             }
@@ -17472,7 +17550,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityReservedChanging(value);
                 ReportPropertyChanging("QuantityReserved");
-                _QuantityReserved = StructuralObject.SetValidValue(value);
+                _QuantityReserved = StructuralObject.SetValidValue(value, "QuantityReserved");
                 ReportPropertyChanged("QuantityReserved");
                 OnQuantityReservedChanged();
             }
@@ -17496,7 +17574,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -17520,7 +17598,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -17544,7 +17622,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOutOfStockModeChanging(value);
                 ReportPropertyChanging("OutOfStockMode");
-                _OutOfStockMode = StructuralObject.SetValidValue(value);
+                _OutOfStockMode = StructuralObject.SetValidValue(value, "OutOfStockMode");
                 ReportPropertyChanged("OutOfStockMode");
                 OnOutOfStockModeChanged();
             }
@@ -17568,7 +17646,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReorderPointChanging(value);
                 ReportPropertyChanging("ReorderPoint");
-                _ReorderPoint = StructuralObject.SetValidValue(value);
+                _ReorderPoint = StructuralObject.SetValidValue(value, "ReorderPoint");
                 ReportPropertyChanged("ReorderPoint");
                 OnReorderPointChanged();
             }
@@ -17592,7 +17670,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityAvailableForSaleChanging(value);
                 ReportPropertyChanging("QuantityAvailableForSale");
-                _QuantityAvailableForSale = StructuralObject.SetValidValue(value);
+                _QuantityAvailableForSale = StructuralObject.SetValidValue(value, "QuantityAvailableForSale");
                 ReportPropertyChanged("QuantityAvailableForSale");
                 OnQuantityAvailableForSaleChanged();
             }
@@ -17616,7 +17694,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReorderLevelChanging(value);
                 ReportPropertyChanging("ReorderLevel");
-                _ReorderLevel = StructuralObject.SetValidValue(value);
+                _ReorderLevel = StructuralObject.SetValidValue(value, "ReorderLevel");
                 ReportPropertyChanged("ReorderLevel");
                 OnReorderLevelChanged();
             }
@@ -17626,7 +17704,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnReorderLevelChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -17668,6 +17746,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -17706,7 +17785,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17725,7 +17805,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -17750,7 +17830,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -17774,7 +17854,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplaynameChanging(value);
                 ReportPropertyChanging("Displayname");
-                _Displayname = StructuralObject.SetValidValue(value, false);
+                _Displayname = StructuralObject.SetValidValue(value, false, "Displayname");
                 ReportPropertyChanged("Displayname");
                 OnDisplaynameChanged();
             }
@@ -17798,7 +17878,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIdChanging(value);
                 ReportPropertyChanging("ProductId");
-                _ProductId = StructuralObject.SetValidValue(value, false);
+                _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                 ReportPropertyChanged("ProductId");
                 OnProductIdChanged();
             }
@@ -17822,7 +17902,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSharedChanging(value);
                 ReportPropertyChanging("Shared");
-                _Shared = StructuralObject.SetValidValue(value);
+                _Shared = StructuralObject.SetValidValue(value, "Shared");
                 ReportPropertyChanged("Shared");
                 OnSharedChanged();
             }
@@ -17846,7 +17926,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTypeChanging(value);
                 ReportPropertyChanging("Type");
-                _Type = StructuralObject.SetValidValue(value, false);
+                _Type = StructuralObject.SetValidValue(value, false, "Type");
                 ReportPropertyChanged("Type");
                 OnTypeChanged();
             }
@@ -17870,7 +17950,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRequiredChanging(value);
                 ReportPropertyChanging("Required");
-                _Required = StructuralObject.SetValidValue(value);
+                _Required = StructuralObject.SetValidValue(value, "Required");
                 ReportPropertyChanged("Required");
                 OnRequiredChanged();
             }
@@ -17894,7 +17974,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -17904,7 +17984,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -17949,7 +18029,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -17968,7 +18049,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -17993,7 +18074,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnModifierIdChanging(value);
                 ReportPropertyChanging("ModifierId");
-                _ModifierId = StructuralObject.SetValidValue(value, false);
+                _ModifierId = StructuralObject.SetValidValue(value, false, "ModifierId");
                 ReportPropertyChanged("ModifierId");
                 OnModifierIdChanged();
             }
@@ -18017,7 +18098,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -18041,7 +18122,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -18065,7 +18146,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCostAdjustmentChanging(value);
                 ReportPropertyChanging("CostAdjustment");
-                _CostAdjustment = StructuralObject.SetValidValue(value);
+                _CostAdjustment = StructuralObject.SetValidValue(value, "CostAdjustment");
                 ReportPropertyChanged("CostAdjustment");
                 OnCostAdjustmentChanged();
             }
@@ -18089,7 +18170,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPriceAdjustmentChanging(value);
                 ReportPropertyChanging("PriceAdjustment");
-                _PriceAdjustment = StructuralObject.SetValidValue(value);
+                _PriceAdjustment = StructuralObject.SetValidValue(value, "PriceAdjustment");
                 ReportPropertyChanged("PriceAdjustment");
                 OnPriceAdjustmentChanged();
             }
@@ -18113,7 +18194,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingAdjustmentChanging(value);
                 ReportPropertyChanging("ShippingAdjustment");
-                _ShippingAdjustment = StructuralObject.SetValidValue(value);
+                _ShippingAdjustment = StructuralObject.SetValidValue(value, "ShippingAdjustment");
                 ReportPropertyChanged("ShippingAdjustment");
                 OnShippingAdjustmentChanged();
             }
@@ -18137,7 +18218,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnWeightAdjustmentChanging(value);
                 ReportPropertyChanging("WeightAdjustment");
-                _WeightAdjustment = StructuralObject.SetValidValue(value);
+                _WeightAdjustment = StructuralObject.SetValidValue(value, "WeightAdjustment");
                 ReportPropertyChanged("WeightAdjustment");
                 OnWeightAdjustmentChanged();
             }
@@ -18161,7 +18242,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnIsDefaultChanging(value);
                 ReportPropertyChanging("IsDefault");
-                _IsDefault = StructuralObject.SetValidValue(value);
+                _IsDefault = StructuralObject.SetValidValue(value, "IsDefault");
                 ReportPropertyChanged("IsDefault");
                 OnIsDefaultChanged();
             }
@@ -18185,7 +18266,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNullChanging(value);
                 ReportPropertyChanging("Null");
-                _Null = StructuralObject.SetValidValue(value);
+                _Null = StructuralObject.SetValidValue(value, "Null");
                 ReportPropertyChanged("Null");
                 OnNullChanged();
             }
@@ -18209,7 +18290,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18219,7 +18300,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -18260,7 +18341,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18279,7 +18361,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18304,7 +18386,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPropertyNameChanging(value);
                 ReportPropertyChanging("PropertyName");
-                _PropertyName = StructuralObject.SetValidValue(value, false);
+                _PropertyName = StructuralObject.SetValidValue(value, false, "PropertyName");
                 ReportPropertyChanged("PropertyName");
                 OnPropertyNameChanged();
             }
@@ -18328,7 +18410,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -18352,7 +18434,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayOnSiteChanging(value);
                 ReportPropertyChanging("DisplayOnSite");
-                _DisplayOnSite = StructuralObject.SetValidValue(value);
+                _DisplayOnSite = StructuralObject.SetValidValue(value, "DisplayOnSite");
                 ReportPropertyChanged("DisplayOnSite");
                 OnDisplayOnSiteChanged();
             }
@@ -18376,7 +18458,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayToDropShipperChanging(value);
                 ReportPropertyChanging("DisplayToDropShipper");
-                _DisplayToDropShipper = StructuralObject.SetValidValue(value);
+                _DisplayToDropShipper = StructuralObject.SetValidValue(value, "DisplayToDropShipper");
                 ReportPropertyChanged("DisplayToDropShipper");
                 OnDisplayToDropShipperChanged();
             }
@@ -18400,7 +18482,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTypeCodeChanging(value);
                 ReportPropertyChanging("TypeCode");
-                _TypeCode = StructuralObject.SetValidValue(value);
+                _TypeCode = StructuralObject.SetValidValue(value, "TypeCode");
                 ReportPropertyChanged("TypeCode");
                 OnTypeCodeChanged();
             }
@@ -18424,7 +18506,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDefaultValueChanging(value);
                 ReportPropertyChanging("DefaultValue");
-                _DefaultValue = StructuralObject.SetValidValue(value, false);
+                _DefaultValue = StructuralObject.SetValidValue(value, false, "DefaultValue");
                 ReportPropertyChanged("DefaultValue");
                 OnDefaultValueChanged();
             }
@@ -18448,7 +18530,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCultureCodeChanging(value);
                 ReportPropertyChanging("CultureCode");
-                _CultureCode = StructuralObject.SetValidValue(value, false);
+                _CultureCode = StructuralObject.SetValidValue(value, false, "CultureCode");
                 ReportPropertyChanged("CultureCode");
                 OnCultureCodeChanged();
             }
@@ -18472,7 +18554,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18482,7 +18564,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -18552,6 +18634,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18584,7 +18667,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18603,7 +18687,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -18628,7 +18712,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPropertyBvinChanging(value);
                 ReportPropertyChanging("PropertyBvin");
-                _PropertyBvin = StructuralObject.SetValidValue(value, false);
+                _PropertyBvin = StructuralObject.SetValidValue(value, false, "PropertyBvin");
                 ReportPropertyChanged("PropertyBvin");
                 OnPropertyBvinChanged();
             }
@@ -18652,7 +18736,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnChoiceNameChanging(value);
                 ReportPropertyChanging("ChoiceName");
-                _ChoiceName = StructuralObject.SetValidValue(value, false);
+                _ChoiceName = StructuralObject.SetValidValue(value, false, "ChoiceName");
                 ReportPropertyChanged("ChoiceName");
                 OnChoiceNameChanged();
             }
@@ -18676,7 +18760,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -18700,7 +18784,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -18710,7 +18794,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -18752,6 +18836,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18780,7 +18865,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -18799,7 +18885,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductBvinChanging(value);
                     ReportPropertyChanging("ProductBvin");
-                    _ProductBvin = StructuralObject.SetValidValue(value, false);
+                    _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                     ReportPropertyChanged("ProductBvin");
                     OnProductBvinChanged();
                 }
@@ -18826,7 +18912,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnPropertyBvinChanging(value);
                     ReportPropertyChanging("PropertyBvin");
-                    _PropertyBvin = StructuralObject.SetValidValue(value, false);
+                    _PropertyBvin = StructuralObject.SetValidValue(value, false, "PropertyBvin");
                     ReportPropertyChanged("PropertyBvin");
                     OnPropertyBvinChanged();
                 }
@@ -18851,7 +18937,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPropertyValueChanging(value);
                 ReportPropertyChanging("PropertyValue");
-                _PropertyValue = StructuralObject.SetValidValue(value, false);
+                _PropertyValue = StructuralObject.SetValidValue(value, false, "PropertyValue");
                 ReportPropertyChanged("PropertyValue");
                 OnPropertyValueChanged();
             }
@@ -18861,7 +18947,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnPropertyValueChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -18941,6 +19027,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -18983,7 +19070,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19000,7 +19088,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnidChanging(value);
                 ReportPropertyChanging("id");
-                _id = StructuralObject.SetValidValue(value);
+                _id = StructuralObject.SetValidValue(value, "id");
                 ReportPropertyChanged("id");
                 OnidChanged();
             }
@@ -19024,7 +19112,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnlastUpdatedChanging(value);
                 ReportPropertyChanging("lastUpdated");
-                _lastUpdated = StructuralObject.SetValidValue(value);
+                _lastUpdated = StructuralObject.SetValidValue(value, "lastUpdated");
                 ReportPropertyChanged("lastUpdated");
                 OnlastUpdatedChanged();
             }
@@ -19050,7 +19138,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -19075,7 +19163,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnApprovedChanging(value);
                 ReportPropertyChanging("Approved");
-                _Approved = StructuralObject.SetValidValue(value);
+                _Approved = StructuralObject.SetValidValue(value, "Approved");
                 ReportPropertyChanged("Approved");
                 OnApprovedChanged();
             }
@@ -19099,7 +19187,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionChanging(value);
                 ReportPropertyChanging("Description");
-                _Description = StructuralObject.SetValidValue(value, false);
+                _Description = StructuralObject.SetValidValue(value, false, "Description");
                 ReportPropertyChanged("Description");
                 OnDescriptionChanged();
             }
@@ -19123,7 +19211,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnKarmaChanging(value);
                 ReportPropertyChanging("Karma");
-                _Karma = StructuralObject.SetValidValue(value);
+                _Karma = StructuralObject.SetValidValue(value, "Karma");
                 ReportPropertyChanged("Karma");
                 OnKarmaChanged();
             }
@@ -19147,7 +19235,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReviewDateChanging(value);
                 ReportPropertyChanging("ReviewDate");
-                _ReviewDate = StructuralObject.SetValidValue(value);
+                _ReviewDate = StructuralObject.SetValidValue(value, "ReviewDate");
                 ReportPropertyChanged("ReviewDate");
                 OnReviewDateChanged();
             }
@@ -19171,7 +19259,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRatingChanging(value);
                 ReportPropertyChanging("Rating");
-                _Rating = StructuralObject.SetValidValue(value);
+                _Rating = StructuralObject.SetValidValue(value, "Rating");
                 ReportPropertyChanged("Rating");
                 OnRatingChanged();
             }
@@ -19195,7 +19283,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserIDChanging(value);
                 ReportPropertyChanging("UserID");
-                _UserID = StructuralObject.SetValidValue(value, false);
+                _UserID = StructuralObject.SetValidValue(value, false, "UserID");
                 ReportPropertyChanged("UserID");
                 OnUserIDChanged();
             }
@@ -19219,7 +19307,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -19229,7 +19317,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnProductBvinChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -19260,7 +19348,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19279,7 +19368,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -19304,7 +19393,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductTypeNameChanging(value);
                 ReportPropertyChanging("ProductTypeName");
-                _ProductTypeName = StructuralObject.SetValidValue(value, false);
+                _ProductTypeName = StructuralObject.SetValidValue(value, false, "ProductTypeName");
                 ReportPropertyChanged("ProductTypeName");
                 OnProductTypeNameChanged();
             }
@@ -19328,7 +19417,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnIsPermanentChanging(value);
                 ReportPropertyChanging("IsPermanent");
-                _IsPermanent = StructuralObject.SetValidValue(value);
+                _IsPermanent = StructuralObject.SetValidValue(value, "IsPermanent");
                 ReportPropertyChanged("IsPermanent");
                 OnIsPermanentChanged();
             }
@@ -19352,7 +19441,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -19362,7 +19451,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -19388,6 +19477,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -19416,7 +19506,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19435,7 +19526,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductTypeBvinChanging(value);
                     ReportPropertyChanging("ProductTypeBvin");
-                    _ProductTypeBvin = StructuralObject.SetValidValue(value, false);
+                    _ProductTypeBvin = StructuralObject.SetValidValue(value, false, "ProductTypeBvin");
                     ReportPropertyChanged("ProductTypeBvin");
                     OnProductTypeBvinChanged();
                 }
@@ -19462,7 +19553,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductPropertyBvinChanging(value);
                     ReportPropertyChanging("ProductPropertyBvin");
-                    _ProductPropertyBvin = StructuralObject.SetValidValue(value, false);
+                    _ProductPropertyBvin = StructuralObject.SetValidValue(value, false, "ProductPropertyBvin");
                     ReportPropertyChanged("ProductPropertyBvin");
                     OnProductPropertyBvinChanged();
                 }
@@ -19487,7 +19578,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -19497,7 +19588,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -19577,6 +19668,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -19611,7 +19703,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19630,7 +19723,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -19655,7 +19748,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -19679,7 +19772,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUpSellBvinChanging(value);
                 ReportPropertyChanging("UpSellBvin");
-                _UpSellBvin = StructuralObject.SetValidValue(value, false);
+                _UpSellBvin = StructuralObject.SetValidValue(value, false, "UpSellBvin");
                 ReportPropertyChanged("UpSellBvin");
                 OnUpSellBvinChanged();
             }
@@ -19703,7 +19796,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -19727,7 +19820,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDescriptionOverrideChanging(value);
                 ReportPropertyChanging("DescriptionOverride");
-                _DescriptionOverride = StructuralObject.SetValidValue(value, false);
+                _DescriptionOverride = StructuralObject.SetValidValue(value, false, "DescriptionOverride");
                 ReportPropertyChanged("DescriptionOverride");
                 OnDescriptionOverrideChanged();
             }
@@ -19751,7 +19844,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -19761,7 +19854,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -19796,7 +19889,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19815,7 +19909,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -19840,7 +19934,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductIDChanging(value);
                 ReportPropertyChanging("ProductID");
-                _ProductID = StructuralObject.SetValidValue(value, false);
+                _ProductID = StructuralObject.SetValidValue(value, false, "ProductID");
                 ReportPropertyChanged("ProductID");
                 OnProductIDChanged();
             }
@@ -19864,7 +19958,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQtyChanging(value);
                 ReportPropertyChanging("Qty");
-                _Qty = StructuralObject.SetValidValue(value);
+                _Qty = StructuralObject.SetValidValue(value, "Qty");
                 ReportPropertyChanged("Qty");
                 OnQtyChanged();
             }
@@ -19888,7 +19982,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDiscountTypeChanging(value);
                 ReportPropertyChanging("DiscountType");
-                _DiscountType = StructuralObject.SetValidValue(value);
+                _DiscountType = StructuralObject.SetValidValue(value, "DiscountType");
                 ReportPropertyChanged("DiscountType");
                 OnDiscountTypeChanged();
             }
@@ -19912,7 +20006,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAmountChanging(value);
                 ReportPropertyChanging("Amount");
-                _Amount = StructuralObject.SetValidValue(value);
+                _Amount = StructuralObject.SetValidValue(value, "Amount");
                 ReportPropertyChanged("Amount");
                 OnAmountChanged();
             }
@@ -19936,7 +20030,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -19946,7 +20040,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -19975,7 +20069,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -19994,7 +20089,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -20021,7 +20116,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnCategoryIdChanging(value);
                     ReportPropertyChanging("CategoryId");
-                    _CategoryId = StructuralObject.SetValidValue(value, false);
+                    _CategoryId = StructuralObject.SetValidValue(value, false, "CategoryId");
                     ReportPropertyChanged("CategoryId");
                     OnCategoryIdChanged();
                 }
@@ -20046,7 +20141,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSortOrderChanging(value);
                 ReportPropertyChanging("SortOrder");
-                _SortOrder = StructuralObject.SetValidValue(value);
+                _SortOrder = StructuralObject.SetValidValue(value, "SortOrder");
                 ReportPropertyChanged("SortOrder");
                 OnSortOrderChanged();
             }
@@ -20056,7 +20151,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSortOrderChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -20136,6 +20231,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -20164,7 +20260,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20183,7 +20280,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -20210,7 +20307,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnChoiceIdChanging(value);
                     ReportPropertyChanging("ChoiceId");
-                    _ChoiceId = StructuralObject.SetValidValue(value, false);
+                    _ChoiceId = StructuralObject.SetValidValue(value, false, "ChoiceId");
                     ReportPropertyChanged("ChoiceId");
                     OnChoiceIdChanged();
                 }
@@ -20235,7 +20332,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20245,7 +20342,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20274,7 +20371,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20293,7 +20391,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -20320,7 +20418,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnInputIdChanging(value);
                     ReportPropertyChanging("InputId");
-                    _InputId = StructuralObject.SetValidValue(value, false);
+                    _InputId = StructuralObject.SetValidValue(value, false, "InputId");
                     ReportPropertyChanged("InputId");
                     OnInputIdChanged();
                 }
@@ -20345,7 +20443,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20355,7 +20453,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20384,7 +20482,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20403,7 +20502,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnProductIdChanging(value);
                     ReportPropertyChanging("ProductId");
-                    _ProductId = StructuralObject.SetValidValue(value, false);
+                    _ProductId = StructuralObject.SetValidValue(value, false, "ProductId");
                     ReportPropertyChanged("ProductId");
                     OnProductIdChanged();
                 }
@@ -20430,7 +20529,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnModifierIdChanging(value);
                     ReportPropertyChanging("ModifierId");
-                    _ModifierId = StructuralObject.SetValidValue(value, false);
+                    _ModifierId = StructuralObject.SetValidValue(value, false, "ModifierId");
                     ReportPropertyChanged("ModifierId");
                     OnModifierIdChanged();
                 }
@@ -20455,7 +20554,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20465,7 +20564,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -20498,7 +20597,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20517,7 +20617,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -20542,7 +20642,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -20566,7 +20666,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAbbreviationChanging(value);
                 ReportPropertyChanging("Abbreviation");
-                _Abbreviation = StructuralObject.SetValidValue(value, false);
+                _Abbreviation = StructuralObject.SetValidValue(value, false, "Abbreviation");
                 ReportPropertyChanged("Abbreviation");
                 OnAbbreviationChanged();
             }
@@ -20590,7 +20690,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountryIDChanging(value);
                 ReportPropertyChanging("CountryID");
-                _CountryID = StructuralObject.SetValidValue(value, false);
+                _CountryID = StructuralObject.SetValidValue(value, false, "CountryID");
                 ReportPropertyChanged("CountryID");
                 OnCountryIDChanged();
             }
@@ -20614,7 +20714,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20624,7 +20724,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -20710,6 +20810,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -20752,7 +20853,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -20771,7 +20873,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -20796,7 +20898,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderBvinChanging(value);
                 ReportPropertyChanging("OrderBvin");
-                _OrderBvin = StructuralObject.SetValidValue(value, false);
+                _OrderBvin = StructuralObject.SetValidValue(value, false, "OrderBvin");
                 ReportPropertyChanged("OrderBvin");
                 OnOrderBvinChanged();
             }
@@ -20820,7 +20922,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -20844,7 +20946,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNumberChanging(value);
                 ReportPropertyChanging("Number");
-                _Number = StructuralObject.SetValidValue(value);
+                _Number = StructuralObject.SetValidValue(value, "Number");
                 ReportPropertyChanged("Number");
                 OnNumberChanged();
             }
@@ -20868,7 +20970,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -20892,7 +20994,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPhoneNumberChanging(value);
                 ReportPropertyChanging("PhoneNumber");
-                _PhoneNumber = StructuralObject.SetValidValue(value, false);
+                _PhoneNumber = StructuralObject.SetValidValue(value, false, "PhoneNumber");
                 ReportPropertyChanged("PhoneNumber");
                 OnPhoneNumberChanged();
             }
@@ -20916,7 +21018,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCommentsChanging(value);
                 ReportPropertyChanging("Comments");
-                _Comments = StructuralObject.SetValidValue(value, false);
+                _Comments = StructuralObject.SetValidValue(value, false, "Comments");
                 ReportPropertyChanged("Comments");
                 OnCommentsChanged();
             }
@@ -20940,7 +21042,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStatusChanging(value);
                 ReportPropertyChanging("Status");
-                _Status = StructuralObject.SetValidValue(value);
+                _Status = StructuralObject.SetValidValue(value, "Status");
                 ReportPropertyChanged("Status");
                 OnStatusChanged();
             }
@@ -20964,7 +21066,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDateOfReturnChanging(value);
                 ReportPropertyChanging("DateOfReturn");
-                _DateOfReturn = StructuralObject.SetValidValue(value);
+                _DateOfReturn = StructuralObject.SetValidValue(value, "DateOfReturn");
                 ReportPropertyChanged("DateOfReturn");
                 OnDateOfReturnChanged();
             }
@@ -20988,7 +21090,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -20998,7 +21100,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21024,6 +21126,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21070,7 +21173,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21089,7 +21193,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -21114,7 +21218,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRMABvinChanging(value);
                 ReportPropertyChanging("RMABvin");
-                _RMABvin = StructuralObject.SetValidValue(value, false);
+                _RMABvin = StructuralObject.SetValidValue(value, false, "RMABvin");
                 ReportPropertyChanged("RMABvin");
                 OnRMABvinChanged();
             }
@@ -21138,7 +21242,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLineItemBvinChanging(value);
                 ReportPropertyChanging("LineItemBvin");
-                _LineItemBvin = StructuralObject.SetValidValue(value, false);
+                _LineItemBvin = StructuralObject.SetValidValue(value, false, "LineItemBvin");
                 ReportPropertyChanged("LineItemBvin");
                 OnLineItemBvinChanged();
             }
@@ -21162,7 +21266,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnItemNameChanging(value);
                 ReportPropertyChanging("ItemName");
-                _ItemName = StructuralObject.SetValidValue(value, false);
+                _ItemName = StructuralObject.SetValidValue(value, false, "ItemName");
                 ReportPropertyChanged("ItemName");
                 OnItemNameChanged();
             }
@@ -21186,7 +21290,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnItemDescriptionChanging(value);
                 ReportPropertyChanging("ItemDescription");
-                _ItemDescription = StructuralObject.SetValidValue(value, false);
+                _ItemDescription = StructuralObject.SetValidValue(value, false, "ItemDescription");
                 ReportPropertyChanged("ItemDescription");
                 OnItemDescriptionChanged();
             }
@@ -21210,7 +21314,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNoteChanging(value);
                 ReportPropertyChanging("Note");
-                _Note = StructuralObject.SetValidValue(value, false);
+                _Note = StructuralObject.SetValidValue(value, false, "Note");
                 ReportPropertyChanged("Note");
                 OnNoteChanged();
             }
@@ -21234,7 +21338,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReasonChanging(value);
                 ReportPropertyChanging("Reason");
-                _Reason = StructuralObject.SetValidValue(value, false);
+                _Reason = StructuralObject.SetValidValue(value, false, "Reason");
                 ReportPropertyChanged("Reason");
                 OnReasonChanged();
             }
@@ -21258,7 +21362,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnReplaceChanging(value);
                 ReportPropertyChanging("Replace");
-                _Replace = StructuralObject.SetValidValue(value);
+                _Replace = StructuralObject.SetValidValue(value, "Replace");
                 ReportPropertyChanged("Replace");
                 OnReplaceChanged();
             }
@@ -21282,7 +21386,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -21306,7 +21410,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityReceivedChanging(value);
                 ReportPropertyChanging("QuantityReceived");
-                _QuantityReceived = StructuralObject.SetValidValue(value);
+                _QuantityReceived = StructuralObject.SetValidValue(value, "QuantityReceived");
                 ReportPropertyChanged("QuantityReceived");
                 OnQuantityReceivedChanged();
             }
@@ -21330,7 +21434,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityReturnedToInventoryChanging(value);
                 ReportPropertyChanging("QuantityReturnedToInventory");
-                _QuantityReturnedToInventory = StructuralObject.SetValidValue(value);
+                _QuantityReturnedToInventory = StructuralObject.SetValidValue(value, "QuantityReturnedToInventory");
                 ReportPropertyChanged("QuantityReturnedToInventory");
                 OnQuantityReturnedToInventoryChanged();
             }
@@ -21354,7 +21458,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -21364,7 +21468,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21406,6 +21510,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21436,7 +21541,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21455,7 +21561,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -21480,7 +21586,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -21504,7 +21610,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRoleNameChanging(value);
                 ReportPropertyChanging("RoleName");
-                _RoleName = StructuralObject.SetValidValue(value, false);
+                _RoleName = StructuralObject.SetValidValue(value, false, "RoleName");
                 ReportPropertyChanged("RoleName");
                 OnRoleNameChanged();
             }
@@ -21528,7 +21634,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemRoleChanging(value);
                 ReportPropertyChanging("SystemRole");
-                _SystemRole = StructuralObject.SetValidValue(value);
+                _SystemRole = StructuralObject.SetValidValue(value, "SystemRole");
                 ReportPropertyChanged("SystemRole");
                 OnSystemRoleChanged();
             }
@@ -21538,7 +21644,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSystemRoleChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21586,6 +21692,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21616,7 +21723,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21635,7 +21743,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -21660,7 +21768,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -21684,7 +21792,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSystemPermissionChanging(value);
                 ReportPropertyChanging("SystemPermission");
-                _SystemPermission = StructuralObject.SetValidValue(value);
+                _SystemPermission = StructuralObject.SetValidValue(value, "SystemPermission");
                 ReportPropertyChanged("SystemPermission");
                 OnSystemPermissionChanged();
             }
@@ -21708,7 +21816,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -21718,7 +21826,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -21744,6 +21852,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -21774,7 +21883,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21793,7 +21903,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -21818,7 +21928,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQueryPhraseChanging(value);
                 ReportPropertyChanging("QueryPhrase");
-                _QueryPhrase = StructuralObject.SetValidValue(value, false);
+                _QueryPhrase = StructuralObject.SetValidValue(value, false, "QueryPhrase");
                 ReportPropertyChanged("QueryPhrase");
                 OnQueryPhraseChanged();
             }
@@ -21842,7 +21952,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShopperIdChanging(value);
                 ReportPropertyChanging("ShopperId");
-                _ShopperId = StructuralObject.SetValidValue(value, false);
+                _ShopperId = StructuralObject.SetValidValue(value, false, "ShopperId");
                 ReportPropertyChanged("ShopperId");
                 OnShopperIdChanged();
             }
@@ -21866,7 +21976,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -21876,7 +21986,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -21911,7 +22021,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -21930,7 +22041,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -21955,7 +22066,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -21979,7 +22090,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdjustmentChanging(value);
                 ReportPropertyChanging("Adjustment");
-                _Adjustment = StructuralObject.SetValidValue(value);
+                _Adjustment = StructuralObject.SetValidValue(value, "Adjustment");
                 ReportPropertyChanged("Adjustment");
                 OnAdjustmentChanged();
             }
@@ -22003,7 +22114,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAdjustmentTypeChanging(value);
                 ReportPropertyChanging("AdjustmentType");
-                _AdjustmentType = StructuralObject.SetValidValue(value);
+                _AdjustmentType = StructuralObject.SetValidValue(value, "AdjustmentType");
                 ReportPropertyChanged("AdjustmentType");
                 OnAdjustmentTypeChanged();
             }
@@ -22027,7 +22138,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnNameChanging(value);
                 ReportPropertyChanging("Name");
-                _Name = StructuralObject.SetValidValue(value, false);
+                _Name = StructuralObject.SetValidValue(value, false, "Name");
                 ReportPropertyChanged("Name");
                 OnNameChanged();
             }
@@ -22051,7 +22162,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingProviderIdChanging(value);
                 ReportPropertyChanging("ShippingProviderId");
-                _ShippingProviderId = StructuralObject.SetValidValue(value, false);
+                _ShippingProviderId = StructuralObject.SetValidValue(value, false, "ShippingProviderId");
                 ReportPropertyChanged("ShippingProviderId");
                 OnShippingProviderIdChanged();
             }
@@ -22061,7 +22172,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnShippingProviderIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -22109,6 +22220,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -22135,7 +22247,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22154,7 +22267,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnSiteTermChanging(value);
                     ReportPropertyChanging("SiteTerm");
-                    _SiteTerm = StructuralObject.SetValidValue(value, false);
+                    _SiteTerm = StructuralObject.SetValidValue(value, false, "SiteTerm");
                     ReportPropertyChanged("SiteTerm");
                     OnSiteTermChanged();
                 }
@@ -22179,7 +22292,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSiteTermValueChanging(value);
                 ReportPropertyChanging("SiteTermValue");
-                _SiteTermValue = StructuralObject.SetValidValue(value, false);
+                _SiteTermValue = StructuralObject.SetValidValue(value, false, "SiteTermValue");
                 ReportPropertyChanged("SiteTermValue");
                 OnSiteTermValueChanged();
             }
@@ -22189,7 +22302,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSiteTermValueChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -22230,7 +22343,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22249,7 +22363,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -22274,7 +22388,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRegionBvinChanging(value);
                 ReportPropertyChanging("RegionBvin");
-                _RegionBvin = StructuralObject.SetValidValue(value, false);
+                _RegionBvin = StructuralObject.SetValidValue(value, false, "RegionBvin");
                 ReportPropertyChanged("RegionBvin");
                 OnRegionBvinChanged();
             }
@@ -22298,7 +22412,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPostalCodeChanging(value);
                 ReportPropertyChanging("PostalCode");
-                _PostalCode = StructuralObject.SetValidValue(value, false);
+                _PostalCode = StructuralObject.SetValidValue(value, false, "PostalCode");
                 ReportPropertyChanged("PostalCode");
                 OnPostalCodeChanged();
             }
@@ -22322,7 +22436,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountryBvinChanging(value);
                 ReportPropertyChanging("CountryBvin");
-                _CountryBvin = StructuralObject.SetValidValue(value, false);
+                _CountryBvin = StructuralObject.SetValidValue(value, false, "CountryBvin");
                 ReportPropertyChanged("CountryBvin");
                 OnCountryBvinChanged();
             }
@@ -22346,7 +22460,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountyBvinChanging(value);
                 ReportPropertyChanging("CountyBvin");
-                _CountyBvin = StructuralObject.SetValidValue(value, false);
+                _CountyBvin = StructuralObject.SetValidValue(value, false, "CountyBvin");
                 ReportPropertyChanged("CountyBvin");
                 OnCountyBvinChanged();
             }
@@ -22370,7 +22484,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxClassChanging(value);
                 ReportPropertyChanging("TaxClass");
-                _TaxClass = StructuralObject.SetValidValue(value, false);
+                _TaxClass = StructuralObject.SetValidValue(value, false, "TaxClass");
                 ReportPropertyChanged("TaxClass");
                 OnTaxClassChanged();
             }
@@ -22394,7 +22508,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnRateChanging(value);
                 ReportPropertyChanging("Rate");
-                _Rate = StructuralObject.SetValidValue(value);
+                _Rate = StructuralObject.SetValidValue(value, "Rate");
                 ReportPropertyChanged("Rate");
                 OnRateChanged();
             }
@@ -22418,7 +22532,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnApplyToShippingChanging(value);
                 ReportPropertyChanging("ApplyToShipping");
-                _ApplyToShipping = StructuralObject.SetValidValue(value);
+                _ApplyToShipping = StructuralObject.SetValidValue(value, "ApplyToShipping");
                 ReportPropertyChanged("ApplyToShipping");
                 OnApplyToShippingChanged();
             }
@@ -22442,7 +22556,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -22452,7 +22566,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -22481,7 +22595,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22500,7 +22615,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -22525,7 +22640,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -22549,7 +22664,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -22559,7 +22674,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -22628,7 +22743,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -22647,7 +22763,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -22672,7 +22788,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserNameChanging(value);
                 ReportPropertyChanging("UserName");
-                _UserName = StructuralObject.SetValidValue(value, false);
+                _UserName = StructuralObject.SetValidValue(value, false, "UserName");
                 ReportPropertyChanged("UserName");
                 OnUserNameChanged();
             }
@@ -22696,7 +22812,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPasswordChanging(value);
                 ReportPropertyChanging("Password");
-                _Password = StructuralObject.SetValidValue(value, false);
+                _Password = StructuralObject.SetValidValue(value, false, "Password");
                 ReportPropertyChanged("Password");
                 OnPasswordChanged();
             }
@@ -22720,7 +22836,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFirstNameChanging(value);
                 ReportPropertyChanging("FirstName");
-                _FirstName = StructuralObject.SetValidValue(value, false);
+                _FirstName = StructuralObject.SetValidValue(value, false, "FirstName");
                 ReportPropertyChanged("FirstName");
                 OnFirstNameChanged();
             }
@@ -22744,7 +22860,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastNameChanging(value);
                 ReportPropertyChanging("LastName");
-                _LastName = StructuralObject.SetValidValue(value, false);
+                _LastName = StructuralObject.SetValidValue(value, false, "LastName");
                 ReportPropertyChanged("LastName");
                 OnLastNameChanged();
             }
@@ -22768,7 +22884,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSaltChanging(value);
                 ReportPropertyChanging("Salt");
-                _Salt = StructuralObject.SetValidValue(value, false);
+                _Salt = StructuralObject.SetValidValue(value, false, "Salt");
                 ReportPropertyChanged("Salt");
                 OnSaltChanged();
             }
@@ -22792,7 +22908,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnTaxExemptChanging(value);
                 ReportPropertyChanging("TaxExempt");
-                _TaxExempt = StructuralObject.SetValidValue(value);
+                _TaxExempt = StructuralObject.SetValidValue(value, "TaxExempt");
                 ReportPropertyChanged("TaxExempt");
                 OnTaxExemptChanged();
             }
@@ -22816,7 +22932,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEmailChanging(value);
                 ReportPropertyChanging("Email");
-                _Email = StructuralObject.SetValidValue(value, false);
+                _Email = StructuralObject.SetValidValue(value, false, "Email");
                 ReportPropertyChanged("Email");
                 OnEmailChanged();
             }
@@ -22840,7 +22956,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCreationDateChanging(value);
                 ReportPropertyChanging("CreationDate");
-                _CreationDate = StructuralObject.SetValidValue(value);
+                _CreationDate = StructuralObject.SetValidValue(value, "CreationDate");
                 ReportPropertyChanged("CreationDate");
                 OnCreationDateChanged();
             }
@@ -22864,7 +22980,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastLoginDateChanging(value);
                 ReportPropertyChanging("LastLoginDate");
-                _LastLoginDate = StructuralObject.SetValidValue(value);
+                _LastLoginDate = StructuralObject.SetValidValue(value, "LastLoginDate");
                 ReportPropertyChanged("LastLoginDate");
                 OnLastLoginDateChanged();
             }
@@ -22888,7 +23004,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPasswordHintChanging(value);
                 ReportPropertyChanging("PasswordHint");
-                _PasswordHint = StructuralObject.SetValidValue(value, false);
+                _PasswordHint = StructuralObject.SetValidValue(value, false, "PasswordHint");
                 ReportPropertyChanged("PasswordHint");
                 OnPasswordHintChanged();
             }
@@ -22912,7 +23028,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCommentChanging(value);
                 ReportPropertyChanging("Comment");
-                _Comment = StructuralObject.SetValidValue(value, false);
+                _Comment = StructuralObject.SetValidValue(value, false, "Comment");
                 ReportPropertyChanged("Comment");
                 OnCommentChanged();
             }
@@ -22936,7 +23052,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAddressBookChanging(value);
                 ReportPropertyChanging("AddressBook");
-                _AddressBook = StructuralObject.SetValidValue(value, false);
+                _AddressBook = StructuralObject.SetValidValue(value, false, "AddressBook");
                 ReportPropertyChanged("AddressBook");
                 OnAddressBookChanged();
             }
@@ -22960,7 +23076,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -22984,7 +23100,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPasswordAnswerChanging(value);
                 ReportPropertyChanging("PasswordAnswer");
-                _PasswordAnswer = StructuralObject.SetValidValue(value, false);
+                _PasswordAnswer = StructuralObject.SetValidValue(value, false, "PasswordAnswer");
                 ReportPropertyChanged("PasswordAnswer");
                 OnPasswordAnswerChanged();
             }
@@ -23008,7 +23124,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPasswordFormatChanging(value);
                 ReportPropertyChanging("PasswordFormat");
-                _PasswordFormat = StructuralObject.SetValidValue(value);
+                _PasswordFormat = StructuralObject.SetValidValue(value, "PasswordFormat");
                 ReportPropertyChanged("PasswordFormat");
                 OnPasswordFormatChanged();
             }
@@ -23032,7 +23148,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLockedChanging(value);
                 ReportPropertyChanging("Locked");
-                _Locked = StructuralObject.SetValidValue(value);
+                _Locked = StructuralObject.SetValidValue(value, "Locked");
                 ReportPropertyChanged("Locked");
                 OnLockedChanged();
             }
@@ -23056,7 +23172,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLockedUntilChanging(value);
                 ReportPropertyChanging("LockedUntil");
-                _LockedUntil = StructuralObject.SetValidValue(value);
+                _LockedUntil = StructuralObject.SetValidValue(value, "LockedUntil");
                 ReportPropertyChanged("LockedUntil");
                 OnLockedUntilChanged();
             }
@@ -23080,7 +23196,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnFailedLoginCountChanging(value);
                 ReportPropertyChanging("FailedLoginCount");
-                _FailedLoginCount = StructuralObject.SetValidValue(value);
+                _FailedLoginCount = StructuralObject.SetValidValue(value, "FailedLoginCount");
                 ReportPropertyChanged("FailedLoginCount");
                 OnFailedLoginCountChanged();
             }
@@ -23104,7 +23220,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnBillingAddressChanging(value);
                 ReportPropertyChanging("BillingAddress");
-                _BillingAddress = StructuralObject.SetValidValue(value, false);
+                _BillingAddress = StructuralObject.SetValidValue(value, false, "BillingAddress");
                 ReportPropertyChanged("BillingAddress");
                 OnBillingAddressChanged();
             }
@@ -23128,7 +23244,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnShippingAddressChanging(value);
                 ReportPropertyChanging("ShippingAddress");
-                _ShippingAddress = StructuralObject.SetValidValue(value, false);
+                _ShippingAddress = StructuralObject.SetValidValue(value, false, "ShippingAddress");
                 ReportPropertyChanged("ShippingAddress");
                 OnShippingAddressChanged();
             }
@@ -23152,7 +23268,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnPricingGroupChanging(value);
                 ReportPropertyChanging("PricingGroup");
-                _PricingGroup = StructuralObject.SetValidValue(value, false);
+                _PricingGroup = StructuralObject.SetValidValue(value, false, "PricingGroup");
                 ReportPropertyChanged("PricingGroup");
                 OnPricingGroupChanged();
             }
@@ -23176,7 +23292,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCustomQuestionAnswersChanging(value);
                 ReportPropertyChanging("CustomQuestionAnswers");
-                _CustomQuestionAnswers = StructuralObject.SetValidValue(value, false);
+                _CustomQuestionAnswers = StructuralObject.SetValidValue(value, false, "CustomQuestionAnswers");
                 ReportPropertyChanged("CustomQuestionAnswers");
                 OnCustomQuestionAnswersChanged();
             }
@@ -23186,7 +23302,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnCustomQuestionAnswersChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23234,6 +23350,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23268,7 +23385,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23287,7 +23405,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -23312,7 +23430,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionNameChanging(value);
                 ReportPropertyChanging("QuestionName");
-                _QuestionName = StructuralObject.SetValidValue(value, false);
+                _QuestionName = StructuralObject.SetValidValue(value, false, "QuestionName");
                 ReportPropertyChanged("QuestionName");
                 OnQuestionNameChanged();
             }
@@ -23336,7 +23454,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuestionTypeChanging(value);
                 ReportPropertyChanging("QuestionType");
-                _QuestionType = StructuralObject.SetValidValue(value);
+                _QuestionType = StructuralObject.SetValidValue(value, "QuestionType");
                 ReportPropertyChanged("QuestionType");
                 OnQuestionTypeChanged();
             }
@@ -23360,7 +23478,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnValuesChanging(value);
                 ReportPropertyChanging("Values");
-                _Values = StructuralObject.SetValidValue(value, false);
+                _Values = StructuralObject.SetValidValue(value, false, "Values");
                 ReportPropertyChanged("Values");
                 OnValuesChanged();
             }
@@ -23384,7 +23502,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnOrderChanging(value);
                 ReportPropertyChanging("Order");
-                _Order = StructuralObject.SetValidValue(value);
+                _Order = StructuralObject.SetValidValue(value, "Order");
                 ReportPropertyChanged("Order");
                 OnOrderChanged();
             }
@@ -23408,7 +23526,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -23418,7 +23536,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -23445,7 +23563,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23464,7 +23583,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnContactIdChanging(value);
                     ReportPropertyChanging("ContactId");
-                    _ContactId = StructuralObject.SetValidValue(value, false);
+                    _ContactId = StructuralObject.SetValidValue(value, false, "ContactId");
                     ReportPropertyChanged("ContactId");
                     OnContactIdChanged();
                 }
@@ -23491,7 +23610,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnUserIdChanging(value);
                     ReportPropertyChanging("UserId");
-                    _UserId = StructuralObject.SetValidValue(value, false);
+                    _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                     ReportPropertyChanged("UserId");
                     OnUserIdChanged();
                 }
@@ -23502,7 +23621,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnUserIdChanged();
 
         #endregion
-    
+
         #region Navigation Properties
     
         /// <summary>
@@ -23544,6 +23663,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
+
     }
     
     /// <summary>
@@ -23580,7 +23700,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23599,7 +23720,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnZipChanging(value);
                     ReportPropertyChanging("Zip");
-                    _Zip = StructuralObject.SetValidValue(value, false);
+                    _Zip = StructuralObject.SetValidValue(value, false, "Zip");
                     ReportPropertyChanged("Zip");
                     OnZipChanged();
                 }
@@ -23624,7 +23745,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLatitudeChanging(value);
                 ReportPropertyChanging("Latitude");
-                _Latitude = StructuralObject.SetValidValue(value);
+                _Latitude = StructuralObject.SetValidValue(value, "Latitude");
                 ReportPropertyChanged("Latitude");
                 OnLatitudeChanged();
             }
@@ -23648,7 +23769,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLongitudeChanging(value);
                 ReportPropertyChanging("Longitude");
-                _Longitude = StructuralObject.SetValidValue(value);
+                _Longitude = StructuralObject.SetValidValue(value, "Longitude");
                 ReportPropertyChanged("Longitude");
                 OnLongitudeChanged();
             }
@@ -23672,7 +23793,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCityChanging(value);
                 ReportPropertyChanging("City");
-                _City = StructuralObject.SetValidValue(value, false);
+                _City = StructuralObject.SetValidValue(value, false, "City");
                 ReportPropertyChanged("City");
                 OnCityChanged();
             }
@@ -23696,7 +23817,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnStateChanging(value);
                 ReportPropertyChanging("State");
-                _State = StructuralObject.SetValidValue(value, false);
+                _State = StructuralObject.SetValidValue(value, false, "State");
                 ReportPropertyChanged("State");
                 OnStateChanged();
             }
@@ -23720,7 +23841,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnCountyChanging(value);
                 ReportPropertyChanging("County");
-                _County = StructuralObject.SetValidValue(value, false);
+                _County = StructuralObject.SetValidValue(value, false, "County");
                 ReportPropertyChanged("County");
                 OnCountyChanged();
             }
@@ -23744,7 +23865,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnZipTypeChanging(value);
                 ReportPropertyChanging("ZipType");
-                _ZipType = StructuralObject.SetValidValue(value, false);
+                _ZipType = StructuralObject.SetValidValue(value, false, "ZipType");
                 ReportPropertyChanged("ZipType");
                 OnZipTypeChanged();
             }
@@ -23754,7 +23875,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnZipTypeChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -23789,7 +23910,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23808,7 +23930,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -23833,7 +23955,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDisplayNameChanging(value);
                 ReportPropertyChanging("DisplayName");
-                _DisplayName = StructuralObject.SetValidValue(value, false);
+                _DisplayName = StructuralObject.SetValidValue(value, false, "DisplayName");
                 ReportPropertyChanged("DisplayName");
                 OnDisplayNameChanged();
             }
@@ -23857,7 +23979,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnEmailAddressChanging(value);
                 ReportPropertyChanging("EmailAddress");
-                _EmailAddress = StructuralObject.SetValidValue(value, false);
+                _EmailAddress = StructuralObject.SetValidValue(value, false, "EmailAddress");
                 ReportPropertyChanged("EmailAddress");
                 OnEmailAddressChanged();
             }
@@ -23881,7 +24003,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnAddressChanging(value);
                 ReportPropertyChanging("Address");
-                _Address = StructuralObject.SetValidValue(value, false);
+                _Address = StructuralObject.SetValidValue(value, false, "Address");
                 ReportPropertyChanged("Address");
                 OnAddressChanged();
             }
@@ -23905,7 +24027,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnDropShipEmailTemplateIdChanging(value);
                 ReportPropertyChanging("DropShipEmailTemplateId");
-                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false);
+                _DropShipEmailTemplateId = StructuralObject.SetValidValue(value, false, "DropShipEmailTemplateId");
                 ReportPropertyChanged("DropShipEmailTemplateId");
                 OnDropShipEmailTemplateIdChanged();
             }
@@ -23929,7 +24051,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnLastUpdatedChanging(value);
                 ReportPropertyChanging("LastUpdated");
-                _LastUpdated = StructuralObject.SetValidValue(value);
+                _LastUpdated = StructuralObject.SetValidValue(value, "LastUpdated");
                 ReportPropertyChanged("LastUpdated");
                 OnLastUpdatedChanged();
             }
@@ -23939,7 +24061,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnLastUpdatedChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -23966,7 +24088,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -23985,7 +24108,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnSettingNameChanging(value);
                     ReportPropertyChanging("SettingName");
-                    _SettingName = StructuralObject.SetValidValue(value, false);
+                    _SettingName = StructuralObject.SetValidValue(value, false, "SettingName");
                     ReportPropertyChanged("SettingName");
                     OnSettingNameChanged();
                 }
@@ -24010,7 +24133,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnSettingValueChanging(value);
                 ReportPropertyChanging("SettingValue");
-                _SettingValue = StructuralObject.SetValidValue(value, false);
+                _SettingValue = StructuralObject.SetValidValue(value, false, "SettingValue");
                 ReportPropertyChanged("SettingValue");
                 OnSettingValueChanged();
             }
@@ -24020,7 +24143,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnSettingValueChanged();
 
         #endregion
-    
+
     }
     
     /// <summary>
@@ -24055,7 +24178,8 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         }
 
         #endregion
-        #region Primitive Properties
+
+        #region Simple Properties
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -24074,7 +24198,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
                 {
                     OnbvinChanging(value);
                     ReportPropertyChanging("bvin");
-                    _bvin = StructuralObject.SetValidValue(value, false);
+                    _bvin = StructuralObject.SetValidValue(value, false, "bvin");
                     ReportPropertyChanged("bvin");
                     OnbvinChanged();
                 }
@@ -24099,7 +24223,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnUserIdChanging(value);
                 ReportPropertyChanging("UserId");
-                _UserId = StructuralObject.SetValidValue(value, false);
+                _UserId = StructuralObject.SetValidValue(value, false, "UserId");
                 ReportPropertyChanged("UserId");
                 OnUserIdChanged();
             }
@@ -24123,7 +24247,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnProductBvinChanging(value);
                 ReportPropertyChanging("ProductBvin");
-                _ProductBvin = StructuralObject.SetValidValue(value, false);
+                _ProductBvin = StructuralObject.SetValidValue(value, false, "ProductBvin");
                 ReportPropertyChanged("ProductBvin");
                 OnProductBvinChanged();
             }
@@ -24147,7 +24271,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnQuantityChanging(value);
                 ReportPropertyChanging("Quantity");
-                _Quantity = StructuralObject.SetValidValue(value);
+                _Quantity = StructuralObject.SetValidValue(value, "Quantity");
                 ReportPropertyChanged("Quantity");
                 OnQuantityChanged();
             }
@@ -24171,7 +24295,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnModifiersChanging(value);
                 ReportPropertyChanging("Modifiers");
-                _Modifiers = StructuralObject.SetValidValue(value, false);
+                _Modifiers = StructuralObject.SetValidValue(value, false, "Modifiers");
                 ReportPropertyChanged("Modifiers");
                 OnModifiersChanged();
             }
@@ -24195,7 +24319,7 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
             {
                 OnInputsChanging(value);
                 ReportPropertyChanging("Inputs");
-                _Inputs = StructuralObject.SetValidValue(value, false);
+                _Inputs = StructuralObject.SetValidValue(value, false, "Inputs");
                 ReportPropertyChanged("Inputs");
                 OnInputsChanged();
             }
@@ -24205,9 +24329,9 @@ namespace MerchantTribe.Migration.Migrators.BV5.data
         partial void OnInputsChanged();
 
         #endregion
-    
+
     }
 
     #endregion
-    
+
 }

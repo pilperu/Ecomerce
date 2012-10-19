@@ -99,6 +99,22 @@ namespace MerchantTribe.MigrationWindows
 
             s.PrepArgs();
         }
+
+        private void btnReIndex_Click(object sender, EventArgs e)
+        {
+            ReindexForm s = new ReindexForm();
+            if (s.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                MigrationSettings settings = new MigrationSettings();
+                LoadSettingsFromSaved(settings);
+                settings.SourceType = MigrationSourceType.ReIndexOnly;
+
+                WorkerForm worker = new WorkerForm();
+                worker.Show();
+                worker.Focus();
+                worker.StartMigration(settings);
+            }
+        }
          
     }
 }

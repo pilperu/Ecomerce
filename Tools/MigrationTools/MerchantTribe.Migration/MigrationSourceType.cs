@@ -9,6 +9,7 @@ namespace MerchantTribe.Migration
     {
         BVC2004 = 1,
         BV5 = 0,
-        MerchantTribe = 2
+        MerchantTribe = 2,
+        ReIndexOnly = 3
     }
 }

@@ -1,98 +1,98 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BV5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+      <Schema Namespace="BV5Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="BV5ModelStoreContainer">
-          <EntitySet Name="bvc_Address" EntityType="BV5Model.Store.bvc_Address" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Affiliate" EntityType="BV5Model.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_AffiliateQuestions" EntityType="BV5Model.Store.bvc_AffiliateQuestions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_AffiliateReferral" EntityType="BV5Model.Store.bvc_AffiliateReferral" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_AuthenticationToken" EntityType="BV5Model.Store.bvc_AuthenticationToken" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Category" EntityType="BV5Model.Store.bvc_Category" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ComponentSetting" EntityType="BV5Model.Store.bvc_ComponentSetting" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ComponentSettingList" EntityType="BV5Model.Store.bvc_ComponentSettingList" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ContactUsQuestions" EntityType="BV5Model.Store.bvc_ContactUsQuestions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ContentBlock" EntityType="BV5Model.Store.bvc_ContentBlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ContentColumn" EntityType="BV5Model.Store.bvc_ContentColumn" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Country" EntityType="BV5Model.Store.bvc_Country" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_County" EntityType="BV5Model.Store.bvc_County" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CreditCardType" EntityType="BV5Model.Store.bvc_CreditCardType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CustomPage" EntityType="BV5Model.Store.bvc_CustomPage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_CustomUrl" EntityType="BV5Model.Store.bvc_CustomUrl" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_DropShipNotification" EntityType="BV5Model.Store.bvc_DropShipNotification" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_EmailTemplate" EntityType="BV5Model.Store.bvc_EmailTemplate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_EventLog" EntityType="BV5Model.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Fraud" EntityType="BV5Model.Store.bvc_Fraud" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_GiftCertificate" EntityType="BV5Model.Store.bvc_GiftCertificate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_KitPart" EntityType="BV5Model.Store.bvc_KitPart" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_KitPartGroup" EntityType="BV5Model.Store.bvc_KitPartGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_LineItem" EntityType="BV5Model.Store.bvc_LineItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_LineItemInput" EntityType="BV5Model.Store.bvc_LineItemInput" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_LineItemModifier" EntityType="BV5Model.Store.bvc_LineItemModifier" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_LineItemStatusCode" EntityType="BV5Model.Store.bvc_LineItemStatusCode" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingList" EntityType="BV5Model.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_MailingListMember" EntityType="BV5Model.Store.bvc_MailingListMember" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Manufacturer" EntityType="BV5Model.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Order" EntityType="BV5Model.Store.bvc_Order" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderCoupon" EntityType="BV5Model.Store.bvc_OrderCoupon" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderNote" EntityType="BV5Model.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderPackage" EntityType="BV5Model.Store.bvc_OrderPackage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderPayment" EntityType="BV5Model.Store.bvc_OrderPayment" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_OrderStatusCode" EntityType="BV5Model.Store.bvc_OrderStatusCode" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Policy" EntityType="BV5Model.Store.bvc_Policy" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PolicyBlock" EntityType="BV5Model.Store.bvc_PolicyBlock" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PriceGroup" EntityType="BV5Model.Store.bvc_PriceGroup" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_PrintTemplate" EntityType="BV5Model.Store.bvc_PrintTemplate" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Product" EntityType="BV5Model.Store.bvc_Product" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoiceCombinations" EntityType="BV5Model.Store.bvc_ProductChoiceCombinations" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoiceInputOrder" EntityType="BV5Model.Store.bvc_ProductChoiceInputOrder" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoiceOptions" EntityType="BV5Model.Store.bvc_ProductChoiceOptions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductChoices" EntityType="BV5Model.Store.bvc_ProductChoices" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductCrossSell" EntityType="BV5Model.Store.bvc_ProductCrossSell" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFile" EntityType="BV5Model.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFileXProduct" EntityType="BV5Model.Store.bvc_ProductFileXProduct" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductFilter" EntityType="BV5Model.Store.bvc_ProductFilter" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductImage" EntityType="BV5Model.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductInputs" EntityType="BV5Model.Store.bvc_ProductInputs" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductInventory" EntityType="BV5Model.Store.bvc_ProductInventory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductModifier" EntityType="BV5Model.Store.bvc_ProductModifier" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductModifierOption" EntityType="BV5Model.Store.bvc_ProductModifierOption" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductProperty" EntityType="BV5Model.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="BV5Model.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductPropertyValue" EntityType="BV5Model.Store.bvc_ProductPropertyValue" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductReview" EntityType="BV5Model.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductType" EntityType="BV5Model.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductTypeXProductProperty" EntityType="BV5Model.Store.bvc_ProductTypeXProductProperty" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductUpSell" EntityType="BV5Model.Store.bvc_ProductUpSell" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="BV5Model.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXCategory" EntityType="BV5Model.Store.bvc_ProductXCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXChoice" EntityType="BV5Model.Store.bvc_ProductXChoice" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXInput" EntityType="BV5Model.Store.bvc_ProductXInput" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ProductXModifier" EntityType="BV5Model.Store.bvc_ProductXModifier" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Region" EntityType="BV5Model.Store.bvc_Region" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RMA" EntityType="BV5Model.Store.bvc_RMA" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RMAItem" EntityType="BV5Model.Store.bvc_RMAItem" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Role" EntityType="BV5Model.Store.bvc_Role" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RolePermission" EntityType="BV5Model.Store.bvc_RolePermission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_RoleXRolePermission" EntityType="BV5Model.Store.bvc_RoleXRolePermission" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_SearchQuery" EntityType="BV5Model.Store.bvc_SearchQuery" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShippingMethod" EntityType="BV5Model.Store.bvc_ShippingMethod" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShippingMethod_CountryRestriction" EntityType="BV5Model.Store.bvc_ShippingMethod_CountryRestriction" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_ShippingMethod_RegionRestriction" EntityType="BV5Model.Store.bvc_ShippingMethod_RegionRestriction" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_SiteTerm" EntityType="BV5Model.Store.bvc_SiteTerm" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Tax" EntityType="BV5Model.Store.bvc_Tax" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_TaxClass" EntityType="BV5Model.Store.bvc_TaxClass" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_User" EntityType="BV5Model.Store.bvc_User" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserQuestions" EntityType="BV5Model.Store.bvc_UserQuestions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserXContact" EntityType="BV5Model.Store.bvc_UserXContact" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_UserXRole" EntityType="BV5Model.Store.bvc_UserXRole" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_USGeoData" EntityType="BV5Model.Store.bvc_USGeoData" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_Vendor" EntityType="BV5Model.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_WebAppSetting" EntityType="BV5Model.Store.bvc_WebAppSetting" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="bvc_WishList" EntityType="BV5Model.Store.bvc_WishList" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="bvc_Address" EntityType="BV5Model.Store.bvc_Address" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Affiliate" EntityType="BV5Model.Store.bvc_Affiliate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_AffiliateQuestions" EntityType="BV5Model.Store.bvc_AffiliateQuestions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_AffiliateReferral" EntityType="BV5Model.Store.bvc_AffiliateReferral" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_AuthenticationToken" EntityType="BV5Model.Store.bvc_AuthenticationToken" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Category" EntityType="BV5Model.Store.bvc_Category" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ComponentSetting" EntityType="BV5Model.Store.bvc_ComponentSetting" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ComponentSettingList" EntityType="BV5Model.Store.bvc_ComponentSettingList" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ContactUsQuestions" EntityType="BV5Model.Store.bvc_ContactUsQuestions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ContentBlock" EntityType="BV5Model.Store.bvc_ContentBlock" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ContentColumn" EntityType="BV5Model.Store.bvc_ContentColumn" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Country" EntityType="BV5Model.Store.bvc_Country" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_County" EntityType="BV5Model.Store.bvc_County" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CreditCardType" EntityType="BV5Model.Store.bvc_CreditCardType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CustomPage" EntityType="BV5Model.Store.bvc_CustomPage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_CustomUrl" EntityType="BV5Model.Store.bvc_CustomUrl" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_DropShipNotification" EntityType="BV5Model.Store.bvc_DropShipNotification" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_EmailTemplate" EntityType="BV5Model.Store.bvc_EmailTemplate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_EventLog" EntityType="BV5Model.Store.bvc_EventLog" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Fraud" EntityType="BV5Model.Store.bvc_Fraud" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_GiftCertificate" EntityType="BV5Model.Store.bvc_GiftCertificate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_KitPart" EntityType="BV5Model.Store.bvc_KitPart" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_KitPartGroup" EntityType="BV5Model.Store.bvc_KitPartGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_LineItem" EntityType="BV5Model.Store.bvc_LineItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_LineItemInput" EntityType="BV5Model.Store.bvc_LineItemInput" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_LineItemModifier" EntityType="BV5Model.Store.bvc_LineItemModifier" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_LineItemStatusCode" EntityType="BV5Model.Store.bvc_LineItemStatusCode" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingList" EntityType="BV5Model.Store.bvc_MailingList" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_MailingListMember" EntityType="BV5Model.Store.bvc_MailingListMember" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Manufacturer" EntityType="BV5Model.Store.bvc_Manufacturer" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Order" EntityType="BV5Model.Store.bvc_Order" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderCoupon" EntityType="BV5Model.Store.bvc_OrderCoupon" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderNote" EntityType="BV5Model.Store.bvc_OrderNote" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderPackage" EntityType="BV5Model.Store.bvc_OrderPackage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderPayment" EntityType="BV5Model.Store.bvc_OrderPayment" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_OrderStatusCode" EntityType="BV5Model.Store.bvc_OrderStatusCode" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Policy" EntityType="BV5Model.Store.bvc_Policy" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PolicyBlock" EntityType="BV5Model.Store.bvc_PolicyBlock" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PriceGroup" EntityType="BV5Model.Store.bvc_PriceGroup" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_PrintTemplate" EntityType="BV5Model.Store.bvc_PrintTemplate" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Product" EntityType="BV5Model.Store.bvc_Product" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoiceCombinations" EntityType="BV5Model.Store.bvc_ProductChoiceCombinations" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoiceInputOrder" EntityType="BV5Model.Store.bvc_ProductChoiceInputOrder" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoiceOptions" EntityType="BV5Model.Store.bvc_ProductChoiceOptions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductChoices" EntityType="BV5Model.Store.bvc_ProductChoices" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductCrossSell" EntityType="BV5Model.Store.bvc_ProductCrossSell" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFile" EntityType="BV5Model.Store.bvc_ProductFile" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFileXProduct" EntityType="BV5Model.Store.bvc_ProductFileXProduct" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductFilter" EntityType="BV5Model.Store.bvc_ProductFilter" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductImage" EntityType="BV5Model.Store.bvc_ProductImage" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductInputs" EntityType="BV5Model.Store.bvc_ProductInputs" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductInventory" EntityType="BV5Model.Store.bvc_ProductInventory" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductModifier" EntityType="BV5Model.Store.bvc_ProductModifier" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductModifierOption" EntityType="BV5Model.Store.bvc_ProductModifierOption" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductProperty" EntityType="BV5Model.Store.bvc_ProductProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyChoice" EntityType="BV5Model.Store.bvc_ProductPropertyChoice" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductPropertyValue" EntityType="BV5Model.Store.bvc_ProductPropertyValue" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductReview" EntityType="BV5Model.Store.bvc_ProductReview" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductType" EntityType="BV5Model.Store.bvc_ProductType" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductTypeXProductProperty" EntityType="BV5Model.Store.bvc_ProductTypeXProductProperty" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductUpSell" EntityType="BV5Model.Store.bvc_ProductUpSell" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductVolumeDiscounts" EntityType="BV5Model.Store.bvc_ProductVolumeDiscounts" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXCategory" EntityType="BV5Model.Store.bvc_ProductXCategory" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXChoice" EntityType="BV5Model.Store.bvc_ProductXChoice" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXInput" EntityType="BV5Model.Store.bvc_ProductXInput" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ProductXModifier" EntityType="BV5Model.Store.bvc_ProductXModifier" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Region" EntityType="BV5Model.Store.bvc_Region" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RMA" EntityType="BV5Model.Store.bvc_RMA" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RMAItem" EntityType="BV5Model.Store.bvc_RMAItem" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Role" EntityType="BV5Model.Store.bvc_Role" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RolePermission" EntityType="BV5Model.Store.bvc_RolePermission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_RoleXRolePermission" EntityType="BV5Model.Store.bvc_RoleXRolePermission" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_SearchQuery" EntityType="BV5Model.Store.bvc_SearchQuery" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShippingMethod" EntityType="BV5Model.Store.bvc_ShippingMethod" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShippingMethod_CountryRestriction" EntityType="BV5Model.Store.bvc_ShippingMethod_CountryRestriction" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_ShippingMethod_RegionRestriction" EntityType="BV5Model.Store.bvc_ShippingMethod_RegionRestriction" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_SiteTerm" EntityType="BV5Model.Store.bvc_SiteTerm" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Tax" EntityType="BV5Model.Store.bvc_Tax" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_TaxClass" EntityType="BV5Model.Store.bvc_TaxClass" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_User" EntityType="BV5Model.Store.bvc_User" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserQuestions" EntityType="BV5Model.Store.bvc_UserQuestions" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserXContact" EntityType="BV5Model.Store.bvc_UserXContact" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_UserXRole" EntityType="BV5Model.Store.bvc_UserXRole" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_USGeoData" EntityType="BV5Model.Store.bvc_USGeoData" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_Vendor" EntityType="BV5Model.Store.bvc_Vendor" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_WebAppSetting" EntityType="BV5Model.Store.bvc_WebAppSetting" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="bvc_WishList" EntityType="BV5Model.Store.bvc_WishList" store:Type="Tables" Schema="dbo" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="FK_bvc_ContentBlock_bvc_ContentColumn" Association="BV5Model.Store.FK_bvc_ContentBlock_bvc_ContentColumn">
             <End Role="bvc_ContentColumn" EntitySet="bvc_ContentColumn" />
             <End Role="bvc_ContentBlock" EntitySet="bvc_ContentBlock" />
@@ -1803,8 +1803,8 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BV5Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="BV53Entities" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="BV5Model" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="BV53Entities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="bvc_Address" EntityType="BV5Model.bvc_Address" />
           <EntitySet Name="bvc_Affiliate" EntityType="BV5Model.bvc_Affiliate" />
           <EntitySet Name="bvc_AffiliateQuestions" EntityType="BV5Model.bvc_AffiliateQuestions" />
@@ -2017,7 +2017,7 @@
           <Key>
             <PropertyRef Name="Bvin" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" />
           <Property Name="NickName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -2345,7 +2345,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" />
           <Property Name="ProductId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
@@ -2448,7 +2448,7 @@
           <Key>
             <PropertyRef Name="Bvin" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="AffiliateId" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="BillingAddress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -2557,7 +2557,7 @@
           <Property Name="purchaseOrderNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="transactionReferenceNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="transactionResponseCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CustomProperties" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ThirdPartyOrderId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="ThirdPartyTransId" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
@@ -2621,7 +2621,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="SKU" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ProductName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -2806,8 +2806,8 @@
           <Property Name="LastUpdated" Type="DateTime" Nullable="false" />
           <Property Name="OutOfStockMode" Type="Int32" Nullable="false" />
           <Property Name="ReorderPoint" Type="Decimal" Nullable="false" Precision="18" Scale="10" />
-          <Property Name="QuantityAvailableForSale" Type="Decimal" Precision="19" Scale="10" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="ReorderLevel" Type="Decimal" Precision="19" Scale="10" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="QuantityAvailableForSale" Type="Decimal" Precision="19" Scale="10" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="ReorderLevel" Type="Decimal" Precision="19" Scale="10" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <NavigationProperty Name="bvc_Product" Relationship="BV5Model.FK_bvc_ProductInventory_bvc_Product" FromRole="bvc_ProductInventory" ToRole="bvc_Product" />
         </EntityType>
         <EntityType Name="bvc_ProductModifier">
@@ -2882,7 +2882,7 @@
           <Key>
             <PropertyRef Name="bvin" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="lastUpdated" Type="DateTime" Nullable="false" />
           <Property Name="bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="Approved" Type="Int32" Nullable="false" />
@@ -2994,7 +2994,7 @@
           <Property Name="bvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="OrderBvin" Type="String" Nullable="false" MaxLength="36" Unicode="false" FixedLength="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
-          <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Number" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="EmailAddress" Type="String" Nullable="false" MaxLength="150" Unicode="true" FixedLength="false" />
           <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="Comments" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -3532,7 +3532,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BV5ModelStoreContainer" CdmEntityContainer="BV53Entities">
           <EntitySetMapping Name="bvc_Address"><EntityTypeMapping TypeName="BV5Model.bvc_Address"><MappingFragment StoreEntitySet="bvc_Address">
             <ScalarProperty Name="id" ColumnName="id" />
@@ -4420,7 +4420,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
