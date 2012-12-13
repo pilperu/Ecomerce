@@ -155,7 +155,7 @@ namespace MerchantTribeStore.api.rest
                 item.StoreId = MTApp.CurrentStore.Id;
                 if (item.UrlSlug.Trim().Length < 1)
                 {
-                    item.UrlSlug = MerchantTribe.Web.Text.Slugify(item.ProductName, true, true);
+                    item.UrlSlug = MerchantTribe.Web.Text.Slugify(item.ProductName, false, false);
                 }
 
                 // Try ten times to append to URL if in use

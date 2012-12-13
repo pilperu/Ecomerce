@@ -97,6 +97,8 @@ namespace MerchantTribe.MigrationWindows
             s.SourceServiceRootUrl = Properties.Settings.Default.SourceRootUrl;
             s.SourceApiKey = Properties.Settings.Default.SourceApiKey;
 
+            s.SkipInactiveProducts = Properties.Settings.Default.SkipInactiveProducts;
+            
             s.PrepArgs();
         }
 

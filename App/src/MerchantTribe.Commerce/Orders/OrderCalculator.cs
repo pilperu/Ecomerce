@@ -57,8 +57,8 @@ namespace MerchantTribe.Commerce.Orders
             // Calcaulte Taxes
             o.ClearTaxes();
             List<Taxes.ITaxSchedule> schedules = _app.OrderServices.TaxSchedules.FindAllAndCreateDefaultAsInterface(o.StoreId);
-            Contacts.Address destination = o.ShippingAddress;
-            ApplyTaxes(schedules, o.ItemsAsITaxable(), destination);
+            Contacts.Address destination = o.ShippingAddress;            
+            ApplyTaxes(schedules, o.ItemsAsITaxable(), destination, o);
 
             // Calculate Sub Total of Items
             foreach (LineItem li in o.Items)
@@ -251,21 +251,24 @@ namespace MerchantTribe.Commerce.Orders
             }
         }
 
-        private void ApplyTaxes(ITaxSchedule schedule, ITaxable item, IAddress address)
+        private void ApplyTaxes(List<ITaxSchedule> schedules, List<ITaxable> items, IAddress address, Order o)
         {
-            List<ITaxSchedule> schedules = new List<ITaxSchedule>();
-            schedules.Add(schedule);
-            List<ITaxable> items = new List<ITaxable>();
-            items.Add(item);
-            ApplyTaxes(schedules, items, address);
-        }
-        private void ApplyTaxes(List<ITaxSchedule> schedules, List<ITaxable> items, IAddress address)
-        {
-            if (schedules != null)
+            if (_app.CurrentStore.Settings.Avalara.Enabled)
             {
-                foreach (ITaxSchedule ts in schedules)
+                var originAddress = Utilities.AvalaraUtilities.ConvertAddressToAvalara(_app.ContactServices.Addresses.FindStoreContactAddress());
+                var destination = Utilities.AvalaraUtilities.ConvertAddressToAvalara(address);                
+                var lines = Utilities.AvalaraUtilities.ConvertOrderLines(o.Items);    
+                string customerId = Utilities.AvalaraUtilities.GetCustomerCode(o);
+                Utilities.AvalaraUtilities.GetAvalaraTaxes(o, o.bvin, originAddress, destination, lines, customerId, _app);
+            }
+            else
+            {
+                if (schedules != null)
                 {
-                    TaxItems(ts, items, address);
+                    foreach (ITaxSchedule ts in schedules)
+                    {
+                        TaxItems(ts, items, address);
+                    }
                 }
             }
         }
@@ -283,7 +286,17 @@ namespace MerchantTribe.Commerce.Orders
             List<ITaxable> itemsMatchingSchedule = new List<ITaxable>();
             foreach (ITaxable item in items)
             {
-                if (item.TaxScheduleId() == schedule.TaxScheduleId())
+                bool qualifies = item.TaxScheduleId() == schedule.TaxScheduleId();
+
+                // If no tax schedule is set, assign to default schedule
+                if (qualifies == false)
+                {
+                    if (item.TaxScheduleId() <= 0 && schedule.TaxScheduleName().Trim().ToLowerInvariant() == "default")
+                    {
+                        qualifies = true;
+                    }
+                }
+                if (qualifies == true)
                 {
                     summaryForSchedule.Value += item.TaxableValue();
                     summaryForSchedule.ShippingValue += item.TaxableShippingValue();

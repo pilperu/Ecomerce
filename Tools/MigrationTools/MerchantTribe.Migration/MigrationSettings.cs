@@ -21,6 +21,9 @@ namespace MerchantTribe.Migration
         public bool ImportCategories {get;set;}
         public bool ImportProducts {get;set;}
         public bool ImportProductImagesOnly { get; set; }
+
+        public bool SkipInactiveProducts { get; set; }
+
         public bool ImportUsers {get;set;}
         public bool ImportAffiliates {get;set;}
         public bool ImportOrders {get;set;}
@@ -38,6 +41,15 @@ namespace MerchantTribe.Migration
 
         public string SingleOrderImport {get;set;}
         public string SingleSkuImport {get;set;}
+
+        public bool SingleProductMode
+        {
+            get
+            {
+                return SingleSkuImport.Trim().Length > 0;
+            }
+        }
+
         public int ImportProductLimit { get; set; }
 
         public int UserStartPage { get; set; }
@@ -97,6 +109,7 @@ namespace MerchantTribe.Migration
             ProductStartPage = 1;
             ImportProductImagesOnly = false;
             SkipProductPrerequisites = false;
+            this.SkipInactiveProducts = false;
         }
 
         public void PrepArgs()

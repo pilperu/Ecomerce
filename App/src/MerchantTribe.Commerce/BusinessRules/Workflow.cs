@@ -80,6 +80,8 @@ namespace MerchantTribe.Commerce.BusinessRules
                     wf._Tasks.Add(new OrderTasks.RunAllDropShipWorkflows());
                     break;
                 case WorkflowNames.OrderEdited:
+                    wf._Tasks.Add(new OrderTasks.AvalaraResubmitTaxes());
+                    wf._Tasks.Add(new OrderTasks.UpdateOrder());
                     break;
                 case WorkflowNames.PackageShipped:                    
                     break;
@@ -87,13 +89,16 @@ namespace MerchantTribe.Commerce.BusinessRules
                     wf._Tasks.Add(new OrderTasks.RunWorkFlowIfPaid());
                     wf._Tasks.Add(new OrderTasks.MarkCompletedWhenShippedAndPaid());
                     wf._Tasks.Add(new OrderTasks.ChangeOrderStatusWhenPaymentRemoved());
+                    wf._Tasks.Add(new OrderTasks.AvalaraCancelWhenPaymentRemoved());
                     wf._Tasks.Add(new OrderTasks.UpdateOrder());
                     break;
                 case WorkflowNames.PaymentComplete:
                     wf._Tasks.Add(new OrderTasks.UpdateOrder());
+                    wf._Tasks.Add(new OrderTasks.AvalaraCommitTaxes());
+                    wf._Tasks.Add(new OrderTasks.UpdateOrder());
                     wf._Tasks.Add(new OrderTasks.IssueGiftCertificates());
                     wf._Tasks.Add(new OrderTasks.IssueRewardsPoints());
-                    wf._Tasks.Add(new OrderTasks.RunAllDropShipWorkflows());
+                    wf._Tasks.Add(new OrderTasks.RunAllDropShipWorkflows());                    
                     break;
                 case WorkflowNames.ProcessNewOrder:
                     // Change in 6.0.50.117

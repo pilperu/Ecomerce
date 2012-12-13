@@ -1820,46 +1820,7 @@
           </AssociationSet>
           <FunctionImport Name="GenerateNewOrderNumber" ReturnType="Collection(Int64)">
           <Parameter Name="storeid" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsAvailableForUser" ReturnType="Collection(Int32)">
-            <Parameter Name="UserId" Mode="In" Type="String" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsCapture">
-            <Parameter Name="bvin" Mode="In" Type="String" />
-            <Parameter Name="amount" Mode="In" Type="Int32" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsDecAmount">
-            <Parameter Name="bvin" Mode="In" Type="String" />
-            <Parameter Name="amount" Mode="In" Type="Int32" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsHeldForUser" ReturnType="Collection(Int32)">
-            <Parameter Name="UserId" Mode="In" Type="String" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointHold">
-            <Parameter Name="bvin" Mode="In" Type="String" />
-            <Parameter Name="amount" Mode="In" Type="Int32" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsIncAmount">
-            <Parameter Name="bvin" Mode="In" Type="String" />
-            <Parameter Name="amount" Mode="In" Type="Int32" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsTotalIssued" ReturnType="Collection(Int32)">
-          <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsTotalReserved" ReturnType="Collection(Int32)">
-          <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
-          <FunctionImport Name="RewardPointsUnHold">
-            <Parameter Name="bvin" Mode="In" Type="String" />
-            <Parameter Name="amount" Mode="In" Type="Int32" />
-            <Parameter Name="StoreId" Mode="In" Type="Int64" />
-          </FunctionImport>
+          </FunctionImport>          
           <EntitySet Name="bvc_UserXContact" EntityType="EfModels.bvc_UserXContact" />
           <AssociationSet Name="FK_bvc_UserXAffiliate_bvc_User" Association="EfModels.FK_bvc_UserXAffiliate_bvc_User">
             <End Role="bvc_User" EntitySet="bvc_User" />

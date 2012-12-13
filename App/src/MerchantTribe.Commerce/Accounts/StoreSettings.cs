@@ -23,6 +23,7 @@ namespace MerchantTribe.Commerce.Accounts
             FaceBook = new StoreSettingsFaceBook(this);
             Twitter = new StoreSettingsTwitter(this);
             GooglePlus = new StoreSettingsGooglePlus(this);
+            Avalara = new StoreSettingsAvalara(this);
         }
 
         #region Setter Helpers
@@ -164,6 +165,7 @@ namespace MerchantTribe.Commerce.Accounts
         public StoreSettingsFaceBook FaceBook { get; private set; }
         public StoreSettingsTwitter Twitter { get; private set; }
         public StoreSettingsGooglePlus GooglePlus { get; private set; }
+        public StoreSettingsAvalara Avalara { get; private set; }
 
         public string UniqueId
         {
@@ -909,7 +911,21 @@ namespace MerchantTribe.Commerce.Accounts
             DisabledCountryIso3Codes = newCodes;
         }
 
-        
+        public bool IsModuleActive(string moduleId)
+        {
+            string active = this.ActiveModules;
+            var modules = active.Split(',').ToList();
+            if (modules.Contains(moduleId))
+            {
+                return true;
+            }
+            return false;
+        }
+        public string ActiveModules
+        {
+            get { return GetProp("ActivePlugins"); }
+            set { SetProp("ActivePlugins", value); }
+        }
 
     }
 }

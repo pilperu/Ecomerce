@@ -109,7 +109,7 @@ namespace MerchantTribe.Commerce.Shipping
             foreach (Orders.LineItem li in this.Items)
             {
                 result.QuantityOfItemsInBox += (int)li.Quantity;
-                result.BoxValue = li.LineTotal;
+                result.BoxValue += li.LineTotal;
             }
 
             return result;

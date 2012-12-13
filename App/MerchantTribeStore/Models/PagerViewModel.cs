@@ -13,7 +13,7 @@ namespace MerchantTribeStore.Models
         [DisplayFormat(ConvertEmptyStringToNull = false)]
         public int CurrentPage { get; set; }
         [DisplayFormat(ConvertEmptyStringToNull = false)]
-        public int TotalItems { get; set; }
+        public int TotalItems { get; set; }                
 
         public int TotalPages
         {
@@ -35,7 +35,7 @@ namespace MerchantTribeStore.Models
         }
 
         public PagerViewModel()
-        {
+        {           
             PageSize = 9;
             CurrentPage = 1;
             TotalItems = 0;

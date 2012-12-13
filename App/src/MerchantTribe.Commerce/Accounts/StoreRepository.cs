@@ -198,6 +198,29 @@ namespace MerchantTribe.Commerce.Accounts
             }
             return result;
         }
+
+
+        public long GetLastOrderNumber(long storeId)
+        {
+            var setting = this.settingsRepository.FindSingleSetting(storeId, "LastOrderNumber");
+            if (setting == null) return 0;
+            return setting.ValueAsLong;            
+        }
+
+        public void SetLastOrderNumber(long storeId, long lastOrderNumber)
+        {
+            var setting = this.settingsRepository.FindSingleSetting(storeId, "LastOrderNumber");
+            if (setting == null)
+            {
+                setting = new StoreSetting();
+                setting.StoreId = storeId;
+                setting.SettingName = "LastOrderNumber";
+            }
+            setting.ValueAsLong = lastOrderNumber;
+            this.settingsRepository.Update(setting);            
+        }
+
+
                         
     }
 }

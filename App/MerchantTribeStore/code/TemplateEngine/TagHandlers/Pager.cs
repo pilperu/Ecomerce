@@ -43,7 +43,30 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
         {
             if (model.TotalPages <= 1) return;
 
-            int pages = model.TotalPages;
+
+            // Only show 10 pages at a time, sliding window based on current page
+            int _RenderStartPage = 1;
+            int _RenderEndPage = model.TotalPages;
+            if (model.TotalPages > 10)
+            {
+                if (model.CurrentPage < 5)
+                {
+                    _RenderStartPage = 1;
+                    _RenderEndPage = 10;
+                }
+                else if (model.CurrentPage > model.TotalPages - 5)
+                {
+                    _RenderStartPage = model.TotalPages - 9;
+                    _RenderEndPage = model.TotalPages;
+                }
+                else
+                {
+                    _RenderStartPage = model.CurrentPage - 4;
+                    _RenderEndPage = model.CurrentPage + 5;
+                }
+            }
+
+            int pages = _RenderEndPage - _RenderStartPage + 1;
             sb.Append("<div class=\"pager\">");
             sb.Append("<ul>");
             sb.Append("<li><a href=\"" + String.Format(model.PagerUrlFormatFirst, 1) + "\">|&lt;</a></li>");
@@ -55,7 +78,8 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
             {
                 sb.Append("<li class=\"inactive\">&nbsp;</li>");
             }
-            for (int i = 1; i <= pages; i++)
+
+            for (int i = _RenderStartPage; i <= _RenderEndPage; i++)
             {
                 sb.Append("<li class=\"" + IsCurrentPage(i, model) + "\">");
                 if (i == 1)
@@ -68,6 +92,12 @@ namespace MerchantTribeStore.code.TemplateEngine.TagHandlers
                 }
                 sb.Append("</li>");
             }
+
+            if (_RenderEndPage < model.TotalPages)
+            {
+                sb.Append("<a href=\"" + String.Format(model.PagerUrlFormat, _RenderEndPage + 1) + "\">...</a>");
+            }
+
             if (model.CurrentPage < pages)
             {
                 sb.Append("<li><a href=\"" + String.Format(model.PagerUrlFormat, model.CurrentPage + 1) + "\">&raquo;</a></li>");

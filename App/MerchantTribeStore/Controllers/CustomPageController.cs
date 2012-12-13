@@ -20,6 +20,8 @@ namespace MerchantTribeStore.Controllers
         // GET: /CustomPage/
         public ActionResult Index(string slug)
         {
+            ViewBag.BodyClass = "store-category-page";
+
             Category cat = MTApp.CatalogServices.Categories.FindBySlugForStore(slug, 
                                         MTApp.CurrentRequestContext.CurrentStore.Id);
             if (cat == null) cat = new Category();
@@ -36,7 +38,7 @@ namespace MerchantTribeStore.Controllers
             // Get page.html Template
             ThemeManager tm = MTApp.ThemeManager();
             if (cat.TemplateName == string.Empty) { cat.TemplateName = "default.html"; }
-            string template = tm.GetTemplateFromCurrentTheme(cat.TemplateName, "default.html"); // Try default in theme before system
+            string template = tm.GetTemplateFromCurrentTheme(true, cat.TemplateName, "default.html"); // Try default in theme before system
 
             // Fill with data from category, making sure legacy description is used if no area data
             CategoryPageVersion version = cat.GetCurrentVersion();

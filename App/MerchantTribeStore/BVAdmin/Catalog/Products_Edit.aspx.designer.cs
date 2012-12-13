@@ -22,6 +22,15 @@ namespace MerchantTribeStore {
         protected global::MerchantTribeStore.BVAdmin_Controls_ProductEditMenu ProductNavigator;
         
         /// <summary>
+        /// imgupload control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imgupload;
+        
+        /// <summary>
         /// imgPreviewSmall control.
         /// </summary>
         /// <remarks>
@@ -31,14 +40,14 @@ namespace MerchantTribeStore {
         protected global::System.Web.UI.WebControls.Image imgPreviewSmall;
         
         /// <summary>
-        /// imgupload control.
+        /// ImageSmallUrlField control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload imgupload;
-         protected global::System.Web.UI.WebControls.TextBox ImageSmallUrlField;
+        protected global::System.Web.UI.WebControls.TextBox ImageSmallUrlField;
+        
         /// <summary>
         /// SmallImageAlternateTextField control.
         /// </summary>
@@ -632,6 +641,15 @@ namespace MerchantTribeStore {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkAllowReviews;
+        
+        /// <summary>
+        /// swatchpathfield control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox swatchpathfield;
         
         /// <summary>
         /// RewriteUrlField control.

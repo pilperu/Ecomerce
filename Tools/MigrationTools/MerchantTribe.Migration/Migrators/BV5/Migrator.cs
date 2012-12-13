@@ -27,7 +27,9 @@ namespace MerchantTribe.Migration.Migrators.BV5
         private Dictionary<string, long> AffiliateMapper = new Dictionary<string, long>();
         private Dictionary<string, long> TaxScheduleMapper = new Dictionary<string, long>();
         private List<PropertyMapperInfo> ProductPropertyMapper = new List<PropertyMapperInfo>();
-        
+
+        private List<string> EmptyOptions = new List<String>();
+
         public event MigrationService.ProgressReportDelegate ProgressReport;
         private void wl(string message)
         {
@@ -834,6 +836,10 @@ namespace MerchantTribe.Migration.Migrators.BV5
             Header("Importing Products");
 
             int limit = -1;
+            if (settings.SingleProductMode == true)
+            {
+                limit = 1;
+            }
             if (settings.ImportProductLimit > 0)
             {
                 limit = settings.ImportProductLimit;
@@ -842,6 +848,10 @@ namespace MerchantTribe.Migration.Migrators.BV5
 
             int pageSize = 10;
             int totalRecords = oldDatabase.bvc_Product.Count();
+            if (settings.SingleProductMode == true)
+            {
+                totalRecords = 1;
+            }
             int totalPages = (int)(Math.Ceiling((decimal)totalRecords / (decimal)pageSize));
 
             int startPage = settings.ProductStartPage;
@@ -854,7 +864,18 @@ namespace MerchantTribe.Migration.Migrators.BV5
                 int startRecord = i * pageSize;
                 var products = (from p in oldDatabase.bvc_Product select p).OrderBy(y => y.id).Skip(startRecord).Take(pageSize).ToList();
 
-                if (settings.DisableMultiThreading)
+                if (settings.SingleProductMode == true)
+                {
+                    var singleProd = (from p in oldDatabase.bvc_Product select p).Where(y => y.SKU == settings.SingleSkuImport).FirstOrDefault();
+                    if (singleProd == null)
+                    {
+                        wl("!! Missing Product for Import SKU: " + settings.SingleSkuImport);
+                        return;
+                    }
+                    ImportSingleProduct(singleProd);
+                    return;
+                }
+                else if (settings.DisableMultiThreading)
                 {
                     foreach (data.bvc_Product p in products)
                     {
@@ -917,14 +938,14 @@ namespace MerchantTribe.Migration.Migrators.BV5
             p.ListPrice = old.ListPrice;
             p.LongDescription = old.LongDescription;
             p.ManufacturerId = old.ManufacturerID;
-            p.MetaDescription = old.MetaDescription;
-            p.MetaKeywords = old.MetaKeywords;
-            p.MetaTitle = old.MetaTitle;
+            p.MetaDescription = TextHelper.RemoveHtmlTags(old.MetaDescription, " ");
+            p.MetaKeywords = TextHelper.RemoveHtmlTags(old.MetaKeywords, " ");
+            p.MetaTitle = TextHelper.RemoveHtmlTags(old.MetaTitle, " ");
             p.MinimumQty = old.MinimumQty;
             p.PostContentColumnId = string.Empty;
             p.PreContentColumnId = string.Empty;
             p.PreTransformLongDescription = old.PreTransformLongDescription;
-            p.ProductName = old.ProductName;
+            p.ProductName = TextHelper.RemoveHtmlTags(old.ProductName, " ");
             p.ProductTypeId = old.ProductTypeId;            
             p.ShippingDetails = new ShippableItemDTO();
             p.ShippingDetails.ExtraShipFee = old.ExtraShipFee;
@@ -1062,6 +1083,7 @@ namespace MerchantTribe.Migration.Migrators.BV5
             if (choices == null) return;
             foreach (data.bvc_ProductXChoice choice in choices)
             {
+                if (this.EmptyOptions.Contains(choice.ChoiceId)) continue; // Skip already assigned
                 proxy.ProductOptionsAssignToProduct(choice.ChoiceId, bvin, false);
             }
 
@@ -1069,6 +1091,7 @@ namespace MerchantTribe.Migration.Migrators.BV5
             if (modifiers == null) return;
             foreach (data.bvc_ProductXModifier mod in modifiers)
             {
+                if (this.EmptyOptions.Contains(mod.ModifierId)) continue; // Skip already assigned
                 proxy.ProductOptionsAssignToProduct(mod.ModifierId, bvin, false);
             }
 
@@ -1081,6 +1104,61 @@ namespace MerchantTribe.Migration.Migrators.BV5
 
             // Only generate variants after all options are added. Saves Time
             proxy.ProductOptionsGenerateAllVariants(bvin);
+
+            // Now Assign Variant Skus
+            var combos = db.bvc_ProductChoiceCombinations.Where(y => y.ParentProductId == bvin).ToList();
+            if (combos == null) return;
+            if (combos.Count < 1)
+            {
+                wl("No Combos Found.");
+                return;
+            }
+            else
+            {
+                wl(combos.Count + " combos found");
+            }
+            var children = db.bvc_Product.Where(y => y.ParentID == bvin).ToList();
+            if (children == null) return;
+            if (children.Count < 1)
+            {
+                wl("No children found.");
+                return;
+            }
+            else
+            {
+                wl(children.Count + " children found to update skus");
+            }
+
+            int childCounter = 0;
+            foreach (var child in children)
+            {
+                childCounter++;
+                wl("Updating Child Variant Sku " + childCounter);
+                var dto = new ProductVariantSkuUpdateDTO();
+                dto.Sku = child.SKU.Trim();
+                dto.ProductBvin = bvin;
+
+                if (dto.Sku.Length > 0)
+                {
+                    var matchingChoices = combos.Where(y => y.ProductId == child.bvin).ToList();
+                    foreach (var match in matchingChoices)
+                    {
+                        dto.MatchingOptions.Add(new VariantOptionDataDTO()
+                        {
+                            ChoiceId = match.ChoiceId,
+                            ChoiceItemId = match.ChoiceOptionId
+                        });
+                    }
+                }
+                
+                wl("SKU: " + dto.Sku + " of parent " + dto.ProductBvin + " matches ");
+                foreach (var match in dto.MatchingOptions)
+                {
+                    wl("Choice: " + match.ChoiceId + " Option:" + match.ChoiceItemId);
+                }
+
+                proxy.ProductVariantUpdateSku(dto);
+            }            
         }
         private void AssignProductPropertyValues(string bvin)
         {
@@ -1604,6 +1682,13 @@ namespace MerchantTribe.Migration.Migrators.BV5
                 // Load Items for Option Here
                 o.Items = LoadOptionItemsModifier(o.Bvin);
 
+                if (o.Items.Count < 1)
+                {
+                    this.EmptyOptions.Add(o.Bvin);
+                    wl("No Items Found for Modifier Import. Skipping...");
+                    continue;
+                }
+
                 Api bv6proxy = GetBV6Proxy();
                 var res = bv6proxy.ProductOptionsCreate(o);
                 if (res != null)
@@ -1652,6 +1737,13 @@ namespace MerchantTribe.Migration.Migrators.BV5
 
                 // Load Items for Option Here
                 o.Items = LoadOptionItemsChoice(o.Bvin);
+
+                if (o.Items.Count < 1)
+                {
+                    this.EmptyOptions.Add(o.Bvin);
+                    wl("No Items for Option. Skipping...");
+                    continue;
+                }
 
                 Api bv6proxy = GetBV6Proxy();
                 var res = bv6proxy.ProductOptionsCreate(o);

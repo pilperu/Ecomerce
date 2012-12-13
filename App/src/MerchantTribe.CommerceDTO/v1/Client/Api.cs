@@ -506,6 +506,13 @@ namespace MerchantTribe.CommerceDTO.v1.Client
             return result;
         }
 
+        public ApiResponse<bool> ProductVariantUpdateSku(ProductVariantSkuUpdateDTO data)
+        {
+            ApiResponse<bool> result = new ApiResponse<bool>();
+            result = RestHelper.PostRequest<ApiResponse<bool>>(this.fullApiUri + "productvariantssku/" + Enc(data.ProductBvin) + "?key=" + Enc(key), MerchantTribe.Web.Json.ObjectToJson(data));
+            return result;
+        }
+
         // Products
         public ApiResponse<List<ProductDTO>> ProductsFindAll()
         {

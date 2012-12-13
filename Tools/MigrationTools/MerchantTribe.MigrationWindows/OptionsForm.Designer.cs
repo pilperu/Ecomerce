@@ -31,11 +31,42 @@
             this.Button1 = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Label1 = new System.Windows.Forms.Label();
+            this.sqlGroupBox = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rb6 = new System.Windows.Forms.RadioButton();
+            this.rb2004 = new System.Windows.Forms.RadioButton();
+            this.rb5 = new System.Windows.Forms.RadioButton();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnBrowseForImagesRoot = new System.Windows.Forms.Button();
+            this.fromBV6Data = new System.Windows.Forms.GroupBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.SQLPasswordField = new System.Windows.Forms.TextBox();
+            this.SQLUsernameField = new System.Windows.Forms.TextBox();
+            this.SQLDatabaseField = new System.Windows.Forms.TextBox();
+            this.SQLServerField = new System.Windows.Forms.TextBox();
+            this.SourceApiKeyField = new System.Windows.Forms.TextBox();
+            this.SourceRootField = new System.Windows.Forms.TextBox();
+            this.SkipProductPreField = new System.Windows.Forms.CheckBox();
+            this.chkDisableMultiThreadingField = new System.Windows.Forms.CheckBox();
+            this.ImagesRootFolderField = new System.Windows.Forms.TextBox();
+            this.ApiKeyField = new System.Windows.Forms.TextBox();
+            this.SingleOrderField = new System.Windows.Forms.TextBox();
+            this.chkSingleOrder = new System.Windows.Forms.CheckBox();
+            this.SingleSkuField = new System.Windows.Forms.TextBox();
+            this.chkMetric = new System.Windows.Forms.CheckBox();
+            this.chkSkipInactive = new System.Windows.Forms.CheckBox();
             this.chkClearUsers = new System.Windows.Forms.CheckBox();
             this.ProductImagesOnlyField = new System.Windows.Forms.CheckBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.ProductStartPageField = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.UserStartPageField = new System.Windows.Forms.TextBox();
             this.chkClearOrders = new System.Windows.Forms.CheckBox();
             this.chkClearAffiliates = new System.Windows.Forms.CheckBox();
@@ -47,38 +78,8 @@
             this.chkImportUsers = new System.Windows.Forms.CheckBox();
             this.chkImportProducts = new System.Windows.Forms.CheckBox();
             this.chkImportCategories = new System.Windows.Forms.CheckBox();
-            this.Label1 = new System.Windows.Forms.Label();
-            this.sqlGroupBox = new System.Windows.Forms.GroupBox();
-            this.SQLPasswordField = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.SQLUsernameField = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.SQLDatabaseField = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.SQLServerField = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.rb6 = new System.Windows.Forms.RadioButton();
-            this.rb2004 = new System.Windows.Forms.RadioButton();
-            this.rb5 = new System.Windows.Forms.RadioButton();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnBrowseForImagesRoot = new System.Windows.Forms.Button();
-            this.fromBV6Data = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.SourceApiKeyField = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.SourceRootField = new System.Windows.Forms.TextBox();
-            this.SkipProductPreField = new System.Windows.Forms.CheckBox();
-            this.chkDisableMultiThreadingField = new System.Windows.Forms.CheckBox();
-            this.ImagesRootFolderField = new System.Windows.Forms.TextBox();
-            this.ApiKeyField = new System.Windows.Forms.TextBox();
-            this.SingleOrderField = new System.Windows.Forms.TextBox();
-            this.chkSingleOrder = new System.Windows.Forms.CheckBox();
-            this.SingleSkuField = new System.Windows.Forms.TextBox();
-            this.chkSingleSku = new System.Windows.Forms.CheckBox();
-            this.chkMetric = new System.Windows.Forms.CheckBox();
             this.DestinationRootUrlField = new System.Windows.Forms.TextBox();
+            this.chkSingleSku = new System.Windows.Forms.CheckBox();
             this.GroupBox1.SuspendLayout();
             this.sqlGroupBox.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -110,6 +111,7 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.chkSkipInactive);
             this.GroupBox1.Controls.Add(this.chkClearUsers);
             this.GroupBox1.Controls.Add(this.ProductImagesOnlyField);
             this.GroupBox1.Controls.Add(this.label9);
@@ -131,6 +133,357 @@
             this.GroupBox1.Size = new System.Drawing.Size(354, 215);
             this.GroupBox1.TabIndex = 4;
             this.GroupBox1.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(178, 64);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(73, 13);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Start At Page:";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(178, 127);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(73, 13);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Start At Page:";
+            // 
+            // Label1
+            // 
+            this.Label1.AutoSize = true;
+            this.Label1.Location = new System.Drawing.Point(12, 9);
+            this.Label1.Name = "Label1";
+            this.Label1.Size = new System.Drawing.Size(256, 13);
+            this.Label1.TabIndex = 12;
+            this.Label1.Text = "Web Site Address (URL) of your MerchantTribe store";
+            // 
+            // sqlGroupBox
+            // 
+            this.sqlGroupBox.Controls.Add(this.SQLPasswordField);
+            this.sqlGroupBox.Controls.Add(this.label5);
+            this.sqlGroupBox.Controls.Add(this.SQLUsernameField);
+            this.sqlGroupBox.Controls.Add(this.label4);
+            this.sqlGroupBox.Controls.Add(this.SQLDatabaseField);
+            this.sqlGroupBox.Controls.Add(this.label3);
+            this.sqlGroupBox.Controls.Add(this.SQLServerField);
+            this.sqlGroupBox.Controls.Add(this.label2);
+            this.sqlGroupBox.Location = new System.Drawing.Point(15, 236);
+            this.sqlGroupBox.Name = "sqlGroupBox";
+            this.sqlGroupBox.Size = new System.Drawing.Size(322, 134);
+            this.sqlGroupBox.TabIndex = 3;
+            this.sqlGroupBox.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 98);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(77, 13);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "SQL Password";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 70);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 13);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "SQL Username";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 44);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(77, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "SQL Database";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(62, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "SQL Server";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rb6);
+            this.groupBox3.Controls.Add(this.rb2004);
+            this.groupBox3.Controls.Add(this.rb5);
+            this.groupBox3.Location = new System.Drawing.Point(15, 134);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(322, 96);
+            this.groupBox3.TabIndex = 2;
+            this.groupBox3.TabStop = false;
+            // 
+            // rb6
+            // 
+            this.rb6.AutoSize = true;
+            this.rb6.Location = new System.Drawing.Point(9, 19);
+            this.rb6.Name = "rb6";
+            this.rb6.Size = new System.Drawing.Size(245, 17);
+            this.rb6.TabIndex = 2;
+            this.rb6.Text = "Migrate From MerchantTribe / BV Commerce 6";
+            this.rb6.UseVisualStyleBackColor = true;
+            this.rb6.CheckedChanged += new System.EventHandler(this.rb6_CheckedChanged);
+            // 
+            // rb2004
+            // 
+            this.rb2004.AutoSize = true;
+            this.rb2004.Location = new System.Drawing.Point(9, 65);
+            this.rb2004.Name = "rb2004";
+            this.rb2004.Size = new System.Drawing.Size(183, 17);
+            this.rb2004.TabIndex = 1;
+            this.rb2004.Text = "Migrate From BV Commerce 2004";
+            this.rb2004.UseVisualStyleBackColor = true;
+            this.rb2004.CheckedChanged += new System.EventHandler(this.rb2004_CheckedChanged);
+            // 
+            // rb5
+            // 
+            this.rb5.AutoSize = true;
+            this.rb5.Location = new System.Drawing.Point(9, 42);
+            this.rb5.Name = "rb5";
+            this.rb5.Size = new System.Drawing.Size(165, 17);
+            this.rb5.TabIndex = 0;
+            this.rb5.Text = "Migrate From BV Commerce 5";
+            this.rb5.UseVisualStyleBackColor = true;
+            this.rb5.CheckedChanged += new System.EventHandler(this.rb5_CheckedChanged);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 48);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(158, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "API Key for MerchantTribe store";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(9, 87);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(466, 13);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Full Path to the Root Folder of your Old Store for Image Import ( i.e. c:\\inetpub" +
+    "\\wwwroot\\mystore )";
+            // 
+            // btnBrowseForImagesRoot
+            // 
+            this.btnBrowseForImagesRoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBrowseForImagesRoot.Location = new System.Drawing.Point(697, 100);
+            this.btnBrowseForImagesRoot.Name = "btnBrowseForImagesRoot";
+            this.btnBrowseForImagesRoot.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowseForImagesRoot.TabIndex = 16;
+            this.btnBrowseForImagesRoot.Text = "Browse";
+            this.btnBrowseForImagesRoot.UseVisualStyleBackColor = true;
+            this.btnBrowseForImagesRoot.Click += new System.EventHandler(this.btnBrowseForImagesRoot_Click);
+            // 
+            // fromBV6Data
+            // 
+            this.fromBV6Data.Controls.Add(this.label11);
+            this.fromBV6Data.Controls.Add(this.SourceApiKeyField);
+            this.fromBV6Data.Controls.Add(this.label10);
+            this.fromBV6Data.Controls.Add(this.SourceRootField);
+            this.fromBV6Data.Location = new System.Drawing.Point(15, 243);
+            this.fromBV6Data.Name = "fromBV6Data";
+            this.fromBV6Data.Size = new System.Drawing.Size(322, 109);
+            this.fromBV6Data.TabIndex = 19;
+            this.fromBV6Data.TabStop = false;
+            this.fromBV6Data.Text = "From BV6 Info";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(6, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(145, 13);
+            this.label11.TabIndex = 3;
+            this.label11.Text = "API Key for FROM BV6 Store";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(6, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(126, 13);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "URL of FROM BV6 Store";
+            // 
+            // SQLPasswordField
+            // 
+            this.SQLPasswordField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SQLPasswordField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SQLPasswordField.Location = new System.Drawing.Point(103, 98);
+            this.SQLPasswordField.Name = "SQLPasswordField";
+            this.SQLPasswordField.Size = new System.Drawing.Size(213, 20);
+            this.SQLPasswordField.TabIndex = 3;
+            this.SQLPasswordField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLPassword;
+            this.SQLPasswordField.UseSystemPasswordChar = true;
+            // 
+            // SQLUsernameField
+            // 
+            this.SQLUsernameField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SQLUsernameField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLUsername", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SQLUsernameField.Location = new System.Drawing.Point(103, 70);
+            this.SQLUsernameField.Name = "SQLUsernameField";
+            this.SQLUsernameField.Size = new System.Drawing.Size(213, 20);
+            this.SQLUsernameField.TabIndex = 2;
+            this.SQLUsernameField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLUsername;
+            // 
+            // SQLDatabaseField
+            // 
+            this.SQLDatabaseField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SQLDatabaseField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLDatabase", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SQLDatabaseField.Location = new System.Drawing.Point(103, 44);
+            this.SQLDatabaseField.Name = "SQLDatabaseField";
+            this.SQLDatabaseField.Size = new System.Drawing.Size(213, 20);
+            this.SQLDatabaseField.TabIndex = 1;
+            this.SQLDatabaseField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLDatabase;
+            // 
+            // SQLServerField
+            // 
+            this.SQLServerField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SQLServerField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SQLServerField.Location = new System.Drawing.Point(103, 18);
+            this.SQLServerField.Name = "SQLServerField";
+            this.SQLServerField.Size = new System.Drawing.Size(213, 20);
+            this.SQLServerField.TabIndex = 0;
+            this.SQLServerField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLServer;
+            // 
+            // SourceApiKeyField
+            // 
+            this.SourceApiKeyField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SourceApiKey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SourceApiKeyField.Location = new System.Drawing.Point(6, 71);
+            this.SourceApiKeyField.Name = "SourceApiKeyField";
+            this.SourceApiKeyField.Size = new System.Drawing.Size(310, 20);
+            this.SourceApiKeyField.TabIndex = 2;
+            this.SourceApiKeyField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SourceApiKey;
+            // 
+            // SourceRootField
+            // 
+            this.SourceRootField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SourceRootUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SourceRootField.Location = new System.Drawing.Point(6, 32);
+            this.SourceRootField.Name = "SourceRootField";
+            this.SourceRootField.Size = new System.Drawing.Size(310, 20);
+            this.SourceRootField.TabIndex = 0;
+            this.SourceRootField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SourceRootUrl;
+            // 
+            // SkipProductPreField
+            // 
+            this.SkipProductPreField.AutoSize = true;
+            this.SkipProductPreField.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SkipProductPrerequisites;
+            this.SkipProductPreField.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SkipProductPrerequisites", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SkipProductPreField.Location = new System.Drawing.Point(19, 418);
+            this.SkipProductPreField.Name = "SkipProductPreField";
+            this.SkipProductPreField.Size = new System.Drawing.Size(251, 17);
+            this.SkipProductPreField.TabIndex = 18;
+            this.SkipProductPreField.Text = "Skip Product Prerequisites (Not Recommended)";
+            this.SkipProductPreField.UseVisualStyleBackColor = true;
+            // 
+            // chkDisableMultiThreadingField
+            // 
+            this.chkDisableMultiThreadingField.AutoSize = true;
+            this.chkDisableMultiThreadingField.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.DisableMultiThreading;
+            this.chkDisableMultiThreadingField.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "DisableMultiThreading", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkDisableMultiThreadingField.Location = new System.Drawing.Point(19, 398);
+            this.chkDisableMultiThreadingField.Name = "chkDisableMultiThreadingField";
+            this.chkDisableMultiThreadingField.Size = new System.Drawing.Size(153, 17);
+            this.chkDisableMultiThreadingField.TabIndex = 17;
+            this.chkDisableMultiThreadingField.Text = "Disable Parallel Processing";
+            this.chkDisableMultiThreadingField.UseVisualStyleBackColor = true;
+            // 
+            // ImagesRootFolderField
+            // 
+            this.ImagesRootFolderField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ImagesRootFolderField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "ImagesRootFolder", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ImagesRootFolderField.Location = new System.Drawing.Point(12, 103);
+            this.ImagesRootFolderField.Name = "ImagesRootFolderField";
+            this.ImagesRootFolderField.Size = new System.Drawing.Size(679, 20);
+            this.ImagesRootFolderField.TabIndex = 15;
+            this.ImagesRootFolderField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.ImagesRootFolder;
+            // 
+            // ApiKeyField
+            // 
+            this.ApiKeyField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ApiKeyField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "ApiKey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.ApiKeyField.Location = new System.Drawing.Point(12, 64);
+            this.ApiKeyField.Name = "ApiKeyField";
+            this.ApiKeyField.Size = new System.Drawing.Size(760, 20);
+            this.ApiKeyField.TabIndex = 1;
+            this.ApiKeyField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.ApiKey;
+            // 
+            // SingleOrderField
+            // 
+            this.SingleOrderField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleOrderImport", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SingleOrderField.Location = new System.Drawing.Point(595, 395);
+            this.SingleOrderField.Name = "SingleOrderField";
+            this.SingleOrderField.Size = new System.Drawing.Size(157, 20);
+            this.SingleOrderField.TabIndex = 7;
+            this.SingleOrderField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleOrderImport;
+            this.SingleOrderField.Visible = false;
+            // 
+            // chkSingleOrder
+            // 
+            this.chkSingleOrder.AutoSize = true;
+            this.chkSingleOrder.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleOrderOn;
+            this.chkSingleOrder.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleOrderOn", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkSingleOrder.Location = new System.Drawing.Point(421, 397);
+            this.chkSingleOrder.Name = "chkSingleOrder";
+            this.chkSingleOrder.Size = new System.Drawing.Size(172, 17);
+            this.chkSingleOrder.TabIndex = 6;
+            this.chkSingleOrder.Text = "Test Import with a single Order:";
+            this.chkSingleOrder.UseVisualStyleBackColor = true;
+            this.chkSingleOrder.Visible = false;
+            // 
+            // SingleSkuField
+            // 
+            this.SingleSkuField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleSkuImport", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.SingleSkuField.Location = new System.Drawing.Point(595, 418);
+            this.SingleSkuField.Name = "SingleSkuField";
+            this.SingleSkuField.Size = new System.Drawing.Size(157, 20);
+            this.SingleSkuField.TabIndex = 9;
+            this.SingleSkuField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleSkuImport;
+            this.SingleSkuField.TextChanged += new System.EventHandler(this.SingleSkuField_TextChanged);
+            // 
+            // chkMetric
+            // 
+            this.chkMetric.AutoSize = true;
+            this.chkMetric.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.UseMetricUnits;
+            this.chkMetric.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "UseMetricUnits", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkMetric.Location = new System.Drawing.Point(421, 374);
+            this.chkMetric.Name = "chkMetric";
+            this.chkMetric.Size = new System.Drawing.Size(279, 17);
+            this.chkMetric.TabIndex = 5;
+            this.chkMetric.Text = "Use Metric Units During Import ( cm instead of inches)";
+            this.chkMetric.UseVisualStyleBackColor = true;
+            this.chkMetric.Visible = false;
+            // 
+            // chkSkipInactive
+            // 
+            this.chkSkipInactive.AutoSize = true;
+            this.chkSkipInactive.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SkipInactiveProducts;
+            this.chkSkipInactive.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SkipInactiveProducts", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkSkipInactive.Location = new System.Drawing.Point(51, 63);
+            this.chkSkipInactive.Name = "chkSkipInactive";
+            this.chkSkipInactive.Size = new System.Drawing.Size(88, 17);
+            this.chkSkipInactive.TabIndex = 16;
+            this.chkSkipInactive.Text = "Skip Inactive";
+            this.chkSkipInactive.UseVisualStyleBackColor = true;
             // 
             // chkClearUsers
             // 
@@ -156,15 +509,6 @@
             this.ProductImagesOnlyField.Text = "Only Migrate Images";
             this.ProductImagesOnlyField.UseVisualStyleBackColor = true;
             // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(178, 64);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(73, 13);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Start At Page:";
-            // 
             // ProductStartPageField
             // 
             this.ProductStartPageField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "ProductStartPage", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -173,15 +517,6 @@
             this.ProductStartPageField.Size = new System.Drawing.Size(81, 20);
             this.ProductStartPageField.TabIndex = 12;
             this.ProductStartPageField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.ProductStartPage;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(178, 127);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Start At Page:";
             // 
             // UserStartPageField
             // 
@@ -320,313 +655,16 @@
             this.chkImportCategories.Text = "Import Categories";
             this.chkImportCategories.UseVisualStyleBackColor = true;
             // 
-            // Label1
+            // DestinationRootUrlField
             // 
-            this.Label1.AutoSize = true;
-            this.Label1.Location = new System.Drawing.Point(12, 9);
-            this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(256, 13);
-            this.Label1.TabIndex = 12;
-            this.Label1.Text = "Web Site Address (URL) of your MerchantTribe store";
-            // 
-            // sqlGroupBox
-            // 
-            this.sqlGroupBox.Controls.Add(this.SQLPasswordField);
-            this.sqlGroupBox.Controls.Add(this.label5);
-            this.sqlGroupBox.Controls.Add(this.SQLUsernameField);
-            this.sqlGroupBox.Controls.Add(this.label4);
-            this.sqlGroupBox.Controls.Add(this.SQLDatabaseField);
-            this.sqlGroupBox.Controls.Add(this.label3);
-            this.sqlGroupBox.Controls.Add(this.SQLServerField);
-            this.sqlGroupBox.Controls.Add(this.label2);
-            this.sqlGroupBox.Location = new System.Drawing.Point(15, 236);
-            this.sqlGroupBox.Name = "sqlGroupBox";
-            this.sqlGroupBox.Size = new System.Drawing.Size(322, 134);
-            this.sqlGroupBox.TabIndex = 3;
-            this.sqlGroupBox.TabStop = false;
-            // 
-            // SQLPasswordField
-            // 
-            this.SQLPasswordField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DestinationRootUrlField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SQLPasswordField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLPassword", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SQLPasswordField.Location = new System.Drawing.Point(103, 98);
-            this.SQLPasswordField.Name = "SQLPasswordField";
-            this.SQLPasswordField.Size = new System.Drawing.Size(213, 20);
-            this.SQLPasswordField.TabIndex = 3;
-            this.SQLPasswordField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLPassword;
-            this.SQLPasswordField.UseSystemPasswordChar = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 98);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(77, 13);
-            this.label5.TabIndex = 7;
-            this.label5.Text = "SQL Password";
-            // 
-            // SQLUsernameField
-            // 
-            this.SQLUsernameField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SQLUsernameField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLUsername", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SQLUsernameField.Location = new System.Drawing.Point(103, 70);
-            this.SQLUsernameField.Name = "SQLUsernameField";
-            this.SQLUsernameField.Size = new System.Drawing.Size(213, 20);
-            this.SQLUsernameField.TabIndex = 2;
-            this.SQLUsernameField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLUsername;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 70);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "SQL Username";
-            // 
-            // SQLDatabaseField
-            // 
-            this.SQLDatabaseField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SQLDatabaseField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLDatabase", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SQLDatabaseField.Location = new System.Drawing.Point(103, 44);
-            this.SQLDatabaseField.Name = "SQLDatabaseField";
-            this.SQLDatabaseField.Size = new System.Drawing.Size(213, 20);
-            this.SQLDatabaseField.TabIndex = 1;
-            this.SQLDatabaseField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLDatabase;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 44);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "SQL Database";
-            // 
-            // SQLServerField
-            // 
-            this.SQLServerField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SQLServerField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SQLServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SQLServerField.Location = new System.Drawing.Point(103, 18);
-            this.SQLServerField.Name = "SQLServerField";
-            this.SQLServerField.Size = new System.Drawing.Size(213, 20);
-            this.SQLServerField.TabIndex = 0;
-            this.SQLServerField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SQLServer;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "SQL Server";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.rb6);
-            this.groupBox3.Controls.Add(this.rb2004);
-            this.groupBox3.Controls.Add(this.rb5);
-            this.groupBox3.Location = new System.Drawing.Point(15, 134);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(322, 96);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            // 
-            // rb6
-            // 
-            this.rb6.AutoSize = true;
-            this.rb6.Location = new System.Drawing.Point(9, 19);
-            this.rb6.Name = "rb6";
-            this.rb6.Size = new System.Drawing.Size(245, 17);
-            this.rb6.TabIndex = 2;
-            this.rb6.Text = "Migrate From MerchantTribe / BV Commerce 6";
-            this.rb6.UseVisualStyleBackColor = true;
-            this.rb6.CheckedChanged += new System.EventHandler(this.rb6_CheckedChanged);
-            // 
-            // rb2004
-            // 
-            this.rb2004.AutoSize = true;
-            this.rb2004.Location = new System.Drawing.Point(9, 65);
-            this.rb2004.Name = "rb2004";
-            this.rb2004.Size = new System.Drawing.Size(183, 17);
-            this.rb2004.TabIndex = 1;
-            this.rb2004.Text = "Migrate From BV Commerce 2004";
-            this.rb2004.UseVisualStyleBackColor = true;
-            this.rb2004.CheckedChanged += new System.EventHandler(this.rb2004_CheckedChanged);
-            // 
-            // rb5
-            // 
-            this.rb5.AutoSize = true;
-            this.rb5.Location = new System.Drawing.Point(9, 42);
-            this.rb5.Name = "rb5";
-            this.rb5.Size = new System.Drawing.Size(165, 17);
-            this.rb5.TabIndex = 0;
-            this.rb5.Text = "Migrate From BV Commerce 5";
-            this.rb5.UseVisualStyleBackColor = true;
-            this.rb5.CheckedChanged += new System.EventHandler(this.rb5_CheckedChanged);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 48);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(158, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "API Key for MerchantTribe store";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(9, 87);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(466, 13);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Full Path to the Root Folder of your Old Store for Image Import ( i.e. c:\\inetpub" +
-    "\\wwwroot\\mystore )";
-            // 
-            // btnBrowseForImagesRoot
-            // 
-            this.btnBrowseForImagesRoot.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseForImagesRoot.Location = new System.Drawing.Point(697, 100);
-            this.btnBrowseForImagesRoot.Name = "btnBrowseForImagesRoot";
-            this.btnBrowseForImagesRoot.Size = new System.Drawing.Size(75, 23);
-            this.btnBrowseForImagesRoot.TabIndex = 16;
-            this.btnBrowseForImagesRoot.Text = "Browse";
-            this.btnBrowseForImagesRoot.UseVisualStyleBackColor = true;
-            this.btnBrowseForImagesRoot.Click += new System.EventHandler(this.btnBrowseForImagesRoot_Click);
-            // 
-            // fromBV6Data
-            // 
-            this.fromBV6Data.Controls.Add(this.label11);
-            this.fromBV6Data.Controls.Add(this.SourceApiKeyField);
-            this.fromBV6Data.Controls.Add(this.label10);
-            this.fromBV6Data.Controls.Add(this.SourceRootField);
-            this.fromBV6Data.Location = new System.Drawing.Point(15, 243);
-            this.fromBV6Data.Name = "fromBV6Data";
-            this.fromBV6Data.Size = new System.Drawing.Size(322, 109);
-            this.fromBV6Data.TabIndex = 19;
-            this.fromBV6Data.TabStop = false;
-            this.fromBV6Data.Text = "From BV6 Info";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(6, 55);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(145, 13);
-            this.label11.TabIndex = 3;
-            this.label11.Text = "API Key for FROM BV6 Store";
-            // 
-            // SourceApiKeyField
-            // 
-            this.SourceApiKeyField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SourceApiKey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SourceApiKeyField.Location = new System.Drawing.Point(6, 71);
-            this.SourceApiKeyField.Name = "SourceApiKeyField";
-            this.SourceApiKeyField.Size = new System.Drawing.Size(310, 20);
-            this.SourceApiKeyField.TabIndex = 2;
-            this.SourceApiKeyField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SourceApiKey;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 16);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(126, 13);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "URL of FROM BV6 Store";
-            // 
-            // SourceRootField
-            // 
-            this.SourceRootField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SourceRootUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SourceRootField.Location = new System.Drawing.Point(6, 32);
-            this.SourceRootField.Name = "SourceRootField";
-            this.SourceRootField.Size = new System.Drawing.Size(310, 20);
-            this.SourceRootField.TabIndex = 0;
-            this.SourceRootField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SourceRootUrl;
-            // 
-            // SkipProductPreField
-            // 
-            this.SkipProductPreField.AutoSize = true;
-            this.SkipProductPreField.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SkipProductPrerequisites;
-            this.SkipProductPreField.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SkipProductPrerequisites", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SkipProductPreField.Location = new System.Drawing.Point(19, 418);
-            this.SkipProductPreField.Name = "SkipProductPreField";
-            this.SkipProductPreField.Size = new System.Drawing.Size(251, 17);
-            this.SkipProductPreField.TabIndex = 18;
-            this.SkipProductPreField.Text = "Skip Product Prerequisites (Not Recommended)";
-            this.SkipProductPreField.UseVisualStyleBackColor = true;
-            // 
-            // chkDisableMultiThreadingField
-            // 
-            this.chkDisableMultiThreadingField.AutoSize = true;
-            this.chkDisableMultiThreadingField.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.DisableMultiThreading;
-            this.chkDisableMultiThreadingField.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "DisableMultiThreading", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.chkDisableMultiThreadingField.Location = new System.Drawing.Point(19, 398);
-            this.chkDisableMultiThreadingField.Name = "chkDisableMultiThreadingField";
-            this.chkDisableMultiThreadingField.Size = new System.Drawing.Size(153, 17);
-            this.chkDisableMultiThreadingField.TabIndex = 17;
-            this.chkDisableMultiThreadingField.Text = "Disable Parallel Processing";
-            this.chkDisableMultiThreadingField.UseVisualStyleBackColor = true;
-            // 
-            // ImagesRootFolderField
-            // 
-            this.ImagesRootFolderField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ImagesRootFolderField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "ImagesRootFolder", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ImagesRootFolderField.Location = new System.Drawing.Point(12, 103);
-            this.ImagesRootFolderField.Name = "ImagesRootFolderField";
-            this.ImagesRootFolderField.Size = new System.Drawing.Size(679, 20);
-            this.ImagesRootFolderField.TabIndex = 15;
-            this.ImagesRootFolderField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.ImagesRootFolder;
-            // 
-            // ApiKeyField
-            // 
-            this.ApiKeyField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ApiKeyField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "ApiKey", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.ApiKeyField.Location = new System.Drawing.Point(12, 64);
-            this.ApiKeyField.Name = "ApiKeyField";
-            this.ApiKeyField.Size = new System.Drawing.Size(760, 20);
-            this.ApiKeyField.TabIndex = 1;
-            this.ApiKeyField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.ApiKey;
-            // 
-            // SingleOrderField
-            // 
-            this.SingleOrderField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleOrderImport", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SingleOrderField.Location = new System.Drawing.Point(595, 395);
-            this.SingleOrderField.Name = "SingleOrderField";
-            this.SingleOrderField.Size = new System.Drawing.Size(157, 20);
-            this.SingleOrderField.TabIndex = 7;
-            this.SingleOrderField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleOrderImport;
-            this.SingleOrderField.Visible = false;
-            // 
-            // chkSingleOrder
-            // 
-            this.chkSingleOrder.AutoSize = true;
-            this.chkSingleOrder.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleOrderOn;
-            this.chkSingleOrder.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleOrderOn", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.chkSingleOrder.Location = new System.Drawing.Point(421, 397);
-            this.chkSingleOrder.Name = "chkSingleOrder";
-            this.chkSingleOrder.Size = new System.Drawing.Size(172, 17);
-            this.chkSingleOrder.TabIndex = 6;
-            this.chkSingleOrder.Text = "Test Import with a single Order:";
-            this.chkSingleOrder.UseVisualStyleBackColor = true;
-            this.chkSingleOrder.Visible = false;
-            // 
-            // SingleSkuField
-            // 
-            this.SingleSkuField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "SingleSkuImport", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.SingleSkuField.Location = new System.Drawing.Point(595, 418);
-            this.SingleSkuField.Name = "SingleSkuField";
-            this.SingleSkuField.Size = new System.Drawing.Size(157, 20);
-            this.SingleSkuField.TabIndex = 9;
-            this.SingleSkuField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.SingleSkuImport;
-            this.SingleSkuField.Visible = false;
+            this.DestinationRootUrlField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "DestinationRootUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DestinationRootUrlField.Location = new System.Drawing.Point(12, 25);
+            this.DestinationRootUrlField.Name = "DestinationRootUrlField";
+            this.DestinationRootUrlField.Size = new System.Drawing.Size(760, 20);
+            this.DestinationRootUrlField.TabIndex = 0;
+            this.DestinationRootUrlField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.DestinationRootUrl;
             // 
             // chkSingleSku
             // 
@@ -639,31 +677,7 @@
             this.chkSingleSku.TabIndex = 8;
             this.chkSingleSku.Text = "Test Import with a single SKU:";
             this.chkSingleSku.UseVisualStyleBackColor = true;
-            this.chkSingleSku.Visible = false;
-            // 
-            // chkMetric
-            // 
-            this.chkMetric.AutoSize = true;
-            this.chkMetric.Checked = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.UseMetricUnits;
-            this.chkMetric.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "UseMetricUnits", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.chkMetric.Location = new System.Drawing.Point(421, 374);
-            this.chkMetric.Name = "chkMetric";
-            this.chkMetric.Size = new System.Drawing.Size(279, 17);
-            this.chkMetric.TabIndex = 5;
-            this.chkMetric.Text = "Use Metric Units During Import ( cm instead of inches)";
-            this.chkMetric.UseVisualStyleBackColor = true;
-            this.chkMetric.Visible = false;
-            // 
-            // DestinationRootUrlField
-            // 
-            this.DestinationRootUrlField.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DestinationRootUrlField.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::MerchantTribe.MigrationWindows.Properties.Settings.Default, "DestinationRootUrl", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.DestinationRootUrlField.Location = new System.Drawing.Point(12, 25);
-            this.DestinationRootUrlField.Name = "DestinationRootUrlField";
-            this.DestinationRootUrlField.Size = new System.Drawing.Size(760, 20);
-            this.DestinationRootUrlField.TabIndex = 0;
-            this.DestinationRootUrlField.Text = global::MerchantTribe.MigrationWindows.Properties.Settings.Default.DestinationRootUrl;
+            this.chkSingleSku.CheckedChanged += new System.EventHandler(this.chkSingleSku_CheckedChanged);
             // 
             // OptionsForm
             // 
@@ -713,7 +727,6 @@
         internal System.Windows.Forms.Button Button1;
         internal System.Windows.Forms.Button btnCancel;
         internal System.Windows.Forms.TextBox SingleSkuField;
-        internal System.Windows.Forms.CheckBox chkSingleSku;
         internal System.Windows.Forms.CheckBox chkMetric;
         internal System.Windows.Forms.GroupBox GroupBox1;
         internal System.Windows.Forms.CheckBox chkClearOrders;
@@ -761,5 +774,7 @@
         private System.Windows.Forms.TextBox SourceApiKeyField;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox SourceRootField;
+        private System.Windows.Forms.CheckBox chkSkipInactive;
+        internal System.Windows.Forms.CheckBox chkSingleSku;
     }
 }

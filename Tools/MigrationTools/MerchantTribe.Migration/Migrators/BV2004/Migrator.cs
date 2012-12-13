@@ -1490,9 +1490,9 @@ namespace MerchantTribe.Migration.Migrators.BV2004
             Header("Importing Categories");
 
             data.bvc2004Entities oldDatabase = GetOldDatabase();
-            foreach (data.bvc_Category old in oldDatabase.bvc_Category)
+            foreach (data.bvc_Category old in oldDatabase.bvc_Category.OrderBy(y => y.ParentID).ThenBy(y => y.SortOrder))
             {
-                wl("Category: " + old.Name);
+                wl("Cat: " + old.Name + " (child of " + old.ParentID + ")");
 
                 CategoryDTO cat = new CategoryDTO();
                 cat.BannerImageUrl = System.IO.Path.GetFileName(old.BannerImageURL);

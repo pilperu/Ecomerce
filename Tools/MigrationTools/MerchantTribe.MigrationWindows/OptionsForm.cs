@@ -99,5 +99,15 @@ namespace MerchantTribe.MigrationWindows
                 this.fromBV6Data.Visible = false;
             }
         }
+
+        private void chkSingleSku_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SingleSkuField_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -200,6 +200,7 @@
     <Compile Include="Accounts\StoreSettings.cs" />
     <Compile Include="Accounts\StoreSettingsAcumatica.cs" />
     <Compile Include="Accounts\StoreSettingsAnalytics.cs" />
+    <Compile Include="Accounts\StoreSettingsAvalara.cs" />
     <Compile Include="Accounts\StoreSettingsFaceBook.cs" />
     <Compile Include="Accounts\StoreSettingsGooglePlus.cs" />
     <Compile Include="Accounts\StoreSettingsMailServer.cs" />
@@ -217,6 +218,9 @@
     <Compile Include="BusinessRules\OrderTasks\ApplyMinimumOrderAmount.cs" />
     <Compile Include="BusinessRules\OrderTasks\AssignOrderNumber.cs" />
     <Compile Include="BusinessRules\OrderTasks\AssignOrderToUser.cs" />
+    <Compile Include="BusinessRules\OrderTasks\AvalaraCancelWhenPaymentRemoved.cs" />
+    <Compile Include="BusinessRules\OrderTasks\AvalaraCommitTaxes.cs" />
+    <Compile Include="BusinessRules\OrderTasks\AvalaraResubmitTaxes.cs" />
     <Compile Include="BusinessRules\OrderTasks\ChangeOrderStatusWhenPaymentRemoved.cs" />
     <Compile Include="BusinessRules\OrderTasks\ChangeOrderStatusWhenShipmentRemoved.cs" />
     <Compile Include="BusinessRules\OrderTasks\CheckForOrderMaximums.cs" />
@@ -632,6 +636,7 @@
     <Compile Include="Taxes\TaxSchedule.cs" />
     <Compile Include="Taxes\TaxScheduleRepository.cs" />
     <Compile Include="Orders\OrderService.cs" />
+    <Compile Include="Utilities\AvalaraUtilities.cs" />
     <Compile Include="Utilities\CreditCardValidator.cs" />
     <Compile Include="Utilities\DateHelpers.cs" />
     <Compile Include="Utilities\DateRange.cs" />
@@ -669,6 +674,10 @@
     <Compile Include="WebAppSettings.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BVSoftware.Avalara\BVSoftware.Avalara.csproj">
+      <Project>{4e2d5b5c-7f4a-4314-9f4c-a39bcc9ea3f2}</Project>
+      <Name>BVSoftware.Avalara</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MerchantTribe.CommerceDTO\MerchantTribe.CommerceDTO.csproj">
       <Project>{C47A3A58-D11F-4D67-92FC-3E95B5DD6221}</Project>
       <Name>MerchantTribe.CommerceDTO</Name>

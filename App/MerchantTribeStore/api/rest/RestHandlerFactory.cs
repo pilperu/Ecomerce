@@ -55,6 +55,8 @@ namespace MerchantTribeStore.api.rest
                     return new ProductImagesHandler(app);
                 case "productimagesupload":
                     return new ProductImagesUploadHandler(app);
+                case "productvariantssku":
+                    return new ProductVariantsHandler(app);
                 case "productvolumediscounts":
                     return new ProductVolumeDiscountsHandler(app);
                 case "productreviews":

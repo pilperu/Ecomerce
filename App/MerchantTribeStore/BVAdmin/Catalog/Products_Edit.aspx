@@ -322,6 +322,10 @@ $(document).ready(function () {
                 <td><asp:CheckBox id="chkAllowReviews" runat="Server"></asp:CheckBox></td>
             </tr>
             <tr>
+                <td class="formlabel">Swatch Folder Name:</td>
+                <td><asp:TextBox ID="swatchpathfield" runat="server" Columns="30"></asp:TextBox></td>
+            </tr>
+            <tr>
                 <td class="formlabel">
                     Page Name:</td>
                 <td class="formfield">/<asp:TextBox ID="RewriteUrlField" ClientIdMode="Static" runat="server" 

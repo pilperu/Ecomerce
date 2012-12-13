@@ -278,6 +278,22 @@ namespace MerchantTribe.Commerce.Catalog
 
             return true;
         }
+        public string SwatchPath { 
+            get
+            {
+                return CustomPropertyGet("bvsoftware", "swatchpath");
+            }
+            set {
+
+                string temp = value;
+                temp = temp.Replace("..", "");
+                temp = temp.Replace(".", "");
+                temp = temp.Trim();
+                temp = temp.TrimStart('/');
+                CustomPropertySet("bvsoftware", "swatchpath", temp);
+            }
+        }
+
 
         public bool HasOptions()
         {

@@ -299,6 +299,8 @@ namespace MerchantTribeStore
                     this.lnkClone.NavigateUrl = "ProductClone.aspx?id=" + p.Bvin;
 
                     this.chkAllowReviews.Checked = p.AllowReviews;
+
+                    this.swatchpathfield.Text = p.SwatchPath;
                 }
             }
 
@@ -528,7 +530,8 @@ namespace MerchantTribeStore
                     //p.SetGiftWrapPrice(decimal.Parse(this.txtGiftWrapCharge.Text));
 
                     p.AllowReviews = this.chkAllowReviews.Checked;
-
+                    p.SwatchPath = this.swatchpathfield.Text;
+                   
                     if ((p.Bvin == string.Empty))
                     {
                         result = MTApp.CatalogServices.ProductsCreateWithInventory(p, true);

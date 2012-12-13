@@ -223,9 +223,11 @@ namespace MerchantTribe.Commerce.Utilities
 
                 string swatchBase = MerchantTribe.Commerce.Storage.DiskStorage.BaseUrlForSingleStore(app, app.IsCurrentRequestSecure());
                 swatchBase += "swatches";
+                if (p.SwatchPath.Length > 0) swatchBase += "/" + p.SwatchPath;
 
                 string swatchPhysicalBase = MerchantTribe.Commerce.Storage.DiskStorage.BaseStorePhysicalPath(app.CurrentStore.Id);
                 swatchPhysicalBase += "swatches\\";
+                if (p.SwatchPath.Length > 0) swatchPhysicalBase += p.SwatchPath + "\\";
 
                 StringBuilder sb = new StringBuilder();
                 sb.Append("<div class=\"productswatches\">");

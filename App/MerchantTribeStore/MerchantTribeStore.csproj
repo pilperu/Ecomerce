@@ -214,9 +214,11 @@
   <ItemGroup>
     <Content Include="BVAdmin\Account.aspx" />
     <Content Include="BVAdmin\BVAdmin.js" />
+    <Content Include="BVAdmin\Configuration\Caching.aspx" />
     <Content Include="BVAdmin\Catalog\Categories_EditCustomLink.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_RemoveProperty.aspx" />
     <Content Include="BVAdmin\Catalog\ProductTypes_SortProperties.aspx" />
+    <Content Include="BVAdmin\Configuration\Avatax.aspx" />
     <Content Include="BVAdmin\Configuration\EventLog.aspx" />
     <Content Include="BVAdmin\Configuration\SocialMedia.aspx" />
     <Content Include="BVAdmin\Images\classy_fabric.png" />
@@ -2253,6 +2255,7 @@
     <Compile Include="api\rest\ProductsHandler.cs" />
     <Compile Include="api\rest\ProductsMainImageHandler.cs" />
     <Compile Include="api\rest\ProductTypesHandler.cs" />
+    <Compile Include="api\rest\ProductVariantsHandler.cs" />
     <Compile Include="api\rest\ProductVolumeDiscountsHandler.cs" />
     <Compile Include="api\rest\RestHandlerFactory.cs" />
     <Compile Include="api\rest\SearchManagerHandler.cs" />
@@ -2348,6 +2351,13 @@
     </Compile>
     <Compile Include="BVAdmin\BVAdminPopup.master.designer.cs">
       <DependentUpon>BVAdminPopup.master</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Caching.aspx.cs">
+      <DependentUpon>Caching.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Caching.aspx.designer.cs">
+      <DependentUpon>Caching.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\CancelStore.aspx.cs">
       <DependentUpon>CancelStore.aspx</DependentUpon>
@@ -2838,6 +2848,13 @@
     </Compile>
     <Compile Include="BVAdmin\Configuration\ApiRemoveKey.aspx.designer.cs">
       <DependentUpon>ApiRemoveKey.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Avatax.aspx.cs">
+      <DependentUpon>Avatax.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="BVAdmin\Configuration\Avatax.aspx.designer.cs">
+      <DependentUpon>Avatax.aspx</DependentUpon>
     </Compile>
     <Compile Include="BVAdmin\Configuration\Countries.aspx.cs">
       <DependentUpon>Countries.aspx</DependentUpon>

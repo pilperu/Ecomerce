@@ -26,5 +26,7 @@
                         <li><a href="ShippingHandling.aspx">Shipping: Handling</a></li>
                         <li><a href="SocialMedia.aspx">Social Media</a></li>
                         <li><a href="TaxClasses.aspx">Tax Schedules</a></li>
-                        <li><a href="Themes.aspx">Themes</a></li>                        
+                        <li><a href="Avatax.aspx">Avatax Service</a></li>
+                        <li><a href="Themes.aspx">Themes</a></li>   
+                        <li><a href="Caching.aspx">- Caching</a></li>                     
                     </ul>

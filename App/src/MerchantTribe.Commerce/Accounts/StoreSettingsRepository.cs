@@ -47,8 +47,15 @@ namespace MerchantTribe.Commerce.Accounts
         }
 
         public bool Update(StoreSetting item)
-        {            
-            return base.Update(item, new PrimaryKey(item.Id));
+        {
+            if (item.Id < 1)
+            {
+                return base.Create(item);
+            }
+            else
+            {
+                return base.Update(item, new PrimaryKey(item.Id));
+            }
         }
 
         public bool Delete(long id)
@@ -56,6 +63,11 @@ namespace MerchantTribe.Commerce.Accounts
             return Delete(new PrimaryKey(id));
         }
 
+        public StoreSetting FindSingleSetting(long storeId, string settingName)
+        {
+            var item = repository.Find().Where(y => y.StoreId == storeId).Where(y => y.SettingName == settingName);            
+            return SinglePoco(item);
+        }
         public List<StoreSetting> FindForStore(long storeId)
         {
             var items = repository.Find().Where(y => y.StoreId == storeId);                                        
